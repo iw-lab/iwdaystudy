@@ -4,6 +4,11 @@ import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Volume2, XCircle } from "lucide-react";
+import {
+  canUnderline,
+  getMeaningText,
+  meaningPrompt,
+} from "@/lib/english-underline";
 
 interface Props {
   content: Record<string, unknown>;
@@ -97,6 +102,11 @@ export default function EnglishQuestion({
     onAnswer(choice);
   };
 
+  // 번역문 안에 밑줄 칠 낱말이 실제로 존재하는지 — 판정은 생성기·게이트와 같은 함수를 쓴다.
+  const meaningText = getMeaningText(englishContent ?? {});
+  const targetKo = String(englishContent?.targetKo || "");
+  const hasUnderline = canUnderline(englishContent ?? {});
+
   const maskedSentence = String(englishContent?.sentence || "").replace(
     new RegExp(
       `\\b${String(englishContent?.word || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
@@ -115,15 +125,12 @@ export default function EnglishQuestion({
           className="w-full max-w-lg rounded-2xl border border-[#4169E1]/20 bg-gradient-to-r from-[#4169E1]/5 to-[#4169E1]/10 p-6 text-center min-h-[80px]"
         >
           <p className="text-sm text-muted-foreground mb-2">
-            밑줄 친 낱말에 해당하는 영단어를 고르세요
+            {/* 밑줄이 실제로 그려질 때만 "밑줄 친"이라고 말한다 —
+                targetKo 가 없거나 번역문에 없으면 강조가 0개라 지시문이 거짓이 된다. */}
+            {meaningPrompt(hasUnderline)}
           </p>
           <p className="text-3xl font-black text-foreground">
-            {renderWithTarget(
-              String(
-                englishContent?.translation || englishContent?.meaning || "",
-              ),
-              englishContent?.targetKo,
-            )}
+            {renderWithTarget(meaningText, targetKo)}
           </p>
         </motion.div>
       )}

@@ -1,6 +1,11 @@
 // 시그니처는 커리큘럼 데이터에 의존하지 않는 별도 모듈에 있다.
 // (local-storage 등이 이 무거운 파일을 통째로 끌어오지 않도록 분리)
 import {
+  canUnderline,
+  getMeaningText,
+  meaningPrompt,
+} from "./english-underline";
+import {
   getQuestionSignature,
   NON_REPEATABLE_QUESTION_TYPES,
 } from "./question-signature";
@@ -2287,6 +2292,9 @@ function buildEnglishQuestion(
   choices: string[],
   variant: string = "word",
 ): Question {
+  // 결과·오답노트 화면(ResultScreen)은 content.text 를 보여준다. 학습 화면이 밑줄을 그릴 때
+  // text 만 다른 문구면 같은 문제가 두 지시문으로 보인다 → 밑줄 여부에 맞춰 문구를 맞춘다.
+  const underlined = canUnderline(entry);
   return {
     id: `q-${setId}-${orderIndex}`,
     daily_set_id: setId,
@@ -2302,10 +2310,18 @@ function buildEnglishQuestion(
       variant,
       text:
         variant === "meaning"
-          ? `다음 뜻에 해당하는 영단어를 고르세요.`
+          ? `${meaningPrompt(underlined)}.\n"${getMeaningText(entry)}"${
+              underlined ? ` (밑줄: ${entry.targetKo})` : ""
+            }`
           : variant === "input"
             ? `다음 문장의 빈칸에 알맞은 영단어를 입력하세요.\n"${entry.sentence}"`
-            : `다음 영어 문장을 읽고, 밑줄 친 단어의 뜻을 쓰세요.\n"${entry.sentence}"\n단어: ${entry.word} [${entry.pronunciation}]`,
+            : `다음 문장의 빈칸에 알맞은 영단어를 고르세요.\n"${entry.sentence.replace(
+                new RegExp(
+                  `\\b${entry.word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
+                  "i",
+                ),
+                "_____",
+              )}"\n뜻: ${entry.translation}`,
       sentence: entry.sentence,
       word: entry.word,
       translation: entry.translation,
@@ -3017,8 +3033,13 @@ export function generateDailySet(
         data.english.length > 0
       ) {
         const entry = pickUnused(data.english, "english");
+        // 'meaning' 변형은 번역문의 낱말에 밑줄을 긋고 "밑줄 친 낱말"을 가리킨다.
+        // 밑줄 대상(targetKo)이 번역문에 실제로 없는 엔트리(대화·문장완성 등 통문장 항목)는
+        // 밑줄이 하나도 안 그려져 지시문이 거짓말이 된다 → 그런 엔트리는 'word'로 돌린다.
+        const entryCanUnderline = canUnderline(entry);
         const evariants = ["word", "word", "word", "meaning"];
-        const ev = evariants[Math.floor(random() * evariants.length)];
+        let ev = evariants[Math.floor(random() * evariants.length)];
+        if (ev === "meaning" && !entryCanUnderline) ev = "word";
         const choices = generateChoices(
           entry.word,
           data.english,
