@@ -108,8 +108,10 @@ CI 에서 자동으로 돌리지 않는 이유: GitHub Actions 의 `CLOUDFLARE_A
 
 ```bash
 npx tsx scripts/verify-math.ts       # 수학 문항 정답 기계검증 (전 학년·학기·난이도 × 다수 시드, expression 독립 재계산)
+npx tsx scripts/verify-content.ts    # 문항 텍스트 결정론 게이트 (플레이스홀더 잔존·조사·중복보기·정답 누락·undefined 유출)
 npx tsx scripts/verify-spelling.ts   # 맞춤법 문항 결정론 게이트 (조사 정합성 + 생성 가능한 전 문항 비문/판정불가 검사)
 npx tsx scripts/verify-grade.ts      # 학년/학기별 일일 세트 생성 결과 요약 (과목별 문항 수 확인)
+npx tsx scripts/verify-underline.ts  # "밑줄 친 …" 지시문 게이트 (밑줄을 말하는데 밑줄 대상이 없는 문항 0 + 영어 밑줄 라벨 보유율 바닥)
 npx tsx scripts/smoke-set.ts         # 학년/학기별 일일 세트 스모크 테스트 (기대 문항 수·수학 예시 출력)
 ```
 
@@ -120,6 +122,78 @@ npx tsx scripts/smoke-set.ts         # 학년/학기별 일일 세트 스모크 
 ```bash
 npx tsc --noEmit
 ```
+
+## 학습 결과 동기화 (오프라인 우선 + 서버 적재)
+
+학습 세트는 **브라우저에서 생성**한다. 커리큘럼 데이터가 13만 줄 규모라 Worker
+스크립트 용량 한도에 들어가지 않기 때문이다. 그래서 결과도 localStorage 에 먼저
+쓰고(학교 와이파이가 끊겨도 학습이 멈추지 않아야 한다), 세션을 마치면 세트·문항
+스냅샷과 함께 서버로 올린다.
+
+```
+학생 브라우저                                   Cloudflare D1
+  generateDailySet()  ─→ localStorage
+  handleComplete()    ─→ localStorage
+        │
+        └─ syncCompletedSet()  ──POST /api/daily-set/submit──→  daily_sets
+                                  (set + questions + responses)   questions
+                                                                  learning_records
+                                                                  question_responses
+```
+
+- **내용주소 id** — 서버가 저장하는 세트 id 는 `<클라이언트 세트id>~<내용해시8>` 이다
+  (`functions/lib/client-set.ts`). 내용이 완전히 같은 학생들은 한 행을 공유하고
+  (한 학급에서 중복 제거), 난이도 개인화로 내용이 달라지면 자동으로 다른 행이 된다.
+  **내용이 1비트라도 다르면 id 가 달라지므로 남의 행을 덮어쓸 수 없다** — 그래서
+  `INSERT OR IGNORE` 만으로 경합이 안전하다.
+- **적재된 세트는 `is_published = 0`** 이다. `GET /api/daily-set` 과 cron 배정은
+  `is_published = 1` 만 보므로, 학생이 올린 스냅샷이 배포용 커리큘럼 세트로 둔갑해
+  다른 학생에게 제공되는 경로가 없다. 관리자 통계의 세트 수에도 잡히지 않는다.
+- **전송 실패는 학습을 막지 않는다.** 실패하면 `araharu_sync_queue` 에 키만 쌓아
+  두고(본문은 전송 직전에 localStorage 에서 다시 만든다) 다음 접속·온라인 복귀·
+  로그아웃 시점에 재전송한다. 서버는 `UNIQUE(student_id, daily_set_id)` 로 upsert
+  하므로 재전송이 멱등이고, 포인트는 최초 완료에만 적립된다.
+- **기기 교체 복원** — 로그인 후 한 번 `GET /api/daily-set/history` 로 본인 기록을
+  가져와 로컬에 병합한다(연속일수·포인트·"이 세트는 이미 했음" 판정 복구). 로컬에
+  이미 있는 세트는 건드리지 않는다.
+- 스키마는 그대로다. **이 기능에 마이그레이션이 필요 없다.**
+
+### 용량·쓰기량 (실측 기준)
+
+로컬 D1 에 실제로 적재된 5학년 21문항 세트를 재어 보면 문항 본문 합계가 **6.8KB**,
+문항별 응답이 21건에 **약 1.7KB** 다. 학습기록까지 합쳐 **학생 1명 · 세트 1개당 약 9KB**.
+
+한 학급(21명 × 하루 3세트) 기준, 개인화로 세트가 전혀 공유되지 않는 최악의 경우:
+
+| 항목 | 하루 | 학년도(수업일 180일) | D1 무료 한도 |
+|---|---|---|---|
+| 저장량 | 약 0.6MB | 약 100MB | 5GB |
+| 쓰기 | 약 2,800건 | — | 100,000건/일 |
+
+내용이 같은 학생끼리는 세트·문항 행을 공유하므로 실제 사용량은 이보다 적다.
+학급이 수십 개로 늘어도 무료 한도 안이지만, 학교 단위로 커지면 오래된 학년도의
+`questions`/`question_responses` 를 정리하는 정책이 필요해진다.
+
+### 교사 화면이 보는 값
+
+`GET /api/teacher/students` 가 D1 의 `learning_records` 를 LEFT JOIN 해서 완료
+세션 수·평균 점수·최근 활동을 함께 돌려준다. 예전에는 교사 기기의 localStorage 를
+학생 id 로 뒤졌는데, 학생 기록은 **학생 기기**에 있으므로 전원이 "활동 없음"으로
+보였다.
+
+### 학생 비밀번호 초기화
+
+학생 계정에는 본인 확인 수단(실메일·전화)이 없어 셀프 재설정을 만들 수 없다.
+대신 담임이 `학생 관리` 목록의 열쇠 아이콘으로 초기화한다(두 번 눌러야 실행).
+기본값은 계정 생성 규칙과 같은 **아이디와 동일**(`ara01@class.local` → `ara01`)이고,
+비밀번호를 여러 번 틀려 계정 단위 제한에 걸려 있었다면 함께 풀어 준다.
+API 는 `POST /api/teacher/reset-password`, 담임 본인 학생 또는 관리자만 가능하다.
+
+### 시크릿 설정 확인
+
+`GET /api/admin/stats` 의 `config` 필드가 `CRON_SECRET`·`ANTHROPIC_API_KEY` 의
+**설정 여부만**(값은 절대 나가지 않는다) 알려준다. wrangler 없이 관리자 계정으로
+누락을 확인할 수 있다.
 
 ## 프로젝트 구조 (요약)
 

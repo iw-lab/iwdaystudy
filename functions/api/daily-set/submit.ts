@@ -2,6 +2,13 @@
 // Submit learning results for a daily set
 
 import { authUserId } from '../../lib/ctx';
+import {
+  upsertClientSet,
+  ClientSetError,
+  type ClientQuestion,
+  type ClientSetMeta,
+} from '../../lib/client-set';
+
 interface Env {
   DB: D1Database;
 }
@@ -15,6 +22,13 @@ interface SubmitBody {
   emotion_before?: unknown;
   emotion_after?: unknown;
   readiness?: unknown;
+  /**
+   * 브라우저에서 생성한 세트를 함께 보낼 때만 채운다. 있으면 서버가 세트/문항을
+   * 내용주소로 적재한 뒤 그 id 로 기록을 남긴다(functions/lib/client-set.ts).
+   * 없으면 기존처럼 서버에 게시된 커리큘럼 세트로 간주한다.
+   */
+  set?: ClientSetMeta;
+  questions?: ClientQuestion[];
   responses: {
     question_id: string;
     student_answer: unknown;
@@ -35,7 +49,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const body = await context.request.json() as SubmitBody;
     const {
       daily_set_id,
-      class_id,
       total_score,
       max_score,
       time_spent_seconds,
@@ -76,18 +89,61 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       }
     }
 
-    // Verify the daily_set_id actually exists and is published
-    const setExists = await context.env.DB.prepare(
-      'SELECT id FROM daily_sets WHERE id = ? AND is_published = 1'
-    ).bind(daily_set_id).first();
-    if (!setExists) {
-      return jsonResponse({ message: '존재하지 않는 학습 세트입니다.' }, 404);
+    // 세트 확정 — 두 경로가 있다.
+    //  (a) 브라우저 생성 세트: set/questions 스냅샷이 함께 오면 내용주소로 적재한다.
+    //  (b) 서버 커리큘럼 세트: 스냅샷이 없으면 게시된 세트여야 한다.
+    let storageSetId = daily_set_id;
+    let questionIdMap: Map<string, string> | null = null;
+
+    if (body.set && body.questions) {
+      if (body.set.id !== daily_set_id) {
+        return jsonResponse({ message: '세트 정보가 일치하지 않습니다.' }, 400);
+      }
+      try {
+        const prepared = await upsertClientSet(
+          context.env.DB,
+          body.set,
+          body.questions,
+        );
+        storageSetId = prepared.storageSetId;
+        questionIdMap = prepared.questionIdMap;
+      } catch (err) {
+        if (err instanceof ClientSetError) {
+          return jsonResponse({ message: err.message }, 400);
+        }
+        throw err;
+      }
+    } else {
+      const setExists = await context.env.DB.prepare(
+        'SELECT id FROM daily_sets WHERE id = ? AND is_published = 1'
+      ).bind(daily_set_id).first();
+      if (!setExists) {
+        return jsonResponse({ message: '존재하지 않는 학습 세트입니다.' }, 404);
+      }
     }
+
+    // 응답의 문항 id 를 D1 문항 id 로 옮긴다. 매핑에 없는 id 는 이 세트의
+    // 문항이 아니므로(다른 세트 문항에 기록을 붙이려는 시도 포함) 거절한다.
+    const mappedResponses = responses.map((r) => ({
+      ...r,
+      question_id: questionIdMap
+        ? questionIdMap.get(r.question_id) ?? null
+        : r.question_id,
+    }));
+    if (mappedResponses.some((r) => r.question_id === null)) {
+      return jsonResponse({ message: '세트에 없는 문항이 포함되어 있습니다.' }, 400);
+    }
+
+    // class_id 는 클라이언트 값을 믿지 않고 서버에서 학급 소속으로 해석한다.
+    const membership = await context.env.DB.prepare(
+      'SELECT class_id FROM class_members WHERE student_id = ? ORDER BY joined_at DESC LIMIT 1'
+    ).bind(userId).first<{ class_id: string }>();
+    const class_id = membership?.class_id ?? null;
 
     // Check for existing record (upsert)
     const existing = await context.env.DB.prepare(
       'SELECT id FROM learning_records WHERE student_id = ? AND daily_set_id = ?'
-    ).bind(userId, daily_set_id).first<{ id: string }>();
+    ).bind(userId, storageSetId).first<{ id: string }>();
 
     const now = new Date().toISOString();
     let recordId: string;
@@ -123,7 +179,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
            emotion_before, emotion_after, readiness, created_at)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?)`
       ).bind(
-        recordId, userId, daily_set_id, class_id ?? null,
+        recordId, userId, storageSetId, class_id,
         now, now, total_score, max_score, time_spent_seconds,
         emotion_before ? JSON.stringify(emotion_before) : null,
         emotion_after ? JSON.stringify(emotion_after) : null,
@@ -133,7 +189,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     }
 
     // Insert question responses
-    const stmts = responses.map((r) => {
+    const stmts = mappedResponses.map((r) => {
       const respId = crypto.randomUUID();
       return context.env.DB.prepare(
         `INSERT INTO question_responses
@@ -172,6 +228,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     return jsonResponse({
       record_id: recordId,
+      daily_set_id: storageSetId,
       streak: streakResult.streak,
       total_points: streakResult.totalPoints,
       new_badges: newBadges,

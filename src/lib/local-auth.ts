@@ -639,95 +639,41 @@ export function localBulkCreateStudents(
  * Initialize demo accounts for development/testing.
  * Creates sample student, teacher, parent, and admin accounts if none exist.
  */
-export function initDemoAccounts(): void {
+const DEMO_EMAILS = [
+  "student@demo.com",
+  "student2@demo.com",
+  "teacher@demo.com",
+  "parent@demo.com",
+  "admin@demo.com",
+];
+
+/**
+ * 예전 버전이 기기마다 심어 두던 데모 계정을 지운다.
+ *
+ * 왜 시딩을 없앴나 — 이 계정들은 localStorage 에만 있어서 **로그인에 쓸 수
+ * 없다**(로그인은 전부 /api/auth/login 을 탄다). 쓰이지도 않으면서 시딩
+ * 과정이 localSignup 을 호출해 CURRENT_USER_KEY/TOKEN_KEY 를 덮어썼고,
+ * 마지막에 둘 다 지웠다. 즉 **시딩이 일어날 때마다 로그인한 사용자의
+ * auth_token 이 삭제**됐다.
+ *
+ * 이게 실제로 터지는 경로: 학급 공용 기기에서 다른 학생이 로그인하면
+ * ensureLocalDataOwnership → clearAllLocalData 가 araharu_users 를 지운다.
+ * 그러면 다음 화면 진입 때 "데모 계정이 없네" 하고 다시 시딩하면서 방금
+ * 로그인한 학생의 토큰을 날렸다. zustand 쪽 상태는 로그인으로 남아 있어
+ * 화면은 멀쩡해 보이지만 모든 API 호출이 401 이 된다(학습 결과 동기화·교사
+ * 화면 조회 전부). 실측으로 재현했다.
+ *
+ * 세션(TOKEN_KEY·CURRENT_USER_KEY)은 어떤 경우에도 건드리지 않는다.
+ */
+export function cleanupDemoAccounts(): void {
   if (typeof window === "undefined") return;
-
-  const users = getStoredUsers();
-  const hasAdmin = users.some((u) => u.email === "admin@demo.com");
-  if (hasAdmin) return; // Demo accounts already seeded
-
-  const now = new Date().toISOString();
-
-  // Create demo student/teacher/parent via signup (skips if email already exists)
-  const demoAccounts: SignupData[] = [
-    {
-      email: "student@demo.com",
-      password: "1234",
-      name: "김아라",
-      role: "student",
-      grade: 1,
-      semester: 1,
-      school_name: "아라초등학교",
-    },
-    {
-      email: "student2@demo.com",
-      password: "1234",
-      name: "이하루",
-      role: "student",
-      grade: 2,
-      semester: 1,
-      school_name: "아라초등학교",
-    },
-    {
-      email: "teacher@demo.com",
-      password: "1234",
-      name: "박선생",
-      role: "teacher",
-      school_name: "아라초등학교",
-    },
-    {
-      email: "parent@demo.com",
-      password: "1234",
-      name: "김부모",
-      role: "parent",
-    },
-  ];
-
-  for (const account of demoAccounts) {
-    try {
-      localSignup(account);
-    } catch {
-      // Ignore if already exists
+  try {
+    const users = getStoredUsers();
+    const kept = users.filter((u) => !DEMO_EMAILS.includes(u.email));
+    if (kept.length !== users.length) {
+      saveStoredUsers(kept as (Profile & { password_hash: string })[]);
     }
+  } catch {
+    // 정리 실패가 앱 진입을 막아서는 안 된다.
   }
-
-  // Create admin account directly (not through signup which only accepts student/teacher/parent)
-  const adminUser: Profile & { password_hash: string } = {
-    id: generateId(),
-    email: "admin@demo.com",
-    name: "슈퍼관리자",
-    role: "admin",
-    avatar_url: null,
-    grade: null,
-    semester: null,
-    school_name: null,
-    class_name: null,
-    student_number: null,
-    parent_id: null,
-    teacher_id: null,
-    subscription_plan: "free",
-    subscription_expires_at: null,
-    streak_count: 0,
-    total_points: 0,
-    approval_status: "approved",
-    password_hash: simpleHash("1234"),
-    created_at: now,
-    updated_at: now,
-  };
-
-  const currentUsers = getStoredUsers();
-  currentUsers.push(adminUser);
-  saveStoredUsers(currentUsers);
-
-  // Auto-approve the demo teacher
-  const allUsers = getStoredUsers();
-  const teacherIdx = allUsers.findIndex((u) => u.email === "teacher@demo.com");
-  if (teacherIdx !== -1 && allUsers[teacherIdx].approval_status === "pending") {
-    allUsers[teacherIdx].approval_status = "approved";
-    saveStoredUsers(allUsers);
-  }
-
-  // Clear the current user after seeding (don't auto-login)
-  localStorage.removeItem(CURRENT_USER_KEY);
-  localStorage.removeItem(TOKEN_KEY);
 }

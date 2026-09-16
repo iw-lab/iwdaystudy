@@ -30,7 +30,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useAuthStore } from "@/stores/authStore";
-import { dbGet, dbDelete } from "@/lib/db/client";
+import { dbGet, dbPost, dbDelete } from "@/lib/db/client";
 import { getLearningRecords, getStreakCount } from "@/lib/local-storage";
 
 interface ServerStudent {
@@ -44,6 +44,10 @@ interface ServerStudent {
   streak_count: number | null;
   total_points: number | null;
   created_at: string;
+  // 서버 집계(D1 learning_records) — 교사 기기엔 학생 기록이 없으므로 이게 진실원
+  completed_sessions?: number | null;
+  avg_percent?: number | null;
+  last_completed_at?: string | null;
 }
 
 interface StudentRow {
@@ -70,6 +74,39 @@ export default function TeacherStudentsPage() {
   const [classFilter, setClassFilter] = useState("all");
   const [sortField, setSortField] = useState<SortField>("name");
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
+  // 비밀번호 초기화 — 두 번 눌러야 실행된다(브라우저 confirm 대화상자 대신).
+  const [confirmResetId, setConfirmResetId] = useState<string | null>(null);
+  const [resetBusyId, setResetBusyId] = useState<string | null>(null);
+  const [resetResult, setResetResult] = useState<{
+    name: string;
+    loginId: string;
+    password: string;
+  } | null>(null);
+  const [resetError, setResetError] = useState("");
+
+  async function handleResetPassword(studentId: string) {
+    setResetError("");
+    setResetBusyId(studentId);
+    try {
+      const res = await dbPost<{
+        name: string;
+        login_id: string;
+        new_password: string;
+      }>("/teacher/reset-password", { student_id: studentId });
+      setResetResult({
+        name: res.name,
+        loginId: res.login_id,
+        password: res.new_password,
+      });
+    } catch (err) {
+      setResetError(
+        err instanceof Error ? err.message : "비밀번호 초기화에 실패했습니다.",
+      );
+    } finally {
+      setResetBusyId(null);
+      setConfirmResetId(null);
+    }
+  }
 
   useEffect(() => {
     if (!user) return;
@@ -86,13 +123,20 @@ export default function TeacherStudentsPage() {
       if (cancelled) return;
 
       const rows: StudentRow[] = myStudents.map((student) => {
+        // 서버 집계가 기본. 로컬 기록은 이 기기에서 그 학생이 직접 학습한
+        // 경우에만 있으므로(교사 기기엔 보통 없다) 보조로만 쓴다.
         const records = getLearningRecords(student.id);
         const completedRecords = records.filter((r) => r.is_completed);
-        const streak = getStreakCount(student.id) || (student.streak_count ?? 0);
+        const streak = student.streak_count ?? getStreakCount(student.id) ?? 0;
+
+      const serverSessions = student.completed_sessions ?? 0;
+      const totalSessions = Math.max(serverSessions, completedRecords.length);
 
       // Average score
       let avgScore = 0;
-      if (completedRecords.length > 0) {
+      if (serverSessions > 0 && typeof student.avg_percent === "number") {
+        avgScore = Math.round(student.avg_percent);
+      } else if (completedRecords.length > 0) {
         const totalPct = completedRecords.reduce((sum, r) => {
           return (
             sum + (r.max_score > 0 ? (r.total_score / r.max_score) * 100 : 0)
@@ -104,20 +148,26 @@ export default function TeacherStudentsPage() {
       // Last active
       let lastActive = "활동 없음";
       let lastActiveTs = 0;
-      if (completedRecords.length > 0) {
-        const latestRecord = completedRecords.sort(
-          (a, b) =>
-            new Date(b.completed_at || b.created_at).getTime() -
-            new Date(a.completed_at || a.created_at).getTime(),
-        )[0];
-        const latestTime = new Date(
-          latestRecord.completed_at || latestRecord.created_at,
+      const localLatest =
+        completedRecords.length > 0
+          ? Math.max(
+              ...completedRecords.map((r) =>
+                new Date(r.completed_at || r.created_at).getTime(),
+              ),
+            )
+          : 0;
+      const serverLatest = student.last_completed_at
+        ? new Date(student.last_completed_at).getTime()
+        : 0;
+      lastActiveTs = Math.max(
+        Number.isFinite(localLatest) ? localLatest : 0,
+        Number.isFinite(serverLatest) ? serverLatest : 0,
+      );
+      if (lastActiveTs > 0) {
+        const diffDays = Math.floor(
+          (Date.now() - lastActiveTs) / (1000 * 60 * 60 * 24),
         );
-        lastActiveTs = latestTime.getTime();
-        const diffMs = Date.now() - latestTime.getTime();
-        const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-        if (diffDays === 0) lastActive = "오늘";
+        if (diffDays <= 0) lastActive = "오늘";
         else if (diffDays === 1) lastActive = "어제";
         else lastActive = `${diffDays}일 전`;
       }
@@ -137,7 +187,7 @@ export default function TeacherStudentsPage() {
         lastActive,
         lastActiveTs,
         avgScore,
-        totalSessions: completedRecords.length,
+        totalSessions,
       };
     });
 
@@ -370,6 +420,35 @@ export default function TeacherStudentsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
           >
+            {resetResult && (
+              <div className="mb-3 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3">
+                <p className="text-sm font-medium text-emerald-900">
+                  {resetResult.name} 학생의 비밀번호를 초기화했습니다.
+                </p>
+                <p className="mt-1 text-sm text-emerald-800">
+                  아이디{" "}
+                  <span className="font-mono font-semibold">
+                    {resetResult.loginId}
+                  </span>{" "}
+                  / 새 비밀번호{" "}
+                  <span className="font-mono font-semibold">
+                    {resetResult.password}
+                  </span>
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setResetResult(null)}
+                  className="mt-2 text-xs text-emerald-700 underline"
+                >
+                  닫기
+                </button>
+              </div>
+            )}
+            {resetError && (
+              <div className="mb-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+                {resetError}
+              </div>
+            )}
             <Card>
               <CardContent className="p-0">
                 {/* Table Header */}
@@ -482,7 +561,34 @@ export default function TeacherStudentsPage() {
                           <span className="hidden sm:block text-sm font-medium">
                             {student.avgScore}점
                           </span>
-                          <ExternalLink className="hidden sm:block h-4 w-4 text-muted-foreground/0 group-hover:text-muted-foreground/60 transition-colors" />
+                          <span className="hidden sm:flex items-center justify-end gap-1">
+                            <button
+                              type="button"
+                              title="비밀번호 초기화"
+                              disabled={resetBusyId === student.id}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                if (confirmResetId === student.id) {
+                                  void handleResetPassword(student.id);
+                                } else {
+                                  setResetError("");
+                                  setConfirmResetId(student.id);
+                                }
+                              }}
+                              className={
+                                confirmResetId === student.id
+                                  ? "rounded px-1.5 py-0.5 text-[10px] font-medium bg-amber-100 text-amber-900 hover:bg-amber-200 transition-colors"
+                                  : "rounded p-1 text-muted-foreground/40 hover:text-foreground hover:bg-muted transition-colors"
+                              }
+                            >
+                              {confirmResetId === student.id ? (
+                                "초기화?"
+                              ) : (
+                                <KeyRound className="h-3.5 w-3.5" />
+                              )}
+                            </button>
+                          </span>
                         </motion.div>
                       </Link>
                     ))

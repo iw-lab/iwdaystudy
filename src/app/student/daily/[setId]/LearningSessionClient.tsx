@@ -26,6 +26,7 @@ import {
   addChildTimeToday,
   type ParentTimeSettings,
 } from "@/lib/local-storage";
+import { syncCompletedSet } from "@/lib/sync";
 import { generateId } from "@/lib/utils";
 import { evaluateWriting } from "@/lib/writing-evaluator";
 import QuestionRenderer from "@/components/learning/QuestionRenderer";
@@ -520,6 +521,11 @@ export default function LearningSessionClient() {
     }));
     saveQuestionResponses(responses);
     checkAndAwardBadges(user.id);
+
+    // 결과를 서버(D1)로 올린다. 이걸 하지 않으면 기록이 이 기기에만 남아
+    // 선생님·학부모 화면에 아무것도 보이지 않는다. 전송 실패는 큐에 쌓였다가
+    // 다음 접속 때 재전송되므로 여기서 기다리거나 오류를 보여주지 않는다.
+    void syncCompletedSet(user.id, recordId, dailySet.set.id);
 
     // Track time spent for parental controls
     if (timeSettings && timeSettings.daily_time_limit_minutes > 0) {

@@ -19,12 +19,26 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     return jsonResponse({ message: '교사 또는 관리자 권한이 필요합니다.' }, 403);
   }
 
-  // Admin gets all students; teacher gets their own
+  // 학습 집계를 함께 돌려준다. 이게 없으면 교사 화면이 자기 기기의 localStorage
+  // 를 학생 id 로 뒤지게 되는데, 학생 기록은 **학생 기기**에 있으므로 전원이
+  // "활동 없음"으로 보였다. 집계는 D1 의 learning_records 가 진실원이다.
+  const columns = `p.id, p.email, p.name, p.grade, p.semester, p.class_name,
+       p.student_number, p.streak_count, p.total_points, p.created_at,
+       COUNT(lr.id) AS completed_sessions,
+       AVG(CASE WHEN lr.max_score > 0
+                THEN CAST(lr.total_score AS FLOAT) / lr.max_score * 100 END) AS avg_percent,
+       MAX(lr.completed_at) AS last_completed_at`;
+  const joinAndGroup = `FROM profiles p
+       LEFT JOIN learning_records lr
+         ON lr.student_id = p.id AND lr.is_completed = 1`;
+
   const sql = caller.role === 'admin'
-    ? `SELECT id, email, name, grade, semester, class_name, student_number, streak_count, total_points, created_at
-       FROM profiles WHERE role = 'student' ORDER BY created_at DESC LIMIT 1000`
-    : `SELECT id, email, name, grade, semester, class_name, student_number, streak_count, total_points, created_at
-       FROM profiles WHERE role = 'student' AND teacher_id = ? ORDER BY created_at DESC LIMIT 1000`;
+    ? `SELECT ${columns} ${joinAndGroup}
+       WHERE p.role = 'student'
+       GROUP BY p.id ORDER BY p.created_at DESC LIMIT 1000`
+    : `SELECT ${columns} ${joinAndGroup}
+       WHERE p.role = 'student' AND p.teacher_id = ?
+       GROUP BY p.id ORDER BY p.created_at DESC LIMIT 1000`;
 
   const stmt = caller.role === 'admin'
     ? context.env.DB.prepare(sql)

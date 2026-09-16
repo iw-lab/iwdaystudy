@@ -6,6 +6,9 @@ import { verifyToken } from "../../lib/crypto";
 interface Env {
   DB: D1Database;
   AUTH_SECRET: string;
+  CRON_SECRET?: string;
+  ANTHROPIC_API_KEY?: string;
+  ALLOWED_ORIGIN?: string;
 }
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
@@ -62,8 +65,10 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     const activeStudents = activeRow?.cnt || 0;
 
     // 5. Total daily sets
+    // 학생 기기에서 올라온 세트 스냅샷(is_published = 0)은 배포 콘텐츠가 아니므로
+    // 세지 않는다 — functions/lib/client-set.ts 참고.
     const setsRow = await context.env.DB.prepare(
-      "SELECT COUNT(*) as cnt FROM daily_sets"
+      "SELECT COUNT(*) as cnt FROM daily_sets WHERE is_published = 1"
     ).first<{ cnt: number }>();
     const totalSets = setsRow?.cnt || 0;
 
@@ -120,6 +125,13 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       },
       recentUsers,
       recentLearning,
+      // 운영 점검용: 어떤 시크릿이 설정돼 있는지 **여부만** 노출한다(값은 절대
+      // 나가지 않는다). 대시보드에서 wrangler 없이 설정 누락을 확인하려는 것.
+      config: {
+        cronSecret: !!context.env.CRON_SECRET,
+        anthropicApiKey: !!context.env.ANTHROPIC_API_KEY,
+        allowedOrigin: context.env.ALLOWED_ORIGIN || null,
+      },
     });
   } catch {
     return jsonResponse(

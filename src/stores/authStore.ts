@@ -3,6 +3,7 @@ import { persist } from "zustand/middleware";
 import type { Profile } from "@/types/database";
 import type { SignupData } from "@/lib/local-auth";
 import { ensureLocalDataOwnership } from "@/lib/local-storage";
+import { flushSyncQueue } from "@/lib/sync";
 
 interface AuthState {
   user: Profile | null;
@@ -126,6 +127,13 @@ export const useAuthStore = create<AuthState>()(
       },
 
       logout: () => {
+        // 아직 서버에 못 올린 학습 결과가 있으면, 토큰이 살아 있는 지금이
+        // 마지막 기회다(로그아웃 뒤엔 인증할 방법이 없다). 토큰을 인자로 넘겨
+        // localStorage 를 지운 뒤에도 전송이 완료되게 한다.
+        const { user, token } = get();
+        if (token && user?.role === "student") {
+          void flushSyncQueue(user.id, token);
+        }
         localStorage.removeItem("auth_token");
         localStorage.removeItem("araharu_current_user");
         set({ user: null, token: null, isAuthenticated: false });

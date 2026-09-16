@@ -981,6 +981,8 @@ export function clearAllLocalData(): void {
     "araharu-classes",
     "araharu-class-members",
     "araharu_daily_sets",
+    // 서버 전송 대기 큐도 이전 사용자 것이다 — 참조하는 기록이 방금 지워졌다.
+    "araharu_sync_queue",
   ]) {
     localStorage.removeItem(key);
   }
@@ -988,9 +990,17 @@ export function clearAllLocalData(): void {
   // 접두사로 훑어 지운다.
   try {
     for (const k of Object.keys(localStorage)) {
-      if (k.startsWith("araharu_today_set_")) localStorage.removeItem(k);
+      if (
+        k.startsWith("araharu_today_set_") ||
+        k.startsWith("araharu_synced_sets")
+      ) {
+        localStorage.removeItem(k);
+      }
     }
     sessionStorage.removeItem("araharu-learning-session");
+    for (const k of Object.keys(sessionStorage)) {
+      if (k.startsWith("araharu_restored_")) sessionStorage.removeItem(k);
+    }
   } catch {
     /* 정리 실패가 로그인을 막아서는 안 된다 */
   }

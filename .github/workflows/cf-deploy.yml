@@ -23,7 +23,9 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          # wrangler 4.121+ 는 Node >= 22 를 요구한다(next 는 >= 20.9).
+          # 20 으로 두면 배포 단계에서 엔진 불일치로 깨질 수 있다.
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
