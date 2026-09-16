@@ -11,7 +11,7 @@ const GITHUB_OWNER = "insushim";
 const GITHUB_REPO = "iwdaystudy";
 
 // scripts/sync-version.mjs 가 이 값을 갱신한다. 직접 수정하지 말 것.
-const APP_VERSION = "1.1.0";
+const APP_VERSION = "1.1.1";
 const MIN_VERSION = "1.0.0";
 
 export const onRequestGet: PagesFunction = async () => {

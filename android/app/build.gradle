@@ -8,8 +8,8 @@ android {
         applicationId "kr.araharu.app"
         minSdkVersion 24
         targetSdkVersion 34
-        versionCode 10100
-        versionName "1.1.0"
+        versionCode 10101
+        versionName "1.1.1"
     }
 
     buildTypes {
