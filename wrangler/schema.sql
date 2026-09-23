@@ -181,6 +181,9 @@ CREATE INDEX IF NOT EXISTS idx_questions_daily_set ON questions(daily_set_id);
 CREATE INDEX IF NOT EXISTS idx_questions_subject ON questions(subject);
 CREATE INDEX IF NOT EXISTS idx_learning_records_student ON learning_records(student_id);
 CREATE INDEX IF NOT EXISTS idx_learning_records_date ON learning_records(created_at);
+-- 응답 → 학습기록 조인용. 없으면 제출마다 배지 검사(과목별 정답 수 COUNT JOIN)가
+-- question_responses 전체를 풀스캔해 계정 공유 D1 일일 읽기 한도(500만)를 소진했다(2026-09-23).
+CREATE INDEX IF NOT EXISTS idx_question_responses_record ON question_responses(learning_record_id);
 CREATE INDEX IF NOT EXISTS idx_daily_sets_grade_semester ON daily_sets(grade, semester);
 CREATE INDEX IF NOT EXISTS idx_daily_assignments_date ON daily_assignments(assigned_date);
 CREATE INDEX IF NOT EXISTS idx_curriculum_grade ON curriculum_standards(grade, semester, subject);
