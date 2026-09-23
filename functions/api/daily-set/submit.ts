@@ -288,6 +288,31 @@ async function updateStreakAndPoints(
   return { streak: newStreak, totalPoints: newTotalPoints };
 }
 
+/**
+ * 「N회 연속 정답」 — 해당 과목의 **가장 최근 채점된 응답 N개가 전부 정답**인지.
+ * 예전 쿼리는 `SELECT COUNT(*) … ORDER BY … LIMIT N` 이라 LIMIT 이 집계 결과 1행에 걸려
+ * 연속이 아니라 **누적 정답 수**로 판정됐다(오답이 섞여도 배지 획득).
+ * 같은 제출의 응답은 created_at 이 같으므로 삽입 순서(rowid)로 동순위를 가른다.
+ */
+async function hasCorrectStreak(
+  db: D1Database,
+  userId: string,
+  subject: string,
+  n: number
+): Promise<boolean> {
+  const row = await db.prepare(
+    `SELECT COUNT(*) AS total, COALESCE(SUM(is_correct), 0) AS correct FROM (
+       SELECT qr.is_correct AS is_correct FROM question_responses qr
+       JOIN questions q ON qr.question_id = q.id
+       JOIN learning_records lr ON qr.learning_record_id = lr.id
+       WHERE lr.student_id = ? AND q.subject = ? AND qr.is_correct IS NOT NULL
+       ORDER BY qr.created_at DESC, qr.rowid DESC
+       LIMIT ?
+     )`
+  ).bind(userId, subject, n).first<{ total: number; correct: number }>();
+  return (row?.total || 0) >= n && row?.correct === n;
+}
+
 async function checkBadgeConditions(
   db: D1Database,
   userId: string,
@@ -353,28 +378,12 @@ async function checkBadgeConditions(
       case 'weekend_learner':
         earned = dayOfWeek === 0 || dayOfWeek === 6;
         break;
-      case 'math_streak_10': {
-        const mathCorrect = await db.prepare(
-          `SELECT COUNT(*) as count FROM question_responses qr
-           JOIN questions q ON qr.question_id = q.id
-           JOIN learning_records lr ON qr.learning_record_id = lr.id
-           WHERE lr.student_id = ? AND q.subject = 'math' AND qr.is_correct = 1
-           ORDER BY qr.created_at DESC LIMIT 10`
-        ).bind(userId).first<{ count: number }>();
-        earned = (mathCorrect?.count || 0) >= 10;
+      case 'math_streak_10':
+        earned = await hasCorrectStreak(db, userId, 'math', 10);
         break;
-      }
-      case 'spelling_streak_20': {
-        const spellingCorrect = await db.prepare(
-          `SELECT COUNT(*) as count FROM question_responses qr
-           JOIN questions q ON qr.question_id = q.id
-           JOIN learning_records lr ON qr.learning_record_id = lr.id
-           WHERE lr.student_id = ? AND q.subject = 'spelling' AND qr.is_correct = 1
-           ORDER BY qr.created_at DESC LIMIT 20`
-        ).bind(userId).first<{ count: number }>();
-        earned = (spellingCorrect?.count || 0) >= 20;
+      case 'spelling_streak_20':
+        earned = await hasCorrectStreak(db, userId, 'spelling', 20);
         break;
-      }
       case 'hanja_50': {
         const hanjaCorrect = await db.prepare(
           `SELECT COUNT(*) as count FROM question_responses qr
@@ -385,17 +394,9 @@ async function checkBadgeConditions(
         earned = (hanjaCorrect?.count || 0) >= 50;
         break;
       }
-      case 'english_streak_30': {
-        const engCorrect = await db.prepare(
-          `SELECT COUNT(*) as count FROM question_responses qr
-           JOIN questions q ON qr.question_id = q.id
-           JOIN learning_records lr ON qr.learning_record_id = lr.id
-           WHERE lr.student_id = ? AND q.subject = 'english' AND qr.is_correct = 1
-           ORDER BY qr.created_at DESC LIMIT 30`
-        ).bind(userId).first<{ count: number }>();
-        earned = (engCorrect?.count || 0) >= 30;
+      case 'english_streak_30':
+        earned = await hasCorrectStreak(db, userId, 'english', 30);
         break;
-      }
       case 'all_subject_90': {
         // Check all subjects have >= 90% correct rate
         const subjectStats = await db.prepare(
