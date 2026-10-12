@@ -5247,7 +5247,7 @@ const FIXED_CAN: EnglishEntry[] = [
   },
   {
     sentence: "Can you make a paper airplane?",
-    translation: "종이비행기를 만들 수 있어요?",
+    translation: "종이로 비행기를 만들 수 있어요?",
     word: "airplane",
     targetKo: "비행기",
     pronunciation: "에어플레인",

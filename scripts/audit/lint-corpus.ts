@@ -167,7 +167,7 @@ for (const r of rows) {
   }
 
   // R82 정답·보기에 «A(B)» 겹정답(정오(남중)·유엔(UN)) — 빈칸에 넣으면 문장이 깨지고 정답이 둘이 된다
-  for (const t of [str(r.answer?.text), ...choicesOf(r)]) if (/^[가-힣 ]+\([가-힣A-Za-z ]+\)$/.test(t.trim()) && r.subject !== "hanja") { flag("R82 정답·보기 겹정답 A(B)", r, t); break; }
+  for (const t of [str(r.answer?.text), ...choicesOf(r)]) if (/^[가-힣 ]+\([가-힣A-Za-z ]+\)$/.test(t.trim()) && r.subject !== "hanja" && str(c.text).includes("___")) { flag("R82 정답·보기 겹정답 A(B)", r, t); break; }
   // R83 독해 두루뭉술 물음 — 원래 물음의 보기·정답을 그대로 달고 있던 변형(2026-10-12 620건). 남아 있으면 안 된다
   if (r.subject === "korean" && /^(이 글에서 알 수 있는 것은\?|이 글에 대한 설명으로 맞는 것은\?|이 글의 내용으로 맞는 것은\?)$/.test(str(c.question).trim())) flag("R83 독해 두루뭉술 물음", r, str(c.question));
   // R84 한자 예문 속 읽기 없는 한자(火가 나면 · 學校에서) — 아이가 못 읽는다. «불(火)» 또는 «學校(학교)» 꼴이어야
