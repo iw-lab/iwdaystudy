@@ -147,8 +147,9 @@ export function naturalizeKorean(text: string): string {
 // 조사 뒤에 오는 경계: 공백/문장부호/닫는 괄호·따옴표/문자열 끝.
 const JOSA_BOUNDARY = `(?=[\\s.,!?;:)\\]"'”’」』]|$)`;
 
+// 분수 «3/4과»는 «사분의 삼과»로 읽으니 분모(4) 뒤 조사는 건드리지 않는다(분자 기준은 withJosa 가 고른다).
 const NUM_JOSA_RE = new RegExp(
-  `(\\d+)(이|가|은|는|을|를|와|과)${JOSA_BOUNDARY}`,
+  `(?<![\\d/])(\\d+)(이|가|은|는|을|를|와|과)${JOSA_BOUNDARY}`,
   "g",
 );
 const NO_BATCHIM_EURO_RE = new RegExp(`([가-힣])으로${JOSA_BOUNDARY}`, "g");
@@ -190,4 +191,55 @@ export function fixExistingJosa(text: string): string {
   );
 
   return text;
+}
+
+// ── 낱말 + 조사를 받침에 맞춰 붙인다 ─────────────────────────────────
+// 문구를 만드는 코드가 `${word}는` 처럼 조사를 박아 두면 «命는»·«'우산'라는»·«'대'으로» 가
+// 나온다(2026-10-12 전수검수 451건). 조사가 붙는 자리는 전부 이 함수를 쓴다.
+// 한자처럼 한글이 아닌 낱말은 읽는 소리(reading)를 넘겨 그 받침으로 고른다.
+export type JosaKind = "은/는" | "이/가" | "을/를" | "과/와" | "으로/로" | "이라/라" | "이라는/라는" | "이에요/예요";
+export function withJosa(word: string, kind: JosaKind, readAs?: string): string {
+  const basis = (readAs ?? word).replace(/[^가-힣0-9]+$/g, "");
+  // 분수 a/b 는 «b분의 a» 로 읽는다 → 받침은 분자(a)로 본다(3/4은 · 2/3가)
+  const num = basis.match(/(\d+)\/\d+$/)?.slice(1) ?? basis.match(/\d+$/);
+  const last = basis.slice(-1);
+  const b = num ? numberHasBatchim(parseInt(num[0], 10)) : /[가-힣]/.test(last) ? hasBatchim(last) : false;
+  const rieul = num ? numberIsRieul(parseInt(num[0], 10)) : /[가-힣]/.test(last) ? isRieul(last) : false;
+  const [withB, withoutB] = kind.split("/");
+  if (kind === "으로/로") return word + (b && !rieul ? "으로" : "로");
+  return word + (b ? withB : withoutB);
+}
+
+// ── 빈칸(___) 바로 뒤 조사를 정답 받침에 맞춘다 ─────────────────────
+// 원천 문장이 «강원도에는 ___가 높은 산» 처럼 조사를 박아 두면 정답 «태백산맥»을 넣어 «태백산맥가»가 된다
+// (2026-10-12 전수검수 다수: 헬멧를·몸가·신라을·구르기으로). 표시 문장과 해설이 같은 문장을 쓰므로 여기서 한 번 고친다.
+const BLANK_JOSA = /___(['’"”]?)(\(이\)라고|\(이\)라|\(으\)로|이라고\(라고\)|라고\(이라고\)|이라\(라\)|라\(이라\)|을\(를\)|를\(을\)|이\(가\)|가\(이\)|은\(는\)|는\(은\)|과\(와\)|와\(과\)|으로\(로\)|로\(으로\)|이라고|라고|이라는|라는|이라|라|이란|란|으로|로|은|는|이|가|을|를|과|와|이에요|예요|이었다|였다)(?=[\s.,!?'"’”)\]]|$)/g;
+const BLANK_KIND: Record<string, JosaKind | "이에요" | "이었다"> = {
+  "이라고": "이라/라", "라고": "이라/라", "이라": "이라/라", "라": "이라/라", "이란": "이라/라", "란": "이라/라",
+  "이라는": "이라는/라는", "라는": "이라는/라는", "으로": "으로/로", "로": "으로/로",
+  "은": "은/는", "는": "은/는", "이": "이/가", "가": "이/가", "을": "을/를", "를": "을/를", "과": "과/와", "와": "과/와",
+  "이에요": "이에요", "예요": "이에요", "이었다": "이었다", "였다": "이었다",
+};
+export function fitBlankJosa(text: string, answer: string): string {
+  if (!text || !text.includes("___") || !answer) return text;
+  const a = String(answer).trim();
+  const tail = a.replace(/[^가-힣0-9]+$/g, "");
+  if (!/[가-힣0-9]$/.test(tail)) return text; // 영문 등 받침을 알 수 없으면 그대로
+  const num = tail.match(/(\d+)\/\d+$/)?.slice(1) ?? tail.match(/\d+$/);
+  const b = num ? numberHasBatchim(parseInt(num[0], 10)) : hasBatchim(tail.slice(-1));
+  const rieul = num ? numberIsRieul(parseInt(num[0], 10)) : isRieul(tail.slice(-1));
+  return text.replace(BLANK_JOSA, (m: string, q: string, j: string) => {
+    const base = j.replace(/\(.*?\)/g, "").replace(/^\(이\)|^\(으\)/, "") || j;
+    const key = j.startsWith("(이)라고") ? "이라고" : j.startsWith("(이)라") ? "이라" : j.startsWith("(으)로") ? "으로" : base;
+    const kind = BLANK_KIND[key];
+    if (!kind) return m;
+    let out: string;
+    if (kind === "이에요") out = b ? "이에요" : "예요";
+    else if (kind === "이었다") out = b ? "이었다" : "였다";
+    else if (kind === "이라/라") out = (b ? "이" : "") + key.replace(/^이/, "");
+    else if (kind === "이라는/라는") out = b ? "이라는" : "라는";
+    else if (kind === "으로/로") out = b && !rieul ? "으로" : "로";
+    else { const [w, wo] = kind.split("/"); out = b ? w : wo; }
+    return "___" + q + out;
+  });
 }

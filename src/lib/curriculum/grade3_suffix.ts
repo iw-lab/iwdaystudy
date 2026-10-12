@@ -9,7 +9,7 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "우리 몸에서 음식을 소화하는 기관은 ___이다.",
+    text: "식도와 작은창자 사이에서 음식을 잘게 부수고 소화하는 주머니 모양 기관은 ___이다.",
     answer: "위",
     category: "과학",
   },
@@ -134,8 +134,8 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "식물이 자라기 위해 필요한 세 가지는 물, 빛, ___이다.",
-    answer: "흙",
+    text: "식물이 잘 자라려면 물, 빛, 알맞은 ___가 필요하다.",
+    answer: "온도",
     category: "과학",
   },
   { text: "올챙이가 자라면 ___가 된다.", answer: "개구리", category: "과학" },
@@ -185,12 +185,12 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "사람의 폐는 ___을 들이마시고 이산화탄소를 내보낸다.",
+    text: "사람은 숨을 쉴 때 폐로 ___를 받아들이고 이산화탄소를 내보낸다.",
     answer: "산소",
     category: "과학",
   },
   {
-    text: "화산이 폭발할 때 나오는 뜨거운 돌을 ___이라(라) 한다.",
+    text: "마그마가 땅 위로 흘러나온 것을 ___이라(라) 한다.",
     answer: "용암",
     category: "과학",
   },
@@ -208,8 +208,8 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
   { text: "그림자가 생기려면 ___이 필요하다.", answer: "빛", category: "과학" },
   { text: "빛은 ___선으로 나아간다.", answer: "직", category: "과학" },
   {
-    text: "거울에 비친 물체의 모습은 좌우가 ___된다.",
-    answer: "바뀜(반전)",
+    text: "거울에 비친 물체의 모습은 좌우가 ___어 보인다.",
+    answer: "바뀌",
     category: "과학",
   },
   {
@@ -249,8 +249,8 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "식물의 꽃이 하는 일은 ___을 만드는 것이다.",
-    answer: "열매(씨앗)",
+    text: "꽃이 하는 중요한 일은 ___를 만드는 것이다.",
+    answer: "씨",
     category: "과학",
   },
   {
@@ -294,12 +294,12 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "낮과 밤이 바뀌는 이유는 지구의 ___때문이다.",
+    text: "낮과 밤이 바뀌는 까닭은 지구의 ___ 때문이다.",
     answer: "자전",
     category: "과학",
   },
   {
-    text: "계절이 바뀌는 이유는 지구의 ___때문이다.",
+    text: "계절이 바뀌는 까닭은 지구가 기울어진 채 태양 둘레를 도는 ___ 때문이다.",
     answer: "공전",
     category: "과학",
   },
@@ -309,7 +309,7 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "나무가 불에 탈 때 나오는 기체는 ___이다.",
+    text: "나무가 탈 때 나오는 기체로, 석회수를 뿌옇게 만드는 것은 ___이다.",
     answer: "이산화탄소",
     category: "과학",
   },
@@ -332,8 +332,8 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
   },
   { text: "태양은 ___쪽에서 뜬다.", answer: "동", category: "과학" },
   {
-    text: "태양이 가장 높이 올라가는 때를 ___이라(라) 한다.",
-    answer: "정오(남중)",
+    text: "하루 중 태양이 정남쪽에 와서 가장 높이 뜬 것을 태양의 ___이라(라) 한다.",
+    answer: "남중",
     category: "과학",
   },
   {
@@ -347,7 +347,7 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "물속에서 빨대가 꺾여 보이는 것은 빛의 ___때문이다.",
+    text: "물속에서 빨대가 꺾여 보이는 것은 빛의 ___ 때문이다.",
     answer: "굴절",
     category: "과학",
   },
@@ -372,8 +372,8 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "북극곰의 털이 하얀 이유는 눈과 얼음에서 ___하기 위해서이다.",
-    answer: "숨기(보호)",
+    text: "북극곰의 털이 하얀 덕분에 눈과 얼음 사이에서 몸을 ___ 쉽다.",
+    answer: "숨기기",
     category: "과학",
   },
   {
@@ -397,8 +397,8 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "식물의 뿌리 끝에는 ___가 있어 흙속을 파고든다.",
-    answer: "뿌리골무(뿌리 모자)",
+    text: "식물의 뿌리 끝에는 ___가 있어 뿌리 끝을 보호한다.",
+    answer: "뿌리골무",
     category: "과학",
   },
   {
@@ -512,7 +512,7 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
     category: "사회",
   },
   {
-    text: "물건을 파는 사람을 ___라 한다.",
+    text: "물건을 만들어 내는 사람을 ___라 한다.",
     answer: "생산자",
     category: "사회",
   },
@@ -640,14 +640,14 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
     answer: "소리",
     category: "역사",
   },
-  { text: "고인돌은 ___시대의 무덤이다.", answer: "청동기", category: "역사" },
+  { text: "고인돌은 ___ 시대의 무덤이다.", answer: "청동기", category: "역사" },
   {
-    text: "빗살무늬 토기는 ___시대에 만들어졌다.",
+    text: "빗살무늬 토기는 ___ 시대에 만들어졌다.",
     answer: "신석기",
     category: "역사",
   },
   {
-    text: "농사를 처음 시작한 시대는 ___시대이다.",
+    text: "농사를 처음 짓기 시작한 시대는 ___ 시대이다.",
     answer: "신석기",
     category: "역사",
   },
@@ -663,7 +663,7 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
   },
   { text: "석굴암과 불국사는 ___에 있다.", answer: "경주", category: "역사" },
   {
-    text: "팔만대장경은 ___시대에 만들어졌다.",
+    text: "팔만대장경은 ___ 시대에 만들어졌다.",
     answer: "고려",
     category: "역사",
   },
@@ -855,8 +855,8 @@ export const grade3KnowledgeDataExtra: KnowledgeEntry[] = [
     category: "수학",
   },
   {
-    text: "자료를 그림으로 나타낸 것을 ___라 한다.",
-    answer: "그래프",
+    text: "자료를 그림으로 나타낸 그래프를 ___라 한다.",
+    answer: "그림그래프",
     category: "수학",
   },
   { text: "0.1은 ___분의 1이다.", answer: "10", category: "수학" },
@@ -951,8 +951,8 @@ export const grade3SafetyDataExtra: SafetyEntry[] = [
     category: "교통안전",
   },
   {
-    text: "자전거를 탈 때는 ___를 달리면 안 된다.",
-    answer: "차도",
+    text: "자전거를 타고 사람이 많은 ___를 지날 때는 내려서 끌고 간다.",
+    answer: "인도",
     category: "교통안전",
   },
   {
@@ -961,8 +961,8 @@ export const grade3SafetyDataExtra: SafetyEntry[] = [
     category: "교통안전",
   },
   {
-    text: "자전거를 탈 때 이어폰을 끼면 주변 소리를 ___할 수 없다.",
-    answer: "듣기(확인)",
+    text: "자전거를 탈 때 이어폰을 끼면 주변 소리를 잘 ___ 수 없다.",
+    answer: "들을",
     category: "교통안전",
   },
   {
@@ -1113,7 +1113,7 @@ export const grade3SafetyDataExtra: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "뜨거운 물에 ___을 수 있으니 조심한다.",
+    text: "뜨거운 물에 ___ 수 있으니 조심한다.",
     answer: "데일",
     category: "생활안전",
   },
@@ -1168,8 +1168,8 @@ export const grade3SafetyDataExtra: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "뜨거운 냄비를 잡을 때는 ___를 사용한다.",
-    answer: "냄비 집게(장갑)",
+    text: "뜨거운 냄비를 잡을 때는 ___을 낀다.",
+    answer: "주방 장갑",
     category: "생활안전",
   },
   {
@@ -1321,7 +1321,7 @@ export const grade3SafetyDataExtra: SafetyEntry[] = [
     category: "재난안전",
   },
   {
-    text: "지진이 나면 ___아래로 들어가 몸을 보호한다.",
+    text: "지진이 나면 ___ 아래로 들어가 몸을 보호한다.",
     answer: "책상",
     category: "재난안전",
   },
@@ -1352,8 +1352,8 @@ export const grade3SafetyDataExtra: SafetyEntry[] = [
     category: "재난안전",
   },
   {
-    text: "재난 시 비상 ___을 미리 준비해 둔다.",
-    answer: "가방(배낭)",
+    text: "재난에 대비해 비상 ___을 미리 챙겨 둔다.",
+    answer: "가방",
     category: "재난안전",
   },
   {
@@ -1398,8 +1398,8 @@ export const grade3SafetyDataExtra: SafetyEntry[] = [
     category: "건강안전",
   },
   {
-    text: "감기에 걸리면 ___을 하여 다른 사람에게 옮기지 않는다.",
-    answer: "마스크 착용",
+    text: "감기에 걸리면 ___를 써서 다른 사람에게 옮기지 않는다.",
+    answer: "마스크",
     category: "건강안전",
   },
   {
@@ -1423,7 +1423,7 @@ export const grade3SafetyDataExtra: SafetyEntry[] = [
     category: "건강안전",
   },
   {
-    text: "화상을 입으면 ___에 15분 이상 식혀야 한다.",
+    text: "화상을 입으면 데인 곳을 ___에 15분 넘게 식혀야 한다.",
     answer: "흐르는 물",
     category: "건강안전",
   },
@@ -1444,7 +1444,7 @@ export const grade3SafetyDataExtra: SafetyEntry[] = [
   },
   {
     text: "스마트폰을 오래 보면 ___이 나빠질 수 있다.",
-    answer: "눈(시력)",
+    answer: "시력",
     category: "건강안전",
   },
   {
@@ -1474,8 +1474,8 @@ export const grade3SafetyDataExtra: SafetyEntry[] = [
     category: "정보안전",
   },
   {
-    text: "비밀번호는 다른 사람에게 ___하면 안 된다.",
-    answer: "알려주",
+    text: "비밀번호는 다른 사람에게 ___면 안 된다.",
+    answer: "알려 주",
     category: "정보안전",
   },
   {
@@ -1504,19 +1504,19 @@ export const grade3SafetyDataExtra: SafetyEntry[] = [
     category: "정보안전",
   },
   {
-    text: "컴퓨터를 너무 오래 하면 ___중독이 될 수 있다.",
-    answer: "게임(인터넷)",
+    text: "컴퓨터 게임을 너무 오래 하면 ___ 중독에 빠질 수 있다.",
+    answer: "게임",
     category: "정보안전",
   },
   // === 전기안전 (5개) ===
   {
-    text: "전기 콘센트에 젖은 손으로 ___하면 위험하다.",
+    text: "전기 콘센트를 젖은 손으로 ___면 위험하다.",
     answer: "만지",
     category: "전기안전",
   },
   {
-    text: "콘센트에 너무 많은 플러그를 꽂으면 ___이 날 수 있다.",
-    answer: "과열(화재)",
+    text: "콘센트 하나에 플러그를 너무 많이 꽂으면 ___이 날 수 있다.",
+    answer: "불",
     category: "전기안전",
   },
   {

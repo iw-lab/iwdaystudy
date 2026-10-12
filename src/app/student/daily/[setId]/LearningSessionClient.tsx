@@ -702,7 +702,7 @@ export default function LearningSessionClient() {
           <div className="flex flex-col gap-3 w-full">
             <Button
               onClick={dismissReviewIntro}
-              className="h-12 rounded-xl font-bold text-base bg-[#2ECC71] hover:bg-[#2ECC71]/90 gap-2"
+              className="h-12 rounded-xl font-bold text-base bg-primary hover:bg-primary/90 gap-2"
             >
               <RotateCcw className="h-4 w-4" />
               복습 시작하기
@@ -782,7 +782,7 @@ export default function LearningSessionClient() {
               {reviewAnswered ? (
                 <Button
                   onClick={handleReviewAdvance}
-                  className="gap-1 rounded-xl bg-[#2ECC71] hover:bg-[#2ECC71]/90 font-bold"
+                  className="gap-1 rounded-xl bg-primary hover:bg-primary/90 font-bold"
                 >
                   {reviewIndex + 1 >= reviewQueue.length
                     ? "복습 완료"
@@ -812,7 +812,7 @@ export default function LearningSessionClient() {
             {reviewAnswered ? (
               <Button
                 onClick={handleReviewAdvance}
-                className="gap-1 rounded-xl bg-[#2ECC71] hover:bg-[#2ECC71]/90 font-bold"
+                className="gap-1 rounded-xl bg-primary hover:bg-primary/90 font-bold"
               >
                 {reviewIndex + 1 >= reviewQueue.length
                   ? "복습 완료"

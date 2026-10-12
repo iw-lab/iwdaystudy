@@ -30,6 +30,8 @@ interface LearningState {
   reviewQueue: number[];
   reviewIndex: number;
   reviewCorrected: number[];
+  /** 복습 바퀴 수(1부터). MAX_REVIEW_ROUNDS 를 넘으면 맞히지 못해도 끝낸다 */
+  reviewRound: number;
 
   initSession: (
     set: DailySet,
@@ -56,6 +58,10 @@ interface LearningState {
   skipReview: () => void;
 }
 
+// 복습은 «다 맞힐 때까지»였는데, 글쓰기처럼 기준을 못 넘기면 결과 화면에 영영 못 갔다(2026-10-12 e2e 실측).
+// 두 바퀴까지만 되풀이하고 끝낸다.
+export const MAX_REVIEW_ROUNDS = 2;
+
 export const useLearningStore = create<LearningState>()(
   persist(
     (set, get) => ({
@@ -77,6 +83,7 @@ export const useLearningStore = create<LearningState>()(
       reviewQueue: [],
       reviewIndex: 0,
       reviewCorrected: [],
+      reviewRound: 1,
 
       initSession: (dailySet, questions, sessionKey) => {
         set({
@@ -101,6 +108,7 @@ export const useLearningStore = create<LearningState>()(
           reviewQueue: [],
           reviewIndex: 0,
           reviewCorrected: [],
+          reviewRound: 1,
         });
       },
 
@@ -170,6 +178,7 @@ export const useLearningStore = create<LearningState>()(
           reviewQueue: wrongIndices,
           reviewIndex: 0,
           reviewCorrected: [],
+          reviewRound: 1,
         }),
 
       dismissReviewIntro: () =>
@@ -192,12 +201,13 @@ export const useLearningStore = create<LearningState>()(
           const stillWrong = state.reviewQueue.filter(
             (idx) => !newCorrected.includes(idx),
           );
-          if (stillWrong.length > 0) {
-            // 틀린 문제만 다시 큐에 넣어서 반복
+          if (stillWrong.length > 0 && state.reviewRound < MAX_REVIEW_ROUNDS) {
+            // 틀린 문제만 다시 큐에 넣어서 한 번 더
             set({
               reviewCorrected: newCorrected,
               reviewQueue: stillWrong,
               reviewIndex: 0,
+              reviewRound: state.reviewRound + 1,
             });
           } else {
             // 전부 맞춤 → 복습 완료

@@ -19,6 +19,7 @@ import {
   saveLearningRecord,
 } from "./local-storage";
 import type { LearningRecord } from "@/types/database";
+import { isGuestId } from "./guest";
 
 const QUEUE_KEY = "araharu_sync_queue";
 const MAX_QUEUE = 60;
@@ -246,6 +247,8 @@ export async function syncCompletedSet(
   recordId: string,
   setId: string,
 ): Promise<void> {
+  // 로그인 없이 쓰는 학생은 서버에 보내지 않는다(기기에만 남는다)
+  if (isGuestId(studentId)) return;
   enqueue({ studentId, recordId, setId });
   const outcome = await postRecord(studentId, setId);
   if (outcome.settled) dequeue(studentId, setId);

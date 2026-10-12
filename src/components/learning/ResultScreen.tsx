@@ -480,7 +480,7 @@ export default function ResultScreen({
                             </motion.div>
                           </div>
                           <span className="text-xs font-bold min-w-[40px] text-right">
-                            {s.correct}/{s.total}
+                            {s.correct} / {s.total}
                           </span>
                           {/* Mini performance indicator */}
                           {percent === 100 && (

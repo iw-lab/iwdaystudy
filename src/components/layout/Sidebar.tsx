@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuthStore } from "@/stores/authStore";
+import { isGuest } from "@/lib/guest";
+import { Logo } from "@/components/common/Logo";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -43,6 +45,7 @@ const NAV_ITEMS: Record<UserRole, NavItem[]> = {
     { href: "/student/stats", label: "학습 통계", icon: BarChart3 },
     { href: "/student/history", label: "학습 기록", icon: History },
     { href: "/student/rewards", label: "뱃지/보상", icon: Award },
+    { href: "/student/settings", label: "설정", icon: Settings },
   ],
   teacher: [
     { href: "/teacher", label: "대시보드", icon: LayoutDashboard },
@@ -73,13 +76,15 @@ export function Sidebar({
 }: SidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
-  const { logout } = useAuthStore();
+  const { logout, user } = useAuthStore();
+  const guest = isGuest(user);
   const [collapsed, setCollapsed] = useState(false);
   const items = NAV_ITEMS[role];
 
   const handleLogout = () => {
     logout();
-    router.push("/login");
+    // 로그인 없이 쓰던 학생은 처음 화면으로(기록은 기기에 남아 «이어서 하기»가 된다)
+    router.push(guest ? "/" : "/login");
   };
 
   const roleLabels: Record<UserRole, string> = {
@@ -104,9 +109,10 @@ export function Sidebar({
         )}
       >
         <Link href="/" className="flex items-center gap-2">
-          <GraduationCap className="h-7 w-7 text-primary shrink-0" />
-          {!collapsed && (
-            <span className="text-lg font-bold text-primary">아라하루</span>
+          {collapsed ? (
+            <GraduationCap className="h-7 w-7 text-primary shrink-0" />
+          ) : (
+            <Logo size={30} />
           )}
         </Link>
       </div>
@@ -158,10 +164,18 @@ export function Sidebar({
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium truncate">{userName}</p>
               <p className="text-xs text-muted-foreground">
-                {roleLabels[role]}
+                {guest && user?.grade && user?.semester
+                  ? `${user.grade}학년 ${user.semester}학기 · 이 기기`
+                  : roleLabels[role]}
               </p>
             </div>
-            <Button variant="ghost" size="icon-xs" onClick={handleLogout}>
+            <Button
+              variant="ghost"
+              size="icon-xs"
+              onClick={handleLogout}
+              aria-label={guest ? "처음 화면으로" : "로그아웃"}
+              title={guest ? "처음 화면으로" : "로그아웃"}
+            >
               <LogOut className="h-4 w-4" />
             </Button>
           </div>

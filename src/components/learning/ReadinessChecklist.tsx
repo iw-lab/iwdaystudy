@@ -60,7 +60,7 @@ export default function ReadinessChecklist({ content, onAnswer, showResult }: Pr
           />
         </div>
         <span className="text-[#4ECDC4]">
-          {checkedCount}/{totalCount}
+          {checkedCount} / {totalCount}
         </span>
       </div>
 

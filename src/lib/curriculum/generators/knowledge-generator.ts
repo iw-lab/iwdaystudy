@@ -4682,7 +4682,7 @@ const GRADE_5_6: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "백열전구를 발명한 사람은 ___이다.",
+    text: "오래 켜지는 백열전구를 만들어 널리 퍼뜨린 사람은 ___이다.",
     answer: "에디슨",
     category: "과학",
   },
@@ -6658,8 +6658,8 @@ const GRADE_5_6: KnowledgeEntry[] = [
 
   // ──── 문화: 연결하기 ────
   {
-    text: "김홍도는 풍속화를, 신사임당은 ___화를 그렸다.",
-    answer: "초충도(사임당)",
+    text: "김홍도는 풍속화를, 신사임당은 풀과 벌레를 그린 ___를 그렸다.",
+    answer: "초충도",
     category: "문화",
   },
   {

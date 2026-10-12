@@ -134,14 +134,14 @@ export default function WritingPrompt({
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full rounded-2xl bg-gradient-to-br from-[#2ECC71]/5 via-[#2ECC71]/10 to-[#4ECDC4]/5 border-2 border-dashed border-[#2ECC71]/30 p-6"
+        className="w-full rounded-2xl bg-gradient-to-br from-[#2ECC71]/5 via-[#2ECC71]/10 to-[#4ECDC4]/5 border-2 border-dashed border-primary/30 p-6"
       >
         <div className="flex items-start gap-3">
-          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#2ECC71]/20 flex items-center justify-center">
-            <Pencil className="h-5 w-5 text-[#2ECC71]" />
+          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+            <Pencil className="h-5 w-5 text-primary" />
           </div>
           <div>
-            <p className="text-xs font-medium text-[#2ECC71] mb-1">
+            <p className="text-xs font-medium text-primary mb-1">
               오늘의 글밥
             </p>
             <p className="text-xl font-bold leading-relaxed break-keep">
@@ -167,7 +167,7 @@ export default function WritingPrompt({
             >
               <RotateCcw className="h-4 w-4 text-amber-600" />
               <span className="text-sm font-medium text-amber-700">
-                {retryCount}/{MAX_RETRIES}번째 다시쓰기 — 피드백을 참고해서 더
+                {retryCount} / {MAX_RETRIES}번째 다시쓰기 — 피드백을 참고해서 더
                 잘 써봐요!
               </span>
             </motion.div>
@@ -177,7 +177,7 @@ export default function WritingPrompt({
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="여기에 자유롭게 써 보세요..."
-            className="min-h-[200px] text-xl leading-relaxed rounded-xl border-2 border-[#2ECC71]/20 focus-visible:border-[#2ECC71] focus-visible:ring-[#2ECC71]/20 resize-none p-4"
+            className="min-h-[200px] text-xl leading-relaxed rounded-xl border-2 border-primary/20 focus-visible:border-primary focus-visible:ring-primary/20 resize-none p-4"
             style={{
               fontSize: "1.25rem",
               lineHeight: "1.8",
@@ -188,7 +188,7 @@ export default function WritingPrompt({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div
-                className={`h-2 rounded-full transition-all ${meetsMinimum ? "bg-[#2ECC71]" : "bg-muted"}`}
+                className={`h-2 rounded-full transition-all ${meetsMinimum ? "bg-primary" : "bg-muted"}`}
                 style={{
                   width: `${Math.min((charCount / minChars) * 100, 100)}%`,
                   minWidth: 8,
@@ -196,7 +196,7 @@ export default function WritingPrompt({
                 }}
               />
               <span
-                className={`text-xs font-medium ${meetsMinimum ? "text-[#2ECC71]" : "text-muted-foreground"}`}
+                className={`text-xs font-medium ${meetsMinimum ? "text-primary" : "text-muted-foreground"}`}
               >
                 {charCount}자 / 최소 {minChars}자
               </span>
@@ -204,7 +204,7 @@ export default function WritingPrompt({
             <Button
               onClick={handleSubmit}
               disabled={!meetsMinimum || isGibberish}
-              className="rounded-xl font-bold bg-[#2ECC71] hover:bg-[#2ECC71]/90"
+              className="rounded-xl font-bold bg-primary hover:bg-primary/90"
             >
               {isGibberish
                 ? "한글로 써주세요!"
@@ -261,9 +261,9 @@ export default function WritingPrompt({
                 ))}
               </div>
               <span className="text-xl font-black">
-                {evalResult.score}
+                {evalResult.score}점
                 <span className="text-sm font-medium text-muted-foreground">
-                  /10
+                  {" "}/ 10점
                 </span>
               </span>
             </div>
@@ -291,7 +291,7 @@ export default function WritingPrompt({
                       />
                     </div>
                     <span className="text-xs font-semibold w-10 text-right">
-                      {val}/{max}
+                      {val} / {max}
                     </span>
                   </div>
                 );
@@ -313,7 +313,7 @@ export default function WritingPrompt({
               </Button>
               <Button
                 onClick={handleRetry}
-                className="flex-1 h-12 rounded-xl font-bold bg-[#2ECC71] hover:bg-[#2ECC71]/90 gap-2"
+                className="flex-1 h-12 rounded-xl font-bold bg-primary hover:bg-primary/90 gap-2"
               >
                 <RotateCcw className="h-4 w-4" />
                 다시 쓰기
@@ -386,7 +386,7 @@ export default function WritingPrompt({
                 / 10점
               </span>
             </p>
-            <p className="text-base font-semibold text-[#2ECC71]">
+            <p className="text-base font-semibold text-primary">
               {evalResult.feedback}
             </p>
             <p className="text-sm text-muted-foreground mt-1 text-center">
@@ -419,7 +419,7 @@ export default function WritingPrompt({
                     />
                   </div>
                   <span className="text-xs font-semibold w-10 text-right">
-                    {val}/{max}
+                    {val} / {max}
                   </span>
                 </div>
               );

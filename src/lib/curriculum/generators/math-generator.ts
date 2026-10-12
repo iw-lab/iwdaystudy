@@ -4,7 +4,7 @@
  * Combined with static data, this provides effectively unlimited math content.
  */
 import type { MathEntry } from "@/types/curriculum";
-import { naturalizeKorean, hasBatchim } from "@/lib/korean-josa";
+import { naturalizeKorean, hasBatchim, withJosa } from "@/lib/korean-josa";
 
 // 이름 뒤 주격조사 이/가를 받침 기준으로(연필이·사과가·상자가) — 하드코딩 "가"/"이" 비문 방지
 const iGa = (w: string) => `${w}${hasBatchim(w.slice(-1)) ? "이" : "가"}`;
@@ -88,7 +88,7 @@ function generateGrade1Math(
         expression: `${iGa(items)} ${a}개 있었는데 ${bClamped}개를 더 받았습니다. 모두 몇 개?`,
         answer: a + bClamped,
         steps: [
-          `${a}와 ${bClamped}를 더합니다`,
+          `${withJosa(String(a), "과/와")} ${withJosa(String(bClamped), "을/를")} 더합니다`,
           `${a} + ${bClamped} = ${a + bClamped}`,
         ],
         unit: "한 자리 덧셈",
@@ -101,7 +101,7 @@ function generateGrade1Math(
       expression: `${a} + ${bClamped} = ?`,
       answer: a + bClamped,
       steps: [
-        `${a}와 ${bClamped}를 더합니다`,
+        `${withJosa(String(a), "과/와")} ${withJosa(String(bClamped), "을/를")} 더합니다`,
         `${a} + ${bClamped} = ${a + bClamped}`,
       ],
       unit: "한 자리 덧셈",
@@ -118,7 +118,7 @@ function generateGrade1Math(
         type: "subtraction",
         expression: `${iGa(items)} ${a}개 있었는데 ${b}개를 먹었습니다. 남은 것은?`,
         answer: a - b,
-        steps: [`${a}에서 ${b}를 뺍니다`, `${a} - ${b} = ${a - b}`],
+        steps: [`${a}에서 ${withJosa(String(b), "을/를")} 뺍니다`, `${a} - ${b} = ${a - b}`],
         unit: "한 자리 뺄셈",
         numbers: [a, b],
         hasBorrow: a >= 10 && a % 10 < b % 10,
@@ -128,7 +128,7 @@ function generateGrade1Math(
       type: "subtraction",
       expression: `${a} - ${b} = ?`,
       answer: a - b,
-      steps: [`${a}에서 ${b}를 뺍니다`, `${a} - ${b} = ${a - b}`],
+      steps: [`${a}에서 ${withJosa(String(b), "을/를")} 뺍니다`, `${a} - ${b} = ${a - b}`],
       unit: "한 자리 뺄셈",
       numbers: [a, b],
       hasBorrow: false,
@@ -233,7 +233,7 @@ function generateGrade1Math(
     ]);
     return {
       type: "addition",
-      expression: `${scenario.place} ${scenario.a_desc} ${scenario.item}가 ${a}마리, ${scenario.b_desc} ${scenario.item}가 ${b}마리 있습니다. 모두 몇 마리?`,
+      expression: `${scenario.place} ${scenario.a_desc} ${withJosa(String(scenario.item), "이/가")} ${a}마리, ${scenario.b_desc} ${withJosa(String(scenario.item), "이/가")} ${b}마리 있습니다. 모두 몇 마리?`,
       answer: a + b,
       steps: [
         `${scenario.a_desc} ${a}마리와 ${scenario.b_desc} ${b}마리를 더합니다`,
@@ -256,7 +256,7 @@ function generateGrade1Math(
     ]);
     return {
       type: "subtraction",
-      expression: `${scenario.item}가 ${a}개 있었는데 ${b}개를 ${scenario.verb} 남은 것은 몇 개?`,
+      expression: `${withJosa(String(scenario.item), "이/가")} ${a}개 있었는데 ${b}개를 ${scenario.verb} 남은 것은 몇 개?`,
       answer: a - b,
       steps: [`${a}개에서 ${b}개를 빼면 됩니다`, `${a} - ${b} = ${a - b}`],
       unit: "서술형 뺄셈",
@@ -341,7 +341,7 @@ function generateGrade1Math(
         a > b
           ? `${iGa(itemA)} 더 많습니다`
           : a < b
-            ? `${itemB}이 더 많습니다`
+            ? `${withJosa(String(itemB), "이/가")} 더 많습니다`
             : `같습니다`,
         `${Math.max(a, b)} - ${Math.min(a, b)} = ${diff}`,
       ],
@@ -358,7 +358,7 @@ function generateGrade1Math(
     const part2 = total - part1;
     return {
       type: "addition",
-      expression: `${total}을 ${part1}과 어떤 수로 가르면? 어떤 수는?`,
+      expression: `${withJosa(String(total), "을/를")} ${withJosa(String(part1), "과/와")} 어떤 수로 가르면? 어떤 수는?`,
       answer: part2,
       steps: [`${total} = ${part1} + ?`, `? = ${total} - ${part1} = ${part2}`],
       unit: "수의 가르기",
@@ -387,9 +387,9 @@ function generateGrade1Math(
     const b = randInt(rng, 1, compMax);
     return {
       type: "comparison",
-      expression: `${a}과 ${b} 중 더 큰 수는?`,
+      expression: `${withJosa(String(a), "과/와")} ${b} 중 더 큰 수는?`,
       answer: Math.max(a, b),
-      steps: [`${a}과 ${b}를 비교합니다`, `${Math.max(a, b)}이 더 큽니다`],
+      steps: [`${withJosa(String(a), "과/와")} ${withJosa(String(b), "을/를")} 비교합니다`, `${withJosa(String(Math.max(a, b)), "이/가")} 더 큽니다`],
       unit: "수의 크기 비교",
       numbers: [a, b],
     };
@@ -512,7 +512,7 @@ function generateGrade2Math(
         type: "subtraction",
         expression: `${ctx.where} ${a}${ctx.counter} 있었는데 ${iGa(`${b}${ctx.counter}`)} ${ctx.gone}. 남은 것은 몇 ${ctx.counter}?`,
         answer: a - b,
-        steps: [`${a}에서 ${b}를 뺍니다`, `${a} - ${b} = ${a - b}`],
+        steps: [`${a}에서 ${withJosa(String(b), "을/를")} 뺍니다`, `${a} - ${b} = ${a - b}`],
         unit: "두 자리 뺄셈",
         numbers: [a, b],
         hasBorrow,
@@ -522,7 +522,7 @@ function generateGrade2Math(
       type: "subtraction",
       expression: `${a} - ${b} = ?`,
       answer: a - b,
-      steps: [`${a}에서 ${b}를 뺍니다`, `${a} - ${b} = ${a - b}`],
+      steps: [`${a}에서 ${withJosa(String(b), "을/를")} 뺍니다`, `${a} - ${b} = ${a - b}`],
       unit: "두 자리 뺄셈",
       numbers: [a, b],
       hasBorrow,
@@ -595,15 +595,22 @@ function generateGrade2Math(
       numbers: [cm1, cm2],
     };
   } else if (type === "weight_compare") {
-    const wMax = difficulty === 1 ? 10 : difficulty === 3 ? 50 : 20;
-    const kg1 = randInt(rng, 1, wMax);
-    const kg2 = randInt(rng, 1, wMax);
+    // 실제로 있을 법한 무게 범위의 짝만(«참외 19kg» 금지) · 같은 무게면 «더 무거운 것»이 없으니 다시 뽑는다
+    const pair = pickOne(rng, [
+      ["강아지", "고양이", 2, 12],
+      ["쌀 포대", "밀가루 포대", 5, 20],
+      ["여행 가방", "책가방", 2, 20],
+      ["수박", "호박", 3, 10],
+    ] as const);
+    const kg1 = randInt(rng, pair[2], pair[3]);
+    let kg2 = randInt(rng, pair[2], pair[3]);
+    if (kg2 === kg1) kg2 = kg1 === pair[3] ? kg1 - 1 : kg1 + 1;
     return {
       type: "comparison",
-      expression: `수박 ${kg1}kg, 참외 ${kg2}kg 중 더 무거운 것의 무게는?`,
+      expression: `${pair[0]} ${kg1}kg, ${pair[1]} ${kg2}kg 중 더 무거운 것의 무게는?`,
       answer: Math.max(kg1, kg2),
       steps: [
-        `${kg1}과 ${kg2}를 비교합니다`,
+        `${withJosa(String(kg1), "과/와")} ${withJosa(String(kg2), "을/를")} 비교합니다`,
         `${Math.max(kg1, kg2)}kg이 더 무겁습니다`,
       ],
       unit: "무게 재기",
@@ -678,7 +685,7 @@ function generateGrade2Math(
     ]);
     return {
       type: "multiplication",
-      expression: `${scenario.item} ${a}${scenario.unit}에 ${scenario.content}가 ${b}${scenario.contentUnit}씩 있습니다. 전체 ${scenario.content}는 몇 ${scenario.contentUnit}?`,
+      expression: `${scenario.item} ${a}${scenario.unit}에 ${withJosa(String(scenario.content), "이/가")} ${b}${scenario.contentUnit}씩 있습니다. 전체 ${withJosa(String(scenario.content), "은/는")} 몇 ${scenario.contentUnit}?`,
       answer: a * b,
       steps: [`${a} × ${b} = ${a * b}`],
       unit: "서술형 곱셈",
@@ -721,7 +728,7 @@ function generateGrade2Math(
       expression: `한 변의 길이가 ${sideLen}cm인 ${shape.name}의 둘레는 몇 cm?`,
       answer: perimeter,
       steps: [
-        `${shape.name}은 ${shape.sides}개의 변이 있습니다`,
+        `${withJosa(String(shape.name), "은/는")} ${shape.sides}개의 변이 있습니다`,
         `${sideLen} × ${shape.sides} = ${perimeter}cm`,
       ],
       unit: "도형문제",
@@ -771,11 +778,11 @@ function generateGrade2Math(
     const isEven = num % 2 === 0;
     return {
       type: "comparison",
-      expression: `${num}은 짝수인가요 홀수인가요? (1: 짝수, 2: 홀수)`,
+      expression: `${withJosa(String(num), "은/는")} 짝수인가요 홀수인가요? (1: 짝수, 2: 홀수)`,
       answer: isEven ? 1 : 2,
       steps: [
         `${num} ÷ 2 = ${isEven ? `${num / 2} (나누어떨어짐)` : `나머지 1`}`,
-        `${num}은 ${isEven ? "짝수" : "홀수"}입니다`,
+        `${withJosa(String(num), "은/는")} ${isEven ? "짝수" : "홀수"}입니다`,
       ],
       unit: "짝수와 홀수",
       numbers: [num],
@@ -792,7 +799,7 @@ function generateGrade2Math(
     const diff = Math.abs(a - b);
     return {
       type: "subtraction",
-      expression: `${eunNeun(items.a)} ${items.item}를 ${a}개, ${eunNeun(items.b)} ${b}개 가지고 있습니다. 누가 몇 개 더 많나요? (개수만 입력)`,
+      expression: `${eunNeun(items.a)} ${withJosa(String(items.item), "을/를")} ${a}개, ${eunNeun(items.b)} ${b}개 가지고 있습니다. 누가 몇 개 더 많나요? (개수만 입력)`,
       answer: diff,
       steps: [
         `${iGa(a > b ? items.a : items.b)} 더 많습니다`,
@@ -903,7 +910,7 @@ function generateGrade3Math(
       type: "subtraction",
       expression: `${a} - ${b} = ?`,
       answer: a - b,
-      steps: [`${a}에서 ${b}를 뺍니다`, `${a} - ${b} = ${a - b}`],
+      steps: [`${a}에서 ${withJosa(String(b), "을/를")} 뺍니다`, `${a} - ${b} = ${a - b}`],
       unit: "세 자리 뺄셈",
       numbers: [a, b],
       hasBorrow: true,
@@ -939,7 +946,7 @@ function generateGrade3Math(
         expression: `${dividend}개의 사탕을 ${divisor}명에게 똑같이 나누면 한 명에게 몇 개?`,
         answer: quotient,
         steps: [
-          `${dividend} 안에 ${divisor}가 몇 번 들어가는지 생각합니다`,
+          `${dividend} 안에 ${withJosa(String(divisor), "이/가")} 몇 번 들어가는지 생각합니다`,
           `${dividend} ÷ ${divisor} = ${quotient}`,
         ],
         unit: "나눗셈",
@@ -954,7 +961,7 @@ function generateGrade3Math(
       expression: `${dividend} ÷ ${divisor} = ?`,
       answer: quotient,
       steps: [
-        `${dividend} 안에 ${divisor}가 몇 번 들어가는지 생각합니다`,
+        `${dividend} 안에 ${withJosa(String(divisor), "이/가")} 몇 번 들어가는지 생각합니다`,
         `${dividend} ÷ ${divisor} = ${quotient}`,
       ],
       unit: "나눗셈",
@@ -977,7 +984,7 @@ function generateGrade3Math(
       expression: `${dividend} ÷ ${divisor}의 몫은?`,
       answer: quotient,
       steps: [
-        `${dividend} 안에 ${divisor}가 ${quotient}번 들어갑니다`,
+        `${dividend} 안에 ${withJosa(String(divisor), "이/가")} ${quotient}번 들어갑니다`,
         `${dividend} ÷ ${divisor} = ${quotient} ... ${remainder}`,
       ],
       unit: "나눗셈",
@@ -999,11 +1006,11 @@ function generateGrade3Math(
     const bigger = Math.max(n1, n2);
     return {
       type: "fraction",
-      expression: `${n1}/${denom}과 ${n2}/${denom} 중 더 큰 분수의 분자는?`,
+      expression: `${withJosa(`${n1}/${denom}`, "과/와", String(n1))} ${n2}/${denom} 중 더 큰 분수의 분자는?`,
       answer: bigger,
       steps: [
         `분모가 같으면 분자가 큰 것이 더 큽니다`,
-        `${bigger}/${denom}이 더 큽니다`,
+        `${withJosa(`${bigger}/${denom}`, "이/가", String(bigger))} 더 큽니다`,
       ],
       unit: "분수의 기초",
       numbers: [n1, n2, denom],
@@ -1280,7 +1287,7 @@ function generateGrade4Math(
         expression: `한 줄에 ${a}명씩 ${b}줄이 있습니다. 전체 인원은?`,
         answer: a * b,
         steps: [
-          `${a} × ${b}를 세로셈으로 계산합니다`,
+          `${a} × ${withJosa(String(b), "을/를")} 세로셈으로 계산합니다`,
           `${a} × ${b} = ${a * b}`,
         ],
         unit: "두 자리 × 한 자리 곱셈",
@@ -1292,7 +1299,7 @@ function generateGrade4Math(
       expression: `${a} × ${b} = ?`,
       answer: a * b,
       steps: [
-        `${a} × ${b}를 세로셈으로 계산합니다`,
+        `${a} × ${withJosa(String(b), "을/를")} 세로셈으로 계산합니다`,
         `일의 자리: ${a % 10} × ${b} = ${(a % 10) * b}`,
         `십의 자리: ${Math.floor(a / 10)} × ${b} = ${Math.floor(a / 10) * b}`,
         `${a} × ${b} = ${a * b}`,
@@ -1575,7 +1582,7 @@ function generateGrade4Math(
         expression: `${seq.join(", ")}, ? 에서 ?에 알맞은 수는? (더하는 수가 1씩 증가)`,
         answer,
         steps: [
-          `차이: ${seq[1] - seq[0]}, ${seq[2] - seq[1]}, ${seq[3] - seq[2]}으로 1씩 증가`,
+          `차이: ${seq[1] - seq[0]}, ${seq[2] - seq[1]}, ${withJosa(String(seq[3] - seq[2]), "으로/로")} 1씩 증가`,
           `${seq[seq.length - 1]} + 5 = ${answer}`,
         ],
         unit: "규칙찾기",
@@ -1590,7 +1597,7 @@ function generateGrade4Math(
         expression: `${seq.join(", ")}, ? 에서 ?에 알맞은 수는?`,
         answer,
         steps: [
-          `${base}를 반복해서 곱하는 규칙`,
+          `${withJosa(String(base), "을/를")} 반복해서 곱하는 규칙`,
           `${seq[seq.length - 1]} × ${base} = ${answer}`,
         ],
         unit: "규칙찾기",
@@ -1611,7 +1618,7 @@ function generateGrade4Math(
         type: "counting",
         expression: `${seq.join(", ")}, ? 에서 ?에 알맞은 수는?`,
         answer,
-        steps: [`+${addVal}, -${subVal}이 반복되는 규칙`, `답: ${answer}`],
+        steps: [`+${addVal}, -${withJosa(String(subVal), "이/가")} 반복되는 규칙`, `답: ${answer}`],
         unit: "규칙찾기",
         numbers: [...seq, answer],
       };
@@ -1651,7 +1658,7 @@ function generateGrade4Math(
       type: "comparison",
       // "천의 자리에서 반올림"은 천의 자리 숫자를 보고 만의 자리로 어림한다는
       // 뜻이 되어 정답(천의 자리까지 나타내기)과 어긋난다 → 표준 표현으로
-      expression: `${num}을 반올림하여 ${placeNames[place]}까지 나타내면?`,
+      expression: `${withJosa(String(num), "을/를")} 반올림하여 ${placeNames[place]}까지 나타내면?`,
       answer: rounded,
       steps: [`반올림하여 ${placeNames[place]}까지 나타냅니다`, `${num} → ${rounded}`],
       unit: "어림하기",
@@ -2039,10 +2046,10 @@ function generateGrade5Math(
     const denom = d * factor;
     return {
       type: "fraction",
-      expression: `${numer}/${denom}을 기약분수로 나타내면? (분자만 입력)`,
+      expression: `${withJosa(`${numer}/${denom}`, "을/를", String(numer))} 기약분수로 나타내면? (분자만 입력)`,
       answer: n,
       steps: [
-        `${numer}과 ${denom}의 최대공약수 ${factor}로 분자와 분모를 나눕니다`,
+        `${withJosa(String(numer), "과/와")} ${denom}의 최대공약수 ${withJosa(String(factor), "으로/로")} 분자와 분모를 나눕니다`,
         `${numer}/${denom} = ${n}/${d}`,
       ],
       unit: "약분과 통분",
@@ -2098,7 +2105,7 @@ function generateGrade5Math(
     const item = pickOne(rng, ["피자", "케이크", "수박", "초콜릿"]);
     return {
       type: "fraction",
-      expression: `${item}의 ${n1}/${denom}을 먹고, ${n2}/${denom}을 더 먹었습니다. 모두 얼마나 먹었나요? (분자만 입력, 분모=${denom})`,
+      expression: `${item}의 ${withJosa(`${n1}/${denom}`, "을/를", String(n1))} 먹고, ${withJosa(`${n2}/${denom}`, "을/를", String(n2))} 더 먹었습니다. 모두 얼마나 먹었나요? (분자만 입력, 분모=${denom})`,
       answer: n1 + n2,
       steps: [
         `분모가 같으므로 분자끼리 더합니다`,
@@ -2121,15 +2128,15 @@ function generateGrade5Math(
     const bigger = val1 > val2 ? 1 : val1 < val2 ? 2 : 0;
     return {
       type: "fraction",
-      expression: `${n1}/${d1}과 ${n2}/${d2} 중 더 큰 분수는? (1: ${n1}/${d1}, 2: ${n2}/${d2}, 0: 같음)`,
+      expression: `${withJosa(`${n1}/${d1}`, "과/와", String(n1))} ${n2}/${d2} 중 더 큰 분수는? (1: ${n1}/${d1}, 2: ${n2}/${d2}, 0: 같음)`,
       answer: bigger,
       steps: [
         `통분하여 비교합니다`,
         `${n1}/${d1} = ${n1 * (lcmCalc(d1, d2) / d1)}/${lcmCalc(d1, d2)}, ${n2}/${d2} = ${n2 * (lcmCalc(d1, d2) / d2)}/${lcmCalc(d1, d2)}`,
         bigger === 1
-          ? `${n1}/${d1}이 더 큽니다`
+          ? `${withJosa(`${n1}/${d1}`, "이/가", String(n1))} 더 큽니다`
           : bigger === 2
-            ? `${n2}/${d2}이 더 큽니다`
+            ? `${withJosa(`${n2}/${d2}`, "이/가", String(n2))} 더 큽니다`
             : `같습니다`,
       ],
       unit: "크기비교",
@@ -2176,7 +2183,7 @@ function generateGrade5Math(
     const decimal = Math.round((numer / denom) * 100) / 100;
     return {
       type: "fraction",
-      expression: `${numer}/${denom}을 소수로 나타내면?`,
+      expression: `${withJosa(`${numer}/${denom}`, "을/를", String(numer))} 소수로 나타내면?`,
       answer: decimal,
       steps: [`${numer} ÷ ${denom} = ${decimal}`],
       unit: "크기비교",
@@ -2321,7 +2328,7 @@ function generateGrade5Math(
       const l = (a * b) / g;
       return {
         type: "gcd",
-        expression: `${a}과 ${b}의 최소공배수는?`,
+        expression: `${withJosa(String(a), "과/와")} ${b}의 최소공배수는?`,
         answer: l,
         steps: [`최대공약수: ${g}`, `최소공배수: ${a} × ${b} ÷ ${g} = ${l}`],
         unit: "최소공배수",
@@ -2330,7 +2337,7 @@ function generateGrade5Math(
     }
     return {
       type: "gcd",
-      expression: `${a}과 ${b}의 최대공약수는?`,
+      expression: `${withJosa(String(a), "과/와")} ${b}의 최대공약수는?`,
       answer: g,
       steps: [
         `${a}의 약수와 ${b}의 약수 중 공통된 가장 큰 수`,
@@ -2402,10 +2409,10 @@ function generateGrade6Math(
       const g3 = gcd(gcd(a, b), c);
       return {
         type: "ratio",
-        expression: `${a} : ${b} : ${c}를 가장 간단한 자연수의 비로 나타내면? (첫째 수 입력)`,
+        expression: `${a} : ${b} : ${withJosa(String(c), "을/를")} 가장 간단한 자연수의 비로 나타내면? (첫째 수 입력)`,
         answer: a / g3,
         steps: [
-          `최대공약수 ${g3}로 나눕니다`,
+          `최대공약수 ${withJosa(String(g3), "으로/로")} 나눕니다`,
           `${a / g3} : ${b / g3} : ${c / g3}`,
         ],
         unit: "비와 비율",
@@ -2414,9 +2421,9 @@ function generateGrade6Math(
     }
     return {
       type: "ratio",
-      expression: `${a} : ${b}를 가장 간단한 자연수의 비로 나타내면? (첫째 수 입력)`,
+      expression: `${a} : ${withJosa(String(b), "을/를")} 가장 간단한 자연수의 비로 나타내면? (첫째 수 입력)`,
       answer: a / g,
-      steps: [`최대공약수 ${g}로 나눕니다`, `${a / g} : ${b / g}`],
+      steps: [`최대공약수 ${withJosa(String(g), "으로/로")} 나눕니다`, `${a / g} : ${b / g}`],
       unit: "비와 비율",
       numbers: [a, b],
     };
@@ -2434,7 +2441,8 @@ function generateGrade6Math(
     );
     // 백분율이 정수로 떨어지는 part만 출제(반올림 근사치를 정답으로 내던 버그 방지)
     const partStep = total / gcdCalc(total, 100);
-    const part = partStep * randInt(rng, 1, total / partStep);
+    // 전체와 같은 part(«20명 중 20명») 는 너무 쉬워 빼고, 1 ~ (전체-1) 에서만 고른다
+    const part = partStep * randInt(rng, 1, Math.max(1, total / partStep - 1));
     const pct = (part / total) * 100;
     if (difficulty === 3) {
       // Multi-step: find percentage then calculate amount

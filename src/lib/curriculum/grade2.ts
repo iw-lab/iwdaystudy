@@ -520,8 +520,8 @@ export const grade2SpellingData: SpellingEntry[] = [
     explanation: "'나란히'는 부사로 'ㅎ'이 들어갑니다.",
   },
   {
-    q1: "조용히 듣세요.",
-    q2: "조용이 듣세요.",
+    q1: "조용히 들으세요.",
+    q2: "조용이 들으세요.",
     answer: 1,
     explanation: "'조용히'는 부사로 'ㅎ'이 들어갑니다.",
   },
@@ -829,10 +829,10 @@ export const grade2VocabData: VocabEntry[] = [
   { meanings: ["운동할 때 신어요", "끈이 있어요"], answer: "운동화" },
   // --- 신규 45개 (기존) ---
   {
-    meanings: ["음식을 데워요", "전자레인지라고도 해요"],
+    meanings: ["음식을 데워요", "버튼을 누르면 빙글빙글 돌아요"],
     answer: "전자레인지",
   },
-  { meanings: ["빨래를 해줘요", "세탁기라고 해요"], answer: "세탁기" },
+  { meanings: ["빨래를 해줘요", "옷을 넣고 돌려요"], answer: "세탁기" },
   { meanings: ["방을 시원하게 해요", "여름에 사용해요"], answer: "에어컨" },
   {
     meanings: ["텔레비전을 줄여서 부르는 말", "프로그램을 봐요"],
@@ -881,7 +881,7 @@ export const grade2VocabData: VocabEntry[] = [
   { meanings: ["바다에서 나요", "짭짤해요"], answer: "소금" },
   { meanings: ["달콤한 맛이 나요", "카카오로 만들어요"], answer: "초콜릿" },
   { meanings: ["종이를 묶을 때 써요", "둥글게 생겼어요"], answer: "고무줄" },
-  { meanings: ["무언가를 잴 때 써요", "cm, m를 알려줘요"], answer: "자" },
+  { meanings: ["무언가를 잴 때 써요", "눈금으로 길이를 알려줘요"], answer: "자" },
   {
     meanings: ["아이들이 노는 곳", "그네와 미끄럼틀이 있어요"],
     answer: "놀이터",
@@ -931,7 +931,7 @@ export const grade2VocabData: VocabEntry[] = [
     answer: "새싹",
   },
   { meanings: ["꽃가루를 옮기는 곤충", "꿀을 모아요"], answer: "꿀벌" },
-  { meanings: ["밤에 날아다니는 포유류", "초음파를 사용해요"], answer: "박쥐" },
+  { meanings: ["밤에 날아다니는 동물", "동굴에 거꾸로 매달려 자요"], answer: "박쥐" },
   {
     meanings: ["바다 밑에 사는 별 모양 동물", "다섯 팔이 있어요"],
     answer: "불가사리",
@@ -944,18 +944,18 @@ export const grade2VocabData: VocabEntry[] = [
   { meanings: ["가시가 많은 동물", "공처럼 몸을 말아요"], answer: "고슴도치" },
   { meanings: ["줄무늬가 있는 작은 동물", "나무를 잘 타요"], answer: "다람쥐" },
   { meanings: ["검은색과 하얀색 동물", "대나무를 먹어요"], answer: "판다" },
-  { meanings: ["유칼립투스를 먹어요", "나무에서 살아요"], answer: "코알라" },
+  { meanings: ["나뭇잎을 먹어요", "나무에서 살아요"], answer: "코알라" },
   // 사회/문화 관련
   { meanings: ["나라를 상징하는 깃발", "게양대에 걸어요"], answer: "국기" },
   {
     meanings: ["나라를 대표하는 노래", "경기 시작 전에 불러요"],
     answer: "국가",
   },
-  { meanings: ["법을 만드는 곳", "국회의원이 일해요"], answer: "국회" },
-  { meanings: ["나라를 다스리는 사람", "국민이 뽑아요"], answer: "대통령" },
+  { meanings: ["법을 만드는 곳", "나라의 법을 정하는 기관이에요"], answer: "국회" },
+  { meanings: ["나라를 이끄는 사람", "국민이 뽑아요"], answer: "대통령" },
   { meanings: ["시민들이 사는 곳", "건물이 많아요"], answer: "도시" },
   { meanings: ["농사를 짓는 곳", "들과 산이 있어요"], answer: "시골" },
-  { meanings: ["여러 나라 사람이 사는 곳", "큰 도시에요"], answer: "국제도시" },
+  { meanings: ["여러 나라 사람이 사는 곳", "큰 도시예요"], answer: "국제도시" },
   { meanings: ["전통 의상이에요", "명절에 입어요"], answer: "한복" },
   { meanings: ["명절에 어른께 하는 인사", "돈을 받기도 해요"], answer: "세배" },
   { meanings: ["가을 명절이에요", "송편을 먹어요"], answer: "추석" },
@@ -1014,13 +1014,13 @@ export const grade2VocabData: VocabEntry[] = [
   { meanings: ["물건을 고정해요", "작은 금속이에요"], answer: "못" },
   { meanings: ["못을 박을 때 사용해요", "무거워요"], answer: "망치" },
   { meanings: ["나사를 돌려요", "끝이 납작해요"], answer: "드라이버" },
-  { meanings: ["물건을 측정해요", "눈금이 있어요"], answer: "자" },
-  { meanings: ["종이를 고정해요", "작은 집게 모양이에요"], answer: "클립" },
+  { meanings: ["길이를 재요", "눈금이 있어요"], answer: "자" },
+  { meanings: ["종이를 고정해요", "철사를 구부려 만들어요"], answer: "클립" },
   // 건물/시설
-  { meanings: ["다리를 건너요", "강 위에 있어요"], answer: "다리" },
+  { meanings: ["건너다니게 놓은 길이에요", "강 위에 있어요"], answer: "다리" },
   { meanings: ["높은 건물이에요", "여러 층이 있어요"], answer: "빌딩" },
   { meanings: ["기도하는 곳이에요", "종교 시설이에요"], answer: "교회" },
-  { meanings: ["물건을 보관하는 곳", "큰 창고에요"], answer: "창고" },
+  { meanings: ["물건을 보관하는 곳", "짐을 넣어 두어요"], answer: "창고" },
   { meanings: ["축구를 하는 넓은 곳", "관중석이 있어요"], answer: "경기장" },
   { meanings: ["그림과 조각을 보는 곳", "조용히 감상해요"], answer: "미술관" },
   {
@@ -1072,7 +1072,7 @@ export const grade2VocabData: VocabEntry[] = [
   },
   { meanings: ["해야 할 일의 목록", "순서대로 해요"], answer: "계획" },
   { meanings: ["지켜야 하는 것", "약속처럼 따라야 해요"], answer: "규칙" },
-  { meanings: ["함께 정한 약속", "반드시 지켜야 해요"], answer: "약속" },
+  { meanings: ["앞으로 하기로 서로 정한 것", "반드시 지켜야 해요"], answer: "약속" },
   { meanings: ["새로운 것을 아는 것", "배움을 통해 얻어요"], answer: "지식" },
   { meanings: ["다른 사람과 함께하는 것", "혼자가 아니에요"], answer: "협동" },
   { meanings: ["서로 겨루는 것", "운동이나 시합에서 해요"], answer: "경쟁" },
@@ -1081,11 +1081,11 @@ export const grade2VocabData: VocabEntry[] = [
   { meanings: ["다시 사용하는 것", "쓰레기를 줄여요"], answer: "재활용" },
   { meanings: ["자연을 지키는 것", "동식물을 보호해요"], answer: "환경보호" },
   {
-    meanings: ["깨끗한 에너지", "바람이나 태양으로 만들어요"],
+    meanings: ["환경을 덜 더럽히는 에너지", "바람이나 태양으로 만들어요"],
     answer: "친환경 에너지",
   },
-  { meanings: ["물을 아끼는 것", "수도꼭지를 잘 잠그어요"], answer: "절수" },
-  { meanings: ["전기를 아끼는 것", "안 쓰는 전등을 끄어요"], answer: "절전" },
+  { meanings: ["물을 아끼는 것", "수도꼭지를 잘 잠가요"], answer: "절수" },
+  { meanings: ["전기를 아끼는 것", "안 쓰는 전등을 꺼요"], answer: "절전" },
   // 교통 관련
   { meanings: ["차를 세우는 곳", "주차비를 내요"], answer: "주차장" },
   { meanings: ["신호등이 있는 곳", "차가 멈추거나 가요"], answer: "교차로" },
@@ -1142,10 +1142,10 @@ export const grade2VocabData: VocabEntry[] = [
   { meanings: ["화가 나는 마음", "얼굴이 빨개져요"], answer: "분노" },
   { meanings: ["두려운 마음", "무서울 때 느껴요"], answer: "공포" },
   { meanings: ["즐거운 마음", "기분이 좋아요"], answer: "기쁨" },
-  { meanings: ["걱정되는 마음", "마음이 불안해요"], answer: "걱정" },
+  { meanings: ["잘못될까 봐 마음 쓰이는 것", "마음이 불안해요"], answer: "걱정" },
   { meanings: ["부러운 마음", "다른 사람이 좋아 보여요"], answer: "부러움" },
-  { meanings: ["의심하는 마음", "믿지 못하는 것이에요"], answer: "의심" },
-  { meanings: ["자신감 있는 모습", "당당해요"], answer: "자신감" },
+  { meanings: ["정말인지 아닌지 못 믿는 마음", "믿지 못하는 것이에요"], answer: "의심" },
+  { meanings: ["스스로 잘할 수 있다고 믿는 마음", "당당해요"], answer: "자신감" },
   { meanings: ["참을성 있는 모습", "기다릴 줄 알아요"], answer: "인내심" },
   { meanings: ["다른 사람을 배려하는 마음", "친절해요"], answer: "배려심" },
   { meanings: ["진실만을 말하는 것", "거짓을 말하지 않아요"], answer: "정직" },
@@ -1154,21 +1154,21 @@ export const grade2VocabData: VocabEntry[] = [
   { meanings: ["해가 뜨거운 계절", "6~8월이에요"], answer: "여름" },
   { meanings: ["나뭇잎이 물드는 계절", "9~11월이에요"], answer: "가을" },
   { meanings: ["눈이 오는 계절", "12~2월이에요"], answer: "겨울" },
-  { meanings: ["물이 하늘로 올라가는 것", "수증기가 돼요"], answer: "증발" },
+  { meanings: ["물이 수증기가 되어 날아가는 것", "수증기가 돼요"], answer: "증발" },
   {
     meanings: ["수증기가 물방울이 되는 것", "구름이 만들어져요"],
     answer: "응결",
   },
-  { meanings: ["물이 얼어서 되는 것", "0도에서 일어나요"], answer: "결빙" },
+  { meanings: ["물이 얼어붙는 것", "아주 추울 때 일어나요"], answer: "결빙" },
   {
-    meanings: ["빛이 물체에 부딪히는 것", "거울에서 일어나요"],
+    meanings: ["빛이 물체에 부딪혀 되돌아오는 것", "거울에서 일어나요"],
     answer: "반사",
   },
   {
     meanings: ["식물이 빛으로 양분을 만드는 것", "잎에서 일어나요"],
     answer: "광합성",
   },
-  { meanings: ["공기의 움직임", "바람이에요"], answer: "바람" },
+  { meanings: ["공기의 움직임", "나뭇잎을 흔들어요"], answer: "바람" },
   // 교통수단
   { meanings: ["레일 위를 달리는 것", "칙칙폭폭 소리가 나요"], answer: "기차" },
   {
@@ -1178,7 +1178,7 @@ export const grade2VocabData: VocabEntry[] = [
   { meanings: ["하늘을 나는 큰 것", "제트 엔진이 있어요"], answer: "비행기" },
   { meanings: ["땅 밑을 달리는 것", "지하 역에서 타요"], answer: "지하철" },
   {
-    meanings: ["고속도로를 빠르게 달려요", "KTX라고도 해요"],
+    meanings: ["철길 위를 아주 빠르게 달려요", "우리나라 대표 고속 열차예요"],
     answer: "고속열차",
   },
   { meanings: ["사람을 태우는 작은 차", "미터기가 있어요"], answer: "택시" },
@@ -1255,7 +1255,7 @@ export const grade2VocabData: VocabEntry[] = [
   { meanings: ["물을 아끼는 것", "수도꼭지를 잠가요"], answer: "절수" },
   { meanings: ["자연을 보호하는 것", "동식물을 지켜요"], answer: "환경보호" },
   { meanings: ["나무를 심는 것", "숲을 만들어요"], answer: "식목" },
-  { meanings: ["쓰레기를 줄이는 것", "3R이라고도 해요"], answer: "줄이기" },
+  { meanings: ["쓰레기를 줄이는 것", "물건을 덜 사고 아껴 써요"], answer: "줄이기" },
   {
     meanings: ["쓰지 않는 물건을 다시 쓰는 것", "기부하기도 해요"],
     answer: "재사용",
@@ -1270,7 +1270,7 @@ export const grade2VocabData: VocabEntry[] = [
   { meanings: ["공을 골대에 넣는 운동", "발로 차요"], answer: "축구" },
   { meanings: ["공을 바구니에 넣는 운동", "손으로 던져요"], answer: "농구" },
   {
-    meanings: ["라켓으로 공을 치는 운동", "네트 넘어로 보내요"],
+    meanings: ["라켓으로 공을 치는 운동", "네트 너머로 보내요"],
     answer: "배드민턴",
   },
   { meanings: ["얼음 위에서 타는 운동", "겨울에 해요"], answer: "스케이트" },
@@ -1300,7 +1300,7 @@ export const grade2VocabData: VocabEntry[] = [
     answer: "창의력",
   },
   { meanings: ["남을 아끼는 마음", "따뜻해요"], answer: "사랑" },
-  { meanings: ["고마운 마음을 표현하는 것", "감사해요"], answer: "감사" },
+  { meanings: ["고마운 마음을 표현하는 것", "고맙다고 말해요"], answer: "감사" },
   { meanings: ["서로 믿는 것", "친구 사이에 중요해요"], answer: "신뢰" },
   { meanings: ["남을 도와주는 것", "어려운 사람을 도와요"], answer: "봉사" },
   // 건강/위생
@@ -1337,7 +1337,7 @@ export const grade2VocabData: VocabEntry[] = [
   { meanings: ["무게를 재는 단위", "저울로 재요"], answer: "그램" },
   { meanings: ["더 무거운 무게의 단위", "1000g이에요"], answer: "킬로그램" },
   { meanings: ["물의 양을 재는 단위", "1000mL예요"], answer: "리터" },
-  { meanings: ["시간의 단위", "60분이에요"], answer: "시간" },
+  { meanings: ["어떤 때부터 어떤 때까지의 길이", "한 ○○은 60분이에요"], answer: "시간" },
   { meanings: ["시간의 작은 단위", "60초예요"], answer: "분" },
   { meanings: ["시간의 가장 작은 단위", "째깍 한 번이에요"], answer: "초" },
   { meanings: ["온도를 나타내는 단위", "섭씨로 재요"], answer: "도" },
@@ -2669,12 +2669,12 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
   { text: "지구는 ___ 모양이다.", answer: "둥근", category: "과학" },
   { text: "우리나라 돈의 단위는 ___이다.", answer: "원", category: "사회" },
   {
-    text: "비가 오기 전에 하늘에 ___이 끼낀다.",
+    text: "비가 오기 전에 하늘에 ___이 낀다.",
     answer: "구름",
     category: "자연",
   },
   {
-    text: "초록색 잎에서 햇빛으로 양분을 만드는 것을 ___이라(라) 한다.",
+    text: "초록색 잎에서 햇빛으로 양분을 만드는 것을 ___이라 한다.",
     answer: "광합성",
     category: "과학",
   },
@@ -2703,7 +2703,7 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
   },
   { text: "올챙이는 자라면 ___가 된다.", answer: "개구리", category: "과학" },
   { text: "거미의 다리는 ___개이다.", answer: "8", category: "과학" },
-  { text: "낙타에는 ___ 위에 혹이 있다.", answer: "등", category: "동물" },
+  { text: "낙타는 ___ 위에 혹이 있다.", answer: "등", category: "동물" },
   { text: "펭귄은 날지 못하는 ___이다.", answer: "새", category: "동물" },
   { text: "코알라는 ___ 잎을 먹는다.", answer: "유칼립투스", category: "동물" },
   { text: "판다의 주식은 ___이다.", answer: "대나무", category: "동물" },
@@ -2797,7 +2797,7 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
   },
   { text: "500원짜리 동전 2개는 ___원이다.", answer: "1000", category: "수학" },
   {
-    text: "온도를 재는 도구를 ___이라고(라고) 한다.",
+    text: "온도를 재는 도구를 ___라고 한다.",
     answer: "온도계",
     category: "과학",
   },
@@ -2959,7 +2959,7 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
     category: "역사",
   },
   {
-    text: "우리나라 최초의 금속 활자는 세계에서 가장 ___것이다.",
+    text: "우리나라 최초의 금속 활자는 세계에서 가장 ___ 것이다.",
     answer: "오래된",
     category: "역사",
   },
@@ -2987,7 +2987,7 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
   },
   {
     text: "세계에서 사람이 가장 많은 나라는 ___이다.",
-    answer: "중국",
+    answer: "인도",
     category: "지리",
   },
   { text: "일본의 수도는 ___이다.", answer: "도쿄", category: "지리" },
@@ -3160,11 +3160,11 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
     category: "상식",
   },
   // === 신규 상식 156개 추가 ===
-  { text: "전기를 발명한 사람은 ___이다.", answer: "에디슨", category: "과학" },
+  { text: "오래 켜지는 백열전구를 만들어 널리 퍼뜨린 사람은 ___이다.", answer: "에디슨", category: "과학" },
   { text: "전화기를 발명한 사람은 ___이다.", answer: "벨", category: "과학" },
   {
     text: "우리 몸에서 가장 단단한 것은 ___이다.",
-    answer: "이빨",
+    answer: "치아",
     category: "과학",
   },
   {
@@ -3211,13 +3211,13 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
   { text: "부산은 우리나라 ___쪽에 있다.", answer: "남", category: "지리" },
   { text: "인천은 우리나라 ___쪽에 있다.", answer: "서", category: "지리" },
   {
-    text: "강원도에는 ___가 높은 산이 많다.",
+    text: "강원도에는 ___이 높은 산이 많다.",
     answer: "태백산맥",
     category: "지리",
   },
   {
     text: "세계에서 인구가 가장 많은 나라는 ___이다.",
-    answer: "중국",
+    answer: "인도",
     category: "지리",
   },
   { text: "일본의 수도는 ___이다.", answer: "도쿄", category: "지리" },
@@ -3388,7 +3388,7 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
     answer: "나물",
     category: "상식",
   },
-  { text: "냉면은 ___한 국수 요리이다.", answer: "차가운", category: "상식" },
+  { text: "냉면은 ___ 국수 요리이다.", answer: "차가운", category: "상식" },
   { text: "된장찌개의 주재료는 ___이다.", answer: "된장", category: "상식" },
   {
     text: "순두부찌개에는 부드러운 ___가 들어간다.",
@@ -3397,7 +3397,7 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
   },
   { text: "호떡 안에는 ___이 들어 있다.", answer: "설탕", category: "상식" },
   { text: "떡볶이의 주재료는 ___이다.", answer: "떡", category: "상식" },
-  { text: "잔치국수에 넣는 것은 ___이다.", answer: "국수", category: "상식" },
+  { text: "잔치 때 많이 먹는, 밀가루 반죽을 가늘고 길게 뽑아 만든 음식은 ___이다.", answer: "국수", category: "상식" },
   {
     text: "주먹밥은 ___을 둥글게 뭉친 것이다.",
     answer: "밥",
@@ -3430,10 +3430,10 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
     category: "상식",
   },
   { text: "철은 물에 오래 두면 ___이 생긴다.", answer: "녹", category: "상식" },
-  { text: "종이는 물에 넣으면 ___어진다.", answer: "젖", category: "상식" },
+  { text: "종이는 물에 넣으면 ___는다.", answer: "젖", category: "상식" },
   { text: "유리는 깨지기 ___다.", answer: "쉽", category: "상식" },
   {
-    text: "플라스틱은 잘 ___지지 않아 환경에 나쁘다.",
+    text: "플라스틱은 잘 ___지 않아 환경에 부담을 줄 수 있다.",
     answer: "썩",
     category: "상식",
   },
@@ -3445,7 +3445,7 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
     category: "상식",
   },
   {
-    text: "학교에서 배운 내용을 복습하는 것은 ___이다.",
+    text: "집에서 학교 공부와 관련해 하도록 내 주는 과제는 ___이다.",
     answer: "숙제",
     category: "상식",
   },
@@ -3483,19 +3483,19 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
   },
   // 기술
   {
-    text: "텔레비전은 ___와 소리를 보여준다.",
+    text: "텔레비전은 ___을 보여 주고 소리를 들려준다.",
     answer: "영상",
     category: "상식",
   },
   { text: "라디오는 ___를 들려준다.", answer: "소리", category: "상식" },
-  { text: "컴퓨터의 화면을 ___라 한다.", answer: "모니터", category: "상식" },
+  { text: "컴퓨터의 영상을 보여 주는 장치를 ___라 한다.", answer: "모니터", category: "상식" },
   {
-    text: "컴퓨터에 글을 입력하는 것을 ___라 한다.",
+    text: "컴퓨터에 글을 입력할 때 사용하는 장치를 ___라 한다.",
     answer: "키보드",
     category: "상식",
   },
   {
-    text: "컴퓨터에서 화면을 조작하는 것을 ___라 한다.",
+    text: "책상 위에서 손으로 움직여 컴퓨터 화면의 화살표를 옮기는 장치를 ___라 한다.",
     answer: "마우스",
     category: "상식",
   },
@@ -3522,17 +3522,17 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
   { text: "GPS는 ___를 알려 주는 기술이다.", answer: "위치", category: "상식" },
   // 건강/영양
   {
-    text: "비타민 C가 많은 과일은 ___이다.",
-    answer: "오렌지",
+    text: "겨울에 많이 먹는, 껍질을 손으로 쉽게 까는 주황색 과일로 비타민 C가 많은 것은 ___이다.",
+    answer: "귤",
     category: "상식",
   },
   {
-    text: "뼈를 튼튼하게 하려면 ___을 마셔야 한다.",
+    text: "젖소의 젖으로, 뼈 건강에 필요한 칼슘이 많은 하얀 음료는 ___이다.",
     answer: "우유",
     category: "상식",
   },
-  { text: "눈 건강에 좋은 채소는 ___이다.", answer: "당근", category: "상식" },
-  { text: "철분이 많은 채소는 ___이다.", answer: "시금치", category: "상식" },
+  { text: "토끼가 좋아하는 주황색 뿌리채소로, 눈 건강에 좋은 것은 ___이다.", answer: "당근", category: "상식" },
+  { text: "뽀빠이가 먹고 힘이 세지는, 철분이 많은 초록 잎채소는 ___이다.", answer: "시금치", category: "상식" },
   {
     text: "운동 후에는 ___를 충분히 마셔야 한다.",
     answer: "물",
@@ -3566,7 +3566,7 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "계절이 바뀌는 것은 지구가 ___하기 때문이다.",
+    text: "계절이 바뀌는 것은 지구의 자전축이 기울어진 채 태양 주위를 ___하기 때문이다.",
     answer: "공전",
     category: "과학",
   },
@@ -3576,7 +3576,7 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   { text: "북극성은 항상 ___쪽을 가리킨다.", answer: "북", category: "과학" },
-  { text: "태양은 ___이라는(라는) 별이다.", answer: "항성", category: "과학" },
+  { text: "태양은 ___이라는 별이다.", answer: "항성", category: "과학" },
   {
     text: "달은 지구 주위를 약 ___일에 한 바퀴 돈다.",
     answer: "28",
@@ -3605,13 +3605,13 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "교통사고가 나면 ___번에 전화한다.",
+    text: "교통사고로 경찰의 도움이 필요하면 ___에 신고한다.",
     answer: "112",
     category: "교통안전",
   },
   {
     text: "음식을 먹기 전에 ___를 확인한다.",
-    answer: "유통기한",
+    answer: "소비기한",
     category: "건강안전",
   },
   {
@@ -3652,7 +3652,7 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "화재안전",
   },
   {
-    text: "소화기를 사용할 때 안전핀을 ___야 한다.",
+    text: "소화기를 사용할 때 안전핀을 ___아야 한다.",
     answer: "뽑",
     category: "화재안전",
   },
@@ -3773,8 +3773,8 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "재난안전",
   },
   {
-    text: "지진이 나면 가스 밸브를 ___아야 한다.",
-    answer: "잠그",
+    text: "지진이 멈추면 가스 밸브를 ___야 한다.",
+    answer: "잠가",
     category: "재난안전",
   },
   {
@@ -3856,8 +3856,8 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "화재안전",
   },
   {
-    text: "가정용 소화기는 ___ 년마다 점검해야 한다.",
-    answer: "1",
+    text: "가정용 소화기는 압력계 바늘이 ___색 칸에 있는지 확인한다.",
+    answer: "초록",
     category: "화재안전",
   },
   {
@@ -3891,8 +3891,8 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "화재안전",
   },
   {
-    text: "옷에 불이 붙으면 멈추고 엎드려서 ___어야 한다.",
-    answer: "구르",
+    text: "옷에 불이 붙으면 멈추고 엎드려서 ___야 한다.",
+    answer: "굴러",
     category: "화재안전",
   },
   {
@@ -3902,8 +3902,8 @@ export const grade2SafetyData: SafetyEntry[] = [
   },
   // 학교안전 추가
   {
-    text: "무거운 책상을 옮길 때 ___와 함께 해야 한다.",
-    answer: "친구",
+    text: "무거운 책상을 옮길 때는 ___께 도움을 요청한다.",
+    answer: "선생님",
     category: "학교안전",
   },
   {
@@ -3927,7 +3927,7 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "학교안전",
   },
   {
-    text: "구기 운동 시 주변에 ___를 확인해야 한다.",
+    text: "구기 운동을 할 때 주변에 ___이 있는지 확인해야 한다.",
     answer: "사람",
     category: "학교안전",
   },
@@ -3942,7 +3942,7 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "학교안전",
   },
   {
-    text: "학교에서 화학 약품은 ___만 만질 수 있다.",
+    text: "학교에서 화학 약품은 ___의 지시에 따라 안전하게 다루어야 한다.",
     answer: "선생님",
     category: "학교안전",
   },
@@ -3998,8 +3998,8 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "높은 곳에 있는 물건은 ___을 밟고 가져온다.",
-    answer: "발판",
+    text: "높은 곳에 있는 물건이 필요하면 ___께 도움을 요청한다.",
+    answer: "어른",
     category: "생활안전",
   },
   {
@@ -4013,7 +4013,7 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "잠금장치가 없는 냉장고에 ___면 안 된다.",
+    text: "아이들은 놀다가 냉장고 안에 ___면 안 된다.",
     answer: "들어가",
     category: "생활안전",
   },
@@ -4069,7 +4069,7 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "건강안전",
   },
   {
-    text: "눈이 피로하면 먼 곳을 ___아 보면 좋다.",
+    text: "눈이 피로하면 먼 곳을 ___ 보면 좋다.",
     answer: "바라봐",
     category: "건강안전",
   },
@@ -4106,7 +4106,7 @@ export const grade2SafetyData: SafetyEntry[] = [
   },
   // 물놀이안전 추가
   {
-    text: "물에 들어간 후 소름이 돋거나 춥다면 ___해야 한다.",
+    text: "물에 들어간 후 소름이 돋거나 춥다면 물에서 ___ 쉬어야 한다.",
     answer: "나와",
     category: "물놀이안전",
   },
@@ -4126,8 +4126,8 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "물놀이안전",
   },
   {
-    text: "이안류(역류)가 있을 때는 옆으로 ___어야 한다.",
-    answer: "헤엄쳐 나가",
+    text: "이안류에 휩쓸리면 해변과 나란한 ___으로 헤엄쳐 빠져나와야 한다.",
+    answer: "옆 방향",
     category: "물놀이안전",
   },
   // 재난안전 추가
@@ -4189,8 +4189,8 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "교통안전",
   },
   {
-    text: "주차된 차 사이에서 뛰어나오면 ___해서 위험하다.",
-    answer: "안 보여",
+    text: "주차된 차 사이에서 뛰어나오면 운전자에게 ___ 위험하다.",
+    answer: "잘 안 보여서",
     category: "교통안전",
   },
   {
@@ -4204,8 +4204,8 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "교통안전",
   },
   {
-    text: "전동킥보드는 만 ___세 이상만 탈 수 있다.",
-    answer: "13",
+    text: "전동킥보드는 운전면허가 있는 ___만 탈 수 있다.",
+    answer: "어른",
     category: "교통안전",
   },
   {
@@ -4225,8 +4225,8 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "화재안전",
   },
   {
-    text: "화재 시 옷에 불이 붙으면 멈추고 엎드려 ___한다.",
-    answer: "구르기",
+    text: "화재 시 옷에 불이 붙으면 멈추고 엎드려 ___다.",
+    answer: "구른",
     category: "화재안전",
   },
   {
@@ -4246,7 +4246,7 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "화재안전",
   },
   {
-    text: "화재 예방을 위해 콘센트에 ___를 꽂지 않는다.",
+    text: "화재 예방을 위해 한 콘센트에 여러 플러그를 ___으로 연결하지 않는다.",
     answer: "문어발식",
     category: "화재안전",
   },
@@ -4297,7 +4297,7 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "물놀이안전",
   },
   {
-    text: "물놀이 중 ___이 나면 바로 물에서 나와야 한다.",
+    text: "물놀이 중 ___가 나면 바로 물에서 나와야 한다.",
     answer: "추위",
     category: "물놀이안전",
   },
@@ -4318,12 +4318,12 @@ export const grade2SafetyData: SafetyEntry[] = [
   },
   // 학교안전
   {
-    text: "급식 시간에 뛰면 ___한 음식에 부딪힐 수 있다.",
+    text: "급식 시간에 뛰면 ___ 음식에 부딪힐 수 있다.",
     answer: "뜨거운",
     category: "학교안전",
   },
   {
-    text: "교실에서 물을 쏟으면 바닥이 ___해진다.",
+    text: "교실에서 물을 쏟으면 바닥이 ___진다.",
     answer: "미끄러워",
     category: "학교안전",
   },
@@ -4343,12 +4343,12 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "학교안전",
   },
   {
-    text: "옥상에 올라가면 ___해서 위험하다.",
+    text: "옥상에 올라가면 ___서 위험하다.",
     answer: "떨어질 수 있어",
     category: "학교안전",
   },
   {
-    text: "체육 시간에 악세서리를 하면 ___할 수 있다.",
+    text: "체육 시간에 액세서리를 하면 ___ 수 있다.",
     answer: "다칠",
     category: "학교안전",
   },
@@ -4414,8 +4414,8 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "길을 잃으면 그 자리에서 움직이지 말고 ___해야 한다.",
-    answer: "기다리기",
+    text: "길을 잃으면 그 자리에서 움직이지 말고 ___야 한다.",
+    answer: "기다려",
     category: "생활안전",
   },
   // 건강안전
@@ -4430,7 +4430,7 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "건강안전",
   },
   {
-    text: "잠을 충분히 자면 ___가 잘 된다.",
+    text: "잠을 충분히 자면 ___이 잘 된다.",
     answer: "성장",
     category: "건강안전",
   },
@@ -4476,7 +4476,7 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "재난안전",
   },
   {
-    text: "지진 후에는 ___가 더 올 수 있으므로 주의한다.",
+    text: "지진 후에는 ___이 더 올 수 있으므로 주의한다.",
     answer: "여진",
     category: "재난안전",
   },
@@ -4486,7 +4486,7 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "재난안전",
   },
   {
-    text: "태풍 시 간판이나 ___가 날아올 수 있다.",
+    text: "태풍 시 간판이나 ___이 날아올 수 있다.",
     answer: "물건",
     category: "재난안전",
   },
@@ -4496,8 +4496,8 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "재난안전",
   },
   {
-    text: "폭우 시 ___이나 하천에 가면 안 된다.",
-    answer: "지하",
+    text: "폭우 시 ___나 하천에 가면 안 된다.",
+    answer: "지하도",
     category: "재난안전",
   },
   {
@@ -4511,12 +4511,12 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "재난안전",
   },
   {
-    text: "재난 문자를 받으면 ___을 따라야 한다.",
+    text: "재난 문자를 받으면 ___를 따라야 한다.",
     answer: "안내",
     category: "재난안전",
   },
   {
-    text: "비상 배낭에는 물, 식량, ___가 있어야 한다.",
+    text: "비상 배낭에는 물, 식량, ___이 있어야 한다.",
     answer: "응급약품",
     category: "재난안전",
   },
@@ -4594,7 +4594,7 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "식품안전",
   },
   {
-    text: "음식 알레르기가 있으면 ___을 확인하고 먹어야 한다.",
+    text: "음식 알레르기가 있으면 ___를 확인하고 먹어야 한다.",
     answer: "재료",
     category: "식품안전",
   },
@@ -4610,7 +4610,7 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "벌집을 건드리면 벌에게 ___을 수 있다.",
+    text: "벌집을 건드리면 벌에게 ___ 수 있다.",
     answer: "쏘일",
     category: "생활안전",
   },
@@ -4942,13 +4942,13 @@ export const grade2KoreanData: KnowledgeEntry[] = [
     category: "국어",
   },
   {
-    text: "뜻이 비슷한 말을 ___어라고 해요.",
-    answer: "비슷한 말(유의)",
+    text: "뜻이 비슷한 말을 ___이라고 해요.",
+    answer: "비슷한 말",
     category: "국어",
   },
   {
-    text: "뜻이 반대인 말을 ___어라고 해요.",
-    answer: "반대말(반의)",
+    text: "뜻이 반대인 말을 ___이라고 해요.",
+    answer: "반대말",
     category: "국어",
   },
   { text: "'크다'의 반대말은 '___'이에요.", answer: "작다", category: "국어" },
@@ -5181,7 +5181,7 @@ export const grade2KoreanData: KnowledgeEntry[] = [
     category: "읽기",
   },
   {
-    text: "그림만으로 이야기를 전하는 책을 ___이라고(라고) 해요.",
+    text: "그림을 중심으로 이야기를 전하는 책을 ___이라고 해요.",
     answer: "그림책",
     category: "읽기",
   },
@@ -5249,8 +5249,8 @@ export const grade2KoreanData: KnowledgeEntry[] = [
     category: "쓰기",
   },
   {
-    text: "자기가 겪은 일의 느낌을 쓰는 글을 ___라고 해요.",
-    answer: "감상문",
+    text: "책을 읽고 느낀 점을 쓰는 글을 ___이라고 해요.",
+    answer: "독서 감상문",
     category: "쓰기",
   },
   {
@@ -5300,7 +5300,7 @@ export const grade2KoreanData: KnowledgeEntry[] = [
     category: "말하기",
   },
   {
-    text: "여러 사람 앞에서 의견을 말하는 것을 ___라고 해요.",
+    text: "어떤 문제에 대해 서로 의견을 나누는 것을 ___이라고 해요.",
     answer: "토론",
     category: "말하기",
   },
@@ -5326,17 +5326,17 @@ export const grade2KoreanData: KnowledgeEntry[] = [
     category: "국어",
   },
   {
-    text: "'예쁘게', '빠르게'처럼 동사를 도와주는 말을 ___라고 해요.",
+    text: "'빨리', '매우'처럼 다른 말을 꾸며 주는 말을 ___라고 해요.",
     answer: "부사",
     category: "국어",
   },
   {
-    text: "문장을 이어주는 말 '그리고', '그러나', '그래서'를 ___라고 해요.",
-    answer: "접속사",
+    text: "'그리고', '그러나', '그래서'처럼 문장을 이어 주는 말을 ___이라고 해요.",
+    answer: "이어 주는 말",
     category: "국어",
   },
   {
-    text: "'이', '가', '은', '는'은 문장에서 주어를 나타내는 ___이에요.",
+    text: "'이', '가'처럼 낱말 뒤에 붙어 뜻을 더하는 말을 ___라고 해요.",
     answer: "조사",
     category: "국어",
   },
@@ -5425,13 +5425,13 @@ export const grade2CreativeData: KnowledgeEntry[] = [
     category: "미술",
   },
   {
-    text: "색을 섞지 않고 그대로 사용하는 색을 ___이라고(라고) 해요.",
+    text: "빨강, 노랑, 파랑처럼 다른 색을 섞어 만들지 않은 기본 색을 ___이라고 해요.",
     answer: "원색",
     category: "미술",
   },
   {
-    text: "물감에 물을 많이 타면 색이 ___아져요.",
-    answer: "연해(옅)",
+    text: "물감에 물을 많이 타면 색이 ___져요.",
+    answer: "연해",
     category: "미술",
   },
   {
@@ -5533,7 +5533,7 @@ export const grade2CreativeData: KnowledgeEntry[] = [
   },
   {
     text: "피아노 건반에서 검은 건반과 ___ 건반이 있어요.",
-    answer: "하얀",
+    answer: "흰",
     category: "음악",
   },
   {
@@ -5557,8 +5557,8 @@ export const grade2CreativeData: KnowledgeEntry[] = [
     category: "미술",
   },
   {
-    text: "건축물을 작게 만든 모형을 ___이라고(라고) 해요.",
-    answer: "미니어처",
+    text: "건물을 실제보다 작게 만든 것을 ___이라고 해요.",
+    answer: "모형",
     category: "만들기",
   },
   {
@@ -5576,9 +5576,9 @@ export const grade2CreativeData: KnowledgeEntry[] = [
     answer: "뜯",
     category: "음악",
   },
-  { text: "피리는 ___을 불어서 소리를 내요.", answer: "입", category: "음악" },
+  { text: "피리는 ___으로 김을 불어넣어 소리를 내요.", answer: "입", category: "음악" },
   {
-    text: "그림을 그릴 때 가장 먼저 하는 것은 ___이에요.",
+    text: "그림을 그릴 때 필요하면 먼저 ___을 그릴 수 있어요.",
     answer: "밑그림",
     category: "미술",
   },
@@ -5588,12 +5588,12 @@ export const grade2CreativeData: KnowledgeEntry[] = [
     category: "만들기",
   },
   {
-    text: "그림을 액자에 넣어 벽에 거는 것을 ___이라고(라고) 해요.",
+    text: "작품을 여러 사람이 볼 수 있도록 보여 주는 것을 ___라고 해요.",
     answer: "전시",
     category: "미술",
   },
   {
-    text: "음악회에서 관객이 박수를 치는 것을 ___이라고(라고) 해요.",
+    text: "공연이 끝나고 관객이 크게 손뼉을 치며 칭찬하는 것을 ___라고 해요.",
     answer: "박수갈채",
     category: "음악",
   },
@@ -5650,12 +5650,12 @@ export const grade2CreativeData: KnowledgeEntry[] = [
     category: "미술",
   },
   {
-    text: "붓에 물감을 많이 묻히면 색이 ___해져요.",
+    text: "물감에 물을 적게 섞으면 색이 ___해질 수 있어요.",
     answer: "진",
     category: "미술",
   },
   {
-    text: "붓에 물감을 적게 묻히면 색이 ___해져요.",
+    text: "물감에 물을 많이 섞으면 색이 ___해질 수 있어요.",
     answer: "연",
     category: "미술",
   },
@@ -5665,17 +5665,17 @@ export const grade2CreativeData: KnowledgeEntry[] = [
     category: "미술",
   },
   {
-    text: "프로타주는 물체 위에 종이를 놓고 ___해서 무늬를 얻는 기법이에요.",
+    text: "울퉁불퉁한 물체 위에 종이를 놓고 ___ 무늬를 나타낼 수 있어요.",
     answer: "문질러",
     category: "미술",
   },
   {
-    text: "스텐실은 모양을 오려내고 그 위에 색을 ___하는 기법이에요.",
+    text: "종이에 모양을 오려 낸 뒤 그 위에 색을 ___해 무늬를 만들 수 있어요.",
     answer: "칠",
     category: "미술",
   },
   // 색 이론 심화
-  { text: "보색은 서로 ___ 색이에요.", answer: "반대", category: "미술" },
+  { text: "보색은 색상환에서 서로 ___ 보는 색이에요.", answer: "마주", category: "미술" },
   { text: "빨강의 보색은 ___이에요.", answer: "초록", category: "미술" },
   { text: "파랑의 보색은 ___이에요.", answer: "주황", category: "미술" },
   { text: "노랑의 보색은 ___이에요.", answer: "보라", category: "미술" },
@@ -5838,8 +5838,8 @@ export const grade2CreativeData: KnowledgeEntry[] = [
   },
   // 체육/표현 활동
   {
-    text: "음악에 맞춰 자유롭게 움직이는 것을 ___ 표현이라고 해요.",
-    answer: "창의적 신체",
+    text: "음악에 맞춰 몸을 자유롭게 움직여 나타내는 것을 ___ 표현이라고 해요.",
+    answer: "신체",
     category: "체육",
   },
   {
@@ -5899,12 +5899,12 @@ export const grade2CreativeData: KnowledgeEntry[] = [
     category: "만들기",
   },
   {
-    text: "한쪽 발로 돌을 차면서 하는 놀이는 ___이에요.",
+    text: "칸을 그려 놓고 한 발로 뛰며 돌을 옮기는 놀이는 ___예요.",
     answer: "사방치기",
     category: "만들기",
   },
   {
-    text: "눈을 가리고 항아리를 깨는 놀이는 ___이에요.",
+    text: "눈을 가리고 막대기로 수박을 깨는 놀이는 ___예요.",
     answer: "수박 깨기",
     category: "만들기",
   },
@@ -5976,7 +5976,7 @@ export const grade2CreativeData: KnowledgeEntry[] = [
     category: "미술",
   },
   {
-    text: "포스터는 알리고 싶은 내용을 ___으로 표현하는 것이에요.",
+    text: "포스터는 알리고 싶은 내용을 ___로 표현하는 것이에요.",
     answer: "그림과 글",
     category: "미술",
   },
