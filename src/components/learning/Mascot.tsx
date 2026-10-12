@@ -94,11 +94,12 @@ export default function Mascot({ state = 'default', message, size = 80, classNam
   useEffect(() => {
     if (message) {
       setShowMessage(true);
-      const timer = setTimeout(() => setShowMessage(false), 5000);
+      // 작은(내비게이션) 마스코트는 말풍선이 문제·보기를 덮으니 짧게 띄운다
+      const timer = setTimeout(() => setShowMessage(false), size <= 50 ? 1800 : 5000);
       return () => clearTimeout(timer);
     }
     setShowMessage(false);
-  }, [message]);
+  }, [message, size]);
 
   const effectiveEyeScale = isBlinking ? 0.1 : config.eyeScale;
 
@@ -112,7 +113,7 @@ export default function Mascot({ state = 'default', message, size = 80, classNam
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -5, scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap rounded-2xl bg-white px-4 py-2 text-sm font-medium text-foreground shadow-lg border border-border z-10"
+            className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap rounded-2xl bg-white px-4 py-2 text-sm font-medium text-foreground shadow-lg border border-border z-10"
             style={{ maxWidth: 220 }}
           >
             <span style={{ whiteSpace: 'pre-wrap', wordBreak: 'keep-all' }}>{message}</span>
