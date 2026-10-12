@@ -113,10 +113,10 @@ export default function Mascot({ state = 'default', message, size = 80, classNam
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -5, scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap rounded-2xl bg-white px-4 py-2 text-sm font-medium text-foreground shadow-lg border border-border z-10"
-            style={{ maxWidth: 220 }}
+            className={`pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 whitespace-nowrap rounded-2xl bg-white font-medium text-foreground shadow-lg border border-border z-10 ${size <= 50 ? "mb-1 px-3 py-1 text-xs" : "mb-2 px-4 py-2 text-sm"}`}
+            style={{ maxWidth: size <= 50 ? undefined : 220 }}
           >
-            <span style={{ whiteSpace: 'pre-wrap', wordBreak: 'keep-all' }}>{message}</span>
+            <span style={{ whiteSpace: size <= 50 ? 'nowrap' : 'pre-wrap', wordBreak: 'keep-all' }}>{message}</span>
             <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent border-t-white" />
           </motion.div>
         )}
