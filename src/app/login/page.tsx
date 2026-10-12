@@ -206,7 +206,14 @@ export default function LoginPage() {
         </form>
       </CardContent>
 
-      <CardFooter className="flex justify-center">
+      <CardFooter className="flex flex-col items-center gap-3">
+        <Link
+          href="/"
+          data-testid="login-guest-link"
+          className="w-full rounded-xl border border-primary/40 bg-primary/5 px-4 py-3 text-center text-sm font-semibold text-primary hover:bg-primary/10"
+        >
+          계정 없이 바로 시작하기 (기록은 이 기기에 저장)
+        </Link>
         <p className="text-sm text-muted-foreground">
           아직 계정이 없으신가요?{" "}
           <Link

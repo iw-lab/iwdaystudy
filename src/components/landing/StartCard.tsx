@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { useAuthStore } from "@/stores/authStore";
-import { currentSemester, lastGuestChoice, readGuest, startGuest } from "@/lib/guest";
+import { currentSemester, hasAccountSession, lastGuestChoice, readGuest, startGuest } from "@/lib/guest";
 import { cn } from "@/lib/utils";
 
 const GRADES = [1, 2, 3, 4, 5, 6];
@@ -13,6 +13,8 @@ const GRADES = [1, 2, 3, 4, 5, 6];
 export function StartCard({ className }: { className?: string }) {
   const router = useRouter();
   const setUser = useAuthStore((s) => s.setUser);
+  const storeUser = useAuthStore((s) => s.user);
+  const [account, setAccount] = useState<{ name: string; role: string } | null>(null);
   const [grade, setGrade] = useState<number | null>(null);
   const [semester, setSemester] = useState<1 | 2>(1);
   const [resume, setResume] = useState<{ grade: number; semester: number } | null>(null);
@@ -20,6 +22,14 @@ export function StartCard({ className }: { className?: string }) {
 
   useEffect(() => {
     setSemester(currentSemester());
+    if (hasAccountSession()) {
+      try {
+        const u = JSON.parse(localStorage.getItem("araharu_current_user") || "null");
+        setAccount({ name: u?.name || "학급", role: u?.role || "student" });
+      } catch {
+        setAccount({ name: "학급", role: "student" });
+      }
+    }
     const g = readGuest();
     const c = g?.grade && g?.semester ? { grade: g.grade, semester: g.semester } : lastGuestChoice();
     if (c) {
@@ -38,6 +48,32 @@ export function StartCard({ className }: { className?: string }) {
       setError(e instanceof Error ? e.message : "시작하지 못했어요.");
     }
   };
+
+  if (account) {
+    const home = account.role === "teacher" ? "/teacher/" : account.role === "parent" ? "/parent/" : account.role === "admin" ? "/admin/" : "/student/";
+    return (
+      <div
+        data-guest-ready
+        data-account-session
+        className={cn(
+          "w-full rounded-3xl border border-border bg-card p-6 shadow-[0_12px_40px_-16px_rgba(16,24,40,0.18)] sm:p-8",
+          className,
+        )}
+      >
+        <h2 className="text-lg font-bold text-foreground">{storeUser?.name || account.name} 계정으로 로그인되어 있어요</h2>
+        <p className="mt-1 text-sm text-muted-foreground">지금까지의 기록 그대로 이어서 해요.</p>
+        <button
+          type="button"
+          data-testid="account-continue"
+          onClick={() => router.push(home)}
+          className="mt-6 flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-primary text-lg font-bold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          이어서 학습하기
+          <ArrowRight className="h-5 w-5" aria-hidden />
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div

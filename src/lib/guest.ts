@@ -70,9 +70,26 @@ export function lastGuestChoice(): { grade: number; semester: number } | null {
 }
 
 /** 게스트로 시작(또는 학년·학기 변경). 같은 기기면 같은 id 를 다시 써서 기록이 이어진다. */
+/** 학급·선생님 계정(손님 아님)으로 로그인돼 있나 */
+export function hasAccountSession(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    if (!localStorage.getItem("auth_token")) return false;
+    const u = JSON.parse(localStorage.getItem(CURRENT_USER_KEY) || "null");
+    return !!u?.id && !isGuestId(u.id);
+  } catch {
+    return false;
+  }
+}
+
 export function startGuest(grade: number, semester: number): Profile {
   if (!Number.isInteger(grade) || !(grade >= 1 && grade <= 6) || !(semester === 1 || semester === 2)) {
     throw new Error("학년(1~6)과 학기(1·2)를 골라 주세요.");
+  }
+  // 학급 계정으로 로그인된 기기에서는 손님으로 바꾸지 않는다 — 바꾸면 아래 ensureLocalDataOwnership 이
+  // 그 학생의 기기 기록(아직 서버에 못 올린 결과 포함)을 지운다(2026-10-13).
+  if (hasAccountSession()) {
+    throw new Error("학급 계정으로 로그인되어 있어요. 먼저 로그아웃한 뒤 시작해 주세요.");
   }
   let id = localStorage.getItem(GUEST_ID_KEY);
   if (!isGuestId(id)) {

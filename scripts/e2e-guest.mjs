@@ -44,6 +44,25 @@ for (const [vpName, vp] of Object.entries(VPS)) {
     return null;
   }, re.source, re.flags, scope);
 
+  // 학급 계정으로 로그인된 기기(웨일북)에서는 손님 시작이 나오면 안 된다 — 누르면 그 학생 기기 기록이 지워진다(2026-10-13)
+  {
+    await p.goto(BASE + '/login/', { waitUntil: 'load', timeout: 120000 });
+    await sleep(800);
+    if (!(await p.$('[data-testid="login-guest-link"]'))) fail('로그인 화면에 «계정 없이 바로 시작» 길이 없다');
+    await p.evaluate(() => {
+      localStorage.setItem('auth_token', 'e2e-fake-token');
+      localStorage.setItem('araharu_current_user', JSON.stringify({ id: 'stu-e2e-1', role: 'student', name: '테스트학생', grade: 3, semester: 1 }));
+      localStorage.setItem('araharu_local_data_owner', 'stu-e2e-1');
+      localStorage.setItem('araharu_e2e_probe', 'keep');
+    });
+    await p.goto(BASE + '/', { waitUntil: 'load', timeout: 120000 });
+    await sleep(1200);
+    if (!(await p.$('[data-account-session]'))) fail('계정 로그인 상태인데 처음 화면에 «이어서 학습하기» 카드가 없다');
+    if (await p.$('[data-testid="guest-start"]')) fail('계정 로그인 상태인데 손님 시작 단추가 보인다');
+    if ((await p.evaluate(() => localStorage.getItem('araharu_e2e_probe'))) !== 'keep') fail('계정 학생의 기기 기록이 지워졌다');
+    await p.evaluate(() => localStorage.clear());
+  }
+
   await p.goto(BASE + '/', { waitUntil: 'load', timeout: 120000 });
   await sleep(800);
   if (!(await p.$('[data-guest-ready]'))) fail('처음 화면에 «로그인 없이 시작» 카드가 없다');
