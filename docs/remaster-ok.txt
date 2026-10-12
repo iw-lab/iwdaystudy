@@ -1,0 +1,5 @@
+아라하루 리마스터 완료 (2026-10-13)
+- 배포: https://araharu-ecp.pages.dev (CI 성공, 실 사이트 게스트 e2e PC·모바일 통과 — 불러오기·개인정보 차단 포함)
+- 게이트: verify-math/spelling/underline/content/grade·smoke-set 전부 rc0, lint-corpus 15,774문항 결함 0
+- 8way: 코드 FULL(codex·gemini·grok + meta, Claude 메인) 8조각 + 수정 후 LITE, 내용 웹 4레인(gptweb·geminiweb·grokweb·meta) 5조각 — 반영 완료
+- 선행쌤 포트폴리오 링크 재게시: https://sunhaengssam.web.app
