@@ -898,7 +898,7 @@ export const grade3VocabData: VocabEntry[] = [
   },
   { meanings: ["나무로 만든 배", "물에 떠요"], answer: "뗏목" },
   {
-    meanings: ["여러 사람이 함께 부르는 노래", "합창이라고도 해요"],
+    meanings: ["여러 사람이 함께 부르는 노래", "목소리를 맞추어 불러요"],
     answer: "합창",
   },
   { meanings: ["맛을 느끼는 기관", "입안에 있어요"], answer: "혀" },
@@ -909,7 +909,7 @@ export const grade3VocabData: VocabEntry[] = [
   { meanings: ["물건의 무거운 정도", "저울로 재요"], answer: "무게" },
   // 신규 45개 (총 60개)
   {
-    meanings: ["하늘에 떠 있는 수증기 덩어리", "비가 오기 전에 많아져요"],
+    meanings: ["하늘에 떠 있는 작은 물방울 덩어리", "비가 오기 전에 많아져요"],
     answer: "구름",
   },
   { meanings: ["봄에 피는 분홍색 꽃", "나무에 피어요"], answer: "벚꽃" },
@@ -969,7 +969,7 @@ export const grade3VocabData: VocabEntry[] = [
   { meanings: ["긴 목을 가진 동물", "나뭇잎을 먹어요"], answer: "기린" },
   { meanings: ["알을 낳는 새", "매일 아침 울어요"], answer: "닭" },
   { meanings: ["껍질이 단단한 과일", "속이 하얘요"], answer: "코코넛" },
-  { meanings: ["쌀로 만든 우리나라 음식", "뜨거운 물을 부어요"], answer: "밥" },
+  { meanings: ["쌀로 만든 우리나라 음식", "쌀을 물에 안쳐 지어요"], answer: "밥" },
   { meanings: ["학교에서 배우는 것", "시험을 봐요"], answer: "공부" },
   { meanings: ["바람이 세게 부는 자연 현상", "비를 동반해요"], answer: "태풍" },
   { meanings: ["얼음 위에서 타는 것", "겨울 운동이에요"], answer: "스케이트" },
@@ -999,26 +999,26 @@ export const grade3VocabData: VocabEntry[] = [
   { meanings: ["생각을 정리하는 것", "순서대로 적어요"], answer: "개요" },
   { meanings: ["글의 핵심 내용", "가장 중요한 것이에요"], answer: "요점" },
   {
-    meanings: ["여러 사람 앞에서 말하는 것", "발표대에서 해요"],
+    meanings: ["여러 사람 앞에서 말하는 것", "생각을 다른 사람에게 알려요"],
     answer: "발표",
   },
   { meanings: ["의견을 주고받는 것", "찬성과 반대가 있어요"], answer: "토론" },
-  { meanings: ["글을 요약하는 것", "짧게 줄여요"], answer: "요약" },
+  { meanings: ["중요한 내용만 간추리는 것", "짧게 줄여요"], answer: "요약" },
   {
     meanings: ["어떤 일이 일어난 순서", "시간에 따라 정리해요"],
     answer: "경과",
   },
-  { meanings: ["이유를 설명하는 것", "왜 그런지 말해요"], answer: "이유" },
+  { meanings: ["그렇게 된 까닭", "왜 그런지 말해요"], answer: "이유" },
   { meanings: ["사실과 의견이 있는 글", "신문에 실려요"], answer: "기사" },
   { meanings: ["상상해서 쓰는 글", "이야기를 만들어요"], answer: "창작" },
   { meanings: ["보고 느낀 점을 쓰는 글", "독후감이에요"], answer: "감상문" },
   // 사회/역사
   { meanings: ["옛날에 쓰던 도구", "돌로 만들었어요"], answer: "석기" },
   { meanings: ["나라를 지키는 곳", "군인이 있어요"], answer: "군대" },
-  { meanings: ["법을 만드는 곳", "국회의원이 일해요"], answer: "국회" },
+  { meanings: ["법을 만드는 곳", "나라의 법을 정하는 기관이에요"], answer: "국회" },
   { meanings: ["지역을 나눈 것", "도, 시, 군이 있어요"], answer: "행정구역" },
   { meanings: ["사람들이 사는 구역", "마을이에요"], answer: "지역사회" },
-  { meanings: ["옛날 사람들이 쓰던 집", "초가집이에요"], answer: "초가집" },
+  { meanings: ["옛날 사람들이 쓰던 집", "볏짚으로 지붕을 덮었어요"], answer: "초가집" },
   { meanings: ["왕이 사는 큰 집", "경복궁이에요"], answer: "궁궐" },
   { meanings: ["전통 시장에서 물건을 사는 것", "흥정해요"], answer: "장보기" },
   { meanings: ["나라와 나라 사이의 교류", "무역해요"], answer: "교역" },
@@ -1033,7 +1033,7 @@ export const grade3VocabData: VocabEntry[] = [
     answer: "굴절",
   },
   {
-    meanings: ["소리가 물체를 통해 전해지는 것", "공기로 전달돼요"],
+    meanings: ["열이 물체를 따라 옮겨 가는 것", "뜨거운 냄비 손잡이가 뜨거워져요"],
     answer: "전도",
   },
   { meanings: ["전기가 흐르는 길", "전선으로 연결해요"], answer: "회로" },
@@ -1068,8 +1068,8 @@ export const grade3VocabData: VocabEntry[] = [
     answer: "분수",
   },
   { meanings: ["점 아래로 표시하는 수", "0.1, 0.5 등이에요"], answer: "소수" },
-  { meanings: ["도형의 테두리 길이", "둘레라고도 해요"], answer: "둘레" },
-  { meanings: ["도형이 차지하는 크기", "넓이라고 해요"], answer: "넓이" },
+  { meanings: ["도형의 테두리 길이", "가장자리를 한 바퀴 잰 길이예요"], answer: "둘레" },
+  { meanings: ["도형이 차지하는 크기", "평면이 차지하는 크기예요"], answer: "넓이" },
   { meanings: ["물건을 담을 수 있는 양", "리터로 재요"], answer: "들이" },
   { meanings: ["물건의 무거운 정도", "킬로그램으로 재요"], answer: "무게" },
   // 영어 관련
@@ -1077,14 +1077,14 @@ export const grade3VocabData: VocabEntry[] = [
     meanings: ["영어 알파벳의 첫 글자", "대문자와 소문자가 있어요"],
     answer: "A",
   },
-  { meanings: ["영어로 인사하는 말", "Hello예요"], answer: "Hello" },
-  { meanings: ["영어로 감사하는 말", "Thank you예요"], answer: "Thank you" },
+  { meanings: ["영어로 인사하는 말", "처음 만나면 하는 말이에요"], answer: "Hello" },
+  { meanings: ["영어로 감사하는 말", "고마울 때 하는 말이에요"], answer: "Thank you" },
   {
     meanings: ["영어로 이름을 묻는 말", "What is your name?이에요"],
     answer: "이름 묻기",
   },
   {
-    meanings: ["영어로 숫자를 세는 것", "one, two, three예요"],
+    meanings: ["숫자를 차례로 세는 것", "one, two, three…"],
     answer: "counting",
   },
   // 한자 관련
@@ -1094,13 +1094,13 @@ export const grade3VocabData: VocabEntry[] = [
   { meanings: ["한자에서 나무라고 읽는 글자", "네 획이에요"], answer: "木" },
   { meanings: ["한자에서 흙이라고 읽는 글자", "세 획이에요"], answer: "土" },
   // 문화/예술
-  { meanings: ["우리나라 전통 음악", "국악이라고 해요"], answer: "국악" },
+  { meanings: ["우리나라 전통 음악", "가야금과 장구로 연주해요"], answer: "국악" },
   { meanings: ["우리나라 전통 춤", "탈을 쓰기도 해요"], answer: "탈춤" },
   { meanings: ["우리나라 전통 놀이", "윷을 던져요"], answer: "윷놀이" },
-  { meanings: ["우리나라 전통 무술", "태권도예요"], answer: "태권도" },
-  { meanings: ["우리나라 전통 음식 만드는 법", "김장을 해요"], answer: "김장" },
-  { meanings: ["이야기를 노래로 부르는 것", "판소리예요"], answer: "판소리" },
-  { meanings: ["도자기를 만드는 것", "흙으로 빚어요"], answer: "도자기" },
+  { meanings: ["우리나라 전통 무술", "발차기와 품새가 있어요"], answer: "태권도" },
+  { meanings: ["우리나라 전통 음식 만드는 법", "겨울 동안 먹을 김치를 한꺼번에 담가요"], answer: "김장" },
+  { meanings: ["이야기를 노래로 부르는 것", "북 장단에 맞춰 한 사람이 불러요"], answer: "판소리" },
+  { meanings: ["흙을 빚어 구운 그릇", "흙으로 빚어요"], answer: "도자기" },
   { meanings: ["한지로 만드는 공예", "종이를 붙여요"], answer: "한지 공예" },
   { meanings: ["먹과 붓으로 그리는 그림", "동양화예요"], answer: "수묵화" },
   {
@@ -2621,7 +2621,7 @@ export const grade3KnowledgeData: KnowledgeEntry[] = [
   { text: "우리나라의 국화는 ___이다.", answer: "무궁화", category: "사회" },
   { text: "태양계에는 ___개의 행성이 있다.", answer: "8", category: "과학" },
   {
-    text: "식물의 뿌리가 하는 일은 물과 ___을 흡수하는 것이다.",
+    text: "식물의 뿌리는 주로 물과 무기 ___을 흡수한다.",
     answer: "양분",
     category: "과학",
   },
@@ -2698,7 +2698,7 @@ export const grade3KnowledgeData: KnowledgeEntry[] = [
   { text: "곤충의 다리는 ___개이다.", answer: "6", category: "과학" },
   { text: "거미의 다리는 ___개이다.", answer: "8", category: "과학" },
   {
-    text: "식물의 잎에서 수분이 빠져나가는 것을 ___이라(라) 한다.",
+    text: "식물의 잎에서 물이 수증기가 되어 빠져나가는 것을 ___ 작용이라 한다.",
     answer: "증산",
     category: "과학",
   },
@@ -2836,8 +2836,8 @@ export const grade3KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "식물이 자라기 위해 필요한 세 가지는 물, 빛, ___이다.",
-    answer: "흙",
+    text: "식물이 잘 자라려면 물, 햇빛, 알맞은 ___가 필요하다.",
+    answer: "온도",
     category: "과학",
   },
   { text: "1km는 ___m이다.", answer: "1000", category: "수학" },
@@ -2849,16 +2849,16 @@ export const grade3KnowledgeData: KnowledgeEntry[] = [
   },
   // === 신규 상식 60개 추가 ===
   {
-    text: "이순신 장군의 대표적 전투는 ___이다.",
+    text: "이순신 장군이 크게 승리한 한산도 앞바다의 전투를 ___이라 한다.",
     answer: "한산도 대첩",
     category: "역사",
   },
   { text: "고려의 수도는 ___이었다.", answer: "개성", category: "역사" },
-  { text: "백제의 수도는 ___이었다.", answer: "사비(부여)", category: "역사" },
+  { text: "백제의 마지막 수도는 ___였다.", answer: "사비", category: "역사" },
   { text: "신라의 수도는 ___이었다.", answer: "경주", category: "역사" },
   { text: "한글을 반포한 해는 ___년이다.", answer: "1446", category: "역사" },
   {
-    text: "우리나라 최초의 금속 활자 인쇄본은 ___이다.",
+    text: "현재 남아 있는 세계에서 가장 오래된 금속 활자 인쇄본은 ___이다.",
     answer: "직지심체요절",
     category: "역사",
   },
@@ -2901,7 +2901,7 @@ export const grade3KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "음식이 소화되는 순서: 입 → ___ → 소장 → 대장이다.",
+    text: "음식이 지나가는 순서는 입 → 식도 → ___ → 소장 → 대장이다.",
     answer: "위",
     category: "과학",
   },
@@ -2953,7 +2953,7 @@ export const grade3KnowledgeData: KnowledgeEntry[] = [
     answer: "마라도",
     category: "사회",
   },
-  { text: "우리나라 국보 1호는 ___이다.", answer: "숭례문", category: "사회" },
+  { text: "서울에 있는 옛 성문으로, 국보로 지정된 것은 ___이다.", answer: "숭례문", category: "사회" },
   {
     text: "유네스코에 등재된 우리나라 발명품은 ___이다.",
     answer: "금속 활자",
@@ -3045,7 +3045,7 @@ export const grade3KnowledgeData: KnowledgeEntry[] = [
     category: "상식",
   },
   {
-    text: "태양열로 전기를 만드는 것을 ___발전이라 한다.",
+    text: "태양빛으로 전기를 만드는 것을 ___ 발전이라 한다.",
     answer: "태양광",
     category: "상식",
   },
@@ -3113,7 +3113,7 @@ export const grade3SafetyData: SafetyEntry[] = [
     category: "건강안전",
   },
   {
-    text: "무거운 물건은 ___를 굽혀 들어올린다.",
+    text: "무거운 물건은 ___을 굽혀 들어올린다.",
     answer: "무릎",
     category: "생활안전",
   },
@@ -3154,7 +3154,7 @@ export const grade3SafetyData: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "뜨거운 물에 ___을 수 있으니 조심한다.",
+    text: "뜨거운 물에 ___ 수 있으니 조심한다.",
     answer: "데일",
     category: "생활안전",
   },
@@ -3184,7 +3184,7 @@ export const grade3SafetyData: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "전기 콘센트에 젖은 손으로 ___하면 위험하다.",
+    text: "전기 콘센트에 젖은 손으로 ___면 위험하다.",
     answer: "만지",
     category: "전기안전",
   },
@@ -3199,7 +3199,7 @@ export const grade3SafetyData: SafetyEntry[] = [
     category: "건강안전",
   },
   {
-    text: "횡단보도에서 ___가 초록색일 때 건넌다.",
+    text: "횡단보도에서 ___이 초록색일 때 건넌다.",
     answer: "신호등",
     category: "교통안전",
   },
@@ -3224,7 +3224,7 @@ export const grade3SafetyData: SafetyEntry[] = [
     category: "정보안전",
   },
   {
-    text: "친구를 ___하는 것은 학교 폭력이다.",
+    text: "친구를 ___는 것은 학교 폭력이다.",
     answer: "괴롭히",
     category: "학교안전",
   },
@@ -3234,12 +3234,12 @@ export const grade3SafetyData: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "여름에는 ___을 충분히 발라 피부를 보호한다.",
+    text: "여름에는 ___를 충분히 발라 피부를 보호한다.",
     answer: "자외선차단제",
     category: "건강안전",
   },
   {
-    text: "캠핑장에서 ___를 피울 때는 어른과 함께한다.",
+    text: "캠핑장에서 ___을 피울 때는 어른과 함께한다.",
     answer: "불",
     category: "화재안전",
   },
@@ -3249,7 +3249,7 @@ export const grade3SafetyData: SafetyEntry[] = [
     category: "건강안전",
   },
   {
-    text: "공사장 근처에서는 ___를 주의하며 지나간다.",
+    text: "공사장 근처에서는 ___에 주의하며 지나간다.",
     answer: "안전",
     category: "생활안전",
   },
@@ -3259,7 +3259,7 @@ export const grade3SafetyData: SafetyEntry[] = [
     category: "정보안전",
   },
   {
-    text: "여름철 에어컨 적정 온도는 ___도이다.",
+    text: "여름철 알맞은 실내 냉방 온도는 ___도 안팎이다.",
     answer: "26",
     category: "건강안전",
   },
@@ -3295,7 +3295,7 @@ export const grade3SafetyData: SafetyEntry[] = [
     category: "교통안전",
   },
   {
-    text: "자전거도 교통 ___을 지켜야 한다.",
+    text: "자전거도 교통 ___를 지켜야 한다.",
     answer: "법규",
     category: "교통안전",
   },
@@ -3350,7 +3350,7 @@ export const grade3SafetyData: SafetyEntry[] = [
     category: "물놀이안전",
   },
   {
-    text: "수영장에서 뛰면 ___을 수 있다.",
+    text: "수영장에서 뛰면 ___ 수 있다.",
     answer: "넘어질",
     category: "물놀이안전",
   },
@@ -3365,7 +3365,7 @@ export const grade3SafetyData: SafetyEntry[] = [
     category: "학교안전",
   },
   {
-    text: "비상 연락망을 항상 ___해 두어야 한다.",
+    text: "비상 연락망을 항상 ___ 두어야 한다.",
     answer: "알아",
     category: "학교안전",
   },
@@ -3425,7 +3425,7 @@ export const grade3SafetyData: SafetyEntry[] = [
     category: "재난안전",
   },
   {
-    text: "한파 시 ___를 충분히 입고 외출한다.",
+    text: "한파 시 ___을 충분히 입고 외출한다.",
     answer: "옷",
     category: "재난안전",
   },
@@ -3461,7 +3461,7 @@ export const grade3SafetyData: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "풀밭에서 놀 때 ___을 조심해야 한다.",
+    text: "풀밭에서 놀 때 ___를 조심해야 한다.",
     answer: "진드기",
     category: "생활안전",
   },
@@ -3485,7 +3485,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "뫼 산",
     strokes: 3,
     words: ["산맥", "등산", "화산"],
-    sentence: "높은 山에 올라갔다.",
+    sentence: "높은 산(山)에 올라갔다.",
   },
   {
     character: "水",
@@ -3493,7 +3493,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "물 수",
     strokes: 4,
     words: ["수영", "홍수", "수도"],
-    sentence: "깨끗한 水를 마셨다.",
+    sentence: "깨끗한 물(水)을 마셨다.",
   },
   {
     character: "火",
@@ -3501,7 +3501,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "불 화",
     strokes: 4,
     words: ["화재", "불꽃", "소화기"],
-    sentence: "火가 나면 119에 전화한다.",
+    sentence: "불(火)이 나면 119에 전화한다.",
   },
   {
     character: "木",
@@ -3509,7 +3509,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "나무 목",
     strokes: 4,
     words: ["나무", "목재", "목요일"],
-    sentence: "木이 높이 자랐다.",
+    sentence: "나무(木)가 높이 자랐다.",
   },
   {
     character: "土",
@@ -3517,7 +3517,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "흙 토",
     strokes: 3,
     words: ["토양", "토요일", "국토"],
-    sentence: "土에 씨앗을 심었다.",
+    sentence: "흙(土)에 씨앗을 심었다.",
   },
   {
     character: "日",
@@ -3525,7 +3525,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "날 일",
     strokes: 4,
     words: ["일요일", "생일", "매일"],
-    sentence: "오늘은 좋은 日이다.",
+    sentence: "오늘은 좋은 날(日)이다.",
   },
   {
     character: "月",
@@ -3533,7 +3533,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "달 월",
     strokes: 4,
     words: ["월요일", "정월", "매월"],
-    sentence: "밤하늘에 月이 떴다.",
+    sentence: "밤하늘에 달(月)이 떴다.",
   },
   {
     character: "人",
@@ -3541,7 +3541,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "사람 인",
     strokes: 2,
     words: ["인간", "가인", "인구"],
-    sentence: "모든 人은 소중하다.",
+    sentence: "모든 사람(人)은 소중하다.",
   },
   {
     character: "大",
@@ -3549,7 +3549,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "큰 대",
     strokes: 3,
     words: ["대문", "거대", "최대"],
-    sentence: "大한민국 만세!",
+    sentence: "대한민국 만세!",
   },
   {
     character: "小",
@@ -3557,7 +3557,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "작을 소",
     strokes: 3,
     words: ["소인", "소문", "최소"],
-    sentence: "小한 것도 소중하다.",
+    sentence: "작은 것도 소중하다.",
   },
   {
     character: "上",
@@ -3565,7 +3565,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "위 상",
     strokes: 3,
     words: ["상자", "이상", "상의"],
-    sentence: "책상 上에 책이 있다.",
+    sentence: "책상 위(上)에 책이 있다.",
   },
   {
     character: "下",
@@ -3573,7 +3573,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "아래 하",
     strokes: 3,
     words: ["하늘", "지하", "하의"],
-    sentence: "나무 下에서 쉬었다.",
+    sentence: "나무 아래(下)에서 쉬었다.",
   },
   {
     character: "中",
@@ -3581,7 +3581,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "가운데 중",
     strokes: 4,
     words: ["중심", "집중", "중요"],
-    sentence: "교실 中에 모였다.",
+    sentence: "교실 가운데(中)에 모였다.",
   },
   {
     character: "天",
@@ -3589,7 +3589,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "하늘 천",
     strokes: 4,
     words: ["천국", "천재", "천둥"],
-    sentence: "天이 맑고 푸르다.",
+    sentence: "하늘(天)이 맑고 푸르다.",
   },
   {
     character: "地",
@@ -3597,7 +3597,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "땅 지",
     strokes: 6,
     words: ["지구", "토지", "지도"],
-    sentence: "地에 꽃이 피었다.",
+    sentence: "땅(地)에 꽃이 피었다.",
   },
   // 신규 45개 (총 60개)
   {
@@ -3606,7 +3606,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "쇠 금",
     strokes: 8,
     words: ["금메달", "황금", "금요일"],
-    sentence: "金메달을 받았다.",
+    sentence: "금메달을 받았다.",
   },
   {
     character: "白",
@@ -3614,7 +3614,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "흰 백",
     strokes: 5,
     words: ["백색", "백설", "백조"],
-    sentence: "白雪이 내렸다.",
+    sentence: "白雪(백설)이 내렸다.",
   },
   {
     character: "靑",
@@ -3622,7 +3622,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "푸를 청",
     strokes: 8,
     words: ["청소년", "청색", "청춘"],
-    sentence: "靑春을 즐기자.",
+    sentence: "靑春(청춘)을 즐기자.",
   },
   {
     character: "赤",
@@ -3630,7 +3630,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "붉을 적",
     strokes: 7,
     words: ["적색", "적십자", "적도"],
-    sentence: "赤色 신호등에 멈춘다.",
+    sentence: "赤色(적색) 신호등에 멈춘다.",
   },
   {
     character: "左",
@@ -3638,7 +3638,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "왼 좌",
     strokes: 5,
     words: ["좌회전", "좌우", "좌석"],
-    sentence: "左회전을 했다.",
+    sentence: "좌회전을 했다.",
   },
   {
     character: "右",
@@ -3646,7 +3646,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "오른 우",
     strokes: 5,
     words: ["우회전", "좌우", "우측"],
-    sentence: "右측통행을 한다.",
+    sentence: "우측통행을 한다.",
   },
   {
     character: "東",
@@ -3654,7 +3654,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "동녘 동",
     strokes: 8,
     words: ["동쪽", "동해", "동물"],
-    sentence: "해는 東에서 뜬다.",
+    sentence: "해는 동쪽(東)에서 뜬다.",
   },
   {
     character: "西",
@@ -3662,7 +3662,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "서녘 서",
     strokes: 6,
     words: ["서쪽", "서울", "서양"],
-    sentence: "해는 西에서 진다.",
+    sentence: "해는 서쪽(西)에서 진다.",
   },
   {
     character: "南",
@@ -3670,7 +3670,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "남녘 남",
     strokes: 9,
     words: ["남쪽", "남산", "남자"],
-    sentence: "南쪽은 따뜻하다.",
+    sentence: "남쪽은 따뜻하다.",
   },
   {
     character: "北",
@@ -3678,7 +3678,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "북녘 북",
     strokes: 5,
     words: ["북쪽", "북극", "북한"],
-    sentence: "北쪽에서 찬바람이 불었다.",
+    sentence: "북쪽에서 찬바람이 불었다.",
   },
   {
     character: "口",
@@ -3686,7 +3686,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "입 구",
     strokes: 3,
     words: ["인구", "입구", "구호"],
-    sentence: "口를 크게 벌려 말한다.",
+    sentence: "입(口)을 크게 벌려 말한다.",
   },
   {
     character: "目",
@@ -3694,7 +3694,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "눈 목",
     strokes: 5,
     words: ["주목", "목표", "항목"],
-    sentence: "目표를 세웠다.",
+    sentence: "목표를 세웠다.",
   },
   {
     character: "耳",
@@ -3702,7 +3702,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "귀 이",
     strokes: 6,
     words: ["이비인후과", "이명", "귀"],
-    sentence: "耳로 소리를 듣는다.",
+    sentence: "귀(耳)로 소리를 듣는다.",
   },
   {
     character: "手",
@@ -3710,7 +3710,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "손 수",
     strokes: 4,
     words: ["수화", "선수", "악수"],
-    sentence: "手를 깨끗이 씻었다.",
+    sentence: "손(手)을 깨끗이 씻었다.",
   },
   {
     character: "足",
@@ -3718,7 +3718,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "발 족",
     strokes: 7,
     words: ["족적", "만족", "부족"],
-    sentence: "두 足으로 걸어갔다.",
+    sentence: "두 발(足)로 걸어갔다.",
   },
   {
     character: "子",
@@ -3726,7 +3726,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "아들 자",
     strokes: 3,
     words: ["자녀", "왕자", "아들"],
-    sentence: "子는 부모를 공경한다.",
+    sentence: "아들(子)은 부모를 공경한다.",
   },
   {
     character: "女",
@@ -3734,7 +3734,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "여자 여",
     strokes: 3,
     words: ["여자", "여성", "소녀"],
-    sentence: "少女가 노래를 불렀다.",
+    sentence: "少女(소녀)가 노래를 불렀다.",
   },
   {
     character: "父",
@@ -3742,7 +3742,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "아버지 부",
     strokes: 4,
     words: ["부모", "조부", "부친"],
-    sentence: "父母님께 감사한다.",
+    sentence: "父母(부모)님께 감사한다.",
   },
   {
     character: "母",
@@ -3750,7 +3750,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "어머니 모",
     strokes: 5,
     words: ["모친", "부모", "조모"],
-    sentence: "母의 사랑은 크다.",
+    sentence: "어머니(母)의 사랑은 크다.",
   },
   {
     character: "兄",
@@ -3758,7 +3758,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "형 형",
     strokes: 5,
     words: ["형제", "형님", "사형"],
-    sentence: "兄과 함께 놀았다.",
+    sentence: "형(兄)과 함께 놀았다.",
   },
   {
     character: "弟",
@@ -3766,7 +3766,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "아우 제",
     strokes: 7,
     words: ["형제", "제자", "자매"],
-    sentence: "兄弟가 사이좋게 지낸다.",
+    sentence: "兄弟(형제)가 사이좋게 지낸다.",
   },
   {
     character: "一",
@@ -3774,7 +3774,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "한 일",
     strokes: 1,
     words: ["일등", "하나", "통일"],
-    sentence: "一등으로 들어왔다.",
+    sentence: "일등으로 들어왔다.",
   },
   {
     character: "二",
@@ -3782,7 +3782,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "두 이",
     strokes: 2,
     words: ["이등", "이월", "이십"],
-    sentence: "二月에 눈이 왔다.",
+    sentence: "二月(이월)에 눈이 왔다.",
   },
   {
     character: "三",
@@ -3790,7 +3790,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "석 삼",
     strokes: 3,
     words: ["삼각형", "삼월", "삼국"],
-    sentence: "三角형을 그렸다.",
+    sentence: "三角(삼각)형을 그렸다.",
   },
   {
     character: "四",
@@ -3798,7 +3798,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "넉 사",
     strokes: 5,
     words: ["사계절", "사각형", "사월"],
-    sentence: "四季節이 아름답다.",
+    sentence: "四季節(사계절)이 아름답다.",
   },
   {
     character: "五",
@@ -3806,7 +3806,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "다섯 오",
     strokes: 4,
     words: ["오월", "오감", "오각형"],
-    sentence: "五月에 가정의 달이다.",
+    sentence: "五月(오월)은 가정의 달이다.",
   },
   {
     character: "六",
@@ -3814,7 +3814,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "여섯 육",
     strokes: 4,
     words: ["육월", "육각형", "육지"],
-    sentence: "六月에 여름이 시작된다.",
+    sentence: "六月(유월)에 여름이 시작된다.",
   },
   {
     character: "七",
@@ -3822,7 +3822,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "일곱 칠",
     strokes: 2,
     words: ["칠월", "칠판", "칠색"],
-    sentence: "무지개는 七색이다.",
+    sentence: "무지개는 칠색이다.",
   },
   {
     character: "八",
@@ -3830,7 +3830,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "여덟 팔",
     strokes: 2,
     words: ["팔월", "팔각형", "팔도"],
-    sentence: "八月에 방학이 끝난다.",
+    sentence: "八月(팔월)에 방학이 끝난다.",
   },
   {
     character: "九",
@@ -3838,7 +3838,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "아홉 구",
     strokes: 2,
     words: ["구월", "구구단", "구급"],
-    sentence: "九九段을 외우자.",
+    sentence: "九九段(구구단)을 외우자.",
   },
   {
     character: "十",
@@ -3846,7 +3846,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "열 십",
     strokes: 2,
     words: ["십월", "십자가", "십진법"],
-    sentence: "十月에 한글날이 있다.",
+    sentence: "十月(시월)에 한글날이 있다.",
   },
   {
     character: "百",
@@ -3854,7 +3854,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "일백 백",
     strokes: 6,
     words: ["백점", "백성", "백일"],
-    sentence: "시험에서 百점을 받았다.",
+    sentence: "시험에서 백점을 받았다.",
   },
   {
     character: "千",
@@ -3862,7 +3862,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "일천 천",
     strokes: 3,
     words: ["천원", "천년", "천리"],
-    sentence: "千里 길도 한 걸음부터.",
+    sentence: "千里(천리) 길도 한 걸음부터.",
   },
   {
     character: "萬",
@@ -3870,7 +3870,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "일만 만",
     strokes: 13,
     words: ["만원", "만세", "만물"],
-    sentence: "萬歲를 외쳤다.",
+    sentence: "萬歲(만세)를 외쳤다.",
   },
   {
     character: "年",
@@ -3878,7 +3878,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "해 년",
     strokes: 6,
     words: ["올해", "작년", "내년"],
-    sentence: "새 年이 밝았다.",
+    sentence: "새 해(年)가 밝았다.",
   },
   {
     character: "力",
@@ -3886,7 +3886,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "힘 력",
     strokes: 2,
     words: ["노력", "체력", "능력"],
-    sentence: "努力하면 이룰 수 있다.",
+    sentence: "努力(노력)하면 이룰 수 있다.",
   },
   {
     character: "正",
@@ -3894,7 +3894,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "바를 정",
     strokes: 5,
     words: ["정직", "정확", "정의"],
-    sentence: "正直하게 살자.",
+    sentence: "正直(정직)하게 살자.",
   },
   {
     character: "王",
@@ -3902,7 +3902,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "임금 왕",
     strokes: 4,
     words: ["왕국", "국왕", "여왕"],
-    sentence: "세종대王은 위대하다.",
+    sentence: "세종대왕은 위대하다.",
   },
   {
     character: "氣",
@@ -3910,7 +3910,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "기운 기",
     strokes: 6,
     words: ["기분", "천기", "인기"],
-    sentence: "오늘은 氣분이 좋다.",
+    sentence: "오늘은 기분이 좋다.",
   },
   {
     character: "花",
@@ -3918,7 +3918,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "꽃 화",
     strokes: 8,
     words: ["꽃", "화분", "개화"],
-    sentence: "봄에 花가 피었다.",
+    sentence: "봄에 꽃(花)이 피었다.",
   },
   {
     character: "草",
@@ -3926,7 +3926,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "풀 초",
     strokes: 10,
     words: ["초원", "잡초", "풀밭"],
-    sentence: "草원에서 뛰어놀았다.",
+    sentence: "초원에서 뛰어놀았다.",
   },
   {
     character: "生",
@@ -3934,7 +3934,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "날 생",
     strokes: 5,
     words: ["생일", "학생", "생활"],
-    sentence: "生日 축하합니다.",
+    sentence: "生日(생일) 축하합니다.",
   },
   {
     character: "食",
@@ -3942,7 +3942,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "먹을 식",
     strokes: 9,
     words: ["식사", "음식", "식당"],
-    sentence: "食事 시간이다.",
+    sentence: "食事(식사) 시간이다.",
   },
   {
     character: "入",
@@ -3950,7 +3950,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "들 입",
     strokes: 2,
     words: ["입구", "입학", "수입"],
-    sentence: "학교에 入學했다.",
+    sentence: "학교에 入學(입학)했다.",
   },
   {
     character: "出",
@@ -3958,7 +3958,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "날 출",
     strokes: 5,
     words: ["출구", "출발", "수출"],
-    sentence: "出口로 나갔다.",
+    sentence: "出口(출구)로 나갔다.",
   },
   // === 신규 한자 60개 추가 ===
   {
@@ -3967,7 +3967,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "배울 학",
     strokes: 16,
     words: ["학교", "학생", "학습"],
-    sentence: "學校에서 공부한다.",
+    sentence: "學校(학교)에서 공부한다.",
   },
   {
     character: "校",
@@ -3975,7 +3975,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "학교 교",
     strokes: 10,
     words: ["학교", "교장", "교실"],
-    sentence: "學校에 입학했다.",
+    sentence: "學校(학교)에 입학했다.",
   },
   {
     character: "先",
@@ -3983,7 +3983,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "먼저 선",
     strokes: 6,
     words: ["선생", "우선", "선배"],
-    sentence: "先生님이 가르쳐 주셨다.",
+    sentence: "先生(선생)님이 가르쳐 주셨다.",
   },
   {
     character: "友",
@@ -3991,7 +3991,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "벗 우",
     strokes: 4,
     words: ["친우", "우정", "우리"],
-    sentence: "友情을 소중히 여긴다.",
+    sentence: "友情(우정)을 소중히 여긴다.",
   },
   {
     character: "國",
@@ -3999,7 +3999,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "나라 국",
     strokes: 11,
     words: ["국가", "한국", "국민"],
-    sentence: "大韓民國 만세!",
+    sentence: "大韓民國(대한민국) 만세!",
   },
   {
     character: "民",
@@ -4007,7 +4007,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "백성 민",
     strokes: 5,
     words: ["국민", "민주", "시민"],
-    sentence: "國民의 권리를 지킨다.",
+    sentence: "國民(국민)의 권리를 지킨다.",
   },
   {
     character: "家",
@@ -4015,7 +4015,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "집 가",
     strokes: 10,
     words: ["가족", "집", "국가"],
-    sentence: "家族과 행복하게 산다.",
+    sentence: "家族(가족)과 행복하게 산다.",
   },
   {
     character: "門",
@@ -4023,7 +4023,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "문 문",
     strokes: 8,
     words: ["대문", "정문", "입문"],
-    sentence: "門을 열고 들어갔다.",
+    sentence: "문(門)을 열고 들어갔다.",
   },
   {
     character: "車",
@@ -4031,7 +4031,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "수레 차",
     strokes: 7,
     words: ["자동차", "기차", "전차"],
-    sentence: "自動車를 타고 갔다.",
+    sentence: "自動車(자동차)를 타고 갔다.",
   },
   {
     character: "馬",
@@ -4039,7 +4039,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "말 마",
     strokes: 10,
     words: ["경마", "마차", "말"],
-    sentence: "馬가 달린다.",
+    sentence: "말(馬)이 달린다.",
   },
   {
     character: "道",
@@ -4047,7 +4047,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "길 도",
     strokes: 13,
     words: ["도로", "도리", "보도"],
-    sentence: "道路를 건넜다.",
+    sentence: "道路(도로)를 건넜다.",
   },
   {
     character: "色",
@@ -4055,7 +4055,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "빛 색",
     strokes: 6,
     words: ["색깔", "적색", "청색"],
-    sentence: "다양한 色을 사용했다.",
+    sentence: "다양한 색(色)을 사용했다.",
   },
   {
     character: "立",
@@ -4063,7 +4063,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "설 립",
     strokes: 5,
     words: ["독립", "국립", "설립"],
-    sentence: "獨立을 선언했다.",
+    sentence: "獨立(독립)을 선언했다.",
   },
   {
     character: "室",
@@ -4071,7 +4071,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "방 실",
     strokes: 9,
     words: ["교실", "실내", "거실"],
-    sentence: "教室에서 공부했다.",
+    sentence: "教室(교실)에서 공부했다.",
   },
   {
     character: "長",
@@ -4079,7 +4079,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "긴 장",
     strokes: 8,
     words: ["교장", "성장", "장남"],
-    sentence: "校長 선생님을 만났다.",
+    sentence: "校長(교장) 선생님을 만났다.",
   },
   {
     character: "心",
@@ -4087,7 +4087,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "마음 심",
     strokes: 4,
     words: ["마음", "관심", "중심"],
-    sentence: "心을 다해 노력했다.",
+    sentence: "마음(心)을 다해 노력했다.",
   },
   {
     character: "工",
@@ -4095,7 +4095,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "장인 공",
     strokes: 3,
     words: ["공장", "공사", "인공"],
-    sentence: "工場에서 물건을 만든다.",
+    sentence: "工場(공장)에서 물건을 만든다.",
   },
   {
     character: "石",
@@ -4103,7 +4103,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "돌 석",
     strokes: 5,
     words: ["돌", "보석", "자석"],
-    sentence: "石탑을 쌓았다.",
+    sentence: "석탑을 쌓았다.",
   },
   {
     character: "林",
@@ -4111,7 +4111,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "수풀 림",
     strokes: 8,
     words: ["산림", "숲", "임업"],
-    sentence: "山林을 보호하자.",
+    sentence: "山林(산림)을 보호하자.",
   },
   {
     character: "田",
@@ -4119,7 +4119,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "밭 전",
     strokes: 5,
     words: ["논밭", "전답", "수전"],
-    sentence: "田에 모를 심었다.",
+    sentence: "밭(田)에 모를 심었다.",
   },
   {
     character: "空",
@@ -4127,7 +4127,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "빌 공",
     strokes: 8,
     words: ["하늘", "공간", "진공"],
-    sentence: "空中을 날았다.",
+    sentence: "空中(공중)을 날았다.",
   },
   {
     character: "海",
@@ -4135,7 +4135,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "바다 해",
     strokes: 10,
     words: ["바다", "해양", "해변"],
-    sentence: "海邊에서 놀았다.",
+    sentence: "海邊(해변)에서 놀았다.",
   },
   {
     character: "川",
@@ -4143,7 +4143,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "내 천",
     strokes: 3,
     words: ["하천", "강", "냇물"],
-    sentence: "川을 건넜다.",
+    sentence: "내(川)를 건넜다.",
   },
   {
     character: "春",
@@ -4151,7 +4151,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "봄 춘",
     strokes: 9,
     words: ["봄", "청춘", "춘분"],
-    sentence: "春이 되니 꽃이 피었다.",
+    sentence: "봄(春)이 되니 꽃이 피었다.",
   },
   {
     character: "夏",
@@ -4159,7 +4159,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "여름 하",
     strokes: 10,
     words: ["여름", "하지", "하계"],
-    sentence: "夏에 수영을 했다.",
+    sentence: "여름(夏)에 수영을 했다.",
   },
   {
     character: "秋",
@@ -4167,7 +4167,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "가을 추",
     strokes: 9,
     words: ["가을", "추석", "추수"],
-    sentence: "秋에 곡식을 거둔다.",
+    sentence: "가을(秋)에 곡식을 거둔다.",
   },
   {
     character: "冬",
@@ -4175,7 +4175,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "겨울 동",
     strokes: 5,
     words: ["겨울", "동지", "동계"],
-    sentence: "冬에 눈이 온다.",
+    sentence: "겨울(冬)에 눈이 온다.",
   },
   {
     character: "雨",
@@ -4183,7 +4183,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "비 우",
     strokes: 8,
     words: ["비", "우산", "폭우"],
-    sentence: "雨가 와서 우산을 썼다.",
+    sentence: "비(雨)가 와서 우산을 썼다.",
   },
   {
     character: "風",
@@ -4191,7 +4191,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "바람 풍",
     strokes: 9,
     words: ["바람", "태풍", "풍경"],
-    sentence: "風이 세게 불었다.",
+    sentence: "바람(風)이 세게 불었다.",
   },
   {
     character: "雪",
@@ -4199,7 +4199,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "눈 설",
     strokes: 11,
     words: ["눈", "설경", "대설"],
-    sentence: "雪이 하얗게 쌓였다.",
+    sentence: "눈(雪)이 하얗게 쌓였다.",
   },
   {
     character: "明",
@@ -4207,7 +4207,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "밝을 명",
     strokes: 8,
     words: ["밝음", "명절", "발명"],
-    sentence: "明日은 내일이다.",
+    sentence: "明日(명일)은 내일이다.",
   },
   {
     character: "暗",
@@ -4215,7 +4215,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "어두울 암",
     strokes: 13,
     words: ["어둠", "암기", "암흑"],
-    sentence: "밤이 되어 暗해졌다.",
+    sentence: "밤이 되어 주위가 어두워졌다.",
   },
   {
     character: "善",
@@ -4223,7 +4223,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "착할 선",
     strokes: 12,
     words: ["착함", "선행", "개선"],
-    sentence: "善한 행동을 하자.",
+    sentence: "선한 행동을 하자.",
   },
   {
     character: "惡",
@@ -4231,7 +4231,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "악할 악",
     strokes: 12,
     words: ["나쁨", "악인", "악행"],
-    sentence: "惡한 짓은 하지 말자.",
+    sentence: "악한 짓은 하지 말자.",
   },
   {
     character: "動",
@@ -4239,7 +4239,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "움직일 동",
     strokes: 11,
     words: ["운동", "동물", "활동"],
-    sentence: "運動을 매일 한다.",
+    sentence: "運動(운동)을 매일 한다.",
   },
   {
     character: "物",
@@ -4247,7 +4247,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "만물 물",
     strokes: 8,
     words: ["물건", "동물", "식물"],
-    sentence: "動物을 사랑하자.",
+    sentence: "動物(동물)을 사랑하자.",
   },
   {
     character: "植",
@@ -4255,7 +4255,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "심을 식",
     strokes: 12,
     words: ["식물", "식목", "이식"],
-    sentence: "植物에 물을 주었다.",
+    sentence: "植物(식물)에 물을 주었다.",
   },
   {
     character: "書",
@@ -4263,7 +4263,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "글 서",
     strokes: 10,
     words: ["서예", "도서", "교과서"],
-    sentence: "圖書館에서 책을 읽었다.",
+    sentence: "圖書館(도서관)에서 책을 읽었다.",
   },
   {
     character: "語",
@@ -4271,7 +4271,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "말씀 어",
     strokes: 14,
     words: ["국어", "영어", "언어"],
-    sentence: "國語 공부를 했다.",
+    sentence: "國語(국어) 공부를 했다.",
   },
   {
     character: "文",
@@ -4279,7 +4279,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "글월 문",
     strokes: 4,
     words: ["문장", "국문", "작문"],
-    sentence: "文章을 잘 썼다.",
+    sentence: "文章(문장)을 잘 썼다.",
   },
   {
     character: "字",
@@ -4287,7 +4287,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "글자 자",
     strokes: 6,
     words: ["글자", "문자", "한자"],
-    sentence: "漢字를 배웠다.",
+    sentence: "漢字(한자)를 배웠다.",
   },
   {
     character: "數",
@@ -4295,7 +4295,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "셀 수",
     strokes: 15,
     words: ["숫자", "수학", "개수"],
-    sentence: "數學을 공부한다.",
+    sentence: "數學(수학)을 공부한다.",
   },
   {
     character: "算",
@@ -4303,7 +4303,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "셈 산",
     strokes: 14,
     words: ["계산", "산수", "예산"],
-    sentence: "計算을 정확히 했다.",
+    sentence: "計算(계산)을 정확히 했다.",
   },
   {
     character: "音",
@@ -4311,7 +4311,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "소리 음",
     strokes: 9,
     words: ["음악", "발음", "소음"],
-    sentence: "音樂을 듣는다.",
+    sentence: "音樂(음악)을 듣는다.",
   },
   {
     character: "樂",
@@ -4319,7 +4319,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "즐길 락",
     strokes: 15,
     words: ["음악", "즐거움", "오락"],
-    sentence: "音樂을 즐긴다.",
+    sentence: "音樂(음악)을 즐긴다.",
   },
   {
     character: "愛",
@@ -4327,7 +4327,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "사랑 애",
     strokes: 13,
     words: ["사랑", "애국", "박애"],
-    sentence: "家族을 愛한다.",
+    sentence: "가족(家族)을 사랑(愛)한다.",
   },
   {
     character: "孝",
@@ -4335,7 +4335,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "효도 효",
     strokes: 7,
     words: ["효도", "효자", "효녀"],
-    sentence: "부모님께 孝도한다.",
+    sentence: "부모님께 효도(孝道)한다.",
   },
   {
     character: "信",
@@ -4343,7 +4343,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "믿을 신",
     strokes: 9,
     words: ["신뢰", "자신", "통신"],
-    sentence: "서로 信뢰한다.",
+    sentence: "서로 신뢰한다.",
   },
   {
     character: "德",
@@ -4351,7 +4351,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "큰 덕",
     strokes: 15,
     words: ["도덕", "덕분", "인덕"],
-    sentence: "道德을 지킨다.",
+    sentence: "道德(도덕)을 지킨다.",
   },
   {
     character: "安",
@@ -4359,7 +4359,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "편안 안",
     strokes: 6,
     words: ["안전", "안녕", "불안"],
-    sentence: "安全을 지킨다.",
+    sentence: "安全(안전)을 지킨다.",
   },
   {
     character: "全",
@@ -4367,7 +4367,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "온전 전",
     strokes: 6,
     words: ["전체", "안전", "완전"],
-    sentence: "安全第一이다.",
+    sentence: "安全第一(안전제일)이다.",
   },
   {
     character: "平",
@@ -4375,7 +4375,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "평평할 평",
     strokes: 5,
     words: ["평화", "공평", "평등"],
-    sentence: "平和를 사랑한다.",
+    sentence: "平和(평화)를 사랑한다.",
   },
   {
     character: "和",
@@ -4383,7 +4383,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "화할 화",
     strokes: 8,
     words: ["평화", "화합", "조화"],
-    sentence: "和合하여 살자.",
+    sentence: "和合(화합)하여 살자.",
   },
   {
     character: "光",
@@ -4391,7 +4391,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "빛 광",
     strokes: 6,
     words: ["빛", "관광", "광선"],
-    sentence: "光이 밝게 빛난다.",
+    sentence: "빛(光)이 밝게 빛난다.",
   },
   {
     character: "電",
@@ -4399,7 +4399,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "번개 전",
     strokes: 13,
     words: ["전기", "전화", "충전"],
-    sentence: "電氣를 아껴 쓰자.",
+    sentence: "電氣(전기)를 아껴 쓰자.",
   },
   {
     character: "氷",
@@ -4407,7 +4407,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "얼음 빙",
     strokes: 5,
     words: ["얼음", "빙하", "제빙"],
-    sentence: "氷이 녹았다.",
+    sentence: "얼음(氷)이 녹았다.",
   },
   {
     character: "雲",
@@ -4415,7 +4415,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "구름 운",
     strokes: 12,
     words: ["구름", "운해", "먹구름"],
-    sentence: "하늘에 雲이 떠 있다.",
+    sentence: "하늘에 구름(雲)이 떠 있다.",
   },
   {
     character: "鳥",
@@ -4423,7 +4423,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "새 조",
     strokes: 11,
     words: ["새", "조류", "야조"],
-    sentence: "鳥가 하늘을 날았다.",
+    sentence: "새(鳥)가 하늘을 날았다.",
   },
   {
     character: "魚",
@@ -4431,7 +4431,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "물고기 어",
     strokes: 11,
     words: ["물고기", "어류", "금어"],
-    sentence: "魚가 물속에서 헤엄친다.",
+    sentence: "물고기(魚)가 물속에서 헤엄친다.",
   },
   {
     character: "犬",
@@ -4439,7 +4439,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "개 견",
     strokes: 4,
     words: ["강아지", "맹견", "애견"],
-    sentence: "愛犬과 산책했다.",
+    sentence: "愛犬(애견)과 산책했다.",
   },
 ];
 
@@ -4704,7 +4704,7 @@ export const grade3EnglishData: EnglishEntry[] = [
     practice: ["It is ___ today.", "It is hot."],
   },
   {
-    sentence: "I want an ice cream.",
+    sentence: "I want ice cream.",
     translation: "나는 아이스크림을 원해.",
     word: "want",
     targetKo: "원해",
@@ -5548,8 +5548,8 @@ export const grade3CreativeData: KnowledgeEntry[] = [
     category: "미술",
   },
   {
-    text: "물감이 마르기 전에 다른 색을 칠하면 색이 자연스럽게 ___된다.",
-    answer: "번짐",
+    text: "물감이 마르기 전에 다른 색을 칠하면 색이 자연스럽게 ___다.",
+    answer: "번진",
     category: "미술",
   },
   // 음악 (13개)
@@ -5559,13 +5559,13 @@ export const grade3CreativeData: KnowledgeEntry[] = [
     category: "음악",
   },
   {
-    text: "음악에서 세게 연주하라는 기호는 ___이다.",
-    answer: "f (포르테)",
+    text: "음악에서 세게 연주하라는 기호 f를 ___라고 읽는다.",
+    answer: "포르테",
     category: "음악",
   },
   {
-    text: "음악에서 여리게 연주하라는 기호는 ___이다.",
-    answer: "p (피아노)",
+    text: "음악에서 여리게 연주하라는 기호 p를 ___라고 읽는다.",
+    answer: "피아노",
     category: "음악",
   },
   {
@@ -5574,7 +5574,7 @@ export const grade3CreativeData: KnowledgeEntry[] = [
     category: "음악",
   },
   {
-    text: "리코더에서 왼손 엄지로 뒷구멍을 막고 불면 ___음이 난다.",
+    text: "리코더에서 왼손 엄지로 뒷구멍을 막고 검지로 1번 구멍을 막고 불면 ___음이 난다.",
     answer: "시",
     category: "음악",
   },
@@ -5602,7 +5602,7 @@ export const grade3CreativeData: KnowledgeEntry[] = [
     category: "음악",
   },
   {
-    text: "우리나라 전통 장단 중 '쿵 따 쿵 따'는 ___장단이다.",
+    text: "우리나라 전통 장단 중 '덩 쿵 쿵 덕 쿵'은 ___장단이다.",
     answer: "자진모리",
     category: "음악",
   },
@@ -5618,7 +5618,7 @@ export const grade3CreativeData: KnowledgeEntry[] = [
     category: "만들기",
   },
   {
-    text: "풀 대신 테이프로 붙이는 것을 ___이라(라) 한다.",
+    text: "풀이나 테이프 따위로 서로 들러붙게 하는 것을 ___이라(라) 한다.",
     answer: "접착",
     category: "만들기",
   },
@@ -5639,7 +5639,7 @@ export const grade3CreativeData: KnowledgeEntry[] = [
   },
   // 감상 (6개)
   {
-    text: "그림을 감상할 때 느끼는 생각이나 기분을 ___이라(라) 한다.",
+    text: "그림을 감상할 때 느끼는 생각이나 기분을 적은 글을 ___이라(라) 한다.",
     answer: "감상문",
     category: "감상",
   },

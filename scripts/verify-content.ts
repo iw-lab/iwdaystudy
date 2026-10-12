@@ -33,7 +33,8 @@ const PLACEHOLDER_RE =
   /[을를은는이가와과]\([을를은는이가와과]\)|으로\(로\)|로\(으로\)|이라고\(라고\)|이라는\(라는\)|이라도\(라도\)|이라\(라\)/g;
 
 // ── ② 숫자 + 조사 오류 ────────────────────────────────────────
-const NUM_JOSA_RE = /(\d+)\s*(이|가|은|는|을|를|와|과)(?![가-힣])/g;
+// 분수 a/b 는 «b분의 a» 로 읽으니 받침은 분자(a)로 본다(2/3가 · 3/4이)
+const NUM_JOSA_RE = /(?:(\d+)\/)?(\d+)\s*(이|가|은|는|을|를|와|과)(?![가-힣])/g;
 
 // ── ③ 받침없음 + '으로' 오류 ──────────────────────────────────
 const NO_BATCHIM_EURO_RE = /([가-힣])으로(?![가-힣])/g;
@@ -49,8 +50,8 @@ function scanText(text: string, where: string) {
   }
 
   for (const m of text.matchAll(NUM_JOSA_RE)) {
-    const nb = numberHasBatchim(parseInt(m[1], 10));
-    const j = m[2];
+    const nb = numberHasBatchim(parseInt(m[1] ?? m[2], 10));
+    const j = m[3];
     const bad =
       (nb && (j === "가" || j === "는" || j === "를" || j === "와")) ||
       (!nb && (j === "이" || j === "은" || j === "을" || j === "과"));

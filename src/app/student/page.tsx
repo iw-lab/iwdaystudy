@@ -65,7 +65,7 @@ export default function StudentDashboard() {
         : "오늘 하루도 수고했어요";
 
   return (
-    <div className="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-[1fr,320px] xl:grid-cols-[1fr,360px] lg:gap-8 lg:items-start">
+    <div className="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_360px] lg:gap-8 lg:items-start">
       {/* Left column */}
       <div className="space-y-6">
         {/* Welcome section */}

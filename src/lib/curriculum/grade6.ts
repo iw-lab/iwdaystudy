@@ -322,8 +322,8 @@ export const grade6SpellingData: SpellingEntry[] = [
     explanation: "'이른바'가 올바른 표기입니다.",
   },
   {
-    q1: "가름하다 - 양쪽으로 나누다.",
-    q2: "갈음하다 - 양쪽으로 나누다.",
+    q1: "마지막 한 골이 승부를 가름했다.",
+    q2: "마지막 한 골이 승부를 갈음했다.",
     answer: 1,
     explanation:
       "'가르다'에서 파생된 '가름하다'가 맞습니다. '갈음하다'는 '대신하다'입니다.",
@@ -419,10 +419,10 @@ export const grade6SpellingData: SpellingEntry[] = [
     explanation: "'구레나룻'이 올바른 표기입니다. '구렛나루'는 틀린 표기입니다.",
   },
   {
-    q1: "십상이다. (당연한 것)",
-    q2: "십쌍이다. (당연한 것)",
+    q1: "서두르면 넘어지기 십상이다.",
+    q2: "서두르면 넘어지기 쉽상이다.",
     answer: 1,
-    explanation: "'십상'(당연히 그런 일)이 올바른 표기입니다.",
+    explanation: "'십상'(그렇게 되기 쉬움)이 올바른 표기입니다.",
   },
   {
     q1: "벼락맞은 듯 놀랐다.",
@@ -475,26 +475,26 @@ export const grade6SpellingData: SpellingEntry[] = [
     explanation: "'-던지'(과거 회상)가 맞습니다.",
   },
   {
-    q1: "담그다 - 발을 물에 담갔다.",
-    q2: "담구다 - 발을 물에 담궜다.",
+    q1: "발을 물에 담갔다.",
+    q2: "발을 물에 담궜다.",
     answer: 1,
     explanation: "'담그다'가 올바른 표기입니다.",
   },
   {
-    q1: "잠그다 - 자물쇠를 잠갔다.",
-    q2: "잠구다 - 자물쇠를 잠궜다.",
+    q1: "자물쇠를 잠갔다.",
+    q2: "자물쇠를 잠궜다.",
     answer: 1,
     explanation: "'잠그다'가 올바른 표기입니다.",
   },
   {
-    q1: "들르다 - 친구 집에 들렀다.",
-    q2: "들리다 - 친구 집에 들렸다.",
+    q1: "친구 집에 들렀다.",
+    q2: "친구 집에 들렸다.",
     answer: 1,
     explanation: "'들르다'(방문하다)가 맞습니다.",
   },
   {
-    q1: "부딪치다 - 벽에 부딪쳤다.",
-    q2: "부딪히다 - 벽에 부딪혔다.",
+    q1: "벽에 부딪쳤다.",
+    q2: "벽에 부딪혔다.",
     answer: 2,
     explanation: "'부딪히다'(부딪음을 당하다)가 맞는 문맥입니다.",
   },
@@ -559,14 +559,14 @@ export const grade6SpellingData: SpellingEntry[] = [
     explanation: "'웬일'이 올바른 표기입니다.",
   },
   {
-    q1: "이따가 만나자.",
-    q2: "있다가 만나자.",
+    q1: "그는 금세 돌아왔다.",
+    q2: "그는 금새 돌아왔다.",
     answer: 1,
-    explanation: "'이따가'(조금 후에)가 올바른 표기입니다.",
+    explanation: "'금세'('금시에'의 준말)가 올바른 표기입니다.",
   },
   {
-    q1: "설레다 - 여행이 설렌다.",
-    q2: "설레이다 - 여행이 설레인다.",
+    q1: "여행이 설렌다.",
+    q2: "여행이 설레인다.",
     answer: 1,
     explanation: "'설레다'가 올바른 표기입니다.",
   },
@@ -577,8 +577,8 @@ export const grade6SpellingData: SpellingEntry[] = [
     explanation: "'매무새'가 올바른 표기입니다.",
   },
   {
-    q1: "문안드리다 - 어른께 문안드렸다.",
-    q2: "무난드리다 - 어른께 무난드렸다.",
+    q1: "어른께 문안드렸다.",
+    q2: "어른께 무난드렸다.",
     answer: 1,
     explanation: "'문안드리다'가 올바른 표기입니다.",
   },
@@ -595,8 +595,8 @@ export const grade6SpellingData: SpellingEntry[] = [
     explanation: "'띄다'(보이다)가 맞습니다.",
   },
   {
-    q1: "못하다 - 운동을 못한다.",
-    q2: "못 하다 - 운동을 못 한다.",
+    q1: "운동을 못한다.",
+    q2: "운동을 못 한다.",
     answer: 1,
     explanation: "'못하다'(능력 부족)는 한 단어로 붙여 씁니다.",
   },
@@ -607,8 +607,8 @@ export const grade6SpellingData: SpellingEntry[] = [
     explanation: "'안 되다'(불가능하다)는 띄어 씁니다.",
   },
   {
-    q1: "안되다 - 그 소식을 듣고 안됐다.",
-    q2: "안 되다 - 그 소식을 듣고 안 됐다.",
+    q1: "그 소식을 듣고 안됐다.",
+    q2: "그 소식을 듣고 안 됐다.",
     answer: 1,
     explanation: "'안되다'(불쌍하다)는 붙여 씁니다.",
   },
@@ -757,8 +757,8 @@ export const grade6SpellingData: SpellingEntry[] = [
     explanation: "'빕니다'가 올바른 표기입니다.",
   },
   {
-    q1: "넓적하다 - 이마가 넓적하다.",
-    q2: "널적하다 - 이마가 널적하다.",
+    q1: "이마가 넓적하다.",
+    q2: "이마가 널적하다.",
     answer: 1,
     explanation: "'넓적하다'가 올바른 표기입니다.",
   },
@@ -810,11 +810,11 @@ export const grade6VocabData: VocabEntry[] = [
     answer: "양심",
   },
   {
-    meanings: ["생물이 환경에 맞게 변하는 것", "다윈이 연구했어요"],
+    meanings: ["생물이 오랜 세대에 걸쳐 조금씩 변해 가는 것", "다윈이 연구했어요"],
     answer: "진화",
   },
   {
-    meanings: ["한 나라의 주요 산업", "국가 경제의 기둥이에요"],
+    meanings: ["다른 산업의 바탕이 되는 중요한 산업", "철강·전기·교통 같은 산업이에요"],
     answer: "기간산업",
   },
   {
@@ -870,11 +870,11 @@ export const grade6VocabData: VocabEntry[] = [
     answer: "자존감",
   },
   {
-    meanings: ["사회의 약자를 돕는 제도", "복지 국가의 핵심이에요"],
+    meanings: ["사회의 약자를 돕는 제도", "모든 사람이 행복하게 사는 것을 목표로 해요"],
     answer: "복지",
   },
   {
-    meanings: ["사물이나 현상의 원인을 밝히는 것", "과학적 방법으로 해요"],
+    meanings: ["여러 부분으로 나누어 자세히 따져 보는 것", "자료를 ○○해 결론을 내요"],
     answer: "분석",
   },
   {
@@ -894,7 +894,7 @@ export const grade6VocabData: VocabEntry[] = [
     answer: "다문화",
   },
   {
-    meanings: ["생물이 살아가는 자연 환경", "생태계라고도 해요"],
+    meanings: ["생물이 자리 잡고 사는 곳", "수달의 ○○○는 맑은 강이에요"],
     answer: "서식지",
   },
   {
@@ -907,7 +907,7 @@ export const grade6VocabData: VocabEntry[] = [
   },
   {
     meanings: [
-      "세계 여러 나라의 문제를 함께 해결하는 것",
+      "지구촌의 한 사람으로서 책임을 느끼고 행동하는 마음",
       "지구촌과 관련 있어요",
     ],
     answer: "세계시민의식",
@@ -988,12 +988,12 @@ export const grade6VocabData: VocabEntry[] = [
     answer: "교역",
   },
   {
-    meanings: ["사회가 점점 나아지는 것", "경제, 문화, 복지 면에서 발전해요"],
+    meanings: ["사회가 점점 나아지는 것", "더 좋은 상태로 나아가요"],
     answer: "발전",
   },
-  { meanings: ["잘못된 제도를 바꾸는 것", "개혁과 비슷해요"], answer: "개혁" },
+  { meanings: ["잘못된 제도를 바꾸는 것", "제도를 새롭게 고쳐요"], answer: "개혁" },
   {
-    meanings: ["과학 실험에서 변하는 값", "독립변인과 종속변인이 있어요"],
+    meanings: ["과학 실험에서 변하는 값", "다르게 할 조건과 같게 할 조건을 정해요"],
     answer: "변인",
   },
   {
@@ -1021,11 +1021,11 @@ export const grade6VocabData: VocabEntry[] = [
     answer: "정정",
   },
   {
-    meanings: ["여러 가지를 모아 하나로 합치는 것", "통합과 비슷해요"],
+    meanings: ["여러 가지를 모아 하나로 합치는 것", "따로 있던 것을 하나로 모아요"],
     answer: "통합",
   },
   {
-    meanings: ["사회의 약한 사람을 보호하는 것", "복지와 관련 있어요"],
+    meanings: ["위험하지 않게 지키고 돌보는 것", "복지와 관련 있어요"],
     answer: "보호",
   },
   { meanings: ["미래에 대한 희망과 기대", "꿈과 비슷해요"], answer: "포부" },
@@ -1035,7 +1035,7 @@ export const grade6VocabData: VocabEntry[] = [
     answer: "분석",
   },
   {
-    meanings: ["정보를 체계적으로 정리하는 것", "데이터를 ___해요"],
+    meanings: ["흩어진 것을 질서 있게 바로잡는 것", "데이터를 ___해요"],
     answer: "정리",
   },
   {
@@ -1066,8 +1066,8 @@ export const grade6VocabData: VocabEntry[] = [
     answer: "세금",
   },
   {
-    meanings: ["국가의 살림을 관리하는 것", "세입과 세출로 나뉘어요"],
-    answer: "재정",
+    meanings: ["나라에 들어오는 돈", "세금이 대부분이에요"],
+    answer: "세입",
   },
   { meanings: ["나라의 최고 법", "국민의 기본권을 보장해요"], answer: "헌법" },
   {
@@ -1103,7 +1103,7 @@ export const grade6VocabData: VocabEntry[] = [
     answer: "개선",
   },
   {
-    meanings: ["어떤 것을 판단하는 기준", "공정한 ___가 필요해요"],
+    meanings: ["판단할 때 바탕이 되는 잣대", "공정한 ___가 필요해요"],
     answer: "기준",
   },
   {
@@ -1116,14 +1116,14 @@ export const grade6VocabData: VocabEntry[] = [
   },
   {
     meanings: [
-      "다른 사람의 권리를 인정하고 존중하는 것",
+      "다른 사람을 높여 귀하게 여기는 것",
       "민주주의의 기본이에요",
     ],
     answer: "존중",
   },
   {
-    meanings: ["부당한 것에 맞서는 것", "정의를 위해 필요해요"],
-    answer: "저항",
+    meanings: ["남의 의견을 따르기만 하지 않고 스스로 판단하는 힘", "어른이 되면서 길러요"],
+    answer: "주체성",
   },
   {
     meanings: ["여러 나라가 함께 문제를 해결하는 것", "유엔이 대표적이에요"],
@@ -1213,7 +1213,7 @@ export const grade6VocabData: VocabEntry[] = [
     answer: "비례배분",
   },
   {
-    meanings: ["둥근 모양의 둘레 길이", "원주율을 사용해 구해요"],
+    meanings: ["둥근 모양의 둘레 길이", "지름에 3.14를 곱해 구해요"],
     answer: "원주",
   },
   {
@@ -1252,7 +1252,7 @@ export const grade6VocabData: VocabEntry[] = [
   },
   {
     meanings: [
-      "작품을 감상하고 느낀 점을 표현하는 것",
+      "작품을 보고 느끼며 즐기는 것",
       "독후감이 대표적이에요",
     ],
     answer: "감상",
@@ -1324,7 +1324,7 @@ export const grade6MathData: MathEntry[] = [
   // 비와 비율
   {
     type: "calculation",
-    expression: "12 : 16의 가장 간단한 비",
+    expression: "12 : 16을 가장 간단한 자연수의 비로 나타내면? (첫째 수 입력)",
     answer: 3,
     steps: [
       "12와 16의 최대공약수: 4",
@@ -1592,7 +1592,7 @@ export const grade6MathData: MathEntry[] = [
   // 비와 비율 추가
   {
     type: "calculation",
-    expression: "9 : 15의 가장 간단한 비",
+    expression: "9 : 15를 가장 간단한 자연수의 비로 나타내면? (첫째 수 입력)",
     answer: 3,
     steps: [
       "9와 15의 최대공약수: 3",
@@ -1603,7 +1603,7 @@ export const grade6MathData: MathEntry[] = [
   },
   {
     type: "calculation",
-    expression: "18 : 24의 가장 간단한 비",
+    expression: "18 : 24를 가장 간단한 자연수의 비로 나타내면? (첫째 수 입력)",
     answer: 3,
     steps: [
       "18과 24의 최대공약수: 6",
@@ -1614,7 +1614,7 @@ export const grade6MathData: MathEntry[] = [
   },
   {
     type: "calculation",
-    expression: "0.6 : 0.9의 가장 간단한 비",
+    expression: "0.6 : 0.9를 가장 간단한 자연수의 비로 나타내면? (첫째 수 입력)",
     answer: 2,
     steps: [
       "소수를 정수로: 6 : 9",
@@ -1625,7 +1625,7 @@ export const grade6MathData: MathEntry[] = [
   },
   {
     type: "calculation",
-    expression: "2/3 : 4/5의 가장 간단한 비",
+    expression: "2/3 : 4/5를 가장 간단한 자연수의 비로 나타내면? (첫째 수 입력)",
     answer: 5,
     steps: [
       "통분: 10/15 : 12/15",
@@ -1982,7 +1982,7 @@ export const grade6MathData: MathEntry[] = [
   },
   {
     type: "calculation",
-    expression: "21 : 35의 가장 간단한 비",
+    expression: "21 : 35를 가장 간단한 자연수의 비로 나타내면? (첫째 수 입력)",
     answer: 3,
     steps: [
       "21과 35의 최대공약수: 7",
@@ -2035,7 +2035,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     answer: "민주공화국",
     category: "사회",
   },
-  { text: "DNA는 ___의 약자이다.", answer: "디옥시리보핵산", category: "과학" },
+  { text: "생물의 특징을 자손에게 전하는 유전 정보가 담긴 물질을 영어 약자로 ___라 한다.", answer: "DNA", category: "과학" },
   {
     text: "우리나라 최초의 한글 소설은 ___이다.",
     answer: "홍길동전",
@@ -2047,7 +2047,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "역사",
   },
   {
-    text: "지구의 자전축은 ___도 기울어져 있다.",
+    text: "지구의 자전축은 공전 궤도면에 수직인 방향에서 약 ___도 기울어져 있다.",
     answer: "23.5",
     category: "과학",
   },
@@ -2129,7 +2129,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "지리",
   },
   {
-    text: "유럽 연합(EU)의 본부가 있는 도시는 ___이다.",
+    text: "유럽 연합(EU)의 주요 기관이 모여 있는 벨기에의 수도는 ___이다.",
     answer: "브뤼셀",
     category: "사회",
   },
@@ -2144,8 +2144,8 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "지리",
   },
   {
-    text: "기본적 인권을 보장하기 위한 국제기구는 ___이다.",
-    answer: "유엔(UN)",
+    text: "세계 평화와 인권을 지키려고 여러 나라가 모여 만든 국제기구는 ___이다.",
+    answer: "유엔",
     category: "사회",
   },
   {
@@ -2160,7 +2160,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "문화",
   },
   {
-    text: "비타민 C가 풍부한 과일로 ___가 대표적이다.",
+    text: "겨울에 많이 먹는, 비타민 C가 풍부한 노란 과일은 ___이다.",
     answer: "귤",
     category: "과학",
   },
@@ -2180,7 +2180,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "역사",
   },
   {
-    text: "한국의 비무장지대(DMZ)는 ___선을 기준으로 설정되었다.",
+    text: "비무장 지대(DMZ)는 남북의 군사 분계선, 곧 ___선을 기준으로 정해졌다.",
     answer: "휴전",
     category: "사회",
   },
@@ -2215,7 +2215,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "지리",
   },
   {
-    text: "남극 대륙을 가장 먼저 탐험한 나라는 ___이다.",
+    text: "남극점에 가장 먼저 도착한 탐험가 아문센의 나라는 ___이다.",
     answer: "노르웨이",
     category: "지리",
   },
@@ -2225,7 +2225,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "사회",
   },
   {
-    text: "우리나라 헌법에서 보장하는 교육의 의무는 ___교육이다.",
+    text: "모든 국민이 자녀에게 받게 해야 하는 초등학교와 중학교 교육을 ___ 교육이라 한다.",
     answer: "의무",
     category: "사회",
   },
@@ -2235,7 +2235,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "역사",
   },
   {
-    text: "석유 생산량이 많은 중동 지역의 국가 연합은 ___이다.",
+    text: "석유를 많이 생산하는 나라들이 만든 국제기구는 ___이다.",
     answer: "OPEC",
     category: "사회",
   },
@@ -2251,7 +2251,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "세계 최초의 철갑선은 조선의 ___이다.",
+    text: "임진왜란 때 이순신 장군이 이끈, 등에 덮개를 씌운 전투선은 ___이다.",
     answer: "거북선",
     category: "역사",
   },
@@ -2266,12 +2266,12 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "사회",
   },
   {
-    text: "세계에서 가장 큰 사막은 ___사막이다.",
+    text: "아프리카 북부에 있는, 세계에서 가장 큰 모래 사막은 ___ 사막이다.",
     answer: "사하라",
     category: "지리",
   },
   {
-    text: "적도 부근에서 부는 무역풍의 방향은 ___에서 서쪽이다.",
+    text: "적도 부근에서 부는 무역풍은 대체로 ___쪽에서 서쪽으로 분다.",
     answer: "동",
     category: "과학",
   },
@@ -2307,7 +2307,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "식물의 뿌리가 하는 일은 물과 ___을 흡수하는 것이다.",
+    text: "식물의 뿌리는 땅속의 물과 ___을 흡수한다.",
     answer: "양분",
     category: "과학",
   },
@@ -2359,7 +2359,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "역사",
   },
   {
-    text: "고려 시대에 제작된 세계 최초의 금속 활자본은 ___이다.",
+    text: "고려 시대에 찍은, 지금 남아 있는 가장 오래된 금속 활자본은 ___이다.",
     answer: "직지심체요절",
     category: "역사",
   },
@@ -2417,7 +2417,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "수학",
   },
   {
-    text: "태양계에서 지구와 가장 가까운 행성은 ___이다.",
+    text: "태양계에서 지구 바로 안쪽 궤도를 도는 행성은 ___이다.",
     answer: "금성",
     category: "과학",
   },
@@ -2427,7 +2427,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "지진의 진도를 나타내는 단위는 ___이다.",
+    text: "지진이 낸 에너지의 크기를 나타내는 값은 ___이다.",
     answer: "규모",
     category: "과학",
   },
@@ -2492,8 +2492,8 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "사회",
   },
   {
-    text: "지구 전체의 평균 기온이 올라가는 것을 ___현상이라 한다.",
-    answer: "온실",
+    text: "지구 전체의 평균 기온이 오랫동안 올라가는 것을 지구 ___라 한다.",
+    answer: "온난화",
     category: "과학",
   },
   {
@@ -2507,7 +2507,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "지리",
   },
   {
-    text: "적도 부근에서 부는 무역풍의 방향은 ___에서 서이다.",
+    text: "무역풍은 대체로 ___쪽에서 불어오는 바람이다.",
     answer: "동",
     category: "과학",
   },
@@ -2532,7 +2532,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "독도의 행정 구역은 경상북도 울릉군 ___면이다.",
+    text: "독도의 행정 구역은 경상북도 울릉군 ___읍이다.",
     answer: "울릉",
     category: "지리",
   },
@@ -2577,7 +2577,7 @@ export const grade6SafetyData: SafetyEntry[] = [
     category: "학교안전",
   },
   {
-    text: "화학 물질에 의한 화상은 즉시 ___로 15분 이상 씻는다.",
+    text: "화학 물질이 피부에 묻으면 바로 ___로 15분 넘게 씻어 낸다.",
     answer: "흐르는 물",
     category: "실험안전",
   },
@@ -2638,7 +2638,7 @@ export const grade6SafetyData: SafetyEntry[] = [
     category: "재난안전",
   },
   {
-    text: "응급환자 발견 시 가장 먼저 ___을 확인해야 한다.",
+    text: "쓰러진 사람을 보면 주변이 안전한지 본 뒤 어깨를 두드려 ___이 있는지 확인한다.",
     answer: "의식",
     category: "응급안전",
   },
@@ -2678,8 +2678,8 @@ export const grade6SafetyData: SafetyEntry[] = [
     category: "교통안전",
   },
   {
-    text: "뇌우(천둥번개) 시 자동차 안은 ___하기 때문에 비교적 안전하다.",
-    answer: "전기가 차체를 통해 흐르",
+    text: "천둥 번개가 칠 때 자동차 안이 비교적 안전한 까닭은 전기가 ___ 겉면을 따라 흘러 땅으로 빠지기 때문이다.",
+    answer: "차체",
     category: "재난안전",
   },
   {
@@ -2693,12 +2693,12 @@ export const grade6SafetyData: SafetyEntry[] = [
     category: "화재안전",
   },
   {
-    text: "폭설 시 자동차에 갇히면 ___를 틀어 체온을 유지한다.",
-    answer: "히터",
+    text: "폭설로 자동차에 갇히면 담요나 옷으로 ___을 유지하며 구조를 기다린다.",
+    answer: "체온",
     category: "재난안전",
   },
   {
-    text: "식품의 유통기한이 지난 음식은 ___하는 것이 안전하다.",
+    text: "유통 기한이 지난 음식은 먹지 말고 ___는 것이 안전하다.",
     answer: "버리",
     category: "건강안전",
   },
@@ -2723,7 +2723,7 @@ export const grade6SafetyData: SafetyEntry[] = [
     category: "정보안전",
   },
   {
-    text: "뱀에 물렸을 때 물린 부위보다 ___쪽을 묶어야 한다.",
+    text: "뱀에 물리면 움직임을 줄이고 물린 곳을 ___보다 낮게 둔 채 119에 알린다.",
     answer: "심장",
     category: "응급안전",
   },
@@ -2839,7 +2839,7 @@ export const grade6SafetyData: SafetyEntry[] = [
     category: "전기안전",
   },
   {
-    text: "밀폐된 공간에서는 가스 ___가 발생할 수 있으므로 환기한다.",
+    text: "꽉 막힌 공간에서는 가스 ___이 생길 수 있으므로 자주 환기한다.",
     answer: "중독",
     category: "건강안전",
   },
@@ -2859,7 +2859,7 @@ export const grade6SafetyData: SafetyEntry[] = [
     category: "전기안전",
   },
   {
-    text: "SNS에 개인 일정을 올리면 ___을 노출하게 된다.",
+    text: "SNS에 언제 어디에 가는지 올리면 ___를 드러내게 된다.",
     answer: "개인정보",
     category: "정보안전",
   },
@@ -2879,7 +2879,7 @@ export const grade6SafetyData: SafetyEntry[] = [
     category: "실험안전",
   },
   {
-    text: "태풍 시 ___이나 간판이 날아올 수 있으므로 주의한다.",
+    text: "태풍이 불면 깨진 ___ 조각이나 간판이 날아올 수 있으니 조심한다.",
     answer: "유리",
     category: "재난안전",
   },
@@ -2929,7 +2929,7 @@ export const grade6SafetyData: SafetyEntry[] = [
     category: "실험안전",
   },
   {
-    text: "집에 혼자 있을 때 모르는 사람이 오면 문을 ___한다.",
+    text: "집에 혼자 있을 때 모르는 사람이 오면 문을 ___는다.",
     answer: "열지 않",
     category: "생활안전",
   },
@@ -2969,7 +2969,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "정사 정",
     strokes: 9,
     words: ["정치", "정부", "행정"],
-    sentence: "政治에 관심을 가지자.",
+    sentence: "政治(정치)에 관심을 가지자.",
   },
   {
     character: "經",
@@ -2977,7 +2977,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "경영할 경",
     strokes: 13,
     words: ["경제", "경험", "경영"],
-    sentence: "經濟를 배우면 세상을 이해할 수 있다.",
+    sentence: "經濟(경제)를 배우면 세상을 이해할 수 있다.",
   },
   {
     character: "社",
@@ -2985,7 +2985,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "모일 사",
     strokes: 8,
     words: ["사회", "회사", "사원"],
-    sentence: "社會에 기여하는 사람이 되자.",
+    sentence: "社會(사회)에 기여하는 사람이 되자.",
   },
   {
     character: "會",
@@ -2993,7 +2993,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "모일 회",
     strokes: 13,
     words: ["사회", "회의", "기회"],
-    sentence: "會議에서 의견을 나누었다.",
+    sentence: "會議(회의)에서 의견을 나누었다.",
   },
   {
     character: "法",
@@ -3001,7 +3001,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "법 법",
     strokes: 9,
     words: ["법률", "방법", "헌법"],
-    sentence: "法을 지키는 시민이 되자.",
+    sentence: "법(法)을 지키는 시민이 되자.",
   },
   {
     character: "正",
@@ -3009,7 +3009,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "바를 정",
     strokes: 5,
     words: ["정의", "정직", "공정"],
-    sentence: "正義로운 사회를 만들자.",
+    sentence: "正義(정의)로운 사회를 만들자.",
   },
   {
     character: "義",
@@ -3017,7 +3017,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "옳을 의",
     strokes: 13,
     words: ["의미", "정의", "주의"],
-    sentence: "民主主義를 수호하자.",
+    sentence: "民主主義(민주주의)를 수호하자.",
   },
   {
     character: "自",
@@ -3025,7 +3025,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "스스로 자",
     strokes: 6,
     words: ["자유", "자연", "자기"],
-    sentence: "自由는 소중한 권리이다.",
+    sentence: "自由(자유)는 소중한 권리이다.",
   },
   {
     character: "由",
@@ -3033,7 +3033,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "말미암을 유",
     strokes: 5,
     words: ["자유", "이유", "유래"],
-    sentence: "自由를 위해 싸운 선조들을 기억하자.",
+    sentence: "自由(자유)를 위해 싸운 선조들을 기억하자.",
   },
   {
     character: "平",
@@ -3041,7 +3041,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "평평할 평",
     strokes: 5,
     words: ["평화", "평등", "평균"],
-    sentence: "平和로운 세상을 꿈꾼다.",
+    sentence: "平和(평화)로운 세상을 꿈꾼다.",
   },
   {
     character: "和",
@@ -3049,7 +3049,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "화할 화",
     strokes: 8,
     words: ["평화", "화합", "조화"],
-    sentence: "和合하여 발전하자.",
+    sentence: "和合(화합)하여 발전하자.",
   },
   {
     character: "世",
@@ -3057,7 +3057,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "인간 세",
     strokes: 5,
     words: ["세계", "세대", "세기"],
-    sentence: "世界 평화를 위해 노력하자.",
+    sentence: "世界(세계) 평화를 위해 노력하자.",
   },
   {
     character: "界",
@@ -3065,7 +3065,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "지경 계",
     strokes: 9,
     words: ["세계", "한계", "경계"],
-    sentence: "世界는 넓고 할 일은 많다.",
+    sentence: "世界(세계)는 넓고 할 일은 많다.",
   },
   {
     character: "歷",
@@ -3073,7 +3073,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "지날 역",
     strokes: 16,
     words: ["역사", "경력", "이력"],
-    sentence: "歷史를 잊은 민족에게 미래는 없다.",
+    sentence: "歷史(역사)를 잊은 민족에게 미래는 없다.",
   },
   {
     character: "史",
@@ -3081,7 +3081,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "역사 사",
     strokes: 5,
     words: ["역사", "사학", "사관"],
-    sentence: "歷史에서 교훈을 얻자.",
+    sentence: "歷史(역사)에서 교훈을 얻자.",
   },
   {
     character: "敎",
@@ -3089,7 +3089,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "가르칠 교",
     strokes: 11,
     words: ["교육", "교사", "종교"],
-    sentence: "敎育은 백년지대계이다.",
+    sentence: "敎育(교육)은 백년지대계이다.",
   },
   // 추가 44개 (총 60개)
   {
@@ -3098,7 +3098,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "백성 민",
     strokes: 5,
     words: ["국민", "민주", "시민"],
-    sentence: "國民이 나라의 주인이다.",
+    sentence: "國民(국민)이 나라의 주인이다.",
   },
   {
     character: "主",
@@ -3106,7 +3106,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "주인 주",
     strokes: 5,
     words: ["민주", "주인", "주장"],
-    sentence: "民主主義의 핵심은 국민주권이다.",
+    sentence: "民主主義(민주주의)의 핵심은 국민주권이다.",
   },
   {
     character: "國",
@@ -3114,7 +3114,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "나라 국",
     strokes: 11,
     words: ["국가", "한국", "외국"],
-    sentence: "大韓民國은 민주공화국이다.",
+    sentence: "大韓民國(대한민국)은 민주공화국이다.",
   },
   {
     character: "憲",
@@ -3122,7 +3122,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "법 헌",
     strokes: 16,
     words: ["헌법", "헌장", "합헌"],
-    sentence: "憲法은 나라의 최고 법이다.",
+    sentence: "憲法(헌법)은 나라의 최고 법이다.",
   },
   {
     character: "權",
@@ -3130,7 +3130,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "권세 권",
     strokes: 15,
     words: ["인권", "권리", "권력"],
-    sentence: "人權은 누구에게나 있다.",
+    sentence: "人權(인권)은 누구에게나 있다.",
   },
   {
     character: "利",
@@ -3138,7 +3138,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "이로울 리",
     strokes: 7,
     words: ["이익", "권리", "편리"],
-    sentence: "權利와 의무를 함께 생각하자.",
+    sentence: "權利(권리)와 의무를 함께 생각하자.",
   },
   {
     character: "等",
@@ -3146,7 +3146,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "같을 등",
     strokes: 12,
     words: ["평등", "동등", "등급"],
-    sentence: "모든 사람은 平等하다.",
+    sentence: "모든 사람은 平等(평등)하다.",
   },
   {
     character: "獨",
@@ -3154,7 +3154,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "홀로 독",
     strokes: 16,
     words: ["독립", "독자", "독점"],
-    sentence: "獨立을 위해 많은 분이 희생했다.",
+    sentence: "獨立(독립)을 위해 많은 분이 희생했다.",
   },
   {
     character: "立",
@@ -3162,7 +3162,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "설 립",
     strokes: 5,
     words: ["독립", "설립", "국립"],
-    sentence: "나라의 獨立은 소중하다.",
+    sentence: "나라의 獨立(독립)은 소중하다.",
   },
   {
     character: "統",
@@ -3170,7 +3170,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "거느릴 통",
     strokes: 12,
     words: ["통일", "전통", "대통령"],
-    sentence: "南北 統一을 염원한다.",
+    sentence: "南北(남북) 統一(통일)을 염원한다.",
   },
   {
     character: "一",
@@ -3178,7 +3178,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "한 일",
     strokes: 1,
     words: ["통일", "일등", "제일"],
-    sentence: "天下 統一의 꿈을 꾸었다.",
+    sentence: "天下(천하) 統一(통일)의 꿈을 꾸었다.",
   },
   {
     character: "仁",
@@ -3186,7 +3186,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "어질 인",
     strokes: 4,
     words: ["인자", "인덕", "인정"],
-    sentence: "仁義를 실천하는 사람이 되자.",
+    sentence: "仁義(인의)를 실천하는 사람이 되자.",
   },
   {
     character: "德",
@@ -3194,7 +3194,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "큰 덕",
     strokes: 15,
     words: ["도덕", "덕분", "미덕"],
-    sentence: "道德적인 삶을 살자.",
+    sentence: "道德(도덕)적인 삶을 살자.",
   },
   {
     character: "信",
@@ -3202,7 +3202,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "믿을 신",
     strokes: 9,
     words: ["신뢰", "통신", "신용"],
-    sentence: "信賴는 관계의 기본이다.",
+    sentence: "信賴(신뢰)는 관계의 기본이다.",
   },
   {
     character: "愛",
@@ -3210,7 +3210,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "사랑 애",
     strokes: 13,
     words: ["사랑", "애국", "인류애"],
-    sentence: "祖國에 대한 愛情을 가지자.",
+    sentence: "祖國(조국)에 대한 愛情(애정)을 가지자.",
   },
   {
     character: "忠",
@@ -3218,7 +3218,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "충성 충",
     strokes: 8,
     words: ["충성", "충효", "충실"],
-    sentence: "忠誠과 孝道를 실천하자.",
+    sentence: "忠誠(충성)과 孝道(효도)를 실천하자.",
   },
   {
     character: "孝",
@@ -3226,7 +3226,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "효도 효",
     strokes: 7,
     words: ["효도", "효자", "충효"],
-    sentence: "부모님께 孝道하자.",
+    sentence: "부모님께 孝道(효도)하자.",
   },
   {
     character: "禮",
@@ -3234,7 +3234,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "예도 예",
     strokes: 15,
     words: ["예절", "예의", "예법"],
-    sentence: "禮儀를 잘 지키자.",
+    sentence: "禮儀(예의)를 잘 지키자.",
   },
   {
     character: "智",
@@ -3242,7 +3242,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "슬기 지",
     strokes: 12,
     words: ["지혜", "지식", "기지"],
-    sentence: "智慧로운 판단이 중요하다.",
+    sentence: "智慧(지혜)로운 판단이 중요하다.",
   },
   {
     character: "勇",
@@ -3250,7 +3250,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "용감할 용",
     strokes: 9,
     words: ["용기", "용감", "용사"],
-    sentence: "勇氣를 가지고 도전하자.",
+    sentence: "勇氣(용기)를 가지고 도전하자.",
   },
   {
     character: "公",
@@ -3258,7 +3258,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "공평할 공",
     strokes: 4,
     words: ["공정", "공평", "공공"],
-    sentence: "公正한 사회를 만들자.",
+    sentence: "公正(공정)한 사회를 만들자.",
   },
   {
     character: "善",
@@ -3266,7 +3266,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "착할 선",
     strokes: 12,
     words: ["선행", "선량", "개선"],
-    sentence: "善行을 실천하는 사람이 되자.",
+    sentence: "善行(선행)을 실천하는 사람이 되자.",
   },
   {
     character: "惡",
@@ -3274,7 +3274,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "악할 악",
     strokes: 12,
     words: ["선악", "악행", "악덕"],
-    sentence: "善惡을 분별하는 지혜가 필요하다.",
+    sentence: "善惡(선악)을 분별하는 지혜가 필요하다.",
   },
   {
     character: "戰",
@@ -3282,7 +3282,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "싸울 전",
     strokes: 16,
     words: ["전쟁", "도전", "작전"],
-    sentence: "戰爭 없는 세상을 꿈꾼다.",
+    sentence: "戰爭(전쟁) 없는 세상을 꿈꾼다.",
   },
   {
     character: "安",
@@ -3290,7 +3290,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "편안할 안",
     strokes: 6,
     words: ["안전", "안심", "안녕"],
-    sentence: "安全이 가장 중요하다.",
+    sentence: "安全(안전)이 가장 중요하다.",
   },
   {
     character: "全",
@@ -3298,7 +3298,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "온전할 전",
     strokes: 6,
     words: ["안전", "전체", "완전"],
-    sentence: "安全한 사회를 만들자.",
+    sentence: "安全(안전)한 사회를 만들자.",
   },
   {
     character: "勞",
@@ -3306,7 +3306,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "일할 노",
     strokes: 12,
     words: ["노동", "근로", "노력"],
-    sentence: "勤勞의 가치를 알자.",
+    sentence: "勤勞(근로)의 가치를 알자.",
   },
   {
     character: "動",
@@ -3314,7 +3314,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "움직일 동",
     strokes: 11,
     words: ["운동", "활동", "동물"],
-    sentence: "꾸준히 運動하면 건강해진다.",
+    sentence: "꾸준히 運動(운동)하면 건강해진다.",
   },
   {
     character: "育",
@@ -3322,7 +3322,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "기를 육",
     strokes: 8,
     words: ["교육", "체육", "양육"],
-    sentence: "敎育의 힘을 믿자.",
+    sentence: "敎育(교육)의 힘을 믿자.",
   },
   {
     character: "文",
@@ -3330,7 +3330,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "글월 문",
     strokes: 4,
     words: ["문화", "문학", "문명"],
-    sentence: "한국 文化를 세계에 알리자.",
+    sentence: "한국 文化(문화)를 세계에 알리자.",
   },
   {
     character: "化",
@@ -3338,7 +3338,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "될 화",
     strokes: 4,
     words: ["문화", "변화", "진화"],
-    sentence: "文化는 시대에 따라 變化한다.",
+    sentence: "文化(문화)는 시대에 따라 變化(변화)한다.",
   },
   {
     character: "明",
@@ -3346,7 +3346,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "밝을 명",
     strokes: 8,
     words: ["문명", "발명", "설명"],
-    sentence: "文明의 발전이 인류를 변화시켰다.",
+    sentence: "文明(문명)의 발전이 인류를 변화시켰다.",
   },
   {
     character: "祖",
@@ -3354,7 +3354,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "할아버지 조",
     strokes: 10,
     words: ["조상", "조국", "선조"],
-    sentence: "祖國을 사랑하는 마음을 가지자.",
+    sentence: "祖國(조국)을 사랑하는 마음을 가지자.",
   },
   {
     character: "先",
@@ -3362,7 +3362,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "먼저 선",
     strokes: 6,
     words: ["선조", "선배", "우선"],
-    sentence: "先輩들의 지혜를 배우자.",
+    sentence: "先輩(선배)들의 지혜를 배우자.",
   },
   {
     character: "後",
@@ -3370,7 +3370,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "뒤 후",
     strokes: 9,
     words: ["후배", "이후", "최후"],
-    sentence: "後輩들에게 좋은 본보기가 되자.",
+    sentence: "後輩(후배)들에게 좋은 본보기가 되자.",
   },
   {
     character: "現",
@@ -3378,7 +3378,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "나타날 현",
     strokes: 11,
     words: ["현재", "현실", "표현"],
-    sentence: "現在를 충실히 살자.",
+    sentence: "現在(현재)를 충실히 살자.",
   },
   {
     character: "未",
@@ -3386,7 +3386,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "아닐 미",
     strokes: 5,
     words: ["미래", "미완", "미지"],
-    sentence: "未來를 준비하는 자세가 중요하다.",
+    sentence: "未來(미래)를 준비하는 자세가 중요하다.",
   },
   {
     character: "來",
@@ -3394,7 +3394,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "올 래",
     strokes: 8,
     words: ["미래", "유래", "장래"],
-    sentence: "밝은 未來를 향해 나아가자.",
+    sentence: "밝은 未來(미래)를 향해 나아가자.",
   },
   {
     character: "新",
@@ -3402,7 +3402,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "새 신",
     strokes: 13,
     words: ["신문", "혁신", "새해"],
-    sentence: "新年에는 새로운 마음으로 시작하자.",
+    sentence: "新年(신년)에는 새로운 마음으로 시작하자.",
   },
   {
     character: "光",
@@ -3410,7 +3410,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "빛 광",
     strokes: 6,
     words: ["광복", "빛", "관광"],
-    sentence: "光復절의 의미를 되새기자.",
+    sentence: "光復(광복)절의 의미를 되새기자.",
   },
   {
     character: "復",
@@ -3418,7 +3418,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "회복할 복",
     strokes: 12,
     words: ["광복", "회복", "복구"],
-    sentence: "光復의 기쁨을 잊지 말자.",
+    sentence: "光復(광복)의 기쁨을 잊지 말자.",
   },
   {
     character: "太",
@@ -3426,7 +3426,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "클 태",
     strokes: 4,
     words: ["태양", "태극", "태풍"],
-    sentence: "太極旗는 대한민국의 국기이다.",
+    sentence: "太極旗(태극기)는 대한민국의 국기이다.",
   },
   {
     character: "極",
@@ -3434,7 +3434,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "다할 극",
     strokes: 13,
     words: ["태극", "극복", "남극"],
-    sentence: "어려움을 克服하는 용기가 필요하다.",
+    sentence: "어려움을 克服(극복)하는 용기가 필요하다.",
   },
   {
     character: "旗",
@@ -3442,7 +3442,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "기 기",
     strokes: 14,
     words: ["국기", "기수", "태극기"],
-    sentence: "國旗를 소중히 다루자.",
+    sentence: "國旗(국기)를 소중히 다루자.",
   },
   // ===== 추가 60개 (총 120개) - 6급~5급 한자 =====
   {
@@ -3451,7 +3451,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "법 헌",
     strokes: 16,
     words: ["헌법", "헌정", "합헌"],
-    sentence: "憲法을 존중하자.",
+    sentence: "憲法(헌법)을 존중하자.",
   },
   {
     character: "約",
@@ -3459,7 +3459,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "맺을 약",
     strokes: 9,
     words: ["약속", "조약", "계약"],
-    sentence: "約束을 지키자.",
+    sentence: "約束(약속)을 지키자.",
   },
   {
     character: "條",
@@ -3467,7 +3467,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "가지 조",
     strokes: 11,
     words: ["조항", "조건", "조약"],
-    sentence: "條件을 확인하자.",
+    sentence: "條件(조건)을 확인하자.",
   },
   {
     character: "權",
@@ -3475,7 +3475,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "권세 권",
     strokes: 15,
     words: ["권리", "인권", "주권"],
-    sentence: "人權을 존중하자.",
+    sentence: "人權(인권)을 존중하자.",
   },
   {
     character: "務",
@@ -3483,7 +3483,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "힘쓸 무",
     strokes: 11,
     words: ["의무", "업무", "사무"],
-    sentence: "義務를 다하자.",
+    sentence: "義務(의무)를 다하자.",
   },
   {
     character: "義",
@@ -3491,7 +3491,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "옳을 의",
     strokes: 13,
     words: ["정의", "의리", "의무"],
-    sentence: "正義를 실현하자.",
+    sentence: "正義(정의)를 실현하자.",
   },
   {
     character: "選",
@@ -3499,7 +3499,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "가릴 선",
     strokes: 15,
     words: ["선거", "선택", "당선"],
-    sentence: "選擧에 참여하자.",
+    sentence: "選擧(선거)에 참여하자.",
   },
   {
     character: "擧",
@@ -3507,7 +3507,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "들 거",
     strokes: 18,
     words: ["선거", "거행", "거사"],
-    sentence: "選擧권을 행사하자.",
+    sentence: "選擧(선거)권을 행사하자.",
   },
   {
     character: "民",
@@ -3515,7 +3515,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "백성 민",
     strokes: 5,
     words: ["국민", "시민", "민주"],
-    sentence: "國民의 의무를 다하자.",
+    sentence: "國民(국민)의 의무를 다하자.",
   },
   {
     character: "主",
@@ -3523,7 +3523,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "주인 주",
     strokes: 5,
     words: ["민주", "주인", "주장"],
-    sentence: "民主주의를 지키자.",
+    sentence: "民主(민주)주의를 지키자.",
   },
   {
     character: "統",
@@ -3531,7 +3531,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "거느릴 통",
     strokes: 12,
     words: ["전통", "통일", "통합"],
-    sentence: "傳統을 이어가자.",
+    sentence: "傳統(전통)을 이어가자.",
   },
   {
     character: "領",
@@ -3539,7 +3539,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "거느릴 령",
     strokes: 14,
     words: ["대통령", "영토", "요령"],
-    sentence: "大統領을 선출하자.",
+    sentence: "大統領(대통령)을 선출하자.",
   },
   {
     character: "獨",
@@ -3547,7 +3547,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "홀로 독",
     strokes: 16,
     words: ["독립", "독자", "고독"],
-    sentence: "獨立을 위해 싸웠다.",
+    sentence: "獨立(독립)을 위해 싸웠다.",
   },
   {
     character: "立",
@@ -3555,7 +3555,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "설 립",
     strokes: 5,
     words: ["독립", "설립", "자립"],
-    sentence: "獨立을 쟁취했다.",
+    sentence: "獨立(독립)을 쟁취했다.",
   },
   {
     character: "戰",
@@ -3563,7 +3563,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "싸울 전",
     strokes: 16,
     words: ["전쟁", "전투", "도전"],
-    sentence: "평화를 위해 戰爭을 반대하자.",
+    sentence: "평화를 위해 戰爭(전쟁)을 반대하자.",
   },
   {
     character: "爭",
@@ -3571,7 +3571,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "다툴 쟁",
     strokes: 8,
     words: ["전쟁", "경쟁", "다툼"],
-    sentence: "平和로운 세상을 만들자.",
+    sentence: "平和(평화)로운 세상을 만들자.",
   },
   {
     character: "平",
@@ -3579,7 +3579,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "평평할 평",
     strokes: 5,
     words: ["평화", "공평", "평등"],
-    sentence: "平等한 사회를 만들자.",
+    sentence: "平等(평등)한 사회를 만들자.",
   },
   {
     character: "等",
@@ -3587,7 +3587,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "무리 등",
     strokes: 12,
     words: ["평등", "등급", "동등"],
-    sentence: "모든 사람은 平等하다.",
+    sentence: "모든 사람은 平等(평등)하다.",
   },
   {
     character: "革",
@@ -3595,7 +3595,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "가죽 혁",
     strokes: 9,
     words: ["혁명", "개혁", "혁신"],
-    sentence: "改革으로 더 나은 사회를 만들자.",
+    sentence: "改革(개혁)으로 더 나은 사회를 만들자.",
   },
   {
     character: "命",
@@ -3603,7 +3603,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "목숨 명",
     strokes: 8,
     words: ["생명", "혁명", "명령"],
-    sentence: "生命을 소중히 여기자.",
+    sentence: "生命(생명)을 소중히 여기자.",
   },
   {
     character: "改",
@@ -3611,7 +3611,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "고칠 개",
     strokes: 7,
     words: ["개혁", "개선", "개정"],
-    sentence: "制度를 改善하자.",
+    sentence: "制度(제도)를 改善(개선)하자.",
   },
   {
     character: "善",
@@ -3619,7 +3619,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "착할 선",
     strokes: 12,
     words: ["선행", "개선", "친선"],
-    sentence: "善을 실천하자.",
+    sentence: "선(善)을 실천하자.",
   },
   {
     character: "惡",
@@ -3627,7 +3627,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "악할 악",
     strokes: 12,
     words: ["악행", "악덕", "선악"],
-    sentence: "善惡을 구별하자.",
+    sentence: "善惡(선악)을 구별하자.",
   },
   {
     character: "公",
@@ -3635,7 +3635,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "공평할 공",
     strokes: 4,
     words: ["공정", "공평", "공공"],
-    sentence: "公正한 사회를 만들자.",
+    sentence: "公正(공정)한 사회를 만들자.",
   },
   {
     character: "正",
@@ -3643,7 +3643,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "바를 정",
     strokes: 5,
     words: ["정의", "정확", "바름"],
-    sentence: "正確하게 판단하자.",
+    sentence: "正確(정확)하게 판단하자.",
   },
   {
     character: "確",
@@ -3651,7 +3651,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "굳을 확",
     strokes: 15,
     words: ["확인", "정확", "확실"],
-    sentence: "事實을 確認하자.",
+    sentence: "事實(사실)을 確認(확인)하자.",
   },
   {
     character: "認",
@@ -3659,7 +3659,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "알 인",
     strokes: 14,
     words: ["인정", "확인", "승인"],
-    sentence: "잘못을 認定하자.",
+    sentence: "잘못을 認定(인정)하자.",
   },
   {
     character: "定",
@@ -3667,7 +3667,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "정할 정",
     strokes: 8,
     words: ["결정", "안정", "예정"],
-    sentence: "計劃을 決定하자.",
+    sentence: "計劃(계획)을 決定(결정)하자.",
   },
   {
     character: "決",
@@ -3675,7 +3675,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "결단할 결",
     strokes: 7,
     words: ["결정", "해결", "결심"],
-    sentence: "問題를 解決하자.",
+    sentence: "問題(문제)를 解決(해결)하자.",
   },
   {
     character: "解",
@@ -3683,7 +3683,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "풀 해",
     strokes: 13,
     words: ["해결", "이해", "해석"],
-    sentence: "서로를 理解하자.",
+    sentence: "서로를 理解(이해)하자.",
   },
   {
     character: "建",
@@ -3691,7 +3691,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "세울 건",
     strokes: 9,
     words: ["건설", "건축", "건국"],
-    sentence: "나라를 建設하자.",
+    sentence: "나라를 建設(건설)하자.",
   },
   {
     character: "設",
@@ -3699,7 +3699,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "베풀 설",
     strokes: 11,
     words: ["건설", "설치", "설립"],
-    sentence: "학교를 設立했다.",
+    sentence: "학교를 設立(설립)했다.",
   },
   {
     character: "造",
@@ -3707,7 +3707,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "만들 조",
     strokes: 10,
     words: ["제조", "창조", "구조"],
-    sentence: "새로운 것을 創造하자.",
+    sentence: "새로운 것을 創造(창조)하자.",
   },
   {
     character: "創",
@@ -3715,7 +3715,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "비롯할 창",
     strokes: 12,
     words: ["창조", "창작", "독창"],
-    sentence: "創意적으로 생각하자.",
+    sentence: "創意(창의)적으로 생각하자.",
   },
   {
     character: "守",
@@ -3723,7 +3723,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "지킬 수",
     strokes: 6,
     words: ["수비", "준수", "보수"],
-    sentence: "法을 遵守하자.",
+    sentence: "法(법)을 遵守(준수)하자.",
   },
   {
     character: "護",
@@ -3731,7 +3731,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "지킬 호",
     strokes: 20,
     words: ["보호", "호위", "간호"],
-    sentence: "環境을 保護하자.",
+    sentence: "環境(환경)을 保護(보호)하자.",
   },
   {
     character: "保",
@@ -3739,7 +3739,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "지킬 보",
     strokes: 9,
     words: ["보호", "보존", "안보"],
-    sentence: "文化財를 保存하자.",
+    sentence: "文化財(문화재)를 保存(보존)하자.",
   },
   {
     character: "存",
@@ -3747,7 +3747,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "있을 존",
     strokes: 6,
     words: ["존재", "보존", "생존"],
-    sentence: "生命의 價値를 알자.",
+    sentence: "生命(생명)의 價値(가치)를 알자.",
   },
   {
     character: "價",
@@ -3755,7 +3755,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "값 가",
     strokes: 15,
     words: ["가치", "가격", "평가"],
-    sentence: "生命의 價値는 소중하다.",
+    sentence: "生命(생명)의 價値(가치)는 소중하다.",
   },
   {
     character: "値",
@@ -3763,7 +3763,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "값 치",
     strokes: 10,
     words: ["가치", "수치", "값"],
-    sentence: "진정한 價値를 찾자.",
+    sentence: "진정한 價値(가치)를 찾자.",
   },
   {
     character: "能",
@@ -3771,7 +3771,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "능할 능",
     strokes: 10,
     words: ["능력", "기능", "가능"],
-    sentence: "自己의 能力을 키우자.",
+    sentence: "自己(자기)의 能力(능력)을 키우자.",
   },
   {
     character: "可",
@@ -3779,7 +3779,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "옳을 가",
     strokes: 5,
     words: ["가능", "허가", "가결"],
-    sentence: "不可能은 없다.",
+    sentence: "不可能(불가능)은 없다.",
   },
   {
     character: "不",
@@ -3787,7 +3787,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "아닐 불",
     strokes: 4,
     words: ["불가능", "불편", "부정"],
-    sentence: "不正을 바로잡자.",
+    sentence: "不正(부정)을 바로잡자.",
   },
   {
     character: "必",
@@ -3795,7 +3795,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "반드시 필",
     strokes: 5,
     words: ["필요", "필수", "필연"],
-    sentence: "必要한 것을 갖추자.",
+    sentence: "必要(필요)한 것을 갖추자.",
   },
   {
     character: "要",
@@ -3803,7 +3803,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "구할 요",
     strokes: 9,
     words: ["필요", "중요", "요청"],
-    sentence: "重要한 것을 먼저 하자.",
+    sentence: "重要(중요)한 것을 먼저 하자.",
   },
   {
     character: "重",
@@ -3811,7 +3811,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "무거울 중",
     strokes: 9,
     words: ["중요", "존중", "중심"],
-    sentence: "重要한 가치를 지키자.",
+    sentence: "重要(중요)한 가치를 지키자.",
   },
   {
     character: "期",
@@ -3819,7 +3819,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "기약할 기",
     strokes: 12,
     words: ["기간", "학기", "시기"],
-    sentence: "새 學期가 시작되었다.",
+    sentence: "새 學期(학기)가 시작되었다.",
   },
   {
     character: "間",
@@ -3827,7 +3827,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "사이 간",
     strokes: 12,
     words: ["시간", "공간", "기간"],
-    sentence: "時間을 아껴 쓰자.",
+    sentence: "時間(시간)을 아껴 쓰자.",
   },
   {
     character: "時",
@@ -3835,7 +3835,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "때 시",
     strokes: 10,
     words: ["시간", "시대", "시기"],
-    sentence: "時代의 변화에 적응하자.",
+    sentence: "時代(시대)의 변화에 적응하자.",
   },
   {
     character: "代",
@@ -3843,7 +3843,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "대신할 대",
     strokes: 5,
     words: ["시대", "현대", "세대"],
-    sentence: "現代 사회를 이해하자.",
+    sentence: "現代(현대) 사회를 이해하자.",
   },
   {
     character: "現",
@@ -3851,7 +3851,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "나타날 현",
     strokes: 11,
     words: ["현재", "현대", "출현"],
-    sentence: "現在에 충실하자.",
+    sentence: "現在(현재)에 충실하자.",
   },
   {
     character: "在",
@@ -3859,7 +3859,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "있을 재",
     strokes: 6,
     words: ["현재", "존재", "소재"],
-    sentence: "現在의 나를 사랑하자.",
+    sentence: "現在(현재)의 나를 사랑하자.",
   },
   {
     character: "未",
@@ -3867,7 +3867,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "아닐 미",
     strokes: 5,
     words: ["미래", "미완", "미지"],
-    sentence: "未來를 준비하자.",
+    sentence: "未來(미래)를 준비하자.",
   },
   {
     character: "來",
@@ -3875,7 +3875,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "올 래",
     strokes: 8,
     words: ["미래", "장래", "내래"],
-    sentence: "未來를 향해 나아가자.",
+    sentence: "未來(미래)를 향해 나아가자.",
   },
   {
     character: "特",
@@ -3883,7 +3883,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "특별할 특",
     strokes: 10,
     words: ["특별", "특징", "독특"],
-    sentence: "나만의 特徵을 살리자.",
+    sentence: "나만의 特徵(특징)을 살리자.",
   },
   {
     character: "別",
@@ -3891,7 +3891,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "나눌 별",
     strokes: 7,
     words: ["특별", "차별", "구별"],
-    sentence: "差別 없는 사회를 만들자.",
+    sentence: "差別(차별) 없는 사회를 만들자.",
   },
   {
     character: "差",
@@ -3899,7 +3899,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "어긋날 차",
     strokes: 10,
     words: ["차별", "차이", "격차"],
-    sentence: "差異를 존중하자.",
+    sentence: "差異(차이)를 존중하자.",
   },
   {
     character: "異",
@@ -3915,7 +3915,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "서로 상",
     strokes: 9,
     words: ["상호", "상대", "수상"],
-    sentence: "相互 존중하자.",
+    sentence: "相互(상호) 존중하자.",
   },
   {
     character: "互",
@@ -3923,7 +3923,7 @@ export const grade6HanjaData: HanjaEntry[] = [
     meaning: "서로 호",
     strokes: 4,
     words: ["상호", "호혜", "교호"],
-    sentence: "相互 협력하자.",
+    sentence: "相互(상호) 협력하자.",
   },
 ];
 
@@ -5261,7 +5261,7 @@ export const grade6ScienceData: KnowledgeEntry[] = [
     category: "생물",
   },
   {
-    text: "생물이 환경에 적응하여 살아남는 과정을 ___이라(라) 한다.",
+    text: "환경에 더 잘 맞는 생물이 살아남아 자손을 남기는 과정을 ___이라(라) 한다.",
     answer: "자연선택",
     category: "생물",
   },
@@ -5379,8 +5379,8 @@ export const grade6ScienceData: KnowledgeEntry[] = [
     category: "지구과학",
   },
   {
-    text: "북극성을 찾는 데 사용하는 별자리는 ___자리이다.",
-    answer: "북두칠성(큰곰)",
+    text: "북극성을 찾을 때 길잡이로 쓰는 일곱 별은 ___이다.",
+    answer: "북두칠성",
     category: "지구과학",
   },
   {
@@ -5410,7 +5410,7 @@ export const grade6ScienceData: KnowledgeEntry[] = [
   },
   {
     text: "지진의 세기를 나타내는 단위는 ___이다.",
-    answer: "규모(리히터)",
+    answer: "규모",
     category: "지구과학",
   },
   {
@@ -5535,7 +5535,7 @@ export const grade6SocialData: KnowledgeEntry[] = [
   // 국제 관계
   {
     text: "전 세계 국가들이 모여 평화를 논의하는 국제기구는 ___이다.",
-    answer: "유엔(UN)",
+    answer: "유엔",
     category: "정치",
   },
   {
@@ -5596,7 +5596,7 @@ export const grade6SocialData: KnowledgeEntry[] = [
     category: "경제",
   },
   {
-    text: "한 나라의 1년간 생산한 모든 재화와 서비스의 가치를 ___라 한다.",
+    text: "한 나라 안에서 1년 동안 새로 만든 최종 재화와 서비스의 가치를 합한 것을 국내 총생산, 영어 약자로 ___라 한다.",
     answer: "GDP",
     category: "경제",
   },

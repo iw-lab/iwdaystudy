@@ -184,33 +184,33 @@ export const grade4Semester2Standards = {
 export const grade4SpellingData: SpellingEntry[] = [
   // 기존 22개
   {
-    q1: "가르치다 - 선생님이 학생을 가르친다.",
-    q2: "가리키다 - 선생님이 학생을 가리킨다.",
+    q1: "선생님이 학생을 가르친다.",
+    q2: "선생님이 학생을 가리킨다.",
     answer: 1,
     explanation:
       "'가르치다'는 지식을 알려주는 것, '가리키다'는 방향을 보여주는 것입니다.",
   },
   {
-    q1: "부치다 - 편지를 부쳤다.",
-    q2: "붙이다 - 편지를 붙였다.",
+    q1: "편지를 부쳤다.",
+    q2: "편지를 붙였다.",
     answer: 1,
     explanation: "'부치다'는 보내는 것이고, '붙이다'는 달라붙게 하는 것입니다.",
   },
   {
-    q1: "바치다 - 나라에 목숨을 바쳤다.",
-    q2: "받치다 - 나라에 목숨을 받쳤다.",
+    q1: "나라에 목숨을 바쳤다.",
+    q2: "나라에 목숨을 받쳤다.",
     answer: 1,
     explanation: "'바치다'는 드리는 것이고, '받치다'는 밑에 대는 것입니다.",
   },
   {
-    q1: "낫다 - 감기가 나았다.",
-    q2: "낳다 - 감기가 낳았다.",
+    q1: "감기가 나았다.",
+    q2: "감기가 낳았다.",
     answer: 1,
     explanation: "'낫다'는 회복되는 것이고, '낳다'는 출산하는 것입니다.",
   },
   {
-    q1: "맞히다 - 정답을 맞혔다.",
-    q2: "맞추다 - 정답을 맞쳤다.",
+    q1: "정답을 맞혔다.",
+    q2: "정답을 맞쳤다.",
     answer: 1,
     explanation: "'맞히다'는 적중시키는 것이고, '맞추다'는 비교하는 것입니다.",
   },
@@ -481,11 +481,11 @@ export const grade4SpellingData: SpellingEntry[] = [
     explanation: "'마치'가 올바른 표기입니다. '마치 ~처럼'으로 씁니다.",
   },
   {
-    q1: "환경을 개선시키다.",
-    q2: "환경을 개선하다.",
+    q1: "설거지를 했다.",
+    q2: "설겆이를 했다.",
     answer: 2,
     explanation:
-      "'개선하다'가 더 올바른 표현입니다. '-시키다'의 불필요한 사용을 줄입니다.",
+      "'설거지'가 표준어입니다.",
   },
   {
     q1: "나름대로 노력했다.",
@@ -564,7 +564,7 @@ export const grade4SpellingData: SpellingEntry[] = [
     q1: "비가 그칠 듯하다.",
     q2: "비가 그칠듯 하다.",
     answer: 1,
-    explanation: "'듯하다'는 보조형용사로 띄어 쓰거나 붙여 쓸 수 있습니다.",
+    explanation: "'그칠 듯하다'처럼 띄어 쓰는 것이 원칙이고 '그칠듯하다'로 붙여 쓸 수도 있지만, '그칠듯 하다'는 틀립니다.",
   },
   {
     q1: "가을걷이를 했다.",
@@ -585,14 +585,14 @@ export const grade4SpellingData: SpellingEntry[] = [
     explanation: "'다했다'는 '다하다'의 과거형으로 붙여 씁니다.",
   },
   {
-    q1: "피어나다 - 꽃이 피어났다.",
-    q2: "피여나다 - 꽃이 피여났다.",
+    q1: "꽃이 피어났다.",
+    q2: "꽃이 피여났다.",
     answer: 1,
     explanation: "'피어나다'가 올바른 표기입니다.",
   },
   {
-    q1: "불거지다 - 문제가 불거졌다.",
-    q2: "불거지다 - 문제가 불겨졌다.",
+    q1: "문제가 불거졌다.",
+    q2: "문제가 불겨졌다.",
     answer: 1,
     explanation: "'불거졌다'가 올바른 표기입니다.",
   },
@@ -603,8 +603,8 @@ export const grade4SpellingData: SpellingEntry[] = [
     explanation: "'어이'가 올바른 표기입니다. '어의'는 임금의 의사를 뜻합니다.",
   },
   {
-    q1: "오므리다 - 입을 오므렸다.",
-    q2: "오무리다 - 입을 오무렸다.",
+    q1: "입을 오므렸다.",
+    q2: "입을 오무렸다.",
     answer: 1,
     explanation: "'오므리다'가 올바른 표기입니다.",
   },
@@ -639,21 +639,21 @@ export const grade4SpellingData: SpellingEntry[] = [
     explanation: "'가르쳐'가 올바른 표기입니다.",
   },
   {
-    q1: "다르다 - 나와 너는 다르다.",
-    q2: "틀리다 - 나와 너는 틀리다.",
+    q1: "나와 너는 다르다.",
+    q2: "나와 너는 틀리다.",
     answer: 1,
     explanation:
       "'다르다'는 차이가 있다는 뜻, '틀리다'는 잘못되었다는 뜻입니다.",
   },
   {
-    q1: "잠그다 - 문을 잠갔다.",
-    q2: "잠구다 - 문을 잠궜다.",
+    q1: "문을 잠갔다.",
+    q2: "문을 잠궜다.",
     answer: 1,
     explanation: "'잠그다'가 올바른 표기입니다.",
   },
   {
-    q1: "담그다 - 김치를 담갔다.",
-    q2: "담구다 - 김치를 담궜다.",
+    q1: "김치를 담갔다.",
+    q2: "김치를 담궜다.",
     answer: 1,
     explanation: "'담그다'가 올바른 표기입니다.",
   },
@@ -671,9 +671,9 @@ export const grade4SpellingData: SpellingEntry[] = [
   },
   {
     q1: "봉숭아꽃이 피었다.",
-    q2: "봉선화꽃이 피었다.",
+    q2: "봉숭화꽃이 피었다.",
     answer: 1,
-    explanation: "'봉숭아'가 올바른 표준어입니다.",
+    explanation: "'봉숭아'(또는 '봉선화')가 표준어이고 '봉숭화'는 틀린 말입니다.",
   },
   {
     q1: "삼촌이 오셨다.",
@@ -730,8 +730,8 @@ export const grade4SpellingData: SpellingEntry[] = [
     explanation: "'그러고'(그렇게 하고)가 올바릅니다. '그리고'는 접속사입니다.",
   },
   {
-    q1: "뿌듯하다 - 성적이 올라 뿌듯하다.",
-    q2: "뿌뜻하다 - 성적이 올라 뿌뜻하다.",
+    q1: "성적이 올라 뿌듯하다.",
+    q2: "성적이 올라 뿌뜻하다.",
     answer: 1,
     explanation: "'뿌듯하다'가 올바른 표기입니다.",
   },
@@ -760,38 +760,38 @@ export const grade4SpellingData: SpellingEntry[] = [
     explanation: "'아무렇지도'가 올바른 표기입니다.",
   },
   {
-    q1: "시키다 - 동생에게 심부름을 시켰다.",
-    q2: "시키다 - 동생에게 심부름을 시겼다.",
+    q1: "동생에게 심부름을 시켰다.",
+    q2: "동생에게 심부름을 시겼다.",
     answer: 1,
     explanation: "'시켰다'(시키다의 과거형)가 올바른 표기입니다.",
   },
   {
-    q1: "까맣다 - 밤하늘이 까맣다.",
-    q2: "까맣다 - 밤하늘이 깜앟다.",
+    q1: "밤하늘이 까맣다.",
+    q2: "밤하늘이 깜앟다.",
     answer: 1,
     explanation: "'까맣다'가 올바른 표기입니다.",
   },
   {
-    q1: "속상하다 - 시험을 못 봐서 속상하다.",
-    q2: "속상하다 - 시험을 못봐서 속상하다.",
+    q1: "시험을 못 봐서 속상하다.",
+    q2: "시험을 못봐서 속상하다.",
     answer: 1,
     explanation: "'못 봐서'로 띄어 씁니다. '못'은 부사입니다.",
   },
   {
-    q1: "못하다 - 수학을 못한다.",
-    q2: "못 하다 - 수학을 못 한다.",
+    q1: "수학을 못한다.",
+    q2: "수학을 못 한다.",
     answer: 1,
     explanation: "'못하다'(능력 부족)는 붙여 씁니다.",
   },
   {
-    q1: "잘하다 - 영어를 잘한다.",
-    q2: "잘 하다 - 영어를 잘 한다.",
+    q1: "영어를 잘한다.",
+    q2: "영어를 잘 한다.",
     answer: 1,
     explanation: "'잘하다'(능숙하다)는 붙여 씁니다.",
   },
   {
-    q1: "안되다 - 불쌍해서 안됐다.",
-    q2: "안 되다 - 불쌍해서 안 됐다.",
+    q1: "불쌍해서 안됐다.",
+    q2: "불쌍해서 안 됐다.",
     answer: 1,
     explanation: "'안되다'(불쌍하다)는 붙여 씁니다.",
   },
@@ -802,8 +802,8 @@ export const grade4SpellingData: SpellingEntry[] = [
     explanation: "'내로라하다'가 올바른 표기입니다.",
   },
   {
-    q1: "설레다 - 소풍날이 설렌다.",
-    q2: "설레이다 - 소풍날이 설레인다.",
+    q1: "소풍날이 설렌다.",
+    q2: "소풍날이 설레인다.",
     answer: 1,
     explanation: "'설레다'가 올바른 표기입니다. '설레이다'는 틀린 말입니다.",
   },
@@ -844,8 +844,8 @@ export const grade4SpellingData: SpellingEntry[] = [
     explanation: "'그랬다'(그러하였다)가 올바른 표기입니다.",
   },
   {
-    q1: "무르익다 - 단풍이 무르익었다.",
-    q2: "물익다 - 단풍이 물익었다.",
+    q1: "단풍이 무르익었다.",
+    q2: "단풍이 물익었다.",
     answer: 1,
     explanation: "'무르익다'가 올바른 표기입니다.",
   },
@@ -868,14 +868,14 @@ export const grade4SpellingData: SpellingEntry[] = [
     explanation: "'반듯이'(바르게)가 맞습니다. '반드시'는 꼭이라는 뜻입니다.",
   },
   {
-    q1: "부딪치다 - 어깨가 부딪쳤다.",
-    q2: "부딪히다 - 어깨가 부딪혔다.",
+    q1: "파도가 바위에 부딪쳤다.",
+    q2: "파도가 바위에 부딪혔다.",
     answer: 1,
-    explanation: "'부딪치다'(서로 부딪다)가 올바른 표기입니다.",
+    explanation: "스스로 세게 마주 닿을 때는 '부딪치다', 부딪음을 당할 때는 '부딪히다'를 씁니다.",
   },
   {
-    q1: "들르다 - 서점에 들렀다.",
-    q2: "들리다 - 서점에 들렸다.",
+    q1: "서점에 들렀다.",
+    q2: "서점에 들렸다.",
     answer: 1,
     explanation:
       "'들르다'(방문하다)가 맞습니다. '들리다'는 소리가 들리는 것입니다.",
@@ -932,10 +932,10 @@ export const grade4VocabData: VocabEntry[] = [
     answer: "헌법",
   },
   { meanings: ["비행기가 뜨고 내리는 곳", "여행할 때 가요"], answer: "공항" },
-  { meanings: ["나라와 나라 사이의 관계", "외교라고도 해요"], answer: "국제" },
-  { meanings: ["정해진 규칙이나 법", "지켜야 하는 것"], answer: "규칙" },
+  { meanings: ["여러 나라 사이에 관계된 것", "올림픽은 이런 대회예요"], answer: "국제" },
+  { meanings: ["모두가 지키기로 정한 것", "지켜야 하는 것"], answer: "규칙" },
   {
-    meanings: ["물질이 타서 빛과 열을 내는 현상", "불이라고도 해요"],
+    meanings: ["물질이 산소와 만나 빛과 열을 내며 타는 것", "촛불이 타는 것도 이것이에요"],
     answer: "연소",
   },
   // 신규 45개 (총 60개)
@@ -1008,7 +1008,7 @@ export const grade4VocabData: VocabEntry[] = [
     answer: "수정",
   },
   {
-    meanings: ["어떤 일을 계획적으로 하는 것", "실천이 중요해요"],
+    meanings: ["앞으로 할 일을 미리 정하는 것", "실천이 중요해요"],
     answer: "계획",
   },
   {
@@ -1096,7 +1096,7 @@ export const grade4VocabData: VocabEntry[] = [
     answer: "협력",
   },
   // ===== 추가 46개 (총 약 92개) =====
-  { meanings: ["글씨를 쓰는 긴 도구", "연필심이 들어 있어요"], answer: "연필" },
+  { meanings: ["글씨를 쓰는 긴 도구", "나무 안에 흑연이 들어 있어요"], answer: "연필" },
   { meanings: ["먹을 수 있는 곡식의 하나", "밥을 지어요"], answer: "쌀" },
   { meanings: ["사람이 사는 건물", "지붕과 벽이 있어요"], answer: "주택" },
   {
@@ -1201,7 +1201,7 @@ export const grade4VocabData: VocabEntry[] = [
     answer: "인상",
   },
   {
-    meanings: ["아이들이 즐겁게 노는 것", "놀이터에서 해요"],
+    meanings: ["아이들이 즐겁게 노는 것", "술래잡기, 숨바꼭질 같은 것"],
     answer: "놀이",
   },
   {
@@ -1209,7 +1209,7 @@ export const grade4VocabData: VocabEntry[] = [
     answer: "질병",
   },
   {
-    meanings: ["물건의 무게를 재는 도구", "저울이라고도 해요"],
+    meanings: ["몸무게를 재는 도구", "올라서면 숫자가 나와요"],
     answer: "체중계",
   },
   {
@@ -1225,7 +1225,7 @@ export const grade4VocabData: VocabEntry[] = [
     answer: "재활용",
   },
   {
-    meanings: ["새로운 것을 알아내려고 조사하는 것", "탐험과 비슷해요"],
+    meanings: ["알아내려고 자세히 살펴보는 것", "탐험과 비슷해요"],
     answer: "조사",
   },
   {
@@ -1241,7 +1241,7 @@ export const grade4VocabData: VocabEntry[] = [
     answer: "건강",
   },
   {
-    meanings: ["높은 곳에서 아래를 내려다보는 것", "전망대에서 해요"],
+    meanings: ["높은 곳에서 아래를 내려다보는 것", "앞날을 내다보는 것이기도 해요"],
     answer: "전망",
   },
   {
@@ -1265,7 +1265,7 @@ export const grade4VocabData: VocabEntry[] = [
     answer: "명절",
   },
   {
-    meanings: ["다른 사람에게 고마움을 표현하는 것", "감사합니다라고 해요"],
+    meanings: ["다른 사람에게 고마움을 표현하는 것", "고마운 마음을 전하는 인사예요"],
     answer: "감사",
   },
 ];
@@ -1281,7 +1281,7 @@ export const grade4MathData: MathEntry[] = [
       "6+1=7, 5+2=7, 4+5=9, 3+4=7, 2+3=5",
       "답: 57977",
     ],
-    unit: "네 자리 덧셈",
+    unit: "큰 수의 덧셈",
   },
   {
     type: "calculation",
@@ -1424,27 +1424,6 @@ export const grade4MathData: MathEntry[] = [
   },
   {
     type: "calculation",
-    expression: "24 + 36 × 2",
-    answer: 96,
-    steps: ["곱셈을 먼저 계산합니다", "36 × 2 = 72", "24 + 72 = 96"],
-    unit: "혼합 계산",
-  },
-  {
-    type: "calculation",
-    expression: "(15 + 25) × 3",
-    answer: 120,
-    steps: ["괄호 안을 먼저 계산합니다", "15 + 25 = 40", "40 × 3 = 120"],
-    unit: "혼합 계산",
-  },
-  {
-    type: "calculation",
-    expression: "100 - 48 ÷ 6",
-    answer: 92,
-    steps: ["나눗셈을 먼저 계산합니다", "48 ÷ 6 = 8", "100 - 8 = 92"],
-    unit: "혼합 계산",
-  },
-  {
-    type: "calculation",
     expression: "3.6 + 2.8",
     answer: 6.4,
     steps: [
@@ -1480,7 +1459,7 @@ export const grade4MathData: MathEntry[] = [
       "5+3+1=9, 4+2=6",
       "답: 69134",
     ],
-    unit: "네 자리 덧셈",
+    unit: "큰 수의 덧셈",
   },
   {
     type: "calculation",
@@ -1495,7 +1474,7 @@ export const grade4MathData: MathEntry[] = [
       "8-3=5",
       "답: 55476",
     ],
-    unit: "네 자리 뺄셈",
+    unit: "큰 수의 뺄셈",
   },
   {
     type: "calculation",
@@ -1506,7 +1485,7 @@ export const grade4MathData: MathEntry[] = [
       "10-5=5, 9-4=5, 9-3=6, 9-2=7, 4-1=3",
       "답: 37655",
     ],
-    unit: "네 자리 뺄셈",
+    unit: "큰 수의 뺄셈",
   },
   {
     type: "calculation",
@@ -1520,7 +1499,7 @@ export const grade4MathData: MathEntry[] = [
       "3+4+1=8",
       "답: 82110",
     ],
-    unit: "네 자리 덧셈",
+    unit: "큰 수의 덧셈",
   },
   // 세 자리 × 두 자리 곱셈 추가
   {
@@ -1930,90 +1909,7 @@ export const grade4MathData: MathEntry[] = [
     ],
     unit: "각도",
   },
-  // 혼합 계산 추가
-  {
-    type: "calculation",
-    expression: "50 - 4 × 8",
-    answer: 18,
-    steps: ["곱셈을 먼저 계산합니다", "4 × 8 = 32", "50 - 32 = 18"],
-    unit: "혼합 계산",
-  },
-  {
-    type: "calculation",
-    expression: "(20 - 8) × 5",
-    answer: 60,
-    steps: ["괄호 안을 먼저 계산합니다", "20 - 8 = 12", "12 × 5 = 60"],
-    unit: "혼합 계산",
-  },
-  {
-    type: "calculation",
-    expression: "72 ÷ 8 + 15",
-    answer: 24,
-    steps: ["나눗셈을 먼저 계산합니다", "72 ÷ 8 = 9", "9 + 15 = 24"],
-    unit: "혼합 계산",
-  },
-  {
-    type: "calculation",
-    expression: "36 ÷ (3 + 6)",
-    answer: 4,
-    steps: ["괄호 안을 먼저 계산합니다", "3 + 6 = 9", "36 ÷ 9 = 4"],
-    unit: "혼합 계산",
-  },
-  {
-    type: "calculation",
-    expression: "5 × 6 + 3 × 4",
-    answer: 42,
-    steps: [
-      "곱셈을 먼저 계산합니다",
-      "5 × 6 = 30",
-      "3 × 4 = 12",
-      "30 + 12 = 42",
-    ],
-    unit: "혼합 계산",
-  },
-  {
-    type: "calculation",
-    expression: "80 - (12 + 8) × 3",
-    answer: 20,
-    steps: [
-      "괄호 안을 먼저 계산합니다",
-      "12 + 8 = 20",
-      "20 × 3 = 60",
-      "80 - 60 = 20",
-    ],
-    unit: "혼합 계산",
-  },
-  {
-    type: "calculation",
-    expression: "(100 - 64) ÷ 4",
-    answer: 9,
-    steps: ["괄호 안을 먼저 계산합니다", "100 - 64 = 36", "36 ÷ 4 = 9"],
-    unit: "혼합 계산",
-  },
-  {
-    type: "calculation",
-    expression: "15 × 4 - 72 ÷ 9",
-    answer: 52,
-    steps: [
-      "곱셈과 나눗셈을 먼저 계산합니다",
-      "15 × 4 = 60",
-      "72 ÷ 9 = 8",
-      "60 - 8 = 52",
-    ],
-    unit: "혼합 계산",
-  },
-  {
-    type: "calculation",
-    expression: "2 × (30 + 20) - 45",
-    answer: 55,
-    steps: [
-      "괄호 안을 먼저 계산합니다",
-      "30 + 20 = 50",
-      "2 × 50 = 100",
-      "100 - 45 = 55",
-    ],
-    unit: "혼합 계산",
-  },
+  // 혼합 계산은 5학년 1학기 단원(자연수의 혼합 계산) — 4학년 은행에서 뺐다(2026-10-12 전수검수)
   // 곱셈 추가
   {
     type: "calculation",
@@ -2046,7 +1942,7 @@ export const grade4MathData: MathEntry[] = [
       "10-6=4, 9-5=4, 9-4=5, 9-3=6",
       "답: 6544",
     ],
-    unit: "네 자리 뺄셈",
+    unit: "큰 수의 뺄셈",
   },
   {
     type: "calculation",
@@ -2058,14 +1954,14 @@ export const grade4MathData: MathEntry[] = [
       "7+1+1=9",
       "답: 90500",
     ],
-    unit: "네 자리 덧셈",
+    unit: "큰 수의 덧셈",
   },
   {
     type: "calculation",
     expression: "99999 - 11111",
     answer: 88888,
     steps: ["9-1=8 (각 자리)", "답: 88888"],
-    unit: "네 자리 뺄셈",
+    unit: "큰 수의 뺄셈",
   },
   {
     type: "calculation",
@@ -2110,7 +2006,7 @@ export const grade4KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "임진왜란 때 거북선을 만든 사람은 ___이다.",
+    text: "임진왜란 때 거북선을 이끌고 왜군을 물리친 장군은 ___이다.",
     answer: "이순신",
     category: "역사",
   },
@@ -2164,12 +2060,12 @@ export const grade4KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "태양계에서 고리가 있는 행성은 ___이다.",
+    text: "태양계에서 고리가 가장 뚜렷하게 보이는 행성은 ___이다.",
     answer: "토성",
     category: "과학",
   },
   {
-    text: "한반도를 가장 긴 강은 ___이다.",
+    text: "한반도에서 가장 긴 강은 ___이다.",
     answer: "압록강",
     category: "지리",
   },
@@ -2179,16 +2075,16 @@ export const grade4KnowledgeData: KnowledgeEntry[] = [
     category: "지리",
   },
   {
-    text: "우리나라 면적이 가장 큰 도는 ___이다.",
+    text: "우리나라에서 면적이 가장 넓은 도는 ___이다.",
     answer: "경상북도",
     category: "지리",
   },
   {
-    text: "세종대왕이 만든 측우기는 ___를 재는 도구이다.",
+    text: "세종 때 만든 측우기는 ___을 재는 도구이다.",
     answer: "강수량",
     category: "역사",
   },
-  { text: "독도는 ___도에 속한다.", answer: "경상북", category: "지리" },
+  { text: "독도는 ___ 울릉군에 속한다.", answer: "경상북도", category: "지리" },
   {
     text: "우리나라의 전통 음악을 ___이라(라) 한다.",
     answer: "국악",
@@ -2200,12 +2096,12 @@ export const grade4KnowledgeData: KnowledgeEntry[] = [
     category: "문화",
   },
   {
-    text: "전기를 만드는 자연의 힘에는 수력, 풍력, ___력이 있다.",
+    text: "자연의 힘으로 전기를 만드는 방법에는 수력 발전, 풍력 발전, ___광 발전이 있다.",
     answer: "태양",
     category: "과학",
   },
   {
-    text: "식물이 번식하기 위해 만드는 것은 ___이다.",
+    text: "꽃이 피는 식물이 자손을 퍼뜨리려고 만드는 것은 ___이다.",
     answer: "씨앗",
     category: "과학",
   },
@@ -2251,7 +2147,7 @@ export const grade4KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "우리나라 제주도에 있는 세계자연유산은 ___이다.",
+    text: "제주도 한가운데 솟은, 남한에서 가장 높은 산은 ___이다.",
     answer: "한라산",
     category: "지리",
   },
@@ -2278,7 +2174,7 @@ export const grade4KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "북쪽 하늘에서 항상 볼 수 있는 별자리는 ___이다.",
+    text: "북쪽 하늘에서 북극성을 찾을 때 길잡이가 되는 일곱 별은 ___이다.",
     answer: "북두칠성",
     category: "과학",
   },
@@ -2308,8 +2204,8 @@ export const grade4KnowledgeData: KnowledgeEntry[] = [
     category: "사회",
   },
   {
-    text: "온도계에서 사용하는 단위는 ___이다.",
-    answer: "도(°C)",
+    text: "온도를 나타내는 단위 °C는 섭씨 ___라고 읽는다.",
+    answer: "도",
     category: "과학",
   },
   {
@@ -2388,7 +2284,7 @@ export const grade4KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "열이 높은 곳에서 낮은 곳으로 이동하는 것을 ___이라(라) 한다.",
+    text: "고체에서 열이 물체를 따라 옮겨 가는 것을 ___라 한다.",
     answer: "열전도",
     category: "과학",
   },
@@ -2408,12 +2304,12 @@ export const grade4KnowledgeData: KnowledgeEntry[] = [
     category: "역사",
   },
   {
-    text: "한글의 자음은 모두 ___개이다.",
+    text: "한글의 기본 자음은 모두 ___개이다.",
     answer: "14",
     category: "국어",
   },
   {
-    text: "한글의 모음은 모두 ___개이다.",
+    text: "한글의 기본 모음은 모두 ___개이다.",
     answer: "10",
     category: "국어",
   },
@@ -2456,7 +2352,7 @@ export const grade4KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "사람의 영구치는 모두 ___개이다.",
+    text: "사랑니까지 모두 나면 사람의 영구치는 ___개이다.",
     answer: "32",
     category: "과학",
   },
@@ -2471,7 +2367,7 @@ export const grade4KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "조선 시대 가장 위대한 발명품은 ___이다.",
+    text: "세종대왕 때 만든 우리 글자는 ___이다.",
     answer: "한글",
     category: "역사",
   },
@@ -2496,7 +2392,7 @@ export const grade4KnowledgeData: KnowledgeEntry[] = [
     category: "역사",
   },
   {
-    text: "전기를 발견한 과학자는 ___이다.",
+    text: "연을 날려 번개가 전기라는 것을 밝힌 과학자는 ___이다.",
     answer: "프랭클린",
     category: "과학",
   },
@@ -2556,12 +2452,12 @@ export const grade4KnowledgeData: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "직각삼각형에서 가장 긴 변을 ___이라(라) 한다.",
-    answer: "빗변",
+    text: "0°보다 크고 직각보다 작은 각을 ___이라(라) 한다.",
+    answer: "예각",
     category: "수학",
   },
   {
-    text: "부피를 나타내는 단위에는 L와 ___이 있다.",
+    text: "들이를 나타내는 단위에는 L와 ___가 있다.",
     answer: "mL",
     category: "수학",
   },
@@ -2656,8 +2552,8 @@ export const grade4SafetyData: SafetyEntry[] = [
     category: "화재안전",
   },
   {
-    text: "소화기 사용 순서는 안전핀 빼기 → 호스 잡기 → ___이다.",
-    answer: "손잡이 누르기",
+    text: "소화기는 안전핀을 뽑고 호스를 불 쪽으로 향한 뒤 ___를 꽉 누른다.",
+    answer: "손잡이",
     category: "화재안전",
   },
   {
@@ -2711,7 +2607,7 @@ export const grade4SafetyData: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "전기 콘센트에 ___를 너무 많이 꽂으면 위험하다.",
+    text: "___ 하나에 플러그를 너무 많이 꽂으면 불이 날 수 있다.",
     answer: "멀티탭",
     category: "전기안전",
   },
@@ -2812,7 +2708,7 @@ export const grade4SafetyData: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "독버섯은 화려한 ___을 가진 경우가 많다.",
+    text: "수수한 색이라도 독버섯일 수 있으니 산에서 딴 ___은 함부로 먹지 않는다.",
     answer: "색깔",
     category: "건강안전",
   },
@@ -2822,7 +2718,7 @@ export const grade4SafetyData: SafetyEntry[] = [
     category: "재난안전",
   },
   {
-    text: "호우 주의보가 내려지면 ___가 근처에 가지 않는다.",
+    text: "호우 주의보가 내려지면 ___ 근처에 가지 않는다.",
     answer: "하천",
     category: "재난안전",
   },
@@ -2872,8 +2768,8 @@ export const grade4SafetyData: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "인터넷에서 만난 사람과 실제로 ___하면 위험하다.",
-    answer: "만남",
+    text: "인터넷에서 알게 된 사람을 혼자 실제로 ___면 위험하다.",
+    answer: "만나",
     category: "정보안전",
   },
   {
@@ -2986,7 +2882,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "배울 학",
     strokes: 16,
     words: ["학교", "학생", "학습"],
-    sentence: "學問에 힘쓰자.",
+    sentence: "學問(학문)에 힘쓰자.",
   },
   {
     character: "校",
@@ -2994,7 +2890,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "학교 교",
     strokes: 10,
     words: ["학교", "교실", "교장"],
-    sentence: "學校에 매일 간다.",
+    sentence: "學校(학교)에 매일 간다.",
   },
   {
     character: "先",
@@ -3002,7 +2898,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "먼저 선",
     strokes: 6,
     words: ["선생", "선배", "우선"],
-    sentence: "先生님께 인사했다.",
+    sentence: "先生(선생)님께 인사했다.",
   },
   {
     character: "生",
@@ -3010,7 +2906,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "날 생",
     strokes: 5,
     words: ["생일", "학생", "생활"],
-    sentence: "生日 축하합니다.",
+    sentence: "生日(생일) 축하합니다.",
   },
   {
     character: "父",
@@ -3018,7 +2914,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "아버지 부",
     strokes: 4,
     words: ["부모", "조부", "부친"],
-    sentence: "父母님의 은혜에 감사한다.",
+    sentence: "父母(부모)님의 은혜에 감사한다.",
   },
   {
     character: "母",
@@ -3026,7 +2922,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "어머니 모",
     strokes: 5,
     words: ["모친", "부모", "조모"],
-    sentence: "母의 사랑은 바다와 같다.",
+    sentence: "어머니(母)의 사랑은 바다와 같다.",
   },
   {
     character: "王",
@@ -3034,7 +2930,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "임금 왕",
     strokes: 4,
     words: ["왕국", "국왕", "여왕"],
-    sentence: "세종대王은 한글을 만들었다.",
+    sentence: "세종대왕은 한글을 만들었다.",
   },
   {
     character: "國",
@@ -3042,7 +2938,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "나라 국",
     strokes: 11,
     words: ["국가", "한국", "국기"],
-    sentence: "대한민國 만세!",
+    sentence: "대한민국 만세!",
   },
   {
     character: "民",
@@ -3050,7 +2946,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "백성 민",
     strokes: 5,
     words: ["국민", "시민", "민주"],
-    sentence: "國民의 의무를 다하자.",
+    sentence: "國民(국민)의 의무를 다하자.",
   },
   {
     character: "花",
@@ -3058,7 +2954,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "꽃 화",
     strokes: 8,
     words: ["꽃", "화분", "개화"],
-    sentence: "봄에 花가 피었다.",
+    sentence: "봄에 꽃(花)이 피었다.",
   },
   {
     character: "草",
@@ -3066,7 +2962,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "풀 초",
     strokes: 10,
     words: ["풀밭", "초원", "잡초"],
-    sentence: "草원에서 뛰어놀았다.",
+    sentence: "초원에서 뛰어놀았다.",
   },
   {
     character: "春",
@@ -3074,7 +2970,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "봄 춘",
     strokes: 9,
     words: ["춘분", "입춘", "청춘"],
-    sentence: "春이 되면 꽃이 핀다.",
+    sentence: "봄(春)이 되면 꽃이 핀다.",
   },
   {
     character: "夏",
@@ -3082,7 +2978,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "여름 하",
     strokes: 10,
     words: ["하계", "초여름", "하절기"],
-    sentence: "夏에는 바다에 간다.",
+    sentence: "여름(夏)에는 바다에 간다.",
   },
   {
     character: "秋",
@@ -3090,7 +2986,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "가을 추",
     strokes: 9,
     words: ["추분", "만추", "추석"],
-    sentence: "秋에는 단풍이 아름답다.",
+    sentence: "가을(秋)에는 단풍이 아름답다.",
   },
   {
     character: "冬",
@@ -3098,7 +2994,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "겨울 동",
     strokes: 5,
     words: ["동계", "동지", "동절기"],
-    sentence: "冬에는 눈이 온다.",
+    sentence: "겨울(冬)에는 눈이 온다.",
   },
   // 신규 45개 (총 60개)
   {
@@ -3107,7 +3003,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "가르칠 교",
     strokes: 11,
     words: ["교육", "교사", "종교"],
-    sentence: "敎育은 나라의 근본이다.",
+    sentence: "敎育(교육)은 나라의 근본이다.",
   },
   {
     character: "室",
@@ -3115,7 +3011,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "집 실",
     strokes: 9,
     words: ["교실", "실내", "실험실"],
-    sentence: "敎室에서 공부한다.",
+    sentence: "敎室(교실)에서 공부한다.",
   },
   {
     character: "文",
@@ -3123,7 +3019,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "글월 문",
     strokes: 4,
     words: ["문학", "문화", "작문"],
-    sentence: "文學을 사랑한다.",
+    sentence: "文學(문학)을 사랑한다.",
   },
   {
     character: "字",
@@ -3131,7 +3027,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "글자 자",
     strokes: 6,
     words: ["문자", "글자", "한자"],
-    sentence: "漢字를 배우자.",
+    sentence: "漢字(한자)를 배우자.",
   },
   {
     character: "書",
@@ -3139,7 +3035,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "글 서",
     strokes: 10,
     words: ["서점", "도서", "서예"],
-    sentence: "圖書館에서 책을 빌렸다.",
+    sentence: "圖書館(도서관)에서 책을 빌렸다.",
   },
   {
     character: "讀",
@@ -3147,7 +3043,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "읽을 독",
     strokes: 14,
     words: ["독서", "독해", "독자"],
-    sentence: "讀書는 지혜의 샘이다.",
+    sentence: "讀書(독서)는 지혜의 샘이다.",
   },
   {
     character: "白",
@@ -3155,7 +3051,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "흰 백",
     strokes: 5,
     words: ["백색", "백설", "백조"],
-    sentence: "白雪이 온 세상을 덮었다.",
+    sentence: "白雪(백설)이 온 세상을 덮었다.",
   },
   {
     character: "靑",
@@ -3163,7 +3059,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "푸를 청",
     strokes: 8,
     words: ["청소년", "청색", "청춘"],
-    sentence: "靑春을 즐기자.",
+    sentence: "靑春(청춘)을 즐기자.",
   },
   {
     character: "赤",
@@ -3171,7 +3067,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "붉을 적",
     strokes: 7,
     words: ["적색", "적십자", "적도"],
-    sentence: "赤十字에 기부했다.",
+    sentence: "赤十字(적십자)에 기부했다.",
   },
   {
     character: "黃",
@@ -3179,7 +3075,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "누를 황",
     strokes: 12,
     words: ["황금", "황색", "황토"],
-    sentence: "黃金보다 귀한 것은 건강이다.",
+    sentence: "黃金(황금)보다 귀한 것은 건강이다.",
   },
   {
     character: "黑",
@@ -3187,7 +3083,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "검을 흑",
     strokes: 12,
     words: ["흑백", "흑색", "암흑"],
-    sentence: "黑白 사진을 찍었다.",
+    sentence: "黑白(흑백) 사진을 찍었다.",
   },
   {
     character: "東",
@@ -3195,7 +3091,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "동녘 동",
     strokes: 8,
     words: ["동쪽", "동해", "동양"],
-    sentence: "해는 東에서 뜬다.",
+    sentence: "해는 동쪽(東)에서 뜬다.",
   },
   {
     character: "西",
@@ -3203,7 +3099,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "서녘 서",
     strokes: 6,
     words: ["서쪽", "서양", "서해"],
-    sentence: "해는 西에서 진다.",
+    sentence: "해는 서쪽(西)에서 진다.",
   },
   {
     character: "南",
@@ -3211,7 +3107,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "남녘 남",
     strokes: 9,
     words: ["남쪽", "남산", "남해"],
-    sentence: "南山타워에 올라갔다.",
+    sentence: "南山(남산)타워에 올라갔다.",
   },
   {
     character: "北",
@@ -3219,7 +3115,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "북녘 북",
     strokes: 5,
     words: ["북쪽", "북극", "이북"],
-    sentence: "北極에는 북극곰이 산다.",
+    sentence: "北極(북극)에는 북극곰이 산다.",
   },
   {
     character: "正",
@@ -3227,7 +3123,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "바를 정",
     strokes: 5,
     words: ["정직", "정확", "정의"],
-    sentence: "正直하게 살자.",
+    sentence: "正直(정직)하게 살자.",
   },
   {
     character: "直",
@@ -3235,7 +3131,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "곧을 직",
     strokes: 8,
     words: ["직선", "정직", "직접"],
-    sentence: "直線을 그었다.",
+    sentence: "直線(직선)을 그었다.",
   },
   {
     character: "心",
@@ -3243,7 +3139,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "마음 심",
     strokes: 4,
     words: ["심장", "관심", "결심"],
-    sentence: "마음을 다해 感謝한다.",
+    sentence: "마음을 다해 感謝(감사)한다.",
   },
   {
     character: "思",
@@ -3251,7 +3147,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "생각 사",
     strokes: 9,
     words: ["사고", "사상", "의사"],
-    sentence: "깊이 思考하자.",
+    sentence: "깊이 思考(사고)하자.",
   },
   {
     character: "友",
@@ -3259,7 +3155,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "벗 우",
     strokes: 4,
     words: ["친우", "우정", "우호"],
-    sentence: "좋은 友情은 보물이다.",
+    sentence: "좋은 友情(우정)은 보물이다.",
   },
   {
     character: "愛",
@@ -3267,7 +3163,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "사랑 애",
     strokes: 13,
     words: ["사랑", "애국", "자애"],
-    sentence: "家族을 愛한다.",
+    sentence: "가족(家族)을 사랑(愛)한다.",
   },
   {
     character: "孝",
@@ -3275,7 +3171,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "효도 효",
     strokes: 7,
     words: ["효도", "효자", "효녀"],
-    sentence: "부모님께 孝道하자.",
+    sentence: "부모님께 孝道(효도)하자.",
   },
   {
     character: "忠",
@@ -3283,7 +3179,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "충성 충",
     strokes: 8,
     words: ["충성", "충신", "충고"],
-    sentence: "나라에 忠誠을 다한다.",
+    sentence: "나라에 忠誠(충성)을 다한다.",
   },
   {
     character: "仁",
@@ -3291,7 +3187,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "어질 인",
     strokes: 4,
     words: ["인자", "인덕", "인의"],
-    sentence: "仁德을 베풀자.",
+    sentence: "仁德(인덕)을 베풀자.",
   },
   {
     character: "義",
@@ -3299,7 +3195,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "옳을 의",
     strokes: 13,
     words: ["정의", "의리", "의무"],
-    sentence: "正義를 지키자.",
+    sentence: "正義(정의)를 지키자.",
   },
   {
     character: "禮",
@@ -3307,7 +3203,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "예도 예",
     strokes: 13,
     words: ["예의", "예절", "혼례"],
-    sentence: "禮儀를 지키자.",
+    sentence: "禮儀(예의)를 지키자.",
   },
   {
     character: "信",
@@ -3315,7 +3211,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "믿을 신",
     strokes: 9,
     words: ["신뢰", "자신", "신용"],
-    sentence: "信用을 지키는 사람이 되자.",
+    sentence: "信用(신용)을 지키는 사람이 되자.",
   },
   {
     character: "力",
@@ -3323,7 +3219,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "힘 력",
     strokes: 2,
     words: ["노력", "체력", "능력"],
-    sentence: "努力은 배신하지 않는다.",
+    sentence: "努力(노력)은 배신하지 않는다.",
   },
   {
     character: "勉",
@@ -3331,7 +3227,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "힘쓸 면",
     strokes: 10,
     words: ["면학", "근면", "권면"],
-    sentence: "勉學에 힘쓰자.",
+    sentence: "勉學(면학)에 힘쓰자.",
   },
   {
     character: "工",
@@ -3339,7 +3235,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "장인 공",
     strokes: 3,
     words: ["공장", "공업", "공사"],
-    sentence: "工場에서 물건을 만든다.",
+    sentence: "工場(공장)에서 물건을 만든다.",
   },
   {
     character: "農",
@@ -3347,7 +3243,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "농사 농",
     strokes: 13,
     words: ["농업", "농부", "농촌"],
-    sentence: "農夫가 벼를 심었다.",
+    sentence: "農夫(농부)가 벼를 심었다.",
   },
   {
     character: "漁",
@@ -3355,7 +3251,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "물고기 잡을 어",
     strokes: 14,
     words: ["어업", "어부", "어촌"],
-    sentence: "漁夫가 바다에 나갔다.",
+    sentence: "漁夫(어부)가 바다에 나갔다.",
   },
   {
     character: "林",
@@ -3363,7 +3259,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "수풀 림",
     strokes: 8,
     words: ["산림", "삼림", "임업"],
-    sentence: "山林을 보호하자.",
+    sentence: "山林(산림)을 보호하자.",
   },
   {
     character: "海",
@@ -3371,7 +3267,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "바다 해",
     strokes: 10,
     words: ["해양", "해변", "해수"],
-    sentence: "푸른 海가 아름답다.",
+    sentence: "푸른 바다(海)가 아름답다.",
   },
   {
     character: "河",
@@ -3379,7 +3275,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "물 하",
     strokes: 8,
     words: ["하천", "은하수", "운하"],
-    sentence: "河川에서 물고기를 잡았다.",
+    sentence: "河川(하천)에서 물고기를 잡았다.",
   },
   {
     character: "雨",
@@ -3387,7 +3283,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "비 우",
     strokes: 8,
     words: ["우산", "폭우", "우기"],
-    sentence: "雨가 내려 우산을 썼다.",
+    sentence: "비(雨)가 내려 우산을 썼다.",
   },
   {
     character: "雪",
@@ -3395,7 +3291,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "눈 설",
     strokes: 11,
     words: ["설경", "폭설", "제설"],
-    sentence: "白雪이 펑펑 내렸다.",
+    sentence: "白雪(백설)이 펑펑 내렸다.",
   },
   {
     character: "風",
@@ -3403,7 +3299,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "바람 풍",
     strokes: 9,
     words: ["풍경", "태풍", "풍력"],
-    sentence: "시원한 風이 불었다.",
+    sentence: "시원한 바람(風)이 불었다.",
   },
   {
     character: "雲",
@@ -3411,7 +3307,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "구름 운",
     strokes: 12,
     words: ["운해", "풍운", "행운"],
-    sentence: "하늘에 白雲이 떠 있다.",
+    sentence: "하늘에 白雲(백운)이 떠 있다.",
   },
   {
     character: "光",
@@ -3419,7 +3315,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "빛 광",
     strokes: 6,
     words: ["광선", "관광", "영광"],
-    sentence: "태양의 光이 밝다.",
+    sentence: "태양의 빛(光)이 밝다.",
   },
   {
     character: "電",
@@ -3427,7 +3323,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "번개 전",
     strokes: 13,
     words: ["전기", "전화", "전자"],
-    sentence: "電氣를 아껴 쓰자.",
+    sentence: "電氣(전기)를 아껴 쓰자.",
   },
   {
     character: "氣",
@@ -3435,7 +3331,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "기운 기",
     strokes: 6,
     words: ["기분", "천기", "인기"],
-    sentence: "오늘은 天氣가 좋다.",
+    sentence: "오늘은 天氣(천기)가 좋다.",
   },
   {
     character: "道",
@@ -3443,7 +3339,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "길 도",
     strokes: 13,
     words: ["도로", "도덕", "도리"],
-    sentence: "바른 道를 걷자.",
+    sentence: "바른 길(道)을 걷자.",
   },
   {
     character: "里",
@@ -3451,7 +3347,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "마을 리",
     strokes: 7,
     words: ["마을", "만리", "고리"],
-    sentence: "千里 길도 한 걸음부터.",
+    sentence: "千里(천리) 길도 한 걸음부터.",
   },
   {
     character: "市",
@@ -3459,7 +3355,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "저자 시",
     strokes: 5,
     words: ["시장", "도시", "시민"],
-    sentence: "都市에서 생활한다.",
+    sentence: "都市(도시)에서 생활한다.",
   },
   // ===== 추가 60개 (총 120개) - 8급~7급 한자 =====
   {
@@ -3468,7 +3364,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "하늘 천",
     strokes: 4,
     words: ["천국", "하늘", "천재"],
-    sentence: "天地가 넓다.",
+    sentence: "天地(천지)가 넓다.",
   },
   {
     character: "地",
@@ -3476,7 +3372,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "땅 지",
     strokes: 6,
     words: ["지구", "토지", "지역"],
-    sentence: "大地가 흔들렸다.",
+    sentence: "大地(대지)가 흔들렸다.",
   },
   {
     character: "人",
@@ -3484,7 +3380,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "사람 인",
     strokes: 2,
     words: ["인간", "인구", "개인"],
-    sentence: "人은 사회적 동물이다.",
+    sentence: "사람(人)은 사회적 동물이다.",
   },
   {
     character: "家",
@@ -3492,7 +3388,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "집 가",
     strokes: 10,
     words: ["가족", "가정", "국가"],
-    sentence: "우리 家族은 넷이다.",
+    sentence: "우리 家族(가족)은 넷이다.",
   },
   {
     character: "食",
@@ -3500,7 +3396,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "밥 식",
     strokes: 9,
     words: ["식사", "음식", "식당"],
-    sentence: "食事를 맛있게 했다.",
+    sentence: "食事(식사)를 맛있게 했다.",
   },
   {
     character: "手",
@@ -3508,7 +3404,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "손 수",
     strokes: 4,
     words: ["수공", "박수", "선수"],
-    sentence: "두 手를 깨끗이 씻자.",
+    sentence: "두 손(手)을 깨끗이 씻자.",
   },
   {
     character: "足",
@@ -3516,7 +3412,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "발 족",
     strokes: 7,
     words: ["족구", "만족", "부족"],
-    sentence: "滿足한 하루였다.",
+    sentence: "滿足(만족)한 하루였다.",
   },
   {
     character: "目",
@@ -3524,7 +3420,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "눈 목",
     strokes: 5,
     words: ["목표", "과목", "주목"],
-    sentence: "注目해 주세요.",
+    sentence: "注目(주목)해 주세요.",
   },
   {
     character: "耳",
@@ -3532,7 +3428,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "귀 이",
     strokes: 6,
     words: ["이비인후과", "귀"],
-    sentence: "잘 들으려면 耳를 기울여라.",
+    sentence: "잘 들으려면 귀(耳)를 기울여라.",
   },
   {
     character: "口",
@@ -3540,7 +3436,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "입 구",
     strokes: 3,
     words: ["인구", "입구", "구호"],
-    sentence: "入口로 들어가자.",
+    sentence: "入口(입구)로 들어가자.",
   },
   {
     character: "上",
@@ -3548,7 +3444,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "위 상",
     strokes: 3,
     words: ["상위", "이상", "상급"],
-    sentence: "위로 上을 향해 올라가자.",
+    sentence: "위(上)를 향해 올라가자.",
   },
   {
     character: "下",
@@ -3556,7 +3452,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "아래 하",
     strokes: 3,
     words: ["하위", "이하", "하급"],
-    sentence: "下를 향해 내려갔다.",
+    sentence: "아래(下)를 향해 내려갔다.",
   },
   {
     character: "中",
@@ -3564,7 +3460,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "가운데 중",
     strokes: 4,
     words: ["중앙", "중심", "집중"],
-    sentence: "中心을 잡아라.",
+    sentence: "中心(중심)을 잡아라.",
   },
   {
     character: "外",
@@ -3572,7 +3468,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "바깥 외",
     strokes: 5,
     words: ["외부", "외국", "실외"],
-    sentence: "外出은 삼가자.",
+    sentence: "外出(외출)은 삼가자.",
   },
   {
     character: "內",
@@ -3580,7 +3476,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "안 내",
     strokes: 4,
     words: ["내부", "실내", "국내"],
-    sentence: "室內에서 공부하자.",
+    sentence: "室內(실내)에서 공부하자.",
   },
   {
     character: "長",
@@ -3588,7 +3484,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "길 장",
     strokes: 8,
     words: ["장점", "성장", "학장"],
-    sentence: "키가 크게 成長했다.",
+    sentence: "키가 크게 成長(성장)했다.",
   },
   {
     character: "少",
@@ -3596,7 +3492,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "적을 소",
     strokes: 4,
     words: ["소년", "소녀", "소수"],
-    sentence: "少年은 희망이다.",
+    sentence: "少年(소년)은 희망이다.",
   },
   {
     character: "多",
@@ -3604,7 +3500,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "많을 다",
     strokes: 6,
     words: ["다수", "다양", "다행"],
-    sentence: "多樣한 문화를 배우자.",
+    sentence: "多樣(다양)한 문화를 배우자.",
   },
   {
     character: "右",
@@ -3612,7 +3508,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "오른 우",
     strokes: 5,
     words: ["우측", "좌우", "우회전"],
-    sentence: "右로 돌아가세요.",
+    sentence: "오른쪽(右)으로 돌아가세요.",
   },
   {
     character: "左",
@@ -3620,7 +3516,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "왼 좌",
     strokes: 5,
     words: ["좌측", "좌우", "좌회전"],
-    sentence: "左로 돌아가세요.",
+    sentence: "왼쪽(左)으로 돌아가세요.",
   },
   {
     character: "前",
@@ -3628,7 +3524,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "앞 전",
     strokes: 9,
     words: ["이전", "전진", "전방"],
-    sentence: "前進하자.",
+    sentence: "前進(전진)하자.",
   },
   {
     character: "後",
@@ -3636,7 +3532,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "뒤 후",
     strokes: 9,
     words: ["이후", "후진", "후방"],
-    sentence: "後에 다시 만나자.",
+    sentence: "뒤(後)에 다시 만나자.",
   },
   {
     character: "年",
@@ -3660,7 +3556,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "날 일",
     strokes: 4,
     words: ["일요일", "매일", "생일"],
-    sentence: "每日 열심히 공부하자.",
+    sentence: "每日(매일) 열심히 공부하자.",
   },
   {
     character: "火",
@@ -3668,7 +3564,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "불 화",
     strokes: 4,
     words: ["화재", "화요일", "화산"],
-    sentence: "火山이 폭발했다.",
+    sentence: "火山(화산)이 폭발했다.",
   },
   {
     character: "水",
@@ -3676,7 +3572,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "물 수",
     strokes: 4,
     words: ["수요일", "수영", "하수"],
-    sentence: "깨끗한 水를 마시자.",
+    sentence: "깨끗한 물(水)을 마시자.",
   },
   {
     character: "木",
@@ -3684,7 +3580,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "나무 목",
     strokes: 4,
     words: ["목요일", "나무", "목재"],
-    sentence: "큰 木이 그늘을 만든다.",
+    sentence: "큰 나무(木)가 그늘을 만든다.",
   },
   {
     character: "金",
@@ -3692,7 +3588,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "쇠 금",
     strokes: 8,
     words: ["금요일", "황금", "금메달"],
-    sentence: "金메달을 땄다.",
+    sentence: "금메달을 땄다.",
   },
   {
     character: "土",
@@ -3700,7 +3596,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "흙 토",
     strokes: 3,
     words: ["토요일", "국토", "토양"],
-    sentence: "비옥한 土壤에서 작물이 자란다.",
+    sentence: "비옥한 土壤(토양)에서 작물이 자란다.",
   },
   {
     character: "男",
@@ -3708,7 +3604,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "사내 남",
     strokes: 7,
     words: ["남자", "남녀", "남학생"],
-    sentence: "男女가 평등하다.",
+    sentence: "男女(남녀)가 평등하다.",
   },
   {
     character: "女",
@@ -3716,7 +3612,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "여자 여",
     strokes: 3,
     words: ["여자", "여성", "여학생"],
-    sentence: "女性의 권리를 존중하자.",
+    sentence: "女性(여성)의 권리를 존중하자.",
   },
   {
     character: "兄",
@@ -3724,7 +3620,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "형 형",
     strokes: 5,
     words: ["형제", "형님", "사형"],
-    sentence: "兄弟끼리 사이좋게 지내자.",
+    sentence: "兄弟(형제)끼리 사이좋게 지내자.",
   },
   {
     character: "弟",
@@ -3732,7 +3628,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "아우 제",
     strokes: 7,
     words: ["형제", "제자", "자제"],
-    sentence: "弟子가 스승을 따르다.",
+    sentence: "弟子(제자)가 스승을 따르다.",
   },
   {
     character: "子",
@@ -3740,7 +3636,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "아들 자",
     strokes: 3,
     words: ["자녀", "아들", "왕자"],
-    sentence: "子女를 사랑한다.",
+    sentence: "子女(자녀)를 사랑한다.",
   },
   {
     character: "老",
@@ -3748,7 +3644,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "늙을 로",
     strokes: 6,
     words: ["노인", "노후", "경로"],
-    sentence: "老人을 공경하자.",
+    sentence: "老人(노인)을 공경하자.",
   },
   {
     character: "出",
@@ -3756,7 +3652,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "날 출",
     strokes: 5,
     words: ["출발", "출구", "외출"],
-    sentence: "出發 시간이다.",
+    sentence: "出發(출발) 시간이다.",
   },
   {
     character: "入",
@@ -3764,7 +3660,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "들 입",
     strokes: 2,
     words: ["입구", "입학", "수입"],
-    sentence: "入學을 축하한다.",
+    sentence: "入學(입학)을 축하한다.",
   },
   {
     character: "來",
@@ -3772,7 +3668,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "올 래",
     strokes: 8,
     words: ["미래", "장래", "왕래"],
-    sentence: "未來를 향해 나아가자.",
+    sentence: "未來(미래)를 향해 나아가자.",
   },
   {
     character: "去",
@@ -3780,7 +3676,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "갈 거",
     strokes: 5,
     words: ["과거", "거래", "철거"],
-    sentence: "過去를 돌아보자.",
+    sentence: "過去(과거)를 돌아보자.",
   },
   {
     character: "言",
@@ -3788,7 +3684,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "말씀 언",
     strokes: 7,
     words: ["언어", "발언", "선언"],
-    sentence: "바른 言語를 사용하자.",
+    sentence: "바른 言語(언어)를 사용하자.",
   },
   {
     character: "語",
@@ -3796,7 +3692,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "말씀 어",
     strokes: 14,
     words: ["국어", "영어", "언어"],
-    sentence: "國語를 사랑하자.",
+    sentence: "國語(국어)를 사랑하자.",
   },
   {
     character: "話",
@@ -3804,7 +3700,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "말씀 화",
     strokes: 13,
     words: ["전화", "대화", "동화"],
-    sentence: "電話를 걸었다.",
+    sentence: "電話(전화)를 걸었다.",
   },
   {
     character: "名",
@@ -3812,7 +3708,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "이름 명",
     strokes: 6,
     words: ["이름", "명소", "유명"],
-    sentence: "이름이 有名하다.",
+    sentence: "이름이 有名(유명)하다.",
   },
   {
     character: "色",
@@ -3820,7 +3716,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "빛 색",
     strokes: 6,
     words: ["색깔", "경색", "특색"],
-    sentence: "무지개는 일곱 色이다.",
+    sentence: "무지개는 일곱 색이다.",
   },
   {
     character: "音",
@@ -3828,7 +3724,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "소리 음",
     strokes: 9,
     words: ["음악", "발음", "소음"],
-    sentence: "아름다운 音樂을 들었다.",
+    sentence: "아름다운 音樂(음악)을 들었다.",
   },
   {
     character: "樂",
@@ -3836,7 +3732,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "즐길 락",
     strokes: 15,
     words: ["음악", "즐거움", "오락"],
-    sentence: "즐겁게 놀았다.",
+    sentence: "音樂(음악)에 맞춰 즐겁게 놀았다.",
   },
   {
     character: "活",
@@ -3844,7 +3740,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "살 활",
     strokes: 10,
     words: ["활동", "생활", "활력"],
-    sentence: "活氣찬 하루를 보냈다.",
+    sentence: "活氣(활기)찬 하루를 보냈다.",
   },
   {
     character: "動",
@@ -3852,7 +3748,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "움직일 동",
     strokes: 11,
     words: ["운동", "활동", "동물"],
-    sentence: "運動은 건강의 기본이다.",
+    sentence: "運動(운동)은 건강의 기본이다.",
   },
   {
     character: "物",
@@ -3860,7 +3756,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "만물 물",
     strokes: 8,
     words: ["동물", "식물", "물건"],
-    sentence: "動物을 사랑하자.",
+    sentence: "動物(동물)을 사랑하자.",
   },
   {
     character: "安",
@@ -3868,7 +3764,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "편안 안",
     strokes: 6,
     words: ["안전", "안심", "평안"],
-    sentence: "安全이 가장 중요하다.",
+    sentence: "安全(안전)이 가장 중요하다.",
   },
   {
     character: "全",
@@ -3876,7 +3772,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "온전 전",
     strokes: 6,
     words: ["안전", "전체", "완전"],
-    sentence: "安全을 지키자.",
+    sentence: "安全(안전)을 지키자.",
   },
   {
     character: "平",
@@ -3884,7 +3780,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "평평할 평",
     strokes: 5,
     words: ["평화", "공평", "평균"],
-    sentence: "平和로운 세상을 만들자.",
+    sentence: "平和(평화)로운 세상을 만들자.",
   },
   {
     character: "和",
@@ -3892,7 +3788,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "화할 화",
     strokes: 8,
     words: ["평화", "조화", "화합"],
-    sentence: "和合하여 살자.",
+    sentence: "和合(화합)하여 살자.",
   },
   {
     character: "集",
@@ -3900,7 +3796,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "모을 집",
     strokes: 12,
     words: ["집합", "수집", "문집"],
-    sentence: "우표를 收集했다.",
+    sentence: "우표를 收集(수집)했다.",
   },
   {
     character: "所",
@@ -3908,7 +3804,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "바 소",
     strokes: 8,
     words: ["장소", "사무소", "소재"],
-    sentence: "약속 場所에 도착했다.",
+    sentence: "약속 場所(장소)에 도착했다.",
   },
   {
     character: "使",
@@ -3916,7 +3812,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "하여금 사",
     strokes: 8,
     words: ["사용", "대사", "천사"],
-    sentence: "올바르게 使用하자.",
+    sentence: "올바르게 使用(사용)하자.",
   },
   {
     character: "通",
@@ -3924,7 +3820,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "통할 통",
     strokes: 11,
     words: ["교통", "소통", "통신"],
-    sentence: "交通 규칙을 지키자.",
+    sentence: "交通(교통) 규칙을 지키자.",
   },
   {
     character: "新",
@@ -3932,7 +3828,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "새 신",
     strokes: 13,
     words: ["신문", "혁신", "신입"],
-    sentence: "新聞을 읽었다.",
+    sentence: "新聞(신문)을 읽었다.",
   },
   {
     character: "古",
@@ -3940,7 +3836,7 @@ export const grade4HanjaData: HanjaEntry[] = [
     meaning: "옛 고",
     strokes: 5,
     words: ["고대", "고전", "고궁"],
-    sentence: "古宮을 방문했다.",
+    sentence: "古宮(고궁)을 방문했다.",
   },
 ];
 
@@ -4036,7 +3932,7 @@ export const grade4EnglishData: EnglishEntry[] = [
   },
   {
     sentence: "I have a big family.",
-    translation: "나는 대가족이야.",
+    translation: "우리 가족은 대가족이야.",
     word: "family",
     targetKo: "대가족",
     pronunciation: "패밀리",
@@ -4237,7 +4133,7 @@ export const grade4EnglishData: EnglishEntry[] = [
   },
   {
     sentence: "He runs faster than me.",
-    translation: "그는 나보다 빨리 달려.",
+    translation: "그는 나보다 더 빨리 달려.",
     word: "faster",
     targetKo: "빨리",
     pronunciation: "패스터",
@@ -4983,7 +4879,7 @@ export const grade4CreativeData: KnowledgeEntry[] = [
     category: "미술",
   },
   {
-    text: "좌우가 똑같은 것을 대칭, 다른 것을 ___이라(라) 한다.",
+    text: "좌우가 똑같은 것을 대칭이라 하고, 다르게 생긴 것을 ___이라(라) 한다.",
     answer: "비대칭",
     category: "미술",
   },
@@ -5039,7 +4935,7 @@ export const grade4CreativeData: KnowledgeEntry[] = [
     category: "미술",
   },
   {
-    text: "도자기를 만들 때 흙을 빚고 ___에서 구운다.",
+    text: "도자기를 만들 때 흙을 빚고 ___에서 굽는다.",
     answer: "가마",
     category: "미술",
   },
@@ -5113,7 +5009,7 @@ export const grade4CreativeData: KnowledgeEntry[] = [
     category: "만들기",
   },
   {
-    text: "종이를 여러 겹 붙여 단단하게 만드는 기법을 ___이라(라) 한다.",
+    text: "종이를 잘게 찢어 물에 불린 뒤 풀과 섞은 반죽을 ___이라(라) 한다.",
     answer: "종이죽",
     category: "만들기",
   },

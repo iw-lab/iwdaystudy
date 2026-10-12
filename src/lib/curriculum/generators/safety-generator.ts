@@ -1573,7 +1573,7 @@ const FIRE_SAFETY: SafetyTemplate[] = [
   },
   {
     text: "소화기 사용법: PASS - Pull(뽑기) → Aim(겨냥) → Squeeze(누르기) → ___",
-    answer: "Sweep(쓸기)",
+    answer: "Sweep",
     category: "화재안전",
     gradeGroup: "5-6",
   },

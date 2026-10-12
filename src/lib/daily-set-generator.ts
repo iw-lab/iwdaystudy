@@ -12,7 +12,7 @@ import {
 
 import { getDayOfYear, getGradeGroup } from "@/lib/utils";
 import { lookupStandardCode } from "@/lib/curriculum/standard-mapping";
-import { naturalizeKorean, fixExistingJosa, hasBatchim } from "@/lib/korean-josa";
+import { naturalizeKorean, fixExistingJosa, hasBatchim, withJosa, fitBlankJosa } from "@/lib/korean-josa";
 import {
   GRADE_SET_COMPOSITION,
   DEFAULT_READINESS_ITEMS,
@@ -471,6 +471,27 @@ function filterAboveGrade<T>(items: T[], blobOf: (item: T) => string): T[] {
  * 비슷한 후보만 쓴다. 조건을 만족하는 후보가 없으면 null 을 돌려주고,
  * 호출부는 '참인 문장'으로 출제한다 — 비문을 내보내는 것보다 낫다.
  */
+// O/X 로 낼 수 있는 빈칸인가 — 빈칸이 낱말 중간에 붙어 있으면(«___한 수», «___하다»)
+// 오답을 끼운 거짓 문장이 «같한»·«먼저 대피하다» 같은 없는 말이 된다(2026-10-12 전수검수).
+// 앞은 문장 시작·띄어쓰기·여는 따옴표, 뒤는 띄어쓰기·문장부호·조사일 때만 O/X 를 허용한다.
+const TF_AFTER_OK = /^(?:[\s.,!?'"’”)]|$|(?:이|가|은|는|을|를|의|에|에서|에게|로|으로|와|과|도|만|라고|이라고|란|이란|라는|이라는|이다|입니다|이에요|예요|였다|이었다|이며|이고|처럼|보다|부터|까지)(?=[\s.,!?'"’”)]|$))/;
+function tfBlankSafe(text: string): boolean {
+  const i = text.indexOf("___");
+  if (i < 0 || text.indexOf("___", i + 3) >= 0) return false;
+  const before = text.slice(0, i).slice(-1);
+  const after = text.slice(i + 3);
+  return (before === "" || /[\s'"‘“(]/.test(before)) && TF_AFTER_OK.test(after);
+}
+
+// 빈칸·O/X 문항 힌트 — 분야 이름(«수학 분야의 문제예요»)은 도움이 안 되고, 분야 이름이 정답이면 답을 알려 준다.
+function fillHint(answer: string): string {
+  const a = String(answer ?? "").trim();
+  if (!a) return "문장을 천천히 다시 읽어 보세요.";
+  if (/^\d+(\.\d+)?$/.test(a)) return "숫자로 답하는 문제예요. 문장 속 단서를 찾아보세요.";
+  const len = a.replace(/\s/g, "").length;
+  return len <= 1 ? "한 글자 낱말이에요." : `첫 글자는 '${a[0]}', 모두 ${len}글자예요.`;
+}
+
 function pickTfWrong(
   answer: string,
   choices: string[],
@@ -536,41 +557,36 @@ const SPELL_CONFUSION: [string, string][] = [
   ["든지", "던지"], ["바라", "바래"], ["할게", "할께"], ["거예요", "거에요"],
 ];
 // 마지막 한글 음절의 받침을 살짝 바꿔 오타처럼 보이게 (폴백)
-function perturbSyllable(word: string): string | null {
-  for (let i = word.length - 1; i >= 0; i--) {
-    const code = word.charCodeAt(i);
-    if (code < 0xac00 || code > 0xd7a3) continue;
-    const base = code - 0xac00;
-    const jong = base % 28;
-    const newJong = jong === 0 ? 19 : jong === 19 ? 20 : 0; // 받침 추가/ㅅ↔ㅆ/제거
-    return (
-      word.slice(0, i) +
-      String.fromCharCode(0xac00 + (base - jong) + newJong) +
-      word.slice(i + 1)
-    );
-  }
-  return null;
-}
-// 어절의 받침을 여러 후보로 바꿔 서로 다른 오표기 변형을 충분히 생성
-// (짧은 문장에서도 맞춤법 보기 3개를 확보)
-function spellPerturbations(part: string): string[] {
-  const cands = [0, 1, 4, 8, 16, 17, 19, 20, 21]; // 없음/ㄱ/ㄴ/ㄹ/ㅁ/ㅂ/ㅅ/ㅆ/ㅇ
+// 아이들이 실제로 헷갈리는 표기로만 오답을 만든다(2026-10-12 전수검수: «떨어젔어욧»·«할숫 수»처럼
+// 받침을 아무거나 붙이면 아무도 쓰지 않는 글자가 보기로 나왔다).
+//   받침: 소리가 같은 것끼리(ㄱ·ㄲ·ㅋ / ㄷ·ㅅ·ㅆ·ㅈ·ㅊ·ㅌ·ㅎ / ㅂ·ㅍ) · 겹받침↔홑받침(값/갑, 닭/닥, 넓/널)
+//   모음: ㅐ↔ㅔ · ㅒ↔ㅖ · ㅚ↔ㅙ↔ㅞ · ㅢ↔ㅣ
+const JONG_ALIKE: number[][] = [
+  [1, 2, 24], [7, 19, 20, 22, 23, 25], [17, 26],
+  [18, 17], [9, 1], [10, 16], [11, 8], [3, 1], [6, 4], [15, 8], [12, 8], [13, 8],
+];
+const JUNG_ALIKE: number[][] = [[1, 5], [3, 7], [11, 10, 15], [19, 20]];
+function plausibleMisspellings(part: string): string[] {
   const out: string[] = [];
+  const push = (v: string) => { if (v !== part && !out.includes(v)) out.push(v); };
   for (let i = part.length - 1; i >= 0; i--) {
     const code = part.charCodeAt(i);
     if (code < 0xac00 || code > 0xd7a3) continue;
     const base = code - 0xac00;
     const jong = base % 28;
-    for (const nj of cands) {
-      if (nj === jong) continue;
-      const v =
-        part.slice(0, i) +
-        String.fromCharCode(0xac00 + (base - jong) + nj) +
-        part.slice(i + 1);
-      if (v !== part && !out.includes(v)) out.push(v);
-    }
+    const jung = Math.floor(base / 28) % 21;
+    const cho = Math.floor(base / 28 / 21);
+    const mk = (ju: number, jo: number) => part.slice(0, i) + String.fromCharCode(0xac00 + (cho * 21 + ju) * 28 + jo) + part.slice(i + 1);
+    for (const g of JONG_ALIKE) if (g.includes(jong)) for (const nj of g) if (nj !== jong) push(mk(jung, nj));
+    for (const g of JUNG_ALIKE) if (g.includes(jung)) for (const nv of g) if (nv !== jung) push(mk(nv, jong));
   }
   return out;
+}
+function perturbSyllable(word: string): string | null {
+  return plausibleMisspellings(word)[0] ?? null;
+}
+function spellPerturbations(part: string): string[] {
+  return plausibleMisspellings(part);
 }
 function diffSpellingPart(
   correctSentence: string,
@@ -657,12 +673,8 @@ function buildSpellingSentenceChoices(
       if (cand !== correctSentence) distinct.add(cand);
     }
   }
-  if (distinct.size < 3) {
-    for (const cand of spellPerturbations(correctSentence)) {
-      if (distinct.size >= 3) break;
-      if (cand !== correctSentence) distinct.add(cand);
-    }
-  }
+  // 문장 전체(문장 끝 «요»까지) 를 흔들면 «욧» 같은 엉터리 보기가 나온다 → 틀린 자리 어절만 변형한다.
+  // 그래도 모자라면 보기 수를 줄인다(정답 + 오답 2개 이상).
   return shuffleChoices([correctSentence, ...[...distinct].slice(0, 3)], rng);
 }
 
@@ -885,7 +897,7 @@ function getStaticKoreanReadingData(g: number): ReadingEntry[] {
 
 // Get curriculum data per grade (merges static + procedurally generated)
 // 선행학습법 준수: 주지과목(수학·국어·영어·과학)은 전 학년 내용을 제공합니다.
-function getGradeData(
+export function getGradeData(
   grade: number,
   semester: number,
   daySeed?: number,
@@ -1697,6 +1709,40 @@ function mathHintForUnit(unit: string): string {
   return "식을 작은 단계로 나누어 하나씩 계산해 보세요!";
 }
 
+// 단원 이름만 보면 «1 + 1»에 «받아올림에 주의!»가 붙는다(2026-10-12 전수검수 60건).
+// 식을 직접 보고 받아올림·받아내림 유무, 삼각형/사각형 각도처럼 문제에 맞는 힌트를 고른다.
+function mathHint(unit: string, expr: string, entry?: MathEntry): string {
+  const e = expr.replace(/\s+/g, " ");
+  const bin = e.match(/^\s*(\d+)\s*([+-])\s*(\d+)\s*(=|$)/);
+  if (bin) {
+    const a = Number(bin[1]);
+    const b = Number(bin[3]);
+    const digits = (n: number) => String(n).split("").reverse().map(Number);
+    const da = digits(a);
+    const db = digits(b);
+    if (bin[2] === "+") {
+      const carry = entry?.hasCarry ?? da.some((d, i) => d + (db[i] ?? 0) >= 10);
+      return carry
+        ? "일의 자리부터 더하고, 10이 넘으면 윗자리로 받아올려요!"
+        : a < 10 && b < 10
+          ? "손가락이나 수직선으로 이어 세어 보세요!"
+          : "일의 자리끼리, 십의 자리끼리 차례로 더해요!";
+    }
+    const borrow = entry?.hasBorrow ?? da.some((d, i) => d < (db[i] ?? 0));
+    return borrow
+      ? "일의 자리부터 빼고, 모자라면 윗자리에서 10을 받아내려요!"
+      : a < 10
+        ? "큰 수에서 작은 수만큼 거꾸로 세어 보세요!"
+        : "일의 자리끼리, 십의 자리끼리 차례로 빼요!";
+  }
+  if (/각도/.test(unit) || /°/.test(e)) {
+    if (/삼각형/.test(e)) return "삼각형 세 각의 크기를 더하면 180°예요!";
+    if (/사각형/.test(e)) return "사각형 네 각의 크기를 더하면 360°예요!";
+    if (/직선/.test(e)) return "직선이 이루는 각은 180°예요!";
+  }
+  return mathHintForUnit(unit);
+}
+
 function buildMathQuestion(
   setId: string,
   orderIndex: number,
@@ -1729,11 +1775,14 @@ function buildMathQuestion(
     order_index: orderIndex,
     title,
     content: {
+      // 문장으로 된 문제(«피자를 … 먹은 양은?»)에 «계산하세요»를 붙이면 지시와 문제가 어긋난다
       text: override
         ? "알맞은 답을 고르세요."
         : variant === "reverse"
-          ? "빈칸에 들어갈 수를 구하세요."
-          : "다음을 계산하세요.",
+          ? "빈칸(?)에 들어갈 수를 구하세요."
+          : /[가-힣]{2,}/.test(expr.replace(/\([^)]*\)/g, ""))
+            ? "다음 물음에 답하세요."
+            : "다음을 계산하세요.",
       expression: isReverse ? reverseExpression : expr,
       unit: entry.unit,
       choices: variant === "input" ? [] : choices,
@@ -1749,7 +1798,7 @@ function buildMathQuestion(
       ? entry.steps.join(" -> ")
       : `정답: ${correctAnswer}`,
     points: 10,
-    hint: mathHintForUnit(entry.unit),
+    hint: mathHint(entry.unit, expr, entry),
     metadata: {
       unit: entry.unit,
       hasCarry: entry.hasCarry,
@@ -1757,6 +1806,39 @@ function buildMathQuestion(
     },
     created_at: new Date().toISOString(),
   };
+}
+
+// 맞춤법 문항의 «종류» — 높임말·띄어쓰기·문장부호는 맞춤법(철자)이 아니라서
+// «맞춤법이 틀린 부분»이라고 물으면 지시가 틀린다(2026-10-12 전수검수: «있어?» → «맞춤법이 틀린 부분»).
+type SpellKind = "spelling" | "honorific" | "spacing" | "punct";
+function spellKind(explanation: string | undefined): SpellKind {
+  const m = String(explanation ?? "").match(/^\[([^\]]+)\]/);
+  const k = m?.[1] ?? "";
+  if (/존댓말|높임/.test(k)) return "honorific";
+  if (/띄어쓰기/.test(k) && !/의존명사/.test(k)) return "spacing";
+  if (/문장부호|문장 부호/.test(k)) return "punct";
+  return "spelling";
+}
+const SPELL_TEXT: Record<SpellKind, { sentence: string; correct: string }> = {
+  spelling: { sentence: "다음 중 맞춤법이 올바른 문장을 고르세요.", correct: "다음 문장을 올바르게 고치면?" },
+  honorific: { sentence: "어른께 알맞게 말한 문장을 고르세요.", correct: "다음 말을 어른께 알맞게 고치면?" },
+  spacing: { sentence: "띄어쓰기가 바른 문장을 고르세요.", correct: "다음 문장의 띄어쓰기를 바르게 고치면?" },
+  punct: { sentence: "문장 부호를 바르게 쓴 문장을 고르세요.", correct: "다음 문장의 문장 부호를 바르게 고치면?" },
+};
+// 띄어쓰기·문장부호는 «한 군데만 틀린» 문장이 진짜 헷갈리는 오답이다
+function kindDistractors(kind: SpellKind, correct: string, wrong: string): string[] {
+  const out = new Set<string>([wrong]);
+  if (kind === "spacing") {
+    const sp = [...correct.matchAll(/ /g)].map((m) => m.index!);
+    for (const i of sp) out.add(correct.slice(0, i) + correct.slice(i + 1));
+  } else if (kind === "punct") {
+    const alt: Record<string, string[]> = { "!": [".", "?"], ".": ["!", "?"], "?": [".", "!"], ",": [""] };
+    for (let i = 0; i < correct.length; i++) {
+      for (const a of alt[correct[i]] ?? []) out.add(correct.slice(0, i) + a + correct.slice(i + 1));
+    }
+  }
+  out.delete(correct);
+  return [...out];
 }
 
 // Build a spelling question from real curriculum data
@@ -1772,6 +1854,13 @@ function buildSpellingQuestion(
 ): Question {
   const correctSentence = entry.answer === 1 ? entry.q1 : entry.q2;
   const wrongSentence = entry.answer === 1 ? entry.q2 : entry.q1;
+  const kind = spellKind(entry.explanation);
+  // «틀린 부분 찾기»는 철자 문항에서만 — 높임말·띄어쓰기·문장부호는 어절 하나를 고를 수 없다
+  if (variant === "word" && kind !== "spelling") variant = "sentence";
+  const sentenceOptions = (rng: () => number) =>
+    kind === "spelling"
+      ? buildSpellingSentenceChoices(correctSentence, wrongSentence, rng)
+      : shuffleChoices([correctSentence, ...kindDistractors(kind, correctSentence, wrongSentence).slice(0, 3)], rng);
 
   if (variant === "word") {
     // Find differing words between correct and wrong sentences
@@ -1801,17 +1890,20 @@ function buildSpellingQuestion(
       (w.length >= 2 && (w.includes(wrongPart) || wrongPart.includes(w)));
     const others = [
       ...new Set(
-        correctWords
+        // 화면에 보이는 건 틀린 문장이다 — 띄어쓰기 문항(그칠듯 하다)은 어절 수가 달라 바른 문장의 어절(듯하다)이
+        // 문장에 없는 보기가 된다. 두 문장에 다 있는 어절만 쓴다.
+        wrongWords
           .filter((_, i) => i !== diffIndex)
           .map(stripPunc)
+          .filter((w) => correctWords.map(stripPunc).includes(w))
           .filter((w) => w.length > 1 && !isDupPart(w)),
       ),
     ];
     const parts = rankByCloseLength(others, wrongPart.length, rng).slice(0, 3);
-    const fillers = ["우리", "오늘", "정말", "다시", "함께", "조금", "그리고"];
-    for (const f of fillers) {
-      if (parts.length >= 3) break;
-      if (!parts.includes(f) && !isDupPart(f)) parts.push(f);
+    // 보기는 «그 문장 속 어절»이어야 한다 — 문장에 없는 «우리·오늘» 을 채우면 지시가 거짓이 된다.
+    // 어절이 모자라면(짧은 문장) 문장 고르기로 낸다.
+    if (parts.length < 2) {
+      return buildSpellingQuestion(setId, orderIndex, title, entry, choices, "sentence", pool, random);
     }
     const wordChoices = shuffleChoices([wrongPart, ...parts.slice(0, 3)], rng);
 
@@ -1845,11 +1937,7 @@ function buildSpellingQuestion(
 
   if (variant === "correct") {
     // 오답은 같은 문장의 그럴듯한 오표기 변형으로 (무관한 다른 문장 X, 중복 0)
-    const correctChoices = buildSpellingSentenceChoices(
-      correctSentence,
-      wrongSentence,
-      random || Math.random,
-    );
+    const correctChoices = sentenceOptions(random || Math.random);
 
     return {
       id: `q-${setId}-${orderIndex}`,
@@ -1861,7 +1949,7 @@ function buildSpellingQuestion(
       title,
       content: {
         variant: "correct",
-        text: "다음 문장을 올바르게 고치면?",
+        text: SPELL_TEXT[kind].correct,
         wrongSentence,
         options: correctChoices,
       },
@@ -1879,11 +1967,7 @@ function buildSpellingQuestion(
 
   // Default: 'sentence' variant — 같은 문장의 오표기 변형으로 보기 구성
   // (무관한 다른 문장을 보기로 쓰면 맞춤법을 몰라도 정답이 한눈에 보임)
-  const sentenceChoices = buildSpellingSentenceChoices(
-    correctSentence,
-    wrongSentence,
-    random || Math.random,
-  );
+  const sentenceChoices = sentenceOptions(random || Math.random);
   return {
     id: `q-${setId}-${orderIndex}`,
     daily_set_id: setId,
@@ -1894,7 +1978,7 @@ function buildSpellingQuestion(
     title,
     content: {
       variant: "sentence",
-      text: "다음 중 맞춤법이 올바른 문장을 고르세요.",
+      text: SPELL_TEXT[kind].sentence,
       options: sentenceChoices,
     },
     answer: {
@@ -1988,7 +2072,7 @@ function buildKnowledgeQuestion(
   random?: () => number,
 ): Question {
   const rng = random || Math.random;
-  if (variant === "tf") {
+  if (variant === "tf" && tfBlankSafe(entry.text)) {
     let isCorrectStatement = rng() > 0.5;
     const filledText = entry.text.replace("___", entry.answer);
     let displayText = filledText;
@@ -2018,7 +2102,7 @@ function buildKnowledgeQuestion(
       answer: { correct: isCorrectStatement ? "O" : "X", text: entry.answer },
       explanation: filledText,
       points: 10,
-      hint: `${entry.category} 분야의 문제예요.`,
+      hint: "문장을 천천히 읽고 사실과 맞는지 따져 보세요.",
       metadata: { category: entry.category },
       created_at: new Date().toISOString(),
     };
@@ -2038,7 +2122,7 @@ function buildKnowledgeQuestion(
     answer: { correct: entry.answer, text: entry.answer },
     explanation: `${entry.text.replace("___", entry.answer)}`,
     points: 10,
-    hint: `${entry.category} 분야의 문제예요.`,
+    hint: fillHint(entry.answer),
     metadata: { category: entry.category },
     created_at: new Date().toISOString(),
   };
@@ -2055,7 +2139,7 @@ function buildSafetyQuestion(
   random?: () => number,
 ): Question {
   const rng = random || Math.random;
-  if (variant === "tf") {
+  if (variant === "tf" && tfBlankSafe(entry.text)) {
     let isCorrectStatement = rng() > 0.5;
     const filledText = entry.text.replace("___", entry.answer);
     let displayText = filledText;
@@ -2085,7 +2169,7 @@ function buildSafetyQuestion(
       answer: { correct: isCorrectStatement ? "O" : "X", text: entry.answer },
       explanation: filledText,
       points: 10,
-      hint: `${entry.category}에 관한 문제예요. 안전이 최우선!`,
+      hint: fillHint(entry.answer),
       metadata: { category: entry.category },
       created_at: new Date().toISOString(),
     };
@@ -2105,7 +2189,7 @@ function buildSafetyQuestion(
     answer: { correct: entry.answer, text: entry.answer },
     explanation: `${entry.text.replace("___", entry.answer)}`,
     points: 10,
-    hint: `${entry.category}에 관한 문제예요. 안전이 최우선!`,
+    hint: fillHint(entry.answer),
     metadata: { category: entry.category },
     created_at: new Date().toISOString(),
   };
@@ -2175,7 +2259,10 @@ function buildHanjaQuestion(
     created_at: new Date().toISOString(),
   };
 
-  const explanation = `${entry.character}는 '${entry.meaning}'으로, '${entry.reading}'이라 읽습니다. 예: ${entry.words.join(", ")}`;
+  const q = (w: string) => `'${w}'`;
+  const explanation = `${withJosa(entry.character, "은/는", entry.reading)} ${withJosa(q(entry.meaning), "으로/로", entry.meaning)} ${withJosa(q(entry.reading), "이라/라", entry.reading)} 읽습니다. 예: ${entry.words.join(", ")}`;
+  // 힌트에 쓸 예시 낱말 — 정답(뜻·음)과 같은 낱말은 답을 그대로 알려 주므로 피한다
+  const hintWord = entry.words.find((w) => w !== entry.meaning && !w.includes(entry.meaning)) ?? null;
 
   switch (variant) {
     case "reading": // 음 맞추기 (4지선다)
@@ -2196,7 +2283,7 @@ function buildHanjaQuestion(
         answer: { correct: entry.reading, text: entry.reading },
         explanation,
         // 뜻은 문제에 이미 표시됨 → 예시 낱말로 음을 유추하게 한다
-        hint: `'${entry.words[0]}'라는 낱말에 이 한자가 들어가요.`,
+        hint: `${withJosa(q(entry.words[0]), "이라는/라는", entry.words[0])} 낱말에 이 한자가 들어가요.`,
       };
 
     case "meaning": // 뜻 맞추기 (4지선다)
@@ -2215,7 +2302,9 @@ function buildHanjaQuestion(
         },
         answer: { correct: entry.meaning, text: entry.meaning },
         explanation,
-        hint: `'${entry.words[0]}'라는 낱말에 쓰이는 한자예요. 낱말의 뜻을 떠올려 보세요.`,
+        hint: hintWord
+          ? `${withJosa(q(hintWord), "이라는/라는", hintWord)} 낱말에 쓰이는 한자예요. 낱말의 뜻을 떠올려 보세요.`
+          : `획수가 ${entry.strokes}획인 글자예요. 이 한자가 쓰인 낱말을 떠올려 보세요.`,
       };
 
     case "character": // 한자 맞추기 (4지선다)
@@ -2243,7 +2332,7 @@ function buildHanjaQuestion(
         question_type: "multiple_choice" as QuestionType,
         content: {
           variant: "word",
-          text: `${entry.character}(${entry.meaning}/${entry.reading})가 들어간 단어는?`,
+          text: `${withJosa(`${entry.character}(${entry.meaning}/${entry.reading})`, "이/가", entry.reading)} 들어간 단어는?`,
           character: entry.character,
           meaning: entry.meaning,
           reading: entry.reading,
@@ -2256,8 +2345,8 @@ function buildHanjaQuestion(
             choices.find((c) => entry.words.includes(c)) || entry.words[0],
           text: entry.words[0],
         },
-        explanation: `${entry.character}(${entry.reading})가 들어간 단어: ${entry.words.join(", ")}`,
-        hint: `'${entry.reading}'이 들어간 단어를 찾아보세요.`,
+        explanation: `${withJosa(`${entry.character}(${entry.reading})`, "이/가", entry.reading)} 들어간 단어: ${entry.words.join(", ")}`,
+        hint: `${withJosa(q(entry.reading), "이/가", entry.reading)} 들어간 단어를 찾아보세요.`,
       };
 
     case "writing": // 따라쓰기 (직접 입력)
@@ -2278,7 +2367,7 @@ function buildHanjaQuestion(
         answer: { correct: entry.reading, text: entry.reading },
         explanation,
         // 기존 힌트는 정답 음('안' 등)을 그대로 노출했음 → 낱말 힌트로 교체
-        hint: `'${entry.words[0]}'라는 낱말에 이 한자의 음이 들어 있어요.`,
+        hint: `${withJosa(q(entry.words[0]), "이라는/라는", entry.words[0])} 낱말에 이 한자의 음이 들어 있어요.`,
       };
   }
 }
@@ -2391,7 +2480,7 @@ function buildSubjectQuestion(
   random?: () => number,
 ): Question {
   const rng = random || Math.random;
-  if (variant === "tf") {
+  if (variant === "tf" && tfBlankSafe(entry.text)) {
     let isCorrectStatement = rng() > 0.5;
     const filledText = entry.text.replace("___", entry.answer);
     let displayText = filledText;
@@ -2421,7 +2510,7 @@ function buildSubjectQuestion(
       answer: { correct: isCorrectStatement ? "O" : "X", text: entry.answer },
       explanation: filledText,
       points: 10,
-      hint: `${hintPrefix} ${entry.category} 문제예요.`,
+      hint: "문장을 천천히 읽고 사실과 맞는지 따져 보세요.",
       metadata: { category: entry.category },
       created_at: new Date().toISOString(),
     };
@@ -2441,7 +2530,7 @@ function buildSubjectQuestion(
     answer: { correct: entry.answer, text: entry.answer },
     explanation: entry.text.replace("___", entry.answer),
     points: 10,
-    hint: `${hintPrefix} ${entry.category} 문제예요.`,
+    hint: fillHint(entry.answer),
     metadata: { category: entry.category },
     created_at: new Date().toISOString(),
   };
@@ -2498,6 +2587,15 @@ export function generateDailySet(
   const gradeGroup = getGradeGroup(grade);
   const composition = GRADE_SET_COMPOSITION[gradeGroup];
   const data = getGradeData(grade, semester, finalSeed, subjectAccuracy);
+  // 빈칸 문장의 «___ 뒤 조사»를 정답 받침에 맞춘다(표시 문장·해설·O/X 가 모두 이 text 를 쓴다)
+  const fitJosa = <T extends { text: string; answer: string }>(arr?: T[]) =>
+    arr?.map((e) => (e && typeof e.text === "string" && typeof e.answer === "string" ? { ...e, text: fitBlankJosa(e.text, e.answer) } : e));
+  data.knowledge = fitJosa(data.knowledge)!;
+  data.safety = fitJosa(data.safety as unknown as { text: string; answer: string }[]) as unknown as typeof data.safety;
+  data.science = fitJosa(data.science);
+  data.social = fitJosa(data.social);
+  data.creative = fitJosa(data.creative);
+  data.korean = fitJosa(data.korean);
 
   // 초등 교육과정 초과(중등) 개념 문항 제거 — 전 과목 풀 적용(저학년엔 해당 없음).
   // 필터 후 풀이 비면(폴백) 원본을 유지해 문항 부족을 방지(filterAboveGrade 내부 처리).
@@ -2834,7 +2932,8 @@ export function generateDailySet(
               {
                 meanings: [
                   correctMeaning.meaning,
-                  `예문: ${correctMeaning.example}`,
+                  // 예문에 정답 낱말이 그대로 있으면 답을 보여 주는 셈이다 → 그 자리를 빈칸으로 가린다
+                  `예문: ${correctMeaning.example.split(mmw.word).join("___")}`,
                 ],
                 answer: mmw.word,
               },
@@ -3032,7 +3131,13 @@ export function generateDailySet(
         data.english &&
         data.english.length > 0
       ) {
-        const entry = pickUnused(data.english, "english");
+        // 빈칸 문제는 정답 낱말이 문장에 «그대로» 있어야 빈칸이 생긴다(animal ↔ animals 면 빈칸 없는 문제가 된다).
+        const hasWholeWord = (e: EnglishEntry) =>
+          new RegExp(`\\b${e.word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i").test(e.sentence);
+        let entry = pickUnused(data.english, "english");
+        for (let k = 0; k < 6 && !hasWholeWord(entry) && !canUnderline(entry); k++) {
+          entry = pickUnused(data.english, "english");
+        }
         // 'meaning' 변형은 번역문의 낱말에 밑줄을 긋고 "밑줄 친 낱말"을 가리킨다.
         // 밑줄 대상(targetKo)이 번역문에 실제로 없는 엔트리(대화·문장완성 등 통문장 항목)는
         // 밑줄이 하나도 안 그려져 지시문이 거짓말이 된다 → 그런 엔트리는 'word'로 돌린다.
@@ -3040,6 +3145,7 @@ export function generateDailySet(
         const evariants = ["word", "word", "word", "meaning"];
         let ev = evariants[Math.floor(random() * evariants.length)];
         if (ev === "meaning" && !entryCanUnderline) ev = "word";
+        if (ev === "word" && !hasWholeWord(entry) && entryCanUnderline) ev = "meaning";
         const choices = generateChoices(
           entry.word,
           data.english,

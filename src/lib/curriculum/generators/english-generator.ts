@@ -5,7 +5,7 @@
  * Combined with seeded PRNG, this provides reproducible yet varied content.
  */
 import type { EnglishEntry } from "@/types/curriculum";
-import { naturalizeKorean } from "@/lib/korean-josa";
+import { naturalizeKorean, withJosa } from "@/lib/korean-josa";
 import {
   verbAttributive,
   verbPropositive,
@@ -276,7 +276,7 @@ const G34_FAMILY: W[] = [
   { w: "teacher", p: "티처", k: "선생님", pr: ["school", "class"] },
   { w: "student", p: "스튜던트", k: "학생", pr: ["pupil", "learner"] },
   { w: "uncle", p: "엉클", k: "삼촌", pr: ["aunt", "relative"] },
-  { w: "aunt", p: "앤트", k: "이모", pr: ["uncle", "relative"] },
+  { w: "aunt", p: "앤트", k: "이모·고모", pr: ["uncle", "relative"] },
   { w: "cousin", p: "커즌", k: "사촌", pr: ["relative", "family"] },
   { w: "neighbor", p: "네이버", k: "이웃", pr: ["next door", "friend"] },
   { w: "classmate", p: "클래스메이트", k: "반 친구", pr: ["school", "friend"] },
@@ -415,8 +415,8 @@ const G34_DAILY: W[] = [
   { w: "pull", p: "풀", k: "당기다", pr: ["push", "tug"] },
   { w: "climb", p: "클라임", k: "오르다", pr: ["up", "mountain"] },
   { w: "touch", p: "터치", k: "만지다", pr: ["feel", "hand"] },
-  { w: "smile", p: "스마일", k: "미소짓다", pr: ["laugh", "happy"] },
-  { w: "clap", p: "클랩", k: "박수치다", pr: ["hand", "cheer"] },
+  { w: "smile", p: "스마일", k: "미소 짓다", pr: ["laugh", "happy"] },
+  { w: "clap", p: "클랩", k: "박수 치다", pr: ["hand", "cheer"] },
 ];
 
 const G34_SCHOOL: W[] = [
@@ -1064,7 +1064,7 @@ const G56_PAST_TENSE: W[] = [
   { w: "watched", p: "워치드", k: "봤다", pr: ["watch", "saw"] },
   { w: "helped", p: "헬프드", k: "도왔다", pr: ["help", "assisted"] },
   { w: "visited", p: "비지티드", k: "방문했다", pr: ["visit", "went"] },
-  { w: "learned", p: "러닛", k: "배웠다", pr: ["learn", "studied"] },
+  { w: "learned", p: "런드", k: "배웠다", pr: ["learn", "studied"] },
   { w: "bought", p: "보트", k: "샀다", pr: ["buy", "sold"] },
   { w: "ran", p: "랜", k: "달렸다", pr: ["run", "walked"] },
   { w: "wrote", p: "로트", k: "썼다", pr: ["write", "read"] },
@@ -1191,7 +1191,7 @@ const G34_OCCUPATIONS_BASIC: W[] = [
   { w: "singer", p: "싱어", k: "가수", pr: ["song", "stage"] },
   { w: "dancer", p: "댄서", k: "무용가", pr: ["dance", "stage"] },
   { w: "painter", p: "페인터", k: "화가", pr: ["art", "brush"] },
-  { w: "builder", p: "빌더", k: "건축가", pr: ["house", "build"] },
+  { w: "builder", p: "빌더", k: "건설업자", pr: ["house", "build"] },
   { w: "pilot", p: "파일럿", k: "조종사", pr: ["airplane", "fly"] },
   { w: "police", p: "폴리스", k: "경찰", pr: ["safety", "help"] },
   { w: "nurse", p: "너스", k: "간호사", pr: ["hospital", "care"] },
@@ -1311,7 +1311,7 @@ const G34_OPPOSITES: W[] = [
   { w: "old", p: "올드", k: "오래된", pr: ["new", "young"] },
   { w: "new", p: "뉴", k: "새로운", pr: ["old", "fresh"] },
   { w: "open", p: "오픈", k: "열린", pr: ["close", "door"] },
-  { w: "close", p: "클로즈", k: "닫힌", pr: ["open", "shut"] },
+  { w: "closed", p: "클로즈드", k: "닫힌", pr: ["open", "shut"] },
   { w: "up", p: "업", k: "위로", pr: ["down", "high"] },
   { w: "down", p: "다운", k: "아래로", pr: ["up", "low"] },
   { w: "happy", p: "해피", k: "행복한", pr: ["sad", "glad"] },
@@ -2753,9 +2753,9 @@ const WORD_ORDERS: WordOrder[] = [
     unit: "진로와 직업",
   },
   {
-    words: ["If", "it", "rains", "I", "will", "stay"],
-    correct: "If it rains, I will stay.",
-    translation: "비가 오면 나는 있을 거예요.",
+    words: ["If", "it", "rains", "I", "will", "stay", "home"],
+    correct: "If it rains, I will stay home.",
+    translation: "비가 오면 나는 집에 있을 거예요.",
     grade: "5-6",
   },
   {
@@ -2984,7 +2984,7 @@ const SENTENCE_COMPLETIONS: SentenceCompletion[] = [
     sentence: "I need an ___ for the rain.",
     blank: "umbrella",
     choices: ["umbrella", "apple", "eraser", "ant"],
-    translation: "비에 우산이 필요해요.",
+    translation: "비가 와서 우산이 필요해요.",
     grade: "3-4",
     unit: "날씨",
   },
@@ -3111,7 +3111,7 @@ const SENTENCE_COMPLETIONS: SentenceCompletion[] = [
     sentence: "He ___ his best friend at the park.",
     blank: "met",
     choices: ["met", "meet", "ate", "slept"],
-    translation: "그는 공원에서 절친을 만났어요.",
+    translation: "그는 공원에서 가장 친한 친구를 만났어요.",
     grade: "5-6",
     unit: "과거경험",
   },
@@ -3531,7 +3531,7 @@ const LISTENING_ENTRIES: ListeningEntry[] = [
     question: "What did she buy?",
     answer: "a souvenir",
     choices: ["a book", "a souvenir", "a ticket", "a pencil"],
-    translation: "그녀는 친구에게 기념품을 샀어요.",
+    translation: "그녀는 친구를 위해 기념품을 샀어요.",
     grade: "5-6",
     unit: "여행과 세계",
   },
@@ -3773,17 +3773,51 @@ const PICTURE_DESCRIPTIONS: PictureDesc[] = [
 // Sentence Templates
 // ============================================================
 
+// ── 관사·과거형 가드(2026-10-12 전수검수: «I like mirror.» «This is a eyebrow.» «Let's chose!») ──
+// 관사 없이 쓰는 낱말(색·운동·과목·계절·물질 명사·-ing·복수형)은 그대로, 그 밖의 셀 수 있는 명사는 the/a 를 붙인다.
+const BARE_NOUNS = new Set([
+  "red", "blue", "yellow", "green", "pink", "purple", "orange", "black", "white", "brown", "gray", "grey",
+  "soccer", "baseball", "basketball", "volleyball", "badminton", "tennis", "golf", "hockey", "table tennis",
+  "math", "music", "science", "english", "korean", "art", "history", "social studies", "p.e.", "pe",
+  "spring", "summer", "fall", "autumn", "winter", "rain", "snow", "wind",
+  "rice", "bread", "milk", "water", "juice", "cheese", "meat", "soup", "pizza", "chicken", "fish", "pork", "beef", "kimchi", "salad", "cake", "ice cream", "chocolate", "candy", "pasta", "tea", "coffee",
+  "school", "home", "homework", "lunch", "breakfast", "dinner", "money", "paper", "time", "food", "fruit", "music",
+]);
+function isBare(w: string): boolean {
+  const l = w.toLowerCase();
+  return BARE_NOUNS.has(l) || /ing$/.test(l) || (/s$/.test(l) && !/(ss|us|is)$/.test(l));
+}
+function theOrBare(w: string): string {
+  return isBare(w) ? w : `the ${w}`;
+}
+function aOrBare(w: string): string {
+  return isBare(w) ? w : `${/^[aeiou]/i.test(w) && !/^(uni|use|eu|one)/i.test(w) ? "an" : "a"} ${w}`;
+}
+function fixArticle(sentence: string): string {
+  return sentence.replace(/\b([Aa]) ([aeiouAEIOU]\w*)/g, (m, a: string, w: string) =>
+    /^(uni|use|eu|one|once)/i.test(w) ? m : `${a === "A" ? "An" : "an"} ${w}`,
+  );
+}
+// 원형 동사 자리(Let's ___ / I like to ___)에 과거형이 들어가면 비문이 된다
+const IRREGULAR_PAST = new Set(["went", "ate", "saw", "took", "made", "ran", "got", "came", "did", "was", "were", "had", "said", "chose", "wrote", "read", "drank", "swam", "sang", "began", "gave", "found", "told", "thought", "bought", "brought", "taught", "caught", "felt", "left", "met", "slept", "kept", "sent", "spent", "built", "lost", "won", "knew", "flew", "drew", "grew", "threw", "rode", "drove", "broke", "spoke", "woke", "forgot", "sat", "stood", "understood", "heard", "held", "fell", "hid", "bit"]);
+function isPastForm(w: string, k: string): boolean {
+  // 뜻이 «ㅆ받침 + 다»(도왔다·갔다·봤다)로 끝나면 과거형이다 — 글자 목록으로 세면 «왔» 같은 게 빠진다(Let's helped! 사고)
+  const pre = k.endsWith("다") ? k.charCodeAt(k.length - 2) - 0xac00 : -1;
+  const pastK = pre >= 0 && pre <= 11171 && pre % 28 === 20;
+  return IRREGULAR_PAST.has(w.toLowerCase()) || (/ed$/i.test(w) && pastK);
+}
+
 interface Tmpl {
   s: (w: string) => string;
   t: (k: string) => string;
 }
 
 const BASIC_TEMPLATES: Tmpl[] = [
-  { s: (w) => `I like ${w}.`, t: (k) => `나는 ${k}을(를) 좋아해요.` },
+  { s: (w) => `I like ${theOrBare(w)}.`, t: (k) => `나는 ${k}을(를) 좋아해요.` },
   { s: (w) => `This is a ${w}.`, t: (k) => `이것은 ${k}이에요.` },
   { s: (w) => `I see a ${w}.`, t: (k) => `나는 ${k}을(를) 봐요.` },
-  { s: (w) => `Do you like ${w}?`, t: (k) => `${k}을(를) 좋아해요?` },
-  { s: (w) => `It is ${w}.`, t: (k) => `그것은 ${k}이에요.` },
+  { s: (w) => `Do you like ${theOrBare(w)}?`, t: (k) => `${k}을(를) 좋아해요?` },
+  { s: (w) => `It is ${aOrBare(w)}.`, t: (k) => `그것은 ${k}이에요.` },
   { s: (w) => `I have a ${w}.`, t: (k) => `나는 ${k}이(가) 있어요.` },
   { s: (w) => `The ${w} is nice.`, t: (k) => `그 ${k}은(는) 좋아요.` },
   { s: (w) => `Look at the ${w}!`, t: (k) => `${k}을(를) 봐요!` },
@@ -5159,7 +5193,7 @@ const FIXED_CAN: EnglishEntry[] = [
     sentence: "Can you read Korean?",
     translation: "한국어를 읽을 수 있어요?",
     word: "Korean",
-    targetKo: "국어",
+    targetKo: "한국어를",
     pronunciation: "코리안",
     practice: ["English", "language"],
   },
@@ -5288,7 +5322,7 @@ export function surfaceForm(tmpl: Tmpl, k: string, translation: string): string 
 function makeEntry(word: W, tmpl: Tmpl, unit?: string): EnglishEntry {
   const translation = naturalizeKorean(tmpl.t(word.k));
   const entry: EnglishEntry = {
-    sentence: tmpl.s(word.w),
+    sentence: fixArticle(tmpl.s(word.w)),
     translation,
     word: word.w,
     pronunciation: word.p,
@@ -5383,7 +5417,10 @@ function generateFromBank(
 ): EnglishEntry[] {
   const entries: EnglishEntry[] = [];
   for (const word of words) {
-    const pool = poolFor(classifyPOS(word.k), templates);
+    const pos = classifyPOS(word.k);
+    // 과거형 낱말은 원형 자리 틀(Let's ___!)에 넣지 않는다
+    if (pos === "verb" && isPastForm(word.w, word.k)) continue;
+    const pool = poolFor(pos, templates);
     const used = new Set<number>();
     for (let i = 0; i < entriesPerWord && i < pool.length; i++) {
       let idx: number;
@@ -5515,7 +5552,7 @@ function generateGrade3_4Entries(rng: () => number): EnglishEntry[] {
   entries.push(...generateFromBank(rng, G34_CLOTHING, clothingTmpls, 2));
   // Transport → "교통과 이동"
   const transportTmpls: Tmpl[] = [
-    { s: (w) => `I go by ${w}.`, t: (k) => `나는 ${k}로 가요.` },
+    { s: (w) => `I go by ${w}.`, t: (k) => `나는 ${withJosa(String(k), "으로/로")} 가요.` },
     { s: (w) => `This is a ${w}.`, t: (k) => `이것은 ${k}이에요.` },
     { s: (w) => `I ride the ${w}.`, t: (k) => `나는 ${k}을(를) 타요.` },
     { s: (w) => `The ${w} is fast.`, t: (k) => `${k}은(는) 빨라요.` },
@@ -5588,7 +5625,7 @@ function generateGrade3_4Entries(rng: () => number): EnglishEntry[] {
 
   // Toys → "놀이와 장난감"
   const toyTmpls: Tmpl[] = [
-    { s: (w) => `I play with the ${w}.`, t: (k) => `나는 ${k}으로 놀아요.` },
+    { s: (w) => `I play with the ${w}.`, t: (k) => `나는 ${withJosa(String(k), "으로/로")} 놀아요.` },
     { s: (w) => `This is my ${w}.`, t: (k) => `이것은 내 ${k}이에요.` },
     { s: (w) => `I like the ${w}.`, t: (k) => `나는 ${k}을(를) 좋아해요.` },
     { s: (w) => `Can I have the ${w}?`, t: (k) => `${k}을(를) 가져도 될까요?` },
@@ -5622,7 +5659,7 @@ function generateGrade3_4Entries(rng: () => number): EnglishEntry[] {
 
   // Sports → "운동과 스포츠"
   const sportTmpls: Tmpl[] = [
-    { s: (w) => `I like ${w}.`, t: (k) => `나는 ${k}을(를) 좋아해요.` },
+    { s: (w) => `I like ${theOrBare(w)}.`, t: (k) => `나는 ${k}을(를) 좋아해요.` },
     { s: (w) => `Let's play ${w}!`, t: (k) => `같이 ${k} 하자!` },
     { s: (w) => `${w} is fun.`, t: (k) => `${k}은(는) 재미있어요.` },
     { s: (w) => `I am good at ${w}.`, t: (k) => `나는 ${k}을(를) 잘해요.` },
@@ -5707,7 +5744,7 @@ function generateGrade3_4Entries(rng: () => number): EnglishEntry[] {
     { s: (w) => `I love ${w}.`, t: (k) => `나는 ${k}을(를) 좋아해요.` },
     { s: (w) => `${w} is fun!`, t: (k) => `${k}은(는) 재미있어요!` },
     { s: (w) => `We celebrate ${w}.`, t: (k) => `우리는 ${k}을(를) 축하해요.` },
-    { s: (w) => `Do you like ${w}?`, t: (k) => `${k}을(를) 좋아해요?` },
+    { s: (w) => `Do you like ${theOrBare(w)}?`, t: (k) => `${k}을(를) 좋아해요?` },
   ];
   entries.push(
     ...generateFromBank(rng, G34_HOLIDAYS, holidayTmpls, 2, "축제와 행사"),
@@ -5932,14 +5969,14 @@ function generateGrade5_6Entries(rng: () => number): EnglishEntry[] {
   // Time & Days → "시간과 날짜"
   const timeTmpls: Tmpl[] = [
     { s: (w) => `Today is ${w}.`, t: (k) => `오늘은 ${k}이에요.` },
-    { s: (w) => `I like ${w}.`, t: (k) => `나는 ${k}을(를) 좋아해요.` },
+    { s: (w) => `I like ${theOrBare(w)}.`, t: (k) => `나는 ${k}을(를) 좋아해요.` },
     { s: (w) => `See you on ${w}.`, t: (k) => `${k}에 만나요.` },
     { s: (w) => `What do you do on ${w}?`, t: (k) => `${k}에 뭐 해요?` },
   ];
   entries.push(...generateFromBank(rng, G56_TIME, timeTmpls, 2, "시간과 날짜"));
   // Seasons & Months → "날씨와 계절"
   const seasonTmpls: Tmpl[] = [
-    { s: (w) => `I like ${w}.`, t: (k) => `나는 ${k}을(를) 좋아해요.` },
+    { s: (w) => `I like ${theOrBare(w)}.`, t: (k) => `나는 ${k}을(를) 좋아해요.` },
     { s: (w) => `${w} is beautiful.`, t: (k) => `${k}은(는) 아름다워요.` },
     {
       s: (w) => `My birthday is in ${w}.`,

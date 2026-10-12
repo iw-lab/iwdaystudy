@@ -426,7 +426,7 @@ const GRADE_1_2_WORDS: WordDef[] = [
   // 추가 일상 (18)
   { word: "목욕", meanings: ["몸을 씻는 것", "깨끗이 씻는 활동"] },
   { word: "세수", meanings: ["얼굴을 씻는 것", "아침에 물로 씻는 것"] },
-  { word: "양치", meanings: ["이를 닦는 것", "칫솔로 이빨을 씻는 것"] },
+  { word: "양치", meanings: ["이를 닦는 것", "칫솔로 이를 닦는 것"] },
   { word: "빨래", meanings: ["옷을 씻는 것", "더러운 옷을 깨끗이 하는 일"] },
   { word: "설거지", meanings: ["그릇을 씻는 것", "먹고 나서 그릇을 닦는 일"] },
   {
@@ -635,7 +635,7 @@ const GRADE_1_2_WORDS: WordDef[] = [
   },
 
   // ──── 추가: 음식/요리 (12) ────
-  { word: "국", meanings: ["물을 넣고 끓인 음식", "밥과 함께 먹는 뜨거운 물"] },
+  { word: "국", meanings: ["물을 넣고 끓인 음식", "밥과 함께 먹는 국물 음식"] },
   { word: "반찬", meanings: ["밥과 함께 먹는 음식", "골고루 먹어야 하는 것"] },
   { word: "젓가락", meanings: ["음식을 집는 도구", "두 개로 된 먹는 도구"] },
   {
@@ -725,7 +725,7 @@ const GRADE_1_2_WORDS: WordDef[] = [
   },
   {
     word: "대나무",
-    meanings: ["속이 비어 있는 키 큰 풀", "곧게 자라는 초록 식물"],
+    meanings: ["속이 비어 있고 마디가 있는 키 큰 식물", "곧게 자라는 초록 식물"],
   },
   { word: "칡", meanings: ["덩굴로 자라는 식물", "뿌리를 먹을 수 있는 식물"] },
   {
@@ -922,7 +922,7 @@ const GRADE_1_2_WORDS: WordDef[] = [
   { word: "신발", meanings: ["발에 신고 걷는 것", "운동화 구두 등"] },
   {
     word: "치마",
-    meanings: ["허리 아래로 내려오는 옷", "여자가 많이 입는 옷"],
+    meanings: ["허리부터 다리를 둘러 덮는 아래옷", "다리 사이가 갈라지지 않은 옷"],
   },
   { word: "바지", meanings: ["다리를 감싸는 옷", "허리에서 발까지 입는 옷"] },
   { word: "외투", meanings: ["밖에 나갈 때 입는 옷", "겉에 입는 두꺼운 옷"] },
@@ -1038,7 +1038,7 @@ const GRADE_1_2_WORDS: WordDef[] = [
   { word: "냉면", meanings: ["차갑게 먹는 국수", "여름에 먹는 시원한 면"] },
   {
     word: "전",
-    meanings: ["밀가루 반죽에 부친 음식", "부침개라고도 부르는 음식"],
+    meanings: ["밀가루 반죽을 얇게 부친 음식", "비 오는 날 많이 부쳐 먹어요"],
   },
   {
     word: "식혜",
@@ -1563,7 +1563,7 @@ const GRADE_3_4_WORDS: WordDef[] = [
     meanings: ["습관적으로 쓰이는 표현", "특별한 뜻을 가진 말"],
   },
   { word: "존댓말", meanings: ["어른에게 쓰는 공손한 말", "높임의 표현"] },
-  { word: "반댓말", meanings: ["뜻이 서로 반대인 말", "크다-작다 같은 짝"] },
+  { word: "반대말", meanings: ["뜻이 서로 반대인 말", "크다-작다 같은 짝"] },
   { word: "비슷한말", meanings: ["뜻이 비슷한 다른 말", "유의어"] },
   {
     word: "다의어",
@@ -1603,7 +1603,7 @@ const GRADE_3_4_WORDS: WordDef[] = [
     word: "혜성",
     meanings: ["꼬리가 긴 하늘의 별", "태양 주위를 도는 얼음 천체"],
   },
-  { word: "행성", meanings: ["태양 주위를 도는 큰 천체", "지구 화성 같은 별"] },
+  { word: "행성", meanings: ["태양 주위를 도는 큰 천체", "지구나 화성 같은 천체"] },
   { word: "위성", meanings: ["행성 주위를 도는 천체", "달 같은 것"] },
   { word: "은하", meanings: ["수많은 별이 모인 것", "별들의 거대한 집합"] },
   { word: "오염", meanings: ["더러워지는 것", "깨끗한 것이 나빠지는 것"] },
@@ -1813,7 +1813,7 @@ const GRADE_3_4_WORDS: WordDef[] = [
   },
   {
     word: "해류",
-    meanings: ["바닷물이 일정하게 흐르는 것", "바다 속의 큰 물 흐름"],
+    meanings: ["바닷물이 일정하게 흐르는 것", "바닷속의 큰 물 흐름"],
   },
   {
     word: "조수",
@@ -2567,7 +2567,7 @@ const GRADE_5_6_WORDS: WordDef[] = [
       "멈추거나 움직이는 것을 계속하려는 것",
     ],
   },
-  { word: "속도", meanings: ["이동하는 빠르기", "거리를 시간으로 나눈 값"] },
+  { word: "속도", meanings: ["물체가 움직이는 빠르기", "빠르기와 방향을 함께 나타내요"] },
   {
     word: "가속도",
     meanings: ["속도가 변하는 비율", "점점 빨라지거나 느려지는 정도"],
@@ -3649,7 +3649,7 @@ const GRADE_5_6_WORDS: WordDef[] = [
   },
   {
     word: "해양오염",
-    meanings: ["바다가 더러워지는 것", "바다 속 플라스틱 등의 문제"],
+    meanings: ["바다가 더러워지는 것", "바닷속 플라스틱 같은 문제"],
   },
   {
     word: "대기오염",
@@ -3701,7 +3701,7 @@ const GRADE_5_6_WORDS: WordDef[] = [
     word: "약수",
     meanings: ["어떤 수를 나누어 떨어지게 하는 수", "나머지가 0이 되는 수"],
   },
-  { word: "배수", meanings: ["어떤 수를 곱한 수", "일정 수의 정수배"] },
+  { word: "배수", meanings: ["어떤 수를 1배, 2배, 3배 … 한 수", "3의 ○○는 3, 6, 9 …예요"] },
   {
     word: "최대공약수",
     meanings: [
@@ -4083,7 +4083,7 @@ const GRADE_5_6_WORDS: WordDef[] = [
   },
   {
     word: "패러독스",
-    meanings: ["겉으로는 모순이나 진리를 담은 것", "역설"],
+    meanings: ["겉으로는 앞뒤가 맞지 않지만 참된 뜻을 담은 말", "'바쁠수록 돌아가라' 같은 말"],
   },
   {
     word: "내레이션",
@@ -4158,7 +4158,7 @@ const SYNONYMS_1_2: SynonymPair[] = [
   { word1: "잠", word2: "수면", meaning: "눈 감고 쉬는 것" },
   { word1: "밥", word2: "식사", meaning: "끼니에 먹는 음식" },
   { word1: "얼굴", word2: "낯", meaning: "눈 코 입이 있는 곳" },
-  { word1: "소리", word2: "소음", meaning: "귀로 듣는 것" },
+  { word1: "소리", word2: "음성", meaning: "귀로 듣는 것" },
   { word1: "힘", word2: "기운", meaning: "무엇을 하는 능력" },
   { word1: "기다리다", word2: "대기하다", meaning: "올 때까지 참는 것" },
   { word1: "도와주다", word2: "돕다", meaning: "힘을 보태는 것" },
@@ -4168,23 +4168,23 @@ const SYNONYMS_1_2: SynonymPair[] = [
 
 const SYNONYMS_3_4: SynonymPair[] = [
   { word1: "환경", word2: "자연", meaning: "우리 주위의 상태" },
-  { word1: "실험", word2: "시험", meaning: "직접 해 보는 것" },
-  { word1: "관찰", word2: "살피다", meaning: "자세히 보는 것" },
+  { word1: "실험", word2: "실습", meaning: "직접 해 보는 것" },
+  { word1: "관찰", word2: "관측", meaning: "자세히 살펴보는 것" },
   { word1: "발표", word2: "발언", meaning: "의견을 알리는 것" },
   { word1: "전통", word2: "관습", meaning: "오래된 풍습" },
-  { word1: "절약", word2: "아끼다", meaning: "아껴 쓰는 것" },
+  { word1: "절약", word2: "검약", meaning: "아껴 쓰는 것" },
   { word1: "인내", word2: "참을성", meaning: "참고 견디는 것" },
   { word1: "성실", word2: "근면", meaning: "꾸준히 열심히 하는 것" },
   { word1: "정직", word2: "솔직", meaning: "거짓 없는 것" },
   { word1: "협동", word2: "협력", meaning: "힘을 합치는 것" },
   { word1: "의견", word2: "견해", meaning: "어떤 일에 대한 생각" },
-  { word1: "선택", word2: "고르다", meaning: "여러 개 중 하나를 정하는 것" },
+  { word1: "선택", word2: "선정", meaning: "여러 개 중 골라 정하는 것" },
   { word1: "직업", word2: "일자리", meaning: "돈을 벌기 위해 하는 일" },
   { word1: "보존", word2: "유지", meaning: "잘 지키는 것" },
   { word1: "발명", word2: "창조", meaning: "새로운 것을 만드는 것" },
-  { word1: "발견", word2: "찾아내다", meaning: "몰랐던 것을 알아내는 것" },
+  { word1: "발견", word2: "발굴", meaning: "숨겨진 것을 찾아내는 것" },
   { word1: "축제", word2: "잔치", meaning: "즐겁게 모여 노는 행사" },
-  { word1: "수확", word2: "거두다", meaning: "농작물을 거두는 것" },
+  { word1: "수확", word2: "추수", meaning: "다 익은 농작물을 거두어들이는 것" },
   { word1: "과학자", word2: "연구자", meaning: "자연을 연구하는 사람" },
   { word1: "멸종", word2: "절멸", meaning: "종이 완전히 사라지는 것" },
 ];
@@ -4540,7 +4540,7 @@ const IDIOMS_1_2: IdiomEntry[] = [
   },
   {
     expression: "손이 크다",
-    meaning: "음식을 많이 만든다",
+    meaning: "씀씀이가 넉넉하고 크다",
     example: "할머니는 손이 커서 밥을 많이 차려요.",
   },
   {
@@ -4663,8 +4663,8 @@ const IDIOMS_3_4: IdiomEntry[] = [
   },
   {
     expression: "되로 주고 말로 받는다",
-    meaning: "적게 주고 많이 돌려받는다",
-    example: "남에게 좋은 일을 하면 더 좋은 일이 돌아와요.",
+    meaning: "남을 조금 괴롭혔다가 더 크게 돌려받는다",
+    example: "동생을 놀렸다가 되로 주고 말로 받듯 크게 혼났어요.",
   },
   {
     expression: "사공이 많으면 배가 산으로 간다",
@@ -4887,7 +4887,7 @@ const MULTI_MEANING_3_4: MultiMeaningWord[] = [
     word: "기압",
     meanings: [
       { meaning: "공기의 압력", example: "고기압일 때 날씨가 맑아요." },
-      { meaning: "위엄 있는 분위기", example: "그 사람의 기압에 눌렸어요." },
+      { meaning: "기압을 나타내는 단위", example: "1기압은 바다 높이의 공기 압력이에요." },
     ],
   },
   {
@@ -5070,8 +5070,8 @@ const WORD_PUZZLES_5_6: WordPuzzleEntry[] = [
   makeWordPuzzle("생물다양성", "여러 종류의 생물이 있는 것"),
   makeWordPuzzle("대한민국임시정부", "독립운동을 이끈 정부"),
   makeWordPuzzle("미디어리터러시", "미디어를 비판적으로 이해하는 능력"),
-  makeWordPuzzle("소인수분해", "자연수를 소수의 곱으로 나타내는 것"),
-  makeWordPuzzle("블록체인", "분산된 데이터 저장 기술"),
+  makeWordPuzzle("최소공배수", "두 수의 공통된 배수 중 가장 작은 수"),
+  makeWordPuzzle("인공지능", "사람처럼 배우고 생각하도록 만든 컴퓨터 기술"),
   makeWordPuzzle("자율주행", "AI가 운전하는 기술"),
   makeWordPuzzle("반도체", "전기가 통하기도 안 통하기도 하는 물질"),
   makeWordPuzzle("백문불여일견", "백 번 듣기보다 한 번 보는 게 낫다"),
@@ -5082,94 +5082,37 @@ const WORD_PUZZLES_5_6: WordPuzzleEntry[] = [
 // Template-based content expansion
 // ============================================================
 
-const COMPOUND_PREFIXES_3_4: { prefix: string; meanings: string[] }[] = [
-  { prefix: "새", meanings: ["새로운", "처음 시작하는"] },
-  { prefix: "첫", meanings: ["맨 처음의", "시작하는"] },
-  { prefix: "맨", meanings: ["가장 끝의", "제일 처음이나 끝의"] },
-  { prefix: "한", meanings: ["한가운데의", "가장 큰"] },
-  { prefix: "온", meanings: ["모든", "전부의"] },
-  { prefix: "풋", meanings: ["덜 익은", "아직 다 되지 않은"] },
+// 접두·접미 조합 자동 생성(새+잠·창의+감 …)은 사전에 없는 말을 만들어 내서 뺐다(2026-10-12 전수검수).
+// 대신 실제로 쓰는 합성어·파생어만 손으로 고른다.
+const COMPOUNDS_3_4: WordDef[] = [
+  { word: "첫날", meanings: ["어떤 일이 시작되는 날", "입학 ○○에 설레었어요"] },
+  { word: "첫소리", meanings: ["글자에서 처음 나는 소리", "'가'에서는 ㄱ이에요"] },
+  { word: "한마음", meanings: ["여럿이 하나로 합친 마음", "반 친구들이 ○○○으로 응원했어요"] },
+  { word: "새바람", meanings: ["새롭게 불어오는 기운이나 분위기", "학교에 ○○○이 불었어요"] },
+  { word: "맨손", meanings: ["아무것도 끼거나 들지 않은 손", "○○으로 공을 잡았어요"] },
+  { word: "맨발", meanings: ["양말이나 신을 신지 않은 발", "모래밭을 ○○로 걸었어요"] },
+  { word: "풋사과", meanings: ["덜 익은 사과", "맛이 시고 단단해요"] },
+  { word: "온종일", meanings: ["아침부터 저녁까지 하루 내내", "○○○ 비가 내렸어요"] },
 ];
 
-const COMPOUND_BASES_3_4: { base: string; meanings: string[] }[] = [
-  { base: "마음", meanings: ["생각하고 느끼는 것", "감정이 드는 곳"] },
-  { base: "소리", meanings: ["귀로 듣는 것", "울림"] },
-  { base: "빛", meanings: ["밝게 비추는 것", "환한 것"] },
-  { base: "길", meanings: ["걸어가는 곳", "방향이나 경로"] },
-  { base: "힘", meanings: ["세게 할 수 있는 것", "에너지"] },
-  { base: "결", meanings: ["방향이나 흐름", "무늬의 줄기"] },
-  { base: "잠", meanings: ["눈을 감고 쉬는 것", "수면"] },
-  { base: "바람", meanings: ["공기의 흐름", "원하는 것"] },
-  { base: "날", meanings: ["하루", "때"] },
-  { base: "땀", meanings: ["몸에서 나오는 물기", "열심히 한 흔적"] },
+const ABSTRACT_5_6: WordDef[] = [
+  { word: "창의성", meanings: ["새롭고 독창적인 것을 생각해 내는 성질", "○○○을 키우는 수업"] },
+  { word: "책임감", meanings: ["맡은 일을 끝까지 해내려는 마음", "반장은 ○○○이 강해요"] },
+  { word: "협동심", meanings: ["서로 힘을 합하려는 마음", "모둠 활동에 필요해요"] },
+  { word: "자립심", meanings: ["남에게 기대지 않고 스스로 해내려는 마음", "혼자 해 보며 길러요"] },
+  { word: "역사관", meanings: ["역사를 바라보는 생각이나 관점", "올바른 ○○○을 가져요"] },
+  { word: "경쟁력", meanings: ["다른 것과 겨루어 이길 수 있는 힘", "기술이 뛰어나면 높아져요"] },
+  { word: "안전성", meanings: ["위험하지 않은 정도", "새 놀이기구의 ○○○을 검사해요"] },
+  { word: "생명력", meanings: ["살아가는 힘", "잡초는 ○○○이 강해요"] },
+  { word: "인내심", meanings: ["괴로움을 참고 견디는 마음", "끝까지 기다리는 힘이에요"] },
+  { word: "집중력", meanings: ["한곳에 마음을 모으는 힘", "공부할 때 필요해요"] },
+  { word: "판단력", meanings: ["옳고 그름을 가리는 힘", "빠르고 바른 ○○○"] },
+  { word: "표현력", meanings: ["생각이나 느낌을 드러내는 힘", "글쓰기로 길러요"] },
+  { word: "상상력", meanings: ["마음속으로 그려 보는 힘", "동화를 읽으면 풍부해져요"] },
+  { word: "실천력", meanings: ["생각한 것을 실제로 해내는 힘", "계획만큼 중요해요"] },
+  { word: "탐구심", meanings: ["깊이 파고들어 알아보려는 마음", "과학자에게 필요해요"] },
+  { word: "독창성", meanings: ["남과 다른 새로운 것을 만드는 성질", "작품의 ○○○이 뛰어나요"] },
 ];
-
-const ABSTRACT_SUFFIXES_5_6: { suffix: string; meaning: string }[] = [
-  { suffix: "성", meaning: "~한 성질이나 특성" },
-  { suffix: "력", meaning: "~하는 힘이나 능력" },
-  { suffix: "감", meaning: "~한 느낌이나 감정" },
-  { suffix: "심", meaning: "~한 마음" },
-  { suffix: "관", meaning: "~에 대한 생각이나 관점" },
-];
-
-const ABSTRACT_BASES_5_6: { base: string; reading: string }[] = [
-  { base: "창의", reading: "새롭고 독창적인" },
-  { base: "도전", reading: "어려운 일에 맞서는" },
-  { base: "책임", reading: "맡은 바를 다하는" },
-  { base: "협동", reading: "함께 힘을 합치는" },
-  { base: "자립", reading: "스스로 해내는" },
-  { base: "공동", reading: "함께하는" },
-  { base: "역사", reading: "지나온 시간의" },
-  { base: "경쟁", reading: "서로 겨루는" },
-  { base: "안전", reading: "위험하지 않은" },
-  { base: "생명", reading: "살아 있는" },
-  { base: "독창", reading: "남과 다른 독특한" },
-  { base: "인내", reading: "참고 견디는" },
-  { base: "집중", reading: "한곳에 모으는" },
-  { base: "판단", reading: "옳고 그름을 가리는" },
-  { base: "표현", reading: "겉으로 드러내는" },
-  { base: "상상", reading: "마음속에 그려보는" },
-  { base: "실천", reading: "직접 행동하는" },
-  { base: "탐구", reading: "깊이 파고드는" },
-  { base: "성찰", reading: "자신을 되돌아보는" },
-  { base: "소통", reading: "서로 뜻을 나누는" },
-];
-
-function generateCompounds34(rng: () => number): WordDef[] {
-  const results: WordDef[] = [];
-  for (const prefix of COMPOUND_PREFIXES_3_4) {
-    for (const base of COMPOUND_BASES_3_4) {
-      const word = prefix.prefix + base.base;
-      results.push({
-        word,
-        meanings: [
-          `${prefix.meanings[0]} ${base.meanings[0]}`,
-          `${prefix.meanings[1]} ${base.meanings[1]}`,
-        ],
-      });
-    }
-  }
-  shuffleArray(results, rng);
-  return results.slice(0, 30);
-}
-
-function generateAbstract56(rng: () => number): WordDef[] {
-  const results: WordDef[] = [];
-  for (const base of ABSTRACT_BASES_5_6) {
-    for (const suffix of ABSTRACT_SUFFIXES_5_6) {
-      const word = base.base + suffix.suffix;
-      results.push({
-        word,
-        meanings: [
-          `${base.reading} ${suffix.meaning}`,
-          `${base.reading} 것과 관련된 ${suffix.suffix}`,
-        ],
-      });
-    }
-  }
-  shuffleArray(results, rng);
-  return results.slice(0, 50);
-}
 
 // ============================================================
 // Utility functions
@@ -5209,10 +5152,10 @@ export function generateVocabPool(
     baseWords = [...GRADE_1_2_WORDS];
   } else if (grade <= 4) {
     baseWords = [...GRADE_1_2_WORDS, ...GRADE_3_4_WORDS];
-    extraWords = generateCompounds34(rng);
+    extraWords = [...COMPOUNDS_3_4];
   } else {
     baseWords = [...GRADE_3_4_WORDS, ...GRADE_5_6_WORDS];
-    extraWords = [...generateCompounds34(rng), ...generateAbstract56(rng)];
+    extraWords = [...COMPOUNDS_3_4, ...ABSTRACT_5_6];
   }
 
   // Combine and deduplicate

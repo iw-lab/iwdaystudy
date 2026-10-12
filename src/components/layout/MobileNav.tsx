@@ -34,6 +34,7 @@ const MOBILE_NAV: Record<UserRole, MobileNavItem[]> = {
     { href: "/student/stats", label: "\uD1B5\uACC4", icon: BarChart3 },
     { href: "/student/history", label: "\uAE30\uB85D", icon: History },
     { href: "/student/rewards", label: "\uBCA7\uC9C0", icon: Award },
+    { href: "/student/settings", label: "설정", icon: Settings },
   ],
   teacher: [
     { href: "/teacher", label: "\uD648", icon: LayoutDashboard },
@@ -78,7 +79,7 @@ export function MobileNav({ role }: MobileNavProps) {
               key={item.href}
               href={item.href}
               className={cn(
-                "relative flex flex-col items-center justify-center gap-0.5 px-2 py-1 rounded-lg transition-colors min-w-[56px] min-h-[44px]",
+                "relative flex flex-col items-center justify-center gap-0.5 px-2 py-1 rounded-lg transition-colors min-w-[52px] min-h-[44px]",
                 isActive
                   ? "text-primary"
                   : "text-muted-foreground hover:text-foreground",
