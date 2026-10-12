@@ -71,7 +71,7 @@ export function lastGuestChoice(): { grade: number; semester: number } | null {
 
 /** 게스트로 시작(또는 학년·학기 변경). 같은 기기면 같은 id 를 다시 써서 기록이 이어진다. */
 export function startGuest(grade: number, semester: number): Profile {
-  if (!(grade >= 1 && grade <= 6) || !(semester === 1 || semester === 2)) {
+  if (!Number.isInteger(grade) || !(grade >= 1 && grade <= 6) || !(semester === 1 || semester === 2)) {
     throw new Error("학년(1~6)과 학기(1·2)를 골라 주세요.");
   }
   let id = localStorage.getItem(GUEST_ID_KEY);
@@ -81,7 +81,15 @@ export function startGuest(grade: number, semester: number): Profile {
   }
   ensureLocalDataOwnership(id!);
   const now = new Date().toISOString();
-  const prev = readGuest();
+  let prev = readGuest();
+  if (!prev) {
+    try {
+      const last = JSON.parse(localStorage.getItem("araharu_guest_last") || "null");
+      if (last?.id === id) prev = last;
+    } catch {
+      /* 남은 프로필이 깨졌으면 새로 시작 */
+    }
+  }
   const user: Profile = {
     id: id!,
     role: "student",
@@ -135,22 +143,56 @@ export async function importBackup(file: File): Promise<number> {
   if (body?.format !== BACKUP_FORMAT || typeof body.data !== "object" || !body.data) {
     throw new Error("아라하루 기록 파일이 아니에요.");
   }
+  if (typeof body.version === "number" && body.version > BACKUP_VERSION) {
+    throw new Error("더 새 버전에서 만든 기록 파일이에요. 앱을 새로 고친 뒤 다시 불러와 주세요.");
+  }
   const entries = Object.entries(body.data).filter(
     ([k, v]) => k.startsWith("araharu_") && typeof v === "string",
   ) as [string, string][];
   const cur = entries.find(([k]) => k === CURRENT_USER_KEY);
-  if (!cur || !isGuestId(JSON.parse(cur[1])?.id)) {
+  let src: Partial<Profile> | null = null;
+  try {
+    src = cur ? JSON.parse(cur[1]) : null;
+  } catch {
+    src = null;
+  }
+  const id = src?.id;
+  const g = Number(src?.grade);
+  const sem = Number(src?.semester);
+  if (!isGuestId(id ?? null) || !Number.isInteger(g) || g < 1 || g > 6 || !(sem === 1 || sem === 2)) {
     throw new Error("로그인 없이 쓴 기록만 불러올 수 있어요.");
   }
-  const old: string[] = [];
+  // 프로필은 파일 그대로 믿지 않고 다시 만든다 — 이름은 생성 닉네임, 개인정보 칸은 비운다(손님 불변식)
+  const now = new Date().toISOString();
+  const profile: Profile = {
+    id: id!, role: "student", email: "", name: nicknameFor(id!), avatar_url: null, grade: g, semester: sem,
+    school_name: null, class_name: null, student_number: null, parent_id: null, teacher_id: null,
+    subscription_plan: "free", subscription_expires_at: null,
+    streak_count: Math.max(0, Math.floor(Number(src?.streak_count) || 0)),
+    total_points: Math.max(0, Math.floor(Number(src?.total_points) || 0)),
+    approval_status: "approved", password_hash: "", created_at: now, updated_at: now,
+  };
+  const next = entries.map(([k, v]) => (k === CURRENT_USER_KEY ? ([k, JSON.stringify(profile)] as [string, string]) : [k, v]));
+  // 지우기 전에 지금 기록을 떠 둔다 — 쓰다가 용량 초과 등으로 실패하면 그대로 되돌린다
+  const backup: [string, string][] = [];
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i)!;
-    if (k.startsWith("araharu_")) old.push(k);
+    if (k.startsWith("araharu_")) backup.push([k, localStorage.getItem(k)!]);
   }
-  old.forEach((k) => localStorage.removeItem(k));
-  localStorage.removeItem("auth_token");
-  for (const [k, v] of entries) localStorage.setItem(k, v);
-  const id = JSON.parse(cur[1]).id as string;
-  localStorage.setItem(GUEST_ID_KEY, id);
+  const token = localStorage.getItem("auth_token");
+  try {
+    backup.forEach(([k]) => localStorage.removeItem(k));
+    localStorage.removeItem("auth_token");
+    for (const [k, v] of next) localStorage.setItem(k, v);
+    localStorage.setItem(GUEST_ID_KEY, id!);
+  } catch {
+    for (let i = localStorage.length - 1; i >= 0; i--) {
+      const k = localStorage.key(i)!;
+      if (k.startsWith("araharu_")) localStorage.removeItem(k);
+    }
+    backup.forEach(([k, v]) => localStorage.setItem(k, v));
+    if (token) localStorage.setItem("auth_token", token);
+    throw new Error("기기 저장 공간이 모자라 불러오지 못했어요. 지금 기록은 그대로예요.");
+  }
   return entries.length;
 }

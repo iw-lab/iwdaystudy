@@ -3,7 +3,7 @@
 //   node scripts/e2e-guest.mjs [--url http://localhost:3917] [--out /tmp/ara-e2e] [--grade 4] [--sem 1] [--vp pc|m|all]
 // 실패 조건: 콘솔 에러·페이지 에러 · 가로 스크롤 · 게스트 시작 실패 · 세트가 끝나지 않음 · 결과 화면 없음
 //            · «밑줄 친»/«굵게 표시한» 지시문인데 화면에 밑줄/굵은 글씨가 없음 · 빗금 분수 노출
-import { mkdirSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 let puppeteer;
 try { puppeteer = (await import('puppeteer-core')).default; }
 catch { puppeteer = (await import('/Users/sim-insu/Documents/dev/iwpuzzle/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js')).default; }
@@ -127,6 +127,25 @@ for (const [vpName, vp] of Object.entries(VPS)) {
   const st = await p.evaluate(() => document.body.innerText);
   if (!/기록 옮기기/.test(st)) fail('설정 화면에 기록 옮기기가 없다');
   await overflow('설정'); await shot('06-settings');
+
+  // 기록 불러오기: 지금 기록을 파일로 만들고 학년만 바꿔 넣은 뒤 올린다 → 다시 읽혀 바뀐 학년이 보이고 기록 키가 그대로여야 한다
+  const snap = await p.evaluate(() => { const d = {}; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.startsWith('araharu_')) d[k] = localStorage.getItem(k); } return d; });
+  const cu = JSON.parse(snap.araharu_current_user || '{}');
+  const NG = GRADE === 6 ? 5 : GRADE + 1;
+  snap.araharu_current_user = JSON.stringify({ ...cu, grade: NG, name: '홍길동', email: 'kid@example.com', school_name: '테스트초' });
+  const bf = `${OUT}/backup-${vpName}.json`;
+  writeFileSync(bf, JSON.stringify({ format: 'araharu-backup', version: 1, exportedAt: new Date().toISOString(), data: snap }));
+  const inp = await p.$('[data-testid="backup-input"]');
+  if (!inp) fail('불러오기 입력칸이 없다');
+  else {
+    await Promise.all([p.waitForNavigation({ waitUntil: 'load', timeout: 60000 }).catch(() => fail('불러온 뒤 다시 읽지 않았다')), inp.uploadFile(bf)]);
+    await sleep(1500);
+    const after = await p.evaluate(() => ({ u: JSON.parse(localStorage.getItem('araharu_current_user') || '{}'), n: Object.keys(localStorage).filter((k) => k.startsWith('araharu_')).length, t: [...document.querySelectorAll('button[aria-pressed="true"]')].map((x) => x.textContent.trim()).join(' ') }));
+    if (after.u.name === '홍길동' || after.u.email || after.u.school_name) fail(`불러온 파일의 개인정보가 프로필에 들어왔다: ${JSON.stringify(after.u).slice(0, 120)}`);
+    if (after.u.grade !== NG) fail(`불러온 뒤 학년이 ${after.u.grade} (기대 ${NG})`);
+    if (after.n < Object.keys(snap).length) fail(`불러온 뒤 기록 키가 줄었다 ${after.n} < ${Object.keys(snap).length}`);
+    if (!after.t.split(' ').includes(String(NG))) fail(`불러온 학년이 설정 화면에서 골라져 있지 않다: ${after.t}`);
+  }
 
   for (const e of errs) fail(e);
   await ctx.close();

@@ -1723,7 +1723,7 @@ function mathHint(unit: string, expr: string, entry?: MathEntry): string {
     if (bin[2] === "+") {
       const carry = entry?.hasCarry ?? da.some((d, i) => d + (db[i] ?? 0) >= 10);
       return carry
-        ? "일의 자리부터 더하고, 10이 넘으면 윗자리로 받아올려요!"
+        ? "일의 자리부터 더하고, 합이 10이거나 10보다 크면 윗자리로 받아올려요!"
         : a < 10 && b < 10
           ? "손가락이나 수직선으로 이어 세어 보세요!"
           : "일의 자리끼리, 십의 자리끼리 차례로 더해요!";
@@ -1832,7 +1832,8 @@ function kindDistractors(kind: SpellKind, correct: string, wrong: string): strin
     const sp = [...correct.matchAll(/ /g)].map((m) => m.index!);
     for (const i of sp) out.add(correct.slice(0, i) + correct.slice(i + 1));
   } else if (kind === "punct") {
-    const alt: Record<string, string[]> = { "!": [".", "?"], ".": ["!", "?"], "?": [".", "!"], ",": [""] };
+    // «!»↔«.» 는 둘 다 맞는 문장이 될 수 있다(정말 멋지다! / 정말 멋지다.) — 분명히 틀리는 바꿈만 쓴다
+    const alt: Record<string, string[]> = { "!": ["?"], ".": ["?"], "?": ["."], ",": [""] };
     for (let i = 0; i < correct.length; i++) {
       for (const a of alt[correct[i]] ?? []) out.add(correct.slice(0, i) + a + correct.slice(i + 1));
     }
@@ -2169,7 +2170,7 @@ function buildSafetyQuestion(
       answer: { correct: isCorrectStatement ? "O" : "X", text: entry.answer },
       explanation: filledText,
       points: 10,
-      hint: fillHint(entry.answer),
+      hint: "문장을 천천히 읽고 사실과 맞는지 따져 보세요.",
       metadata: { category: entry.category },
       created_at: new Date().toISOString(),
     };
@@ -2933,7 +2934,7 @@ export function generateDailySet(
                 meanings: [
                   correctMeaning.meaning,
                   // 예문에 정답 낱말이 그대로 있으면 답을 보여 주는 셈이다 → 그 자리를 빈칸으로 가린다
-                  `예문: ${correctMeaning.example.split(mmw.word).join("___")}`,
+                  `예문: ${correctMeaning.example.replace(new RegExp(`(?<![가-힣])${mmw.word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`, "g"), "___")}`,
                 ],
                 answer: mmw.word,
               },

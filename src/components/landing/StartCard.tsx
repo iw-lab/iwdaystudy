@@ -25,7 +25,7 @@ export function StartCard({ className }: { className?: string }) {
     if (c) {
       setResume(c);
       setGrade(c.grade);
-      setSemester(c.semester as 1 | 2);
+      setSemester(c.semester === 2 ? 2 : 1);
     }
   }, []);
 

@@ -896,7 +896,7 @@ export const grade1VocabData: VocabEntry[] = [
   { meanings: ["아빠의 엄마예요", "맛있는 것을 해 주세요"], answer: "할머니" },
   { meanings: ["엄마의 엄마예요", "명절에 만나요"], answer: "외할머니" },
   { meanings: ["같은 집에 사는 사람들", "사랑하는 사이예요"], answer: "가족" },
-  { meanings: ["같은 부모님의 자녀", "언니와 동생, 형과 아우 사이예요"], answer: "형제" },
+  { meanings: ["같은 부모님의 자녀", "형과 아우 사이예요"], answer: "형제" },
   { meanings: ["결혼한 남녀 사이", "남편과 아내예요"], answer: "부부" },
   // 동물 추가
   { meanings: ["꿀꿀 하고 울어요", "코가 납작해요"], answer: "돼지" },
@@ -929,7 +929,7 @@ export const grade1VocabData: VocabEntry[] = [
   },
   { meanings: ["애벌레에서 변해요", "꽃에 앉아요"], answer: "나비" },
   // 음식 추가
-  { meanings: ["쌀로 만들어 쫄깃해요", "떡볶이에 넣어요"], answer: "떡" },
+  { meanings: ["쌀로 만들어 쫄깃해요", "설날에 떡국으로 끓여 먹어요"], answer: "떡" },
   { meanings: ["생일에 먹어요", "초를 꽂아요"], answer: "케이크" },
   { meanings: ["우유로 만들어요", "차갑고 달아요"], answer: "아이스크림" },
   { meanings: ["달콤해요", "카카오로 만들어요"], answer: "초콜릿" },
@@ -1162,7 +1162,7 @@ export const grade1VocabData: VocabEntry[] = [
   { meanings: ["둥글고 노란색이에요", "덩굴에 열려요"], answer: "호박" },
   { meanings: ["아삭아삭해요", "길쭉한 초록색 채소예요"], answer: "오이" },
   {
-    meanings: ["초록색 줄기 채소예요", "잎이 넓은 채소예요"],
+    meanings: ["초록색 잎채소예요", "잎이 넓은 채소예요"],
     answer: "시금치",
   },
   { meanings: ["작은 나무 같아요", "초록색 채소예요"], answer: "브로콜리" },
@@ -1279,7 +1279,7 @@ export const grade1VocabData: VocabEntry[] = [
     answer: "폭포",
   },
   { meanings: ["바다 가운데 있어요", "주위에 물이 있어요"], answer: "섬" },
-  { meanings: ["모래로 된 넓은 땅이에요", "비가 아주 적게 와요"], answer: "사막" },
+  { meanings: ["비가 아주 적게 오는 메마른 땅이에요", "식물이 드물게 자라요"], answer: "사막" },
   // 수/숫자 관련
   { meanings: ["수를 세요", "1, 2, 3처럼 써요"], answer: "숫자" },
   { meanings: ["물건이 몇 개인지 알아봐요", "세어 봐요"], answer: "수 세기" },

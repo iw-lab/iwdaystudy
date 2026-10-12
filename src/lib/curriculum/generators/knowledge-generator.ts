@@ -4682,7 +4682,7 @@ const GRADE_5_6: KnowledgeEntry[] = [
     category: "과학",
   },
   {
-    text: "백열전구를 발명한 사람은 ___이다.",
+    text: "오래 켜지는 백열전구를 만들어 널리 퍼뜨린 사람은 ___이다.",
     answer: "에디슨",
     category: "과학",
   },

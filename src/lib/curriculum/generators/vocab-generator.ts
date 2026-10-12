@@ -64,7 +64,7 @@ const GRADE_1_2_WORDS: WordDef[] = [
   // 학교·배움 (15)
   { word: "학교", meanings: ["공부하러 가는 곳", "선생님이 가르치는 곳"] },
   { word: "선생님", meanings: ["가르쳐 주시는 분", "학교에서 수업하시는 분"] },
-  { word: "교실", meanings: ["학교에서 수업하는 방", "공부하는 교실"] },
+  { word: "교실", meanings: ["학교에서 수업하는 방", "선생님과 친구들이 함께 공부하는 곳"] },
   { word: "공부", meanings: ["새로운 것을 배우는 일", "책을 읽고 익히는 것"] },
   { word: "숙제", meanings: ["집에서 해 오는 과제", "선생님이 내 주신 공부"] },
   { word: "시험", meanings: ["아는 것을 확인하는 것", "실력을 알아보는 것"] },
@@ -201,7 +201,7 @@ const GRADE_1_2_WORDS: WordDef[] = [
   // 감정·상태 (9)
   { word: "기쁨", meanings: ["좋은 일이 있을 때 느낌", "행복한 마음"] },
   { word: "슬픔", meanings: ["마음이 아픈 느낌", "울고 싶은 마음"] },
-  { word: "화", meanings: ["화가 나는 느낌", "짜증이 나는 마음"] },
+  { word: "화", meanings: ["몹시 언짢고 성나는 마음", "짜증이 나는 마음"] },
   { word: "사랑", meanings: ["누군가를 좋아하는 마음", "소중히 여기는 마음"] },
   {
     word: "걱정",
@@ -3701,7 +3701,7 @@ const GRADE_5_6_WORDS: WordDef[] = [
     word: "약수",
     meanings: ["어떤 수를 나누어 떨어지게 하는 수", "나머지가 0이 되는 수"],
   },
-  { word: "배수", meanings: ["어떤 수를 1배, 2배, 3배 … 한 수", "3의 ○○는 3, 6, 9 …예요"] },
+  { word: "배수", meanings: ["어떤 수를 1배, 2배, 3배 … 한 수", "3의 ○○에는 3, 6, 9 …가 있어요"] },
   {
     word: "최대공약수",
     meanings: [
@@ -4884,10 +4884,10 @@ const MULTI_MEANING_3_4: MultiMeaningWord[] = [
     ],
   },
   {
-    word: "기압",
+    word: "풀",
     meanings: [
-      { meaning: "공기의 압력", example: "고기압일 때 날씨가 맑아요." },
-      { meaning: "기압을 나타내는 단위", example: "1기압은 바다 높이의 공기 압력이에요." },
+      { meaning: "땅에서 자라는 작은 초록 식물", example: "토끼가 풀을 뜯어 먹어요." },
+      { meaning: "종이를 붙이는 끈끈한 물건", example: "색종이를 풀로 붙였어요." },
     ],
   },
   {

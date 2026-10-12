@@ -134,6 +134,9 @@ export const useAuthStore = create<AuthState>()(
         if (token && user?.role === "student") {
           void flushSyncQueue(user.id, token);
         }
+        // 손님은 이 기기가 곧 계정이다 — 다시 시작할 때 연속 기록·포인트가 이어지도록 프로필을 남겨 둔다
+        const cur = localStorage.getItem("araharu_current_user");
+        if (cur && user?.id?.startsWith("guest-")) localStorage.setItem("araharu_guest_last", cur);
         localStorage.removeItem("auth_token");
         localStorage.removeItem("araharu_current_user");
         set({ user: null, token: null, isAuthenticated: false });

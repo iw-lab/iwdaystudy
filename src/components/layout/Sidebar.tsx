@@ -164,7 +164,7 @@ export function Sidebar({
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium truncate">{userName}</p>
               <p className="text-xs text-muted-foreground">
-                {guest && user?.grade
+                {guest && user?.grade && user?.semester
                   ? `${user.grade}학년 ${user.semester}학기 · 이 기기`
                   : roleLabels[role]}
               </p>

@@ -200,7 +200,8 @@ export function fixExistingJosa(text: string): string {
 export type JosaKind = "은/는" | "이/가" | "을/를" | "과/와" | "으로/로" | "이라/라" | "이라는/라는" | "이에요/예요";
 export function withJosa(word: string, kind: JosaKind, readAs?: string): string {
   const basis = (readAs ?? word).replace(/[^가-힣0-9]+$/g, "");
-  const num = basis.match(/\d+$/);
+  // 분수 a/b 는 «b분의 a» 로 읽는다 → 받침은 분자(a)로 본다(3/4은 · 2/3가)
+  const num = basis.match(/(\d+)\/\d+$/)?.slice(1) ?? basis.match(/\d+$/);
   const last = basis.slice(-1);
   const b = num ? numberHasBatchim(parseInt(num[0], 10)) : /[가-힣]/.test(last) ? hasBatchim(last) : false;
   const rieul = num ? numberIsRieul(parseInt(num[0], 10)) : /[가-힣]/.test(last) ? isRieul(last) : false;
@@ -224,7 +225,7 @@ export function fitBlankJosa(text: string, answer: string): string {
   const a = String(answer).trim();
   const tail = a.replace(/[^가-힣0-9]+$/g, "");
   if (!/[가-힣0-9]$/.test(tail)) return text; // 영문 등 받침을 알 수 없으면 그대로
-  const num = tail.match(/\d+$/);
+  const num = tail.match(/(\d+)\/\d+$/)?.slice(1) ?? tail.match(/\d+$/);
   const b = num ? numberHasBatchim(parseInt(num[0], 10)) : hasBatchim(tail.slice(-1));
   const rieul = num ? numberIsRieul(parseInt(num[0], 10)) : isRieul(tail.slice(-1));
   return text.replace(BLANK_JOSA, (m: string, q: string, j: string) => {

@@ -1159,7 +1159,7 @@ export const grade2VocabData: VocabEntry[] = [
     meanings: ["수증기가 물방울이 되는 것", "구름이 만들어져요"],
     answer: "응결",
   },
-  { meanings: ["물이 얼어서 되는 것", "아주 추울 때 일어나요"], answer: "결빙" },
+  { meanings: ["물이 얼어붙는 것", "아주 추울 때 일어나요"], answer: "결빙" },
   {
     meanings: ["빛이 물체에 부딪혀 되돌아오는 것", "거울에서 일어나요"],
     answer: "반사",
@@ -1178,7 +1178,7 @@ export const grade2VocabData: VocabEntry[] = [
   { meanings: ["하늘을 나는 큰 것", "제트 엔진이 있어요"], answer: "비행기" },
   { meanings: ["땅 밑을 달리는 것", "지하 역에서 타요"], answer: "지하철" },
   {
-    meanings: ["철길 위를 아주 빠르게 달려요", "KTX라고도 해요"],
+    meanings: ["철길 위를 아주 빠르게 달려요", "우리나라 대표 고속 열차예요"],
     answer: "고속열차",
   },
   { meanings: ["사람을 태우는 작은 차", "미터기가 있어요"], answer: "택시" },
@@ -1337,7 +1337,7 @@ export const grade2VocabData: VocabEntry[] = [
   { meanings: ["무게를 재는 단위", "저울로 재요"], answer: "그램" },
   { meanings: ["더 무거운 무게의 단위", "1000g이에요"], answer: "킬로그램" },
   { meanings: ["물의 양을 재는 단위", "1000mL예요"], answer: "리터" },
-  { meanings: ["시계가 알려 주는 것", "60분이에요"], answer: "시간" },
+  { meanings: ["어떤 때부터 어떤 때까지의 길이", "한 ○○은 60분이에요"], answer: "시간" },
   { meanings: ["시간의 작은 단위", "60초예요"], answer: "분" },
   { meanings: ["시간의 가장 작은 단위", "째깍 한 번이에요"], answer: "초" },
   { meanings: ["온도를 나타내는 단위", "섭씨로 재요"], answer: "도" },
@@ -3160,7 +3160,7 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
     category: "상식",
   },
   // === 신규 상식 156개 추가 ===
-  { text: "백열전구를 발명한 사람은 ___이다.", answer: "에디슨", category: "과학" },
+  { text: "오래 켜지는 백열전구를 만들어 널리 퍼뜨린 사람은 ___이다.", answer: "에디슨", category: "과학" },
   { text: "전화기를 발명한 사람은 ___이다.", answer: "벨", category: "과학" },
   {
     text: "우리 몸에서 가장 단단한 것은 ___이다.",
@@ -3397,7 +3397,7 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
   },
   { text: "호떡 안에는 ___이 들어 있다.", answer: "설탕", category: "상식" },
   { text: "떡볶이의 주재료는 ___이다.", answer: "떡", category: "상식" },
-  { text: "잔치국수의 주재료는 ___이다.", answer: "국수", category: "상식" },
+  { text: "잔치 때 많이 먹는, 밀가루 반죽을 가늘고 길게 뽑아 만든 음식은 ___이다.", answer: "국수", category: "상식" },
   {
     text: "주먹밥은 ___을 둥글게 뭉친 것이다.",
     answer: "밥",
@@ -3495,7 +3495,7 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
     category: "상식",
   },
   {
-    text: "컴퓨터의 포인터를 움직여 화면을 조작하는 장치를 ___라 한다.",
+    text: "책상 위에서 손으로 움직여 컴퓨터 화면의 화살표를 옮기는 장치를 ___라 한다.",
     answer: "마우스",
     category: "상식",
   },
@@ -3522,17 +3522,17 @@ export const grade2KnowledgeData: KnowledgeEntry[] = [
   { text: "GPS는 ___를 알려 주는 기술이다.", answer: "위치", category: "상식" },
   // 건강/영양
   {
-    text: "___에는 비타민 C가 많이 들어 있다.",
-    answer: "오렌지",
+    text: "겨울에 많이 먹는, 껍질을 손으로 쉽게 까는 주황색 과일로 비타민 C가 많은 것은 ___이다.",
+    answer: "귤",
     category: "상식",
   },
   {
-    text: "___에는 뼈 건강에 필요한 칼슘이 들어 있다.",
+    text: "젖소의 젖으로, 뼈 건강에 필요한 칼슘이 많은 하얀 음료는 ___이다.",
     answer: "우유",
     category: "상식",
   },
-  { text: "___에는 눈 건강에 필요한 비타민 A의 재료가 되는 성분이 들어 있다.", answer: "당근", category: "상식" },
-  { text: "___에는 철분이 들어 있다.", answer: "시금치", category: "상식" },
+  { text: "토끼가 좋아하는 주황색 뿌리채소로, 눈 건강에 좋은 것은 ___이다.", answer: "당근", category: "상식" },
+  { text: "뽀빠이가 먹고 힘이 세지는, 철분이 많은 초록 잎채소는 ___이다.", answer: "시금치", category: "상식" },
   {
     text: "운동 후에는 ___를 충분히 마셔야 한다.",
     answer: "물",
