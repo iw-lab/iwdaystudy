@@ -969,7 +969,7 @@ export const grade3VocabData: VocabEntry[] = [
   { meanings: ["긴 목을 가진 동물", "나뭇잎을 먹어요"], answer: "기린" },
   { meanings: ["알을 낳는 새", "매일 아침 울어요"], answer: "닭" },
   { meanings: ["껍질이 단단한 과일", "속이 하얘요"], answer: "코코넛" },
-  { meanings: ["쌀로 만든 우리나라 음식", "쌀을 물에 안쳐 지어요"], answer: "밥" },
+  { meanings: ["쌀로 만든 우리나라 음식", "쌀을 씻어 솥에 안쳐 지어요"], answer: "밥" },
   { meanings: ["학교에서 배우는 것", "시험을 봐요"], answer: "공부" },
   { meanings: ["바람이 세게 부는 자연 현상", "비를 동반해요"], answer: "태풍" },
   { meanings: ["얼음 위에서 타는 것", "겨울 운동이에요"], answer: "스케이트" },
@@ -1098,7 +1098,7 @@ export const grade3VocabData: VocabEntry[] = [
   { meanings: ["우리나라 전통 춤", "탈을 쓰기도 해요"], answer: "탈춤" },
   { meanings: ["우리나라 전통 놀이", "윷을 던져요"], answer: "윷놀이" },
   { meanings: ["우리나라 전통 무술", "발차기와 품새가 있어요"], answer: "태권도" },
-  { meanings: ["우리나라 전통 음식 만드는 법", "겨울 동안 먹을 김치를 한꺼번에 담가요"], answer: "김장" },
+  { meanings: ["겨울을 나려고 김치를 한꺼번에 담그는 일", "이웃과 함께 모여 하기도 해요"], answer: "김장" },
   { meanings: ["이야기를 노래로 부르는 것", "북 장단에 맞춰 한 사람이 불러요"], answer: "판소리" },
   { meanings: ["흙을 빚어 구운 그릇", "흙으로 빚어요"], answer: "도자기" },
   { meanings: ["한지로 만드는 공예", "종이를 붙여요"], answer: "한지 공예" },
@@ -2849,7 +2849,7 @@ export const grade3KnowledgeData: KnowledgeEntry[] = [
   },
   // === 신규 상식 60개 추가 ===
   {
-    text: "이순신 장군이 크게 승리한 한산도 앞바다의 전투를 ___이라 한다.",
+    text: "이순신 장군이 학이 날개를 편 모양의 학익진으로 크게 이긴 전투를 ___이라 한다.",
     answer: "한산도 대첩",
     category: "역사",
   },
@@ -3878,7 +3878,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "해 년",
     strokes: 6,
     words: ["올해", "작년", "내년"],
-    sentence: "새 해(年)가 밝았다.",
+    sentence: "새해(年)가 밝았다.",
   },
   {
     character: "力",
@@ -4119,7 +4119,7 @@ export const grade3HanjaData: HanjaEntry[] = [
     meaning: "밭 전",
     strokes: 5,
     words: ["논밭", "전답", "수전"],
-    sentence: "밭(田)에 모를 심었다.",
+    sentence: "밭(田)에 씨앗을 심었다.",
   },
   {
     character: "空",

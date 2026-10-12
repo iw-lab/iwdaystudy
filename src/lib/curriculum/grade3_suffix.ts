@@ -951,7 +951,7 @@ export const grade3SafetyDataExtra: SafetyEntry[] = [
     category: "교통안전",
   },
   {
-    text: "자전거를 탈 때 사람이 걷는 ___로 달리면 안 된다.",
+    text: "자전거를 타고 사람이 많은 ___를 지날 때는 내려서 끌고 간다.",
     answer: "인도",
     category: "교통안전",
   },
@@ -1515,7 +1515,7 @@ export const grade3SafetyDataExtra: SafetyEntry[] = [
     category: "전기안전",
   },
   {
-    text: "콘센트 하나에 플러그를 너무 많이 꽂으면 ___가 날 수 있다.",
+    text: "콘센트 하나에 플러그를 너무 많이 꽂으면 ___이 날 수 있다.",
     answer: "불",
     category: "전기안전",
   },

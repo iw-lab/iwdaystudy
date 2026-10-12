@@ -886,7 +886,7 @@ export const grade5VocabData: VocabEntry[] = [
     answer: "실험",
   },
   {
-    meanings: ["사회 여러 사람이 함께 가진 의견", "신문이나 설문 조사로 알아봐요"],
+    meanings: ["사회의 여러 사람이 함께 가진 의견", "신문이나 설문 조사로 알아봐요"],
     answer: "여론",
   },
   {
@@ -2142,8 +2142,8 @@ export const grade5KnowledgeData: KnowledgeEntry[] = [
   { text: "물이 증발하여 수증기가 되는 현상을 ___이라(라) 한다.", answer: "증발", category: "과학" },
   { text: "수증기가 식어서 물방울이 되는 것을 ___이라(라) 한다.", answer: "응결", category: "과학" },
   { text: "물질의 세 가지 상태는 고체, 액체, ___이다.", answer: "기체", category: "과학" },
-  { text: "자석의 같은 극끼리는 서로 ___다.", answer: "밀어낸", category: "과학" },
-  { text: "자석의 다른 극끼리는 서로 ___다.", answer: "끌어당긴", category: "과학" },
+  { text: "자석의 같은 극끼리는 서로 ___.", answer: "밀어낸다", category: "과학" },
+  { text: "자석의 다른 극끼리는 서로 ___.", answer: "끌어당긴다", category: "과학" },
   { text: "먹이 사슬에서 스스로 양분을 만드는 맨 아래 단계는 ___이다.", answer: "식물", category: "과학" },
   { text: "동물의 먹이 관계가 복잡하게 얽힌 것을 먹이 ___이라(라) 한다.", answer: "그물", category: "과학" },
   { text: "1km는 ___m이다.", answer: "1000", category: "수학" },
@@ -2539,7 +2539,7 @@ export const grade5HanjaData: HanjaEntry[] = [
     meaning: "해 년",
     strokes: 6,
     words: ["연도", "내년", "올해"],
-    sentence: "새 해(年)가 밝았다.",
+    sentence: "새해(年)가 밝았다.",
   },
   {
     character: "時",
@@ -3873,8 +3873,8 @@ export const grade5ScienceData: KnowledgeEntry[] = [
     category: "물리",
   },
   {
-    text: "자석에서 같은 극끼리는 서로 ___다.",
-    answer: "밀어낸",
+    text: "자석에서 같은 극끼리는 서로 ___.",
+    answer: "밀어낸다",
     category: "물리",
   },
   {

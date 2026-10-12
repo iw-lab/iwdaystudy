@@ -493,10 +493,10 @@ export const grade6SpellingData: SpellingEntry[] = [
     explanation: "'들르다'(방문하다)가 맞습니다.",
   },
   {
-    q1: "벽에 부딪쳤다.",
-    q2: "벽에 부딪혔다.",
-    answer: 2,
-    explanation: "'부딪히다'(부딪음을 당하다)가 맞는 문맥입니다.",
+    q1: "뒤에서 오던 자전거에 부딪혔다.",
+    q2: "뒤에서 오던 자전거에 부딪쳤다.",
+    answer: 1,
+    explanation: "남이 와서 부딪음을 당했으니 '부딪히다'가 맞습니다.",
   },
   {
     q1: "쓸데없는 걱정을 하다.",
@@ -595,10 +595,10 @@ export const grade6SpellingData: SpellingEntry[] = [
     explanation: "'띄다'(보이다)가 맞습니다.",
   },
   {
-    q1: "운동을 못한다.",
-    q2: "운동을 못 한다.",
+    q1: "나는 노래를 형보다 못한다.",
+    q2: "나는 노래를 형보다 못 한다.",
     answer: 1,
-    explanation: "'못하다'(능력 부족)는 한 단어로 붙여 씁니다.",
+    explanation: "남보다 수준이 떨어진다는 뜻의 '못하다'는 한 단어로 붙여 씁니다.",
   },
   {
     q1: "안 되겠다, 다시 해 보자.",
@@ -2035,7 +2035,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     answer: "민주공화국",
     category: "사회",
   },
-  { text: "생물의 특징을 자손에게 전하는 유전 정보가 담긴 물질을 영어 약자로 ___라 한다.", answer: "DNA", category: "과학" },
+  { text: "생물과 그 주변 환경이 서로 영향을 주고받는 하나의 체계를 ___라 한다.", answer: "생태계", category: "과학" },
   {
     text: "우리나라 최초의 한글 소설은 ___이다.",
     answer: "홍길동전",
@@ -2266,7 +2266,7 @@ export const grade6KnowledgeData: KnowledgeEntry[] = [
     category: "사회",
   },
   {
-    text: "아프리카 북부에 있는, 세계에서 가장 큰 모래 사막은 ___ 사막이다.",
+    text: "아프리카 북부에 있는, 세계에서 가장 큰 더운 사막은 ___ 사막이다.",
     answer: "사하라",
     category: "지리",
   },
@@ -5261,8 +5261,8 @@ export const grade6ScienceData: KnowledgeEntry[] = [
     category: "생물",
   },
   {
-    text: "환경에 더 잘 맞는 생물이 살아남아 자손을 남기는 과정을 ___이라(라) 한다.",
-    answer: "자연선택",
+    text: "생물이 사는 곳의 환경에 알맞게 생김새나 생활 방식을 갖추는 것을 ___이라(라) 한다.",
+    answer: "적응",
     category: "생물",
   },
   {

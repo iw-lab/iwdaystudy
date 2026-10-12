@@ -132,6 +132,11 @@ export function exportBackup(): Blob {
 }
 
 /** 불러오기 — 지금 기기의 아라하루 기록을 파일 내용으로 바꾼다. 반환 = 불러온 키 수 */
+function safeCount(x: unknown): number {
+  const n = Number(x);
+  return Number.isSafeInteger(n) && n >= 0 ? n : 0;
+}
+
 export async function importBackup(file: File): Promise<number> {
   if (file.size > 20 * 1024 * 1024) throw new Error("파일이 너무 커요(20MB 이하).");
   let body: { format?: string; version?: number; data?: Record<string, unknown> };
@@ -168,11 +173,14 @@ export async function importBackup(file: File): Promise<number> {
     id: id!, role: "student", email: "", name: nicknameFor(id!), avatar_url: null, grade: g, semester: sem,
     school_name: null, class_name: null, student_number: null, parent_id: null, teacher_id: null,
     subscription_plan: "free", subscription_expires_at: null,
-    streak_count: Math.max(0, Math.floor(Number(src?.streak_count) || 0)),
-    total_points: Math.max(0, Math.floor(Number(src?.total_points) || 0)),
+    streak_count: safeCount(src?.streak_count),
+    total_points: safeCount(src?.total_points),
     approval_status: "approved", password_hash: "", created_at: now, updated_at: now,
   };
-  const next = entries.map(([k, v]) => (k === CURRENT_USER_KEY ? ([k, JSON.stringify(profile)] as [string, string]) : [k, v]));
+  // 프로필 사본·손님 id 는 파일 것을 쓰지 않는다(검증 안 된 프로필이 다시 살아나는 길을 막는다)
+  const next = entries
+    .filter(([k]) => k !== "araharu_guest_last" && k !== GUEST_ID_KEY)
+    .map(([k, v]) => (k === CURRENT_USER_KEY ? ([k, JSON.stringify(profile)] as [string, string]) : [k, v]));
   // 지우기 전에 지금 기록을 떠 둔다 — 쓰다가 용량 초과 등으로 실패하면 그대로 되돌린다
   const backup: [string, string][] = [];
   for (let i = 0; i < localStorage.length; i++) {
@@ -190,9 +198,16 @@ export async function importBackup(file: File): Promise<number> {
       const k = localStorage.key(i)!;
       if (k.startsWith("araharu_")) localStorage.removeItem(k);
     }
-    backup.forEach(([k, v]) => localStorage.setItem(k, v));
+    // 되돌리기는 지운 만큼만 다시 쓰니 공간이 모자랄 일이 없지만, 그래도 한 항목 실패가 나머지를 막지 않게 하나씩
+    for (const [k, v] of backup) {
+      try {
+        localStorage.setItem(k, v);
+      } catch {
+        /* 다음 항목 계속 */
+      }
+    }
     if (token) localStorage.setItem("auth_token", token);
     throw new Error("기기 저장 공간이 모자라 불러오지 못했어요. 지금 기록은 그대로예요.");
   }
-  return entries.length;
+  return next.length;
 }

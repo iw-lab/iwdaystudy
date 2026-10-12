@@ -4013,7 +4013,7 @@ export const grade2SafetyData: SafetyEntry[] = [
     category: "생활안전",
   },
   {
-    text: "냉장고 안에는 ___면 안 된다.",
+    text: "아이들은 놀다가 냉장고 안에 ___면 안 된다.",
     answer: "들어가",
     category: "생활안전",
   },
@@ -5576,7 +5576,7 @@ export const grade2CreativeData: KnowledgeEntry[] = [
     answer: "뜯",
     category: "음악",
   },
-  { text: "피리는 ___김을 불어 넣어서 소리를 내요.", answer: "입", category: "음악" },
+  { text: "피리는 ___으로 김을 불어넣어 소리를 내요.", answer: "입", category: "음악" },
   {
     text: "그림을 그릴 때 필요하면 먼저 ___을 그릴 수 있어요.",
     answer: "밑그림",
