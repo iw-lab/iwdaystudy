@@ -90,7 +90,7 @@ export default function AdminLayout({
   useEffect(() => {
     if (!hydrated) return;
     if (!isAuthenticated) {
-      router.push("/login");
+      router.push("/");
       return;
     }
     if (user && user.role !== "admin") {

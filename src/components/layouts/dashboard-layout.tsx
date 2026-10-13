@@ -29,13 +29,13 @@ export default function DashboardLayout({
         storedUser.role === "teacher" &&
         storedUser.approval_status !== "approved"
       ) {
-        router.push("/signup/pending");
+        router.push("/");
         return;
       }
       setUser(storedUser);
       setIsReady(true);
     } else {
-      router.push("/login/");
+      router.push("/");
     }
   }, [setUser, router]);
 

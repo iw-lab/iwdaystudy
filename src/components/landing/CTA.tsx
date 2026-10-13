@@ -106,7 +106,7 @@ export function CTA() {
               className="h-14 px-10 text-lg font-bold gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-shadow"
               asChild
             >
-              <Link href="/signup/">
+              <Link href="/">
                 지금 무료로 시작하기
                 <ArrowRight className="h-5 w-5" />
               </Link>

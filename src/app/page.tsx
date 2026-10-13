@@ -21,9 +21,6 @@ export default function Home() {
         </Link>
         <nav className="flex items-center gap-1 text-sm">
           <Link href="/about/" className="rounded-lg px-3 py-2 text-muted-foreground hover:text-foreground">소개</Link>
-          <Link href="/login/" className="rounded-lg px-3 py-2 font-semibold text-foreground hover:bg-muted">
-            선생님·학급 로그인
-          </Link>
         </nav>
       </header>
 

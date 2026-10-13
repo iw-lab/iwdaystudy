@@ -44,24 +44,55 @@ for (const [vpName, vp] of Object.entries(VPS)) {
     return null;
   }, re.source, re.flags, scope);
 
-  // 학급 계정으로 로그인된 기기(웨일북)에서는 손님 시작이 나오면 안 된다 — 누르면 그 학생 기기 기록이 지워진다(2026-10-13)
-  {
-    await p.goto(BASE + '/login/', { waitUntil: 'load', timeout: 120000 });
-    await sleep(800);
-    if (!(await p.$('[data-testid="login-guest-link"]'))) fail('로그인 화면에 «계정 없이 바로 시작» 길이 없다');
-    await p.evaluate(() => {
-      localStorage.setItem('auth_token', 'e2e-fake-token');
-      localStorage.setItem('araharu_current_user', JSON.stringify({ id: 'stu-e2e-1', role: 'student', name: '테스트학생', grade: 3, semester: 1 }));
-      localStorage.setItem('araharu_local_data_owner', 'stu-e2e-1');
+  // 로그인 화면은 없다(2026-10-13) — 옛 주소는 처음 화면으로 간다
+  for (const old of ['/login/', '/signup/', '/forgot-password/']) {
+    await p.goto(BASE + old, { waitUntil: 'load', timeout: 120000 });
+    await p.waitForFunction(() => location.pathname === '/', { timeout: 15000 }).catch(() => fail(`${old} 가 처음 화면으로 가지 않는다`));
+    if (await p.$('input[type=password]')) fail(`${old} 에 비밀번호 칸이 남아 있다`);
+  }
+  if (await p.$('a[href^="/login"], a[href^="/signup"]')) fail('처음 화면에 로그인·회원가입 링크가 남아 있다');
+
+  // 우리 반 학생 기기(웨일북) — 로그인 없이 그 학생 기록을 그대로 이어받는다. 지워지면 안 된다.
+  const REC = (sid) => JSON.stringify([{ id: 'rec-e2e', student_id: sid, daily_set_id: 'set-e2e', class_id: null, started_at: '2026-10-01T00:00:00Z', completed_at: '2026-10-01T00:10:00Z', total_score: 9, max_score: 10, time_spent_seconds: 600, is_completed: true, created_at: '2026-10-01T00:00:00Z' }]);
+  for (const kind of ['live', 'expired']) {
+    const sid = `stu-e2e-${kind}`;
+    await p.evaluate((kind, sid, rec) => {
+      localStorage.clear();
+      if (kind === 'live') {
+        localStorage.setItem('auth_token', 'e2e-fake-token');
+        localStorage.setItem('araharu_current_user', JSON.stringify({ id: sid, role: 'student', name: '테스트학생', grade: 3, semester: 2 }));
+      }
+      localStorage.setItem('araharu_local_data_owner', sid);
+      localStorage.setItem('araharu_learning_records', rec);
       localStorage.setItem('araharu_e2e_probe', 'keep');
-    });
+    }, kind, sid, REC(sid));
     await p.goto(BASE + '/', { waitUntil: 'load', timeout: 120000 });
     await sleep(1200);
-    if (!(await p.$('[data-account-session]'))) fail('계정 로그인 상태인데 처음 화면에 «이어서 학습하기» 카드가 없다');
-    if (await p.$('[data-testid="guest-start"]')) fail('계정 로그인 상태인데 손님 시작 단추가 보인다');
-    if ((await p.evaluate(() => localStorage.getItem('araharu_e2e_probe'))) !== 'keep') fail('계정 학생의 기기 기록이 지워졌다');
-    await p.evaluate(() => localStorage.clear());
+    if (!(await p.$('[data-adopt]'))) { fail(`[${kind}] 우리 반 학생 기기인데 «기록 이어서 하기» 카드가 없다`); continue; }
+    if (await p.$('[data-testid="guest-start"]')) fail(`[${kind}] 우리 반 학생 기기에 새로 시작 단추가 보인다`);
+    if (kind === 'expired') { await clickText(/^4$/); await clickText(/^1학기$/); }
+    const label = await p.$eval('[data-testid="adopt-continue"]', (e) => e.textContent.trim()).catch(() => '');
+    const want = kind === 'live' ? '3학년 2학기' : '4학년 1학기';
+    if (!label.includes(want)) fail(`[${kind}] 이어하기 단추 학년·학기 이상: «${label}»`);
+    await p.click('[data-testid="adopt-continue"]');
+    await p.waitForFunction(() => location.pathname.startsWith('/student'), { timeout: 30000 }).catch(() => fail(`[${kind}] 이어하기 후 /student 로 가지 않았다`));
+    await sleep(1500);
+    const st = await p.evaluate(() => ({
+      who: JSON.parse(localStorage.getItem('araharu_current_user') || 'null'),
+      token: localStorage.getItem('auth_token'),
+      adopted: localStorage.getItem('araharu_adopted_id'),
+      recs: JSON.parse(localStorage.getItem('araharu_learning_records') || '[]').length,
+      probe: localStorage.getItem('araharu_e2e_probe'),
+    }));
+    if (st.who?.id !== sid || st.adopted !== sid) fail(`[${kind}] 이어받은 학생 id 가 바뀌었다: ${JSON.stringify(st.who)?.slice(0, 100)}`);
+    if (st.token) fail(`[${kind}] 이어받은 뒤에도 로그인 토큰이 남았다`);
+    if (st.who?.name === '테스트학생') fail(`[${kind}] 실명이 그대로 남았다(별명으로 바꿔야 한다)`);
+    if (st.recs < 1 || st.probe !== 'keep') fail(`[${kind}] 이어받다가 기기 기록이 지워졌다(기록 ${st.recs})`);
+    await p.goto(BASE + '/', { waitUntil: 'load', timeout: 120000 });
+    await sleep(800);
+    if (await p.$('[data-adopt]')) fail(`[${kind}] 이어받은 뒤에도 또 이어받기 카드가 나온다`);
   }
+  await p.evaluate(() => localStorage.clear());
 
   await p.goto(BASE + '/', { waitUntil: 'load', timeout: 120000 });
   await sleep(800);

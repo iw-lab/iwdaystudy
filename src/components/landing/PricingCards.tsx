@@ -174,7 +174,7 @@ export function PricingCards() {
                         asChild
                       >
                         <Link
-                          href={meta.key === "school" ? "#contact" : "/signup/"}
+                          href={meta.key === "school" ? "#contact" : "/"}
                         >
                           {meta.buttonText}
                         </Link>

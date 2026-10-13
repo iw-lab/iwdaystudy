@@ -34,18 +34,18 @@ export function useAuth(requireAuth = false) {
 
   useEffect(() => {
     if (requireAuth && !isLoading && !isAuthenticated) {
-      router.push('/login');
+      router.push('/');
     }
   }, [requireAuth, isAuthenticated, isLoading, router]);
 
   // (v2) 토큰 만료 감지: JWT가 7일 후 만료되는데 감지가 없어 만료 후 조용히
   // 깨진 화면이 뜨던 문제. 앱 진입 시 + 창 포커스/탭 복귀 시 exp를 확인해
-  // 만료면 로그아웃하고 /login으로 보낸다.
+  // 만료면 로그아웃하고 처음 화면으로 보낸다(로그인 화면은 없앴다 — 기기 기록을 그대로 이어받는다).
   const checkTokenExpiry = useCallback(() => {
     if (!isAuthenticated || !token) return;
     if (isTokenExpired(token)) {
       logout();
-      router.push('/login');
+      router.push('/');
     }
   }, [isAuthenticated, token, logout, router]);
 

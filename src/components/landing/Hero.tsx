@@ -284,7 +284,7 @@ export function Hero() {
               className="h-14 px-10 text-base font-bold gap-2 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-shadow"
               asChild
             >
-              <Link href="/signup/">
+              <Link href="/">
                 무료로 시작하기
                 <ArrowRight className="h-4 w-4" />
               </Link>

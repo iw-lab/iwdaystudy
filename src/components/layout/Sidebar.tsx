@@ -84,7 +84,7 @@ export function Sidebar({
   const handleLogout = () => {
     logout();
     // 로그인 없이 쓰던 학생은 처음 화면으로(기록은 기기에 남아 «이어서 하기»가 된다)
-    router.push(guest ? "/" : "/login");
+    router.push("/");
   };
 
   const roleLabels: Record<UserRole, string> = {

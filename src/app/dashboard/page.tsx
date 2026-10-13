@@ -11,7 +11,7 @@ export default function DashboardRedirect() {
   useEffect(() => {
     const user = localGetCurrentUser();
     if (!user) {
-      router.replace("/login/");
+      router.replace("/");
       return;
     }
 

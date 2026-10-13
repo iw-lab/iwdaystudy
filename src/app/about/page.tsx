@@ -306,7 +306,7 @@ export default function AboutPage() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button size="lg" className="h-12 px-8 text-base" asChild>
-                <Link href="/signup">무료로 시작하기</Link>
+                <Link href="/">무료로 시작하기</Link>
               </Button>
               <Button
                 variant="outline"

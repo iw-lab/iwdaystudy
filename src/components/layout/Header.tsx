@@ -66,11 +66,8 @@ export function Header() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/login/">로그인</Link>
-            </Button>
             <Button size="sm" asChild>
-              <Link href="/signup/">무료 시작하기</Link>
+              <Link href="/">바로 시작하기</Link>
             </Button>
           </div>
 
@@ -108,16 +105,8 @@ export function Header() {
             ))}
             <div className="my-4 border-t" />
             <SheetClose asChild>
-              <Link
-                href="/login/"
-                className="flex items-center rounded-lg px-3 py-3 text-base font-medium text-muted-foreground hover:bg-accent transition-colors"
-              >
-                로그인
-              </Link>
-            </SheetClose>
-            <SheetClose asChild>
               <Button className="w-full mt-2" asChild>
-                <Link href="/signup/">무료 시작하기</Link>
+                <Link href="/">바로 시작하기</Link>
               </Button>
             </SheetClose>
           </nav>
