@@ -169,7 +169,7 @@ export default function AdminDashboard() {
     for (const l of data.recentLearning.slice(0, 5)) {
       activities.push({
         action: "학습 완료",
-        detail: `${l.studentName} - ${l.setTitle} (${l.score}/${l.maxScore}점)`,
+        detail: `${l.studentName} - ${l.setTitle} (${l.score}/${l.maxScore}점)`,  // gb-frac-ok
         time: formatTimeAgo(l.completedAt),
       });
     }

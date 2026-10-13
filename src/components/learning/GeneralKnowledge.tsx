@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, XCircle, Lightbulb } from "lucide-react";
+import { renderMath } from "./MathText";
 interface Props {
   content: any;
   answer: any;
@@ -37,11 +38,11 @@ export default function GeneralKnowledge({
   const renderText = () => {
     if (!content?.text) return <span>문제를 불러올 수 없습니다.</span>;
     const parts = content.text.split("___");
-    if (parts.length < 2) return <span>{content.text}</span>;
+    if (parts.length < 2) return <span>{renderMath(content.text)}</span>;
 
     return (
       <span>
-        {parts[0]}
+        {renderMath(parts[0])}
         {showResult ? (
           <span
             className={`inline-block min-w-[3ch] px-2 py-0.5 rounded font-bold ${
@@ -50,14 +51,14 @@ export default function GeneralKnowledge({
                 : "bg-red-100 text-red-700"
             }`}
           >
-            {hideCorrectAnswer && !isCorrect ? "?" : correctAnswer}
+            {hideCorrectAnswer && !isCorrect ? "?" : renderMath(correctAnswer)}
           </span>
         ) : (
           <span className="inline-block min-w-[4ch] border-b-2 border-[#F9CA24] px-2 mx-1">
             &nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         )}
-        {parts[1]}
+        {renderMath(parts[1])}
       </span>
     );
   };
@@ -99,9 +100,9 @@ export default function GeneralKnowledge({
       >
         <p className="text-xl sm:text-2xl font-bold leading-relaxed">
           {variant === "tf"
-            ? content?.text || "문제를 불러올 수 없습니다."
+            ? renderMath(content?.text) || "문제를 불러올 수 없습니다."
             : variant === "reading"
-              ? content?.text || "문제를 불러올 수 없습니다."
+              ? renderMath(content?.text) || "문제를 불러올 수 없습니다."
               : renderText()}
         </p>
         {variant === "tf" && (
@@ -161,7 +162,7 @@ export default function GeneralKnowledge({
                 <span className="text-muted-foreground mr-2 flex-shrink-0">
                   {OPTION_LABELS[i]}
                 </span>
-                {choice}
+                {renderMath(choice)}
               </Button>
             </motion.div>
           ))}
@@ -230,7 +231,7 @@ export default function GeneralKnowledge({
               ) : (
                 <>
                   <XCircle className="h-5 w-5 text-red-500" />
-                  <span>정답: {correctAnswer}</span>
+                  <span>정답: {renderMath(correctAnswer)}</span>
                 </>
               )}
             </motion.div>
@@ -256,7 +257,7 @@ export default function GeneralKnowledge({
                     <span className="text-muted-foreground flex-shrink-0">
                       {OPTION_LABELS[i]}
                     </span>
-                    {choice}
+                    {renderMath(choice)}
                   </div>
                 ))}
               </div>

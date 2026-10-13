@@ -12,6 +12,7 @@ import {
 import { SUBJECTS } from '@/types/learning';
 import Mascot from './Mascot';
 import type { Question } from '@/types/database';
+import { renderMath } from "./MathText";
 
 interface SubjectScore {
   subject: string;
@@ -528,11 +529,11 @@ export default function ResultScreen({
                               </span>
                             </div>
                             <p className="text-sm font-medium mb-1 line-clamp-2">
-                              {q.content?.expression || q.content?.text || q.content?.sentence || q.title || ''}
+                              {renderMath(q.content?.expression || q.content?.text || q.content?.sentence || q.title || '')}
                             </p>
                             <div className="flex items-center gap-1 text-xs">
                               <span className="text-green-600 font-bold">
-                                정답: {String(correctAnswer)}
+                                정답: {renderMath(String(correctAnswer))}
                               </span>
                             </div>
                           </div>

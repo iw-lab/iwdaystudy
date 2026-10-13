@@ -12,6 +12,7 @@ import {
   Palette,
   Brain,
 } from "lucide-react";
+import { renderMath } from "@/components/learning/MathText";
 
 const gradeData: Record<
   string,
@@ -235,7 +236,7 @@ export function GradePreview() {
                           </div>
                           <div className="rounded-lg bg-muted/50 p-4">
                             <p className="text-sm text-foreground leading-relaxed">
-                              {subject.sample}
+                              {renderMath(subject.sample)}
                             </p>
                           </div>
                         </CardContent>

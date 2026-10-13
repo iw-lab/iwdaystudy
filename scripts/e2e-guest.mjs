@@ -4,6 +4,7 @@
 // 실패 조건: 콘솔 에러·페이지 에러 · 가로 스크롤 · 게스트 시작 실패 · 세트가 끝나지 않음 · 결과 화면 없음
 //            · «밑줄 친»/«굵게 표시한» 지시문인데 화면에 밑줄/굵은 글씨가 없음 · 빗금 분수 노출
 import { mkdirSync, writeFileSync } from 'node:fs';
+import { installFracHooks, probeFractions } from './check-fraction-runtime.mjs';
 let puppeteer;
 try { puppeteer = (await import('puppeteer-core')).default; }
 catch { puppeteer = (await import('/Users/sim-insu/Documents/dev/iwpuzzle/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js')).default; }
@@ -28,6 +29,8 @@ for (const [vpName, vp] of Object.entries(VPS)) {
   console.log(`== ${vpName} ${vp.width}×${vp.height}`);
   const ctx = await b.createBrowserContext();
   const p = await ctx.newPage();
+  await installFracHooks(p);   // 보이는 글자(DOM·캔버스)의 빗금 분수를 잰다
+  let fracSeen = 0;            // 쌓아 그린 분수(.frac)를 한 번이라도 봤는가 — «0곳» 이 «분수 화면을 안 봤음» 이면 무효
   await p.setViewport(vp);
   const errs = [];
   p.on('pageerror', (e) => errs.push('pageerror: ' + e.message));
@@ -133,6 +136,8 @@ for (const [vpName, vp] of Object.entries(VPS)) {
     if (state.result) { done = true; break; }
     if (state.underlineCue && !state.hasU) fail(`«밑줄 친» 지시문인데 밑줄이 없다: ${state.text.replace(/\s+/g, ' ').slice(0, 120)}`);
     if (state.slash.length) fail(`빗금 분수 노출: «${state.slash.join(' | ')}»`);
+    for (const h of await probeFractions(p)) fail(`빗금 분수(탐침) ${h.where}: «${h.text}»`);
+    fracSeen += await p.evaluate(() => document.querySelectorAll('main .frac, body .frac').length);
     if (step === 2) { await overflow('문항 화면'); await shot('04-question'); }
     if ([7, 11, 15, 19].includes(step)) { await overflow('문항 화면'); await shot(`04-q${step}`); }
     const sig = state.text.slice(0, 200);
@@ -149,7 +154,7 @@ for (const [vpName, vp] of Object.entries(VPS)) {
       const area = document.querySelector('main') || document.body;
       const vis = (x) => !x.disabled && x.offsetParent !== null;
       const ta = [...area.querySelectorAll('textarea')].find((t) => vis(t) && !t.value);
-      if (ta) { Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(ta, '나는 오늘 학교에서 친구와 함께 도서관에 가서 재미있는 책을 읽었다. 책 속 주인공처럼 용감해지고 싶다고 생각했다. 내일도 책을 읽을 것이다.'); ta.dispatchEvent(new Event('input', { bubbles: true })); return 'textarea'; }
+      if (ta) { Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(ta, '나는 오늘 학교에서 친구와 함께 도서관에 가서 재미있는 책을 읽었다. 책 속 주인공처럼 용감해지고 싶다고 생각했다. 내일도 책을 읽을 것이다. 그리고 친구들에게도 그 책을 소개해 주고 함께 이야기를 나누고 싶다.'); ta.dispatchEvent(new Event('input', { bubbles: true })); return 'textarea'; }
       const inp = [...area.querySelectorAll('input[type=text], input[type=number], input[inputmode], input:not([type])')].find((t) => vis(t) && !t.value);
       if (inp) { Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(inp, '1'); inp.dispatchEvent(new Event('input', { bubbles: true })); return 'input'; }
       const btns = [...area.querySelectorAll('button')].filter((x) => vis(x) && x.textContent.trim() && !nav.test(x.textContent.trim()) && !x.closest('[class*="sticky"], [class*="fixed"]'));
@@ -171,6 +176,8 @@ for (const [vpName, vp] of Object.entries(VPS)) {
   await shot('05-result');
   await overflow('결과 화면');
   if (!done) fail('세트를 끝까지 풀지 못했다(결과 화면 미확인)');
+  console.log(`  · 쌓은 분수 요소(누계) ${fracSeen}`);
+  if (GRADE >= 3 && fracSeen === 0 && !process.env.E2E_NO_FRAC) fail('쌓은 분수(.frac)를 한 번도 못 봤다 — 분수 문제가 안 나왔거나 렌더러를 안 거친다(다른 학년/학기로 다시)');
 
   await p.goto(BASE + '/student/settings/', { waitUntil: 'load', timeout: 120000 });
   await sleep(1500);

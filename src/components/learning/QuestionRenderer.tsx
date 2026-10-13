@@ -19,6 +19,7 @@ import EmotionCheck from "./EmotionCheck";
 import ReadinessChecklist from "./ReadinessChecklist";
 import GeneralKnowledge from "./GeneralKnowledge";
 import SafetyQuiz from "./SafetyQuiz";
+import { renderMath } from "./MathText";
 
 interface Props {
   question: Question;
@@ -196,7 +197,7 @@ export default function QuestionRenderer({
                 {subjectInfo.icon}
               </motion.span>
               <CardTitle className="text-base font-bold" style={{ color }}>
-                {question.title || subjectInfo.name}
+                {renderMath(question.title || subjectInfo.name)}
               </CardTitle>
             </div>
             <div className="flex items-center gap-2">
@@ -237,7 +238,7 @@ export default function QuestionRenderer({
               >
                 <div className="mt-2 p-2 bg-amber-50 rounded-lg text-sm text-amber-800 border border-amber-200 flex items-start gap-2">
                   <Lightbulb className="h-4 w-4 flex-shrink-0 mt-0.5 text-amber-500" />
-                  <span>{question.hint}</span>
+                  <span>{renderMath(question.hint)}</span>
                 </div>
               </motion.div>
             )}
@@ -276,7 +277,7 @@ export default function QuestionRenderer({
                       해설
                     </p>
                     <p className="text-sm text-blue-700">
-                      {question.explanation}
+                      {renderMath(question.explanation)}
                     </p>
                   </div>
                 </div>

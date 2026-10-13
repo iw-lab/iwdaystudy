@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CheckCircle, Lightbulb, XCircle } from "lucide-react";
+import { renderMath } from "./MathText";
 
 interface Props {
   content: Record<string, unknown>;
@@ -16,26 +17,6 @@ interface Props {
 }
 
 const OPTION_LABELS = ["1", "2", "3", "4"];
-
-// "a/b"를 실제 분수꼴(분자 위·분모 아래·가로선)로 렌더링.
-// 한국어 식은 나눗셈에 ÷를 쓰므로 "/"는 분수로만 등장 → 안전하게 변환.
-function Frac({ n, d }: { n: string; d: string }) {
-  return (
-    <span className="mx-0.5 inline-flex flex-col items-center justify-center align-middle leading-none">
-      <span className="px-1 pb-0.5">{n}</span>
-      <span className="block w-full border-t-2 border-current" />
-      <span className="px-1 pt-0.5">{d}</span>
-    </span>
-  );
-}
-function renderMath(text: string): React.ReactNode {
-  if (!text) return text;
-  const parts = text.split(/(\d+\/\d+)/g);
-  return parts.map((p, i) => {
-    const m = p.match(/^(\d+)\/(\d+)$/);
-    return m ? <Frac key={i} n={m[1]} d={m[2]} /> : <span key={i}>{p}</span>;
-  });
-}
 
 export default function MathQuestion({
   content,
@@ -244,7 +225,7 @@ export default function MathQuestion({
               ) : (
                 <XCircle className="h-6 w-6 text-red-500" />
               )}
-              <span>{isCorrect ? "정답이에요" : hideCorrectAnswer ? "틀렸어요! 나중에 다시 풀어봐요" : `정답: ${correctAnswer}`}</span>
+              <span>{isCorrect ? "정답이에요" : hideCorrectAnswer ? "틀렸어요! 나중에 다시 풀어봐요" : <>정답: {renderMath(correctAnswer)}</>}</span>
             </motion.div>
 
             {choices.length > 0 && (

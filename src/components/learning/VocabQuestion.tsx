@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, XCircle, HelpCircle } from "lucide-react";
+import { renderMath } from "./MathText";
 interface Props {
   content: any;
   answer: any;
@@ -74,7 +75,7 @@ export default function VocabQuestion({
               <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#FF8BA7]/20 flex items-center justify-center">
                 <HelpCircle className="h-4 w-4 text-[#FF8BA7]" />
               </div>
-              <p className="text-lg font-medium">{meaning}</p>
+              <p className="text-lg font-medium">{renderMath(meaning)}</p>
             </motion.div>
           ))}
         </div>
@@ -101,7 +102,7 @@ export default function VocabQuestion({
                     : "border-border hover:border-[#FF8BA7]/40"
                 }`}
               >
-                {choice}
+                {renderMath(choice)}
               </Button>
             </motion.div>
           ))}
@@ -161,7 +162,7 @@ export default function VocabQuestion({
             {/* Show meanings below answer */}
             {!(hideCorrectAnswer && !isCorrect) && (
               <div className="text-center text-sm text-muted-foreground">
-                <span className="font-medium">뜻:</span> {meanings.join(", ")}
+                <span className="font-medium">뜻:</span> {renderMath(meanings.join(", "))}
               </div>
             )}
 
@@ -211,7 +212,7 @@ export default function VocabQuestion({
                             : "border-border text-muted-foreground"
                     }`}
                   >
-                    {choice}
+                    {renderMath(choice)}
                   </div>
                 ))}
               </div>

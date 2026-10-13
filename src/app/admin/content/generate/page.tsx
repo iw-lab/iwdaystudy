@@ -41,6 +41,7 @@ import type {
   SubjectType,
   QuestionType,
 } from "@/types/database";
+import { renderMath } from "@/components/learning/MathText";
 
 interface GeneratedQuestion {
   id: string;
@@ -734,7 +735,7 @@ export default function AIGeneratePage() {
                         </Badge>
                       </div>
                       <p className="text-sm font-medium whitespace-pre-line">
-                        {q.question}
+                        {renderMath(q.question)}
                       </p>
 
                       {q.options && (
@@ -749,7 +750,7 @@ export default function AIGeneratePage() {
                                   : "border-border",
                               )}
                             >
-                              {String.fromCharCode(9312 + oi)} {opt}
+                              {String.fromCharCode(9312 + oi)} {renderMath(opt)}
                               {opt === q.answer && (
                                 <Check className="inline h-3.5 w-3.5 ml-1" />
                               )}
@@ -760,7 +761,7 @@ export default function AIGeneratePage() {
 
                       {!q.options && (
                         <div className="mt-2 inline-flex items-center gap-1.5 rounded-lg border border-primary/30 bg-primary/5 px-3 py-1.5 text-sm font-medium text-primary">
-                          <span>정답:</span> {q.answer}
+                          <span>정답:</span> {renderMath(q.answer)}
                         </div>
                       )}
 
@@ -789,7 +790,7 @@ export default function AIGeneratePage() {
                             className="overflow-hidden"
                           >
                             <p className="mt-2 text-xs text-muted-foreground bg-muted/50 rounded-lg p-3 leading-relaxed">
-                              {q.explanation}
+                              {renderMath(q.explanation)}
                             </p>
                           </motion.div>
                         )}
