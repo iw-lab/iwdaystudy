@@ -233,3 +233,26 @@ CREATE TABLE IF NOT EXISTS audit_logs (
 CREATE INDEX IF NOT EXISTS idx_audit_logs_created ON audit_logs(created_at);
 CREATE INDEX IF NOT EXISTS idx_audit_logs_actor ON audit_logs(actor_id);
 CREATE INDEX IF NOT EXISTS idx_audit_logs_action ON audit_logs(action);
+
+-- 무료 읽기 한도(계정 전체 D1 하루 500만 행) 색인 보강 — 2026-10-13
+-- check-db-reads.mjs 가 잡은 색인 없는 WHERE/ORDER BY/DELETE(FK 캐스케이드 포함) 전체훑기.
+-- 날짜 필터는 코드에서 date(...)/strftime(...) 로 감싸 쓰므로 표현식 색인으로 맞춘다.
+CREATE INDEX IF NOT EXISTS idx_learning_records_completed ON learning_records(is_completed, completed_at);
+CREATE INDEX IF NOT EXISTS idx_learning_records_created_date ON learning_records(date(created_at));
+CREATE INDEX IF NOT EXISTS idx_learning_records_student_created ON learning_records(student_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_subscriptions_starts_date ON subscriptions(date(starts_at));
+CREATE INDEX IF NOT EXISTS idx_subscriptions_starts_ym ON subscriptions(strftime('%Y-%m', starts_at));
+-- subscriptions.user_id → profiles(id) FK. profiles 삭제 시(teacher/students.ts DELETE) 캐스케이드 체크가 이걸 훑었다.
+CREATE INDEX IF NOT EXISTS idx_subscriptions_user ON subscriptions(user_id);
+-- daily_assignments.student_id → profiles(id) FK, 같은 이유.
+CREATE INDEX IF NOT EXISTS idx_daily_assignments_student ON daily_assignments(student_id);
+-- classes.teacher_id → profiles(id) FK(같은 이유) + /api/classes 교사 본인 목록 조회 겸용.
+CREATE INDEX IF NOT EXISTS idx_classes_teacher_created ON classes(teacher_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_classes_created ON classes(created_at);
+CREATE INDEX IF NOT EXISTS idx_classes_active ON classes(is_active);
+CREATE INDEX IF NOT EXISTS idx_profiles_role_approval ON profiles(role, approval_status);
+CREATE INDEX IF NOT EXISTS idx_profiles_role_created ON profiles(role, created_at);
+CREATE INDEX IF NOT EXISTS idx_profiles_subscription_plan ON profiles(subscription_plan);
+CREATE INDEX IF NOT EXISTS idx_profiles_created ON profiles(created_at);
+CREATE INDEX IF NOT EXISTS idx_daily_sets_published ON daily_sets(is_published);
+CREATE INDEX IF NOT EXISTS idx_class_members_student_joined ON class_members(student_id, joined_at);

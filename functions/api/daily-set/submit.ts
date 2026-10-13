@@ -300,6 +300,9 @@ async function hasCorrectStreak(
   subject: string,
   n: number
 ): Promise<boolean> {
+  // 참고: lr.student_id(색인) 로 그 학생 본인 응답만 찾은 뒤 정렬이라 표 전체 훑기는 아니고
+  // 학생 1명 분량(수십 행)에 bounded — 다만 여러 learning_record_id 에 걸친 전역 정렬이라
+  // 색인만으로는 TEMP B-TREE를 완전히 못 없앤다(check-db-reads.mjs 잔존 FAIL, 리포트에 기록).
   const row = await db.prepare(
     `SELECT COUNT(*) AS total, COALESCE(SUM(is_correct), 0) AS correct FROM (
        SELECT qr.is_correct AS is_correct FROM question_responses qr
