@@ -29,7 +29,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   // 참고: 이 베이스 문자열엔 WHERE/ORDER BY 가 없어 보이지만 아래서 항상 이어붙는다
   // (role 있으면 WHERE role=?, 그리고 항상 ORDER BY created_at DESC LIMIT ? OFFSET ?).
   // 실제 실행 SQL은 idx_profiles_role_created/idx_profiles_created 를 탄다 — 정적 분석기
-  // (check-db-reads.mjs)는 이어붙이기 전의 이 조각만 보고 표 전체 훑기로 오탐한다(잔존 FAIL).
+  // (check-db-reads.mjs)는 이어붙이기 전의 이 조각만 본다. gb-scan-ok: 실행 SQL은 idx_profiles_role_created/idx_profiles_created
   let sql = 'SELECT id, email, name, role, grade, semester, school_name, class_name, student_number, approval_status, subscription_plan, streak_count, total_points, created_at FROM profiles';
   const binds: unknown[] = [];
   if (role && ['student', 'teacher', 'parent', 'admin'].includes(role)) {
