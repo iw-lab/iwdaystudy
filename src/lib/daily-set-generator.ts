@@ -2119,7 +2119,8 @@ function buildKnowledgeQuestion(
         : ("multiple_choice" as QuestionType),
     order_index: orderIndex,
     title,
-    content: { variant, text: entry.text, category: entry.category, choices },
+    // tf 로 뽑혔어도 O/X 문장으로 못 바꾼 빈칸 문항은 4지선다로 낸다 — variant 를 «tf» 로 두면 화면이 O/X 단추를 그려 정답(낱말)을 고를 수 없다.
+    content: { variant: variant === "tf" ? "fill" : variant, text: entry.text, category: entry.category, choices },
     answer: { correct: entry.answer, text: entry.answer },
     explanation: `${entry.text.replace("___", entry.answer)}`,
     points: 10,
@@ -2186,7 +2187,8 @@ function buildSafetyQuestion(
         : ("multiple_choice" as QuestionType),
     order_index: orderIndex,
     title,
-    content: { variant, text: entry.text, category: entry.category, choices },
+    // tf 로 뽑혔어도 O/X 문장으로 못 바꾼 빈칸 문항은 4지선다로 낸다 — variant 를 «tf» 로 두면 화면이 O/X 단추를 그려 정답(낱말)을 고를 수 없다.
+    content: { variant: variant === "tf" ? "fill" : variant, text: entry.text, category: entry.category, choices },
     answer: { correct: entry.answer, text: entry.answer },
     explanation: `${entry.text.replace("___", entry.answer)}`,
     points: 10,
@@ -2527,7 +2529,8 @@ function buildSubjectQuestion(
         : ("multiple_choice" as QuestionType),
     order_index: orderIndex,
     title,
-    content: { variant, text: entry.text, category: entry.category, choices },
+    // tf 로 뽑혔어도 O/X 문장으로 못 바꾼 빈칸 문항은 4지선다로 낸다 — variant 를 «tf» 로 두면 화면이 O/X 단추를 그려 정답(낱말)을 고를 수 없다.
+    content: { variant: variant === "tf" ? "fill" : variant, text: entry.text, category: entry.category, choices },
     answer: { correct: entry.answer, text: entry.answer },
     explanation: entry.text.replace("___", entry.answer),
     points: 10,

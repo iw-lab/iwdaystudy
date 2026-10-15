@@ -3,6 +3,7 @@
 //   node scripts/e2e-guest.mjs [--url http://localhost:3917] [--out /tmp/ara-e2e] [--grade 4] [--sem 1] [--vp pc|m|all]
 // 실패 조건: 콘솔 에러·페이지 에러 · 가로 스크롤 · 게스트 시작 실패 · 세트가 끝나지 않음 · 결과 화면 없음
 //            · «밑줄 친»/«굵게 표시한» 지시문인데 화면에 밑줄/굵은 글씨가 없음 · 빗금 분수 노출
+//            · O/X 단추인데 문장에 빈칸(___)이 남음(2026-10-16) — --stale-tf 면 기기에 저장된 옛 세트처럼 빈칸 문항을 «tf» 로 바꿔 화면 방어도 본다
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { installFracHooks, probeFractions } from './check-fraction-runtime.mjs';
 let puppeteer;
@@ -119,6 +120,18 @@ for (const [vpName, vp] of Object.entries(VPS)) {
   if (!started) fail('오늘의 학습 시작 단추를 못 찾았다');
   await p.waitForFunction(() => /\/student\/daily\/.+/.test(location.pathname), { timeout: 60000 }).catch(() => fail('세트 화면으로 가지 않았다'));
   await sleep(2500);
+  if (argv.includes('--stale-tf')) {
+    const n = await p.evaluate(() => {
+      const qs = JSON.parse(localStorage.getItem('araharu_questions') || '[]');
+      let k = 0;
+      for (const q of qs) if (q.content?.variant === 'fill' && String(q.content?.text || '').includes('___') && (q.content?.choices || []).length) { q.content.variant = 'tf'; k++; }
+      localStorage.setItem('araharu_questions', JSON.stringify(qs));
+      return k;
+    });
+    console.log(`  · --stale-tf: 빈칸 문항 ${n}개를 옛 세트처럼 «tf» 로 바꿈`);
+    if (!n) fail('--stale-tf: 바꿀 빈칸 문항이 세트에 없다');
+    await p.reload({ waitUntil: 'load' }); await sleep(2500);
+  }
 
   const NAV = /^(나가기|이전|다음|제출하기|문제를 풀어주세요|모든 문제를 풀어주세요|일시정지|계속|🔊|듣기)/;
   let done = false;
@@ -131,9 +144,12 @@ for (const [vpName, vp] of Object.entries(VPS)) {
       const hasU = !!main.querySelector('u, .underline, [class*="underline"]');
       const sm = [...text.matchAll(/(?<![\d/])\d+\/\d+(?![\d/])/g)];
       const slash = sm.map((m) => text.slice(Math.max(0, m.index - 40), m.index + 20).replace(/\s+/g, ' '));
-      return { text: text.slice(0, 400), underlineCue, hasU, slash: slash.slice(0, 3), result: /과목별 결과/.test(text) };
+      const btn = [...main.querySelectorAll('button')].map((b) => b.textContent.trim());
+      const oxBlank = btn.includes('O') && btn.includes('X') && /_{3,}/.test(text);
+      return { text: text.slice(0, 400), oxBlank, underlineCue, hasU, slash: slash.slice(0, 3), result: /과목별 결과/.test(text) };
     });
     if (state.result) { done = true; break; }
+    if (state.oxBlank) fail(`O/X 단추인데 문장에 빈칸이 남았다: ${state.text.replace(/\s+/g, ' ').slice(0, 120)}`);
     if (state.underlineCue && !state.hasU) fail(`«밑줄 친» 지시문인데 밑줄이 없다: ${state.text.replace(/\s+/g, ' ').slice(0, 120)}`);
     if (state.slash.length) fail(`빗금 분수 노출: «${state.slash.join(' | ')}»`);
     for (const h of await probeFractions(p)) fail(`빗금 분수(탐침) ${h.where}: «${h.text}»`);

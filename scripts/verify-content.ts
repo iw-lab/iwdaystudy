@@ -116,6 +116,14 @@ for (const grade of [1, 2, 3, 4, 5, 6]) {
         walkText(q.explanation, `${where}.explanation`);
         walkText(q.hint, `${where}.hint`);
 
+        // ⑥ O/X 단추(variant tf)인데 정답이 O/X 가 아니거나 문장에 빈칸이 남음 — 화면은 O/X 만 그려 못 맞힌다(2026-10-16)
+        const qc = q.content as { variant?: string; text?: string };
+        if (qc?.variant === "tf") {
+          const ox = String((q.answer as { correct?: unknown })?.correct ?? "").trim();
+          if (ox !== "O" && ox !== "X" || String(qc.text ?? "").includes("___"))
+            flag("⑥O/X 단추·빈칸/낱말 정답", where, `${qc.text} → ${ox}`);
+        }
+
         const choices = extractChoices(q.content);
         if (choices && choices.length > 0) {
           choiceQuestions++;

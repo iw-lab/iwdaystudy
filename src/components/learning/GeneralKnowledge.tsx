@@ -25,8 +25,12 @@ export default function GeneralKnowledge({
 }: Props) {
   const correctAnswer = answer?.answer || answer?.correct || answer?.text || "";
   const [selected, setSelected] = useState<string | null>(null);
-  const variant: string = content?.variant || "fill";
   const choices: string[] = content?.choices || [];
+  // 이미 기기에 저장된 옛 세트 — «tf» 인데 정답이 O/X 가 아닌 빈칸 문항은 4지선다로 그린다(O/X 단추로는 못 맞힌다).
+  const variant: string =
+    content?.variant === "tf" && !["O", "X"].includes(String(correctAnswer).trim()) && choices.length > 0
+      ? "fill"
+      : content?.variant || "fill";
 
   const handleSelect = (choice: string) => {
     if (showResult) return;

@@ -172,6 +172,10 @@ for (const r of rows) {
   if (r.subject === "korean" && /^(이 글에서 알 수 있는 것은\?|이 글에 대한 설명으로 맞는 것은\?|이 글의 내용으로 맞는 것은\?)$/.test(str(c.question).trim())) flag("R83 독해 두루뭉술 물음", r, str(c.question));
   // R84 한자 예문 속 읽기 없는 한자(火가 나면 · 學校에서) — 아이가 못 읽는다. «불(火)» 또는 «學校(학교)» 꼴이어야
   if (r.subject === "hanja") { const hs = str(c.sentence); if (/(?<![(一-鿿])[一-鿿]+(?![(一-鿿)])/.test(hs.replace(/\([^)]*\)/g, (m) => m.replace(/[一-鿿]/g, "")))) flag("R84 한자 예문 읽기 없음", r, hs); }
+  // R85 O/X 단추인데 정답이 낱말 — tf 로 뽑힌 빈칸 문항이 O/X 문장으로 못 바뀌고 variant 만 «tf» 로 남았다(2026-10-16 2797건). 화면이 O/X 를 그려 영원히 못 맞힌다
+  if (c.variant === "tf" && !["O", "X"].includes(str(r.answer?.correct).trim())) flag("R85 O/X 단추·낱말 정답", r, `${str(c.text)} → ${str(r.answer?.correct)}`);
+  // R86 O/X 문장에 빈칸이 남음 — 채우지 않은 «___» 를 맞다/틀리다로 물을 수 없다
+  if (c.variant === "tf" && str(c.text).includes("___")) flag("R86 O/X 문장에 빈칸", r, str(c.text));
   // R80 공통 쓰레기
   if (/undefined|NaN|\[object Object\]|\{\w+\}/.test(allText(r))) flag("R80 치환 안 된 자리표시", r, disp);
   if (/\s{2,}\S/.test(disp.replace(/\n/g, " ").replace(/\s{2,}(?=\S)/g, (m) => (m.includes("  ") ? m : m)))) { /* 공백 2칸은 렌더에서 접힌다 — 생략 */ }
