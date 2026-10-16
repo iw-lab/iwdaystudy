@@ -2410,9 +2410,9 @@ export const grade2MathData: MathEntry[] = [
   },
   {
     type: "calculation",
-    expression: "30분 + 30분",
+    expression: "30분 + 30분 = ?분",
     answer: 60,
-    steps: ["30분 + 30분 = 60분 = 1시간"],
+    steps: ["60분은 1시간이에요", "30분 + 30분 = 60분"],
     unit: "시각과 시간",
   },
   // 길이 재기

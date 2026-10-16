@@ -1003,10 +1003,10 @@ export const grade1VocabData: VocabEntry[] = [
   { meanings: ["잘못했을 때 느껴요", "얼굴이 화끈거려요"], answer: "부끄러움" },
   // 신체
   { meanings: ["생각을 해요", "얼굴 위쪽에 있어요"], answer: "머리" },
-  { meanings: ["물건을 잡아요", "다섯 손가락이 있어요"], answer: "손" },
+  { meanings: ["물건을 잡아요", "팔 끝에 달려 있어요"], answer: "손" },
   { meanings: ["걸을 때 사용해요", "신발을 신어요"], answer: "발" },
   { meanings: ["볼 수 있어요", "두 개가 있어요"], answer: "눈" },
-  { meanings: ["들을 수 있어요", "귀걸이를 해요"], answer: "귀" },
+  { meanings: ["들을 수 있어요", "얼굴 양옆에 있어요"], answer: "귀" },
   { meanings: ["냄새를 맡아요", "얼굴 가운데 있어요"], answer: "코" },
   { meanings: ["말을 해요", "음식을 먹어요"], answer: "입" },
   { meanings: ["입 안에 하얗게 나 있어요", "음식을 씹어요"], answer: "이" },
@@ -5315,13 +5315,13 @@ export const grade1KoreanData: KnowledgeEntry[] = [
   { text: "일기를 쓸 때 그날의 ___를 써요.", answer: "날씨", category: "쓰기" },
   { text: "일기를 쓸 때 자신의 ___도 써요.", answer: "기분", category: "쓰기" },
   {
-    text: "그림을 보고 이야기를 지어 쓰는 것을 ___라고 해요.",
-    answer: "그림 보고 쓰기",
+    text: "겪은 일을 그림과 글로 함께 쓴 일기를 ___라고 해요.",
+    answer: "그림일기",
     category: "쓰기",
   },
   {
-    text: "생각을 그림으로 그리는 것을 ___이라고(라고) 해요.",
-    answer: "생각 그림",
+    text: "겪은 일을 쓸 때는 일이 일어난 ___대로 써요.",
+    answer: "차례",
     category: "쓰기",
   },
   // 문장 부호
