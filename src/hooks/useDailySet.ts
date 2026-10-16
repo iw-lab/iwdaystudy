@@ -83,7 +83,12 @@ export function useDailySet() {
 
         if (storedId) {
           const stored = getStoredDailySet(storedId);
-          if (stored && stored.questions && stored.questions.length > 0) {
+          // 학년·학기를 바꿨으면 오늘 만들어 둔 옛 학기 세트는 버리고 새로 만든다(2026-10-16 «5학년 2학기로 들어갔는데 1학기로 뜸»)
+          const sameTerm =
+            !!stored?.set &&
+            Number(stored.set.grade) === Number(user.grade) &&
+            Number(stored.set.semester) === Number(user.semester);
+          if (stored && sameTerm && stored.questions && stored.questions.length > 0) {
             setDailySet(stored);
             setSetIndex(slot);
             setCompletedCount(done);
