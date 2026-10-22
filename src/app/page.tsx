@@ -67,6 +67,17 @@ export default function Home() {
           <Link href="/contact/" className="hover:text-foreground">문의</Link>
         </span>
       </footer>
+      <div className="flex justify-center px-4 pb-10">
+        <a
+          href="https://ssamzip.com"
+          target="_blank"
+          rel="noopener"
+          data-gb="site-link"
+          className="inline-flex min-h-11 items-center justify-center rounded-full bg-muted px-5 py-2 text-center text-xs font-semibold text-muted-foreground hover:text-foreground"
+        >
+          선행쌤 · 선생님이 만든 다른 수업 놀이 보기
+        </a>
+      </div>
     </div>
   );
 }
