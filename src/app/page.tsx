@@ -17,11 +17,11 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center" aria-label="아라하루 처음 화면">
+        <Link href="/" className="flex min-h-11 items-center" aria-label="아라하루 처음 화면">
           <Logo size={34} />
         </Link>
         <nav className="flex items-center gap-1 text-sm">
-          <Link href="/about/" className="rounded-lg px-3 py-2 text-muted-foreground hover:text-foreground">소개</Link>
+          <Link href="/about/" className="inline-flex min-h-11 items-center rounded-lg px-3 text-muted-foreground hover:text-foreground">소개</Link>
         </nav>
       </header>
 

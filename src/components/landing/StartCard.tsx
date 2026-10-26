@@ -79,6 +79,7 @@ export function StartCard({ className }: { className?: string }) {
         <button
           type="button"
           data-testid="account-continue"
+          data-gb="play"
           onClick={() => router.push(home)}
           className="mt-6 flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-primary text-lg font-bold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
@@ -159,6 +160,7 @@ export function StartCard({ className }: { className?: string }) {
       <button
         type="button"
         data-testid={adopt ? "adopt-continue" : "guest-start"}
+        data-gb="play"
         disabled={!grade || busy}
         onClick={() => grade && go(grade, semester)}
         className="mt-6 flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-primary text-lg font-bold text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
