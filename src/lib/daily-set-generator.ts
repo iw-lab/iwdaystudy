@@ -2679,7 +2679,9 @@ export function generateDailySet(
     set_number: setNumber,
     title: `${grade}학년 ${semester}학기 #${setNumber}`,
     description: "오늘의 아침학습",
-    estimated_minutes: Math.round(composition.totalQuestions * 2),
+    // 아침활동(20분 안팎) 기준 어림: 객관식 1분씩 + 글쓰기 4분 + 기분·준비물 1분 = 문항 수 + 2.
+    // 예전엔 문항당 2분이라 «약 40분»으로 떠 아침활동에 너무 길어 보였다(2026-10-26 사용자 화면 검수). 실측값이 아니라 어림이다.
+    estimated_minutes: composition.totalQuestions + 2,
     total_questions: composition.totalQuestions,
     total_points: composition.totalQuestions * 10,
     is_published: true,
