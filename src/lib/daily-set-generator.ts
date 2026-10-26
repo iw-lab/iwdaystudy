@@ -12,6 +12,7 @@ import {
 
 import { getDayOfYear, getGradeGroup } from "@/lib/utils";
 import { lookupStandardCode } from "@/lib/curriculum/standard-mapping";
+import { applyContentReview, presetDistractors } from "@/lib/content-review";
 import { naturalizeKorean, fixExistingJosa, hasBatchim, withJosa, fitBlankJosa } from "@/lib/korean-josa";
 import {
   GRADE_SET_COMPOSITION,
@@ -274,6 +275,7 @@ function generateChoices<T>(
   random: () => number,
   category?: string,
   extractCategory?: (item: T) => string,
+  entry?: unknown,
 ): string[] {
   const correctStr = String(correct);
   const distractors: string[] = [];
@@ -302,6 +304,10 @@ function generateChoices<T>(
   };
 
   const numeric = isNumericAnswer(correctStr);
+
+  // 00) 전수검수가 이 항목에 붙인 오답 보기(같은 종류·그럴듯함·정답 아님을 사람이 보듯 고른 것)
+  const preset = presetDistractors(entry, correctStr);
+  if (preset) tryAdd(preset);
 
   // 0) 큐레이션 뱅크 (나라·행성·도시 등)
   const bank = bankFor(correctStr);
@@ -2562,34 +2568,17 @@ function countRepeatedQuestions(
  * Generate a daily set that the student has NOT completed yet.
  * @param completedSetIds - set IDs the student already completed (from learning records)
  */
-export function generateDailySet(
+/**
+ * 세트가 문항을 꺼내 오는 풀(문제 은행)을 만든다 — 생성 + 조사 맞춤 + 학년 초과 거르기 + 낱말 변형 풀 + 문항 검수 반영.
+ * 전수검수 덤프(scripts/audit/dump-review-entries.ts)도 이 함수를 그대로 부른다(앱과 덤프가 같은 길을 지나야 검수가 맞물린다).
+ */
+export function buildPools(
   grade: number,
   semester: number,
-  completedSetIds?: Set<string>,
+  finalSeed: number,
   subjectAccuracy?: Record<string, { accuracy: number }>,
-): DailySetWithQuestions {
-  const dayOfYear = getDayOfYear();
-
-  // Try current day's seed first, then increment to find an unused set
-  let attempt = 0;
-  const baseSeed = dayOfYear;
-  let setId = "";
-
-  // Try up to 1000 different seeds to find a set the student hasn't done
-  while (attempt < 1000) {
-    const candidateSeed = baseSeed + attempt;
-    setId = `set-${grade}-${semester}-${candidateSeed}`;
-    if (!completedSetIds || !completedSetIds.has(setId)) {
-      break;
-    }
-    attempt++;
-  }
-
-  const finalSeed = baseSeed + attempt;
-  const seed = finalSeed * 1000 + grade * 100 + semester;
-  const random = seededRandom(seed);
-  const gradeGroup = getGradeGroup(grade);
-  const composition = GRADE_SET_COMPOSITION[gradeGroup];
+  opts: { review?: boolean } = {},
+): GradeData {
   const data = getGradeData(grade, semester, finalSeed, subjectAccuracy);
   // 빈칸 문장의 «___ 뒤 조사»를 정답 받침에 맞춘다(표시 문장·해설·O/X 가 모두 이 text 를 쓴다)
   const fitJosa = <T extends { text: string; answer: string }>(arr?: T[]) =>
@@ -2647,6 +2636,39 @@ export function generateDailySet(
   data.idioms = getIdiomEntries(grade, finalSeed);
   data.multiMeaningWords = getMultiMeaningWords(grade, finalSeed);
   data.wordPuzzles = getWordPuzzles(grade, finalSeed);
+  if (opts.review !== false) applyContentReview(data as unknown as Record<string, unknown>, grade);
+  return data;
+}
+
+export function generateDailySet(
+  grade: number,
+  semester: number,
+  completedSetIds?: Set<string>,
+  subjectAccuracy?: Record<string, { accuracy: number }>,
+): DailySetWithQuestions {
+  const dayOfYear = getDayOfYear();
+
+  // Try current day's seed first, then increment to find an unused set
+  let attempt = 0;
+  const baseSeed = dayOfYear;
+  let setId = "";
+
+  // Try up to 1000 different seeds to find a set the student hasn't done
+  while (attempt < 1000) {
+    const candidateSeed = baseSeed + attempt;
+    setId = `set-${grade}-${semester}-${candidateSeed}`;
+    if (!completedSetIds || !completedSetIds.has(setId)) {
+      break;
+    }
+    attempt++;
+  }
+
+  const finalSeed = baseSeed + attempt;
+  const seed = finalSeed * 1000 + grade * 100 + semester;
+  const random = seededRandom(seed);
+  const gradeGroup = getGradeGroup(grade);
+  const composition = GRADE_SET_COMPOSITION[gradeGroup];
+  const data = buildPools(grade, semester, finalSeed, subjectAccuracy);
 
   const setNumber = (finalSeed % 10000) + 1;
 
@@ -2926,7 +2948,7 @@ export function generateDailySet(
             mmw.word,
             data.vocab,
             (v) => v.answer,
-            random,
+            random, undefined, undefined, mmw,
           );
           questions.push(
             buildVocabQuestion(
@@ -2958,7 +2980,7 @@ export function generateDailySet(
             puzzle.word,
             data.vocab,
             (v) => v.answer,
-            random,
+            random, undefined, undefined, puzzle,
           );
           questions.push(
             buildVocabQuestion(
@@ -2988,7 +3010,7 @@ export function generateDailySet(
               entry.meanings[0],
               data.vocab,
               (v) => v.meanings[0],
-              random,
+              random, undefined, undefined, entry,
             );
           } else if (fallbackVv === "input") {
             choices = [];
@@ -2997,7 +3019,7 @@ export function generateDailySet(
               entry.answer,
               data.vocab,
               (v) => v.answer,
-              random,
+              random, undefined, undefined, entry,
             );
           }
           questions.push(
@@ -3021,7 +3043,7 @@ export function generateDailySet(
           (k) => k.answer,
           random,
           entry.category,
-          (k) => k.category,
+          (k) => k.category, entry,
         );
         questions.push(
           buildKnowledgeQuestion(
@@ -3044,7 +3066,7 @@ export function generateDailySet(
           (s) => s.answer,
           random,
           entry.category,
-          (s) => s.category,
+          (s) => s.category, entry,
         );
         questions.push(
           buildSafetyQuestion(
@@ -3080,14 +3102,14 @@ export function generateDailySet(
             cleanHanjaMeaning(entry.meaning, entry.reading),
             data.hanja,
             (h) => cleanHanjaMeaning(h.meaning, h.reading),
-            random,
+            random, undefined, undefined, entry,
           );
         } else if (hvariant === "character") {
           hchoices = generateChoices(
             entry.character,
             data.hanja,
             (h) => h.character,
-            random,
+            random, undefined, undefined, entry,
           );
         } else if (hvariant === "word") {
           const cw = entry.words[Math.floor(random() * entry.words.length)];
@@ -3117,7 +3139,7 @@ export function generateDailySet(
             entry.reading,
             data.hanja,
             (h) => h.reading,
-            random,
+            random, undefined, undefined, entry,
           );
         }
         questions.push(
@@ -3154,7 +3176,7 @@ export function generateDailySet(
           entry.word,
           data.english,
           (e) => e.word,
-          random,
+          random, undefined, undefined, entry,
         );
         questions.push(
           buildEnglishQuestion(
@@ -3201,7 +3223,7 @@ export function generateDailySet(
             entry.answer,
             pool,
             (k) => k.answer,
-            random,
+            random, undefined, undefined, entry,
           );
           questions.push(
             buildSubjectQuestion(
@@ -3249,7 +3271,7 @@ export function generateDailySet(
           (k) => k.answer,
           random,
           entry.category,
-          (k) => k.category,
+          (k) => k.category, entry,
         );
         questions.push(
           buildSubjectQuestion(
@@ -3279,7 +3301,7 @@ export function generateDailySet(
           (k) => k.answer,
           random,
           entry.category,
-          (k) => k.category,
+          (k) => k.category, entry,
         );
         questions.push(
           buildSubjectQuestion(
@@ -3309,7 +3331,7 @@ export function generateDailySet(
           (k) => k.answer,
           random,
           entry.category,
-          (k) => k.category,
+          (k) => k.category, entry,
         );
         questions.push(
           buildSubjectQuestion(
@@ -3335,7 +3357,7 @@ export function generateDailySet(
           (k) => k.answer,
           random,
           entry.category,
-          (k) => k.category,
+          (k) => k.category, entry,
         );
         questions.push(
           buildSubjectQuestion(
