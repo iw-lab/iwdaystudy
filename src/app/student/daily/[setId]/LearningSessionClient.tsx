@@ -27,6 +27,7 @@ import {
   type ParentTimeSettings,
 } from "@/lib/local-storage";
 import { syncCompletedSet } from "@/lib/sync";
+import { reportSetDone } from "@/lib/school-hub";
 import { generateId } from "@/lib/utils";
 import { evaluateWriting } from "@/lib/writing-evaluator";
 import QuestionRenderer from "@/components/learning/QuestionRenderer";
@@ -526,6 +527,8 @@ export default function LearningSessionClient() {
     // 선생님·학부모 화면에 아무것도 보이지 않는다. 전송 실패는 큐에 쌓였다가
     // 다음 접속 때 재전송되므로 여기서 기다리거나 오류를 보여주지 않는다.
     void syncCompletedSet(user.id, recordId, dailySet.set.id);
+    // 우리 학교 순위 +1판(합계만 — 이름·기록은 안 보낸다)
+    reportSetDone();
 
     // Track time spent for parental controls
     if (timeSettings && timeSettings.daily_time_limit_minutes > 0) {

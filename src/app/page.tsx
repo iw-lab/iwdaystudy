@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/common/Logo";
 import { StartCard } from "@/components/landing/StartCard";
+import { SchoolRank } from "@/components/landing/SchoolRank";
 
 const SUBJECTS = ["수학", "국어 독해", "맞춤법", "어휘", "한자", "영어", "글쓰기", "상식", "과학·사회", "안전"];
 
@@ -25,22 +26,8 @@ export default function Home() {
       </header>
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <a
-          href="https://ssamzip.com"
-          target="_blank"
-          rel="noopener"
-          data-gb="site-link"
-          className="gb-site"
-        >
-          <span className="gb-site-ic">
-            <svg className="gb-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>
-          </span>
-          <span className="gb-site-tx"><b>선행쌤</b><small>선생님이 만든 수업 놀이 더 보기</small></span>
-          <span className="gb-site-go">
-            가 보기
-            <svg className="gb-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
-          </span>
-        </a>
+        {/* 학교 순위 맨 위 · 선행쌤 배너는 키트가 카드 바로 밑에 붙인다(gb-school ensureSiteLink) */}
+        <SchoolRank />
       </div>
 
       <main>
