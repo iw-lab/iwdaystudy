@@ -251,16 +251,3 @@
 @keyframes gb-site-pop { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(1.12) rotate(-8deg); } }
 @media (prefers-reduced-motion: reduce) { .gb-site, .gb-site::after, .gb-site-ic { animation: none; } }
 
-/* 학교 순위 카드(kit/school-hub)는 어두운 게임 화면 기준 색 — 아라하루 바탕(밝음·어두움)에 맞춰 덮는다(gate-baseline B14 대비 4.5) */
-[data-rank-host] {
-  --gb-text: var(--foreground);
-  --gb-dim: var(--muted-foreground);
-  --gb-panel: var(--card);
-  --gb-panel-2: var(--muted);
-  --gb-line: var(--border);
-  --gb-accent: var(--primary);
-  --gb-accent-ink: #ffffff;
-  --gb-gold: #92400e;
-  color: var(--foreground);
-}
-.dark [data-rank-host] { --gb-gold: #ffd166; --gb-accent-ink: #062419; }

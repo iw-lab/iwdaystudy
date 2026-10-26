@@ -251,7 +251,7 @@ export const onRequest: PagesFunction<Env, string, MiddlewareData> = async (cont
         "style-src 'self' 'unsafe-inline'",
         "img-src 'self' data: blob: https:",
         "font-src 'self' data:",
-        "connect-src 'self' https://araharu-hub.simssijjang-a04.workers.dev", // 학교 순위 허브(직결) — 없으면 «불러오지 못했어요»
+        "connect-src 'self' https://ssam-count.simssijjang-korea.workers.dev", // 이용자 수 카운터 — 없으면 숫자가 안 뜬다
         "frame-ancestors 'none'",
         "base-uri 'self'",
         "form-action 'self'",

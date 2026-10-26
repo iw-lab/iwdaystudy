@@ -15,7 +15,7 @@ self.addEventListener("activate", (event) => {
 });
 // Never serve from cache - always pass through to network
 self.addEventListener("fetch", (event) => {
-  // 학교 순위(/api/·허브)는 서비스 워커를 거치지 않는다 — 첫 응답에 굳지 않게(키트 게이트 S5)
+  // /api/ 와 다른 출처(이용자 수 카운터)는 서비스 워커를 거치지 않는다
   const u = new URL(event.request.url);
   if (u.pathname.startsWith("/api/") || u.origin !== self.location.origin) return;
   event.respondWith(fetch(event.request));
