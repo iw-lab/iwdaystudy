@@ -19,7 +19,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const stats = [
-  { label: "학습 문제", value: "50,000+", icon: BookOpen, color: "text-blue-500" },
+  { label: "하루 문제", value: "15~21개", icon: BookOpen, color: "text-blue-500" },
   { label: "학년 커리큘럼", value: "6개 학년", icon: GraduationCap, color: "text-primary" },
   { label: "학습 과목", value: "12개", icon: Sparkles, color: "text-purple-500" },
   { label: "교육과정", value: "2022 개정", icon: Target, color: "text-orange-500" },
@@ -28,22 +28,22 @@ const stats = [
 const steps = [
   {
     step: 1,
-    title: "아이 정보 등록",
-    description: "학년과 학기를 입력하면 2022 개정 교육과정에 맞는 학습 세트가 자동으로 구성됩니다.",
+    title: "학년·학기 고르기",
+    description: "가입 없이 학년과 학기만 고르면 그날의 학습 세트가 기기에서 바로 만들어져요.",
     icon: GraduationCap,
     color: "bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400",
   },
   {
     step: 2,
-    title: "매일 아침 30분 학습",
-    description: "매일 새로운 학습 세트가 준비됩니다. 수학, 국어, 영어 등 다양한 과목을 아침 시간에 풀어요.",
+    title: "하루 한 세트",
+    description: "1~2학년 15문제, 3~4학년 20문제, 5~6학년 21문제를 여러 과목에서 조금씩 풀어요. 날마다 문제를 무작위로 새로 뽑고, 이미 푼 문제는 되도록 다시 내지 않아요.",
     icon: Clock,
     color: "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400",
   },
   {
     step: 3,
     title: "성장 기록 확인",
-    description: "학습 통계와 뱃지를 통해 아이의 성장을 확인하세요. AI가 약한 부분을 분석해 맞춤 추천합니다.",
+    description: "학습 통계와 뱃지로 아이의 성장을 확인하세요. 틀린 문제는 끝나자마자 다시 풀어 봐요.",
     icon: TrendingUp,
     color: "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400",
   },
@@ -52,33 +52,33 @@ const steps = [
 const values = [
   {
     icon: Heart,
-    title: "아이 중심",
-    description: "모든 콘텐츠는 아이의 발달 단계와 흥미를 고려하여 설계합니다. 학습이 즐거운 경험이 되도록 합니다.",
+    title: "학년 맞춤",
+    description: "1~2학년, 3~4학년, 5~6학년마다 과목 구성과 문제 수가 달라요. 3학년부터 한자·영어가 들어가요.",
   },
   {
     icon: Target,
-    title: "교육과정 기반",
-    description: "2022 개정 교육과정을 충실히 반영합니다. 학교 수업과 자연스럽게 연결되는 학습을 제공합니다.",
+    title: "학기 진도",
+    description: "수학·과학·사회·영어는 2022 개정 교육과정 단원을 기준으로 고른 학기 진도에 맞는 문제만 골라요.",
   },
   {
     icon: Shield,
     title: "안전한 환경",
-    description: "광고나 외부 링크 없이 안전한 학습 환경을 제공합니다. 아이가 혼자서도 안심하고 사용할 수 있어요.",
+    description: "광고도 가입도 없고, 이름·이메일 같은 개인정보를 받지 않아요. 기록은 쓰는 기기에만 저장돼요.",
   },
   {
     icon: Lightbulb,
-    title: "꾸준한 습관",
-    description: "매일 30분이라는 적절한 분량으로 학습 습관을 형성합니다. 작은 성취가 쌓여 큰 성장이 됩니다.",
+    title: "틀린 문제 다시 풀기",
+    description: "세트를 끝내면 바로 채점하고, 틀린 문제는 그 자리에서 다시 풀어 봐요.",
   },
   {
     icon: Brain,
-    title: "AI 맞춤 학습",
-    description: "AI가 아이의 학습 패턴과 취약점을 분석하여 최적의 문제를 추천합니다. 개인화된 학습 경험을 제공합니다.",
+    title: "정답률에 따라 난이도 조절",
+    description: "AI가 아니라 정해진 규칙이에요. 과목마다 정답률이 85% 이상이면 조금 어렵게, 45% 이하면 조금 쉽게 내요.",
   },
   {
     icon: Sparkles,
     title: "동기부여",
-    description: "뱃지, 연속 학습 기록, 레벨 시스템으로 아이 스스로 동기를 유지합니다. 칭찬과 격려가 함께합니다.",
+    description: "뱃지, 연속 학습 기록, 경험치 레벨이 있고 문제마다 마스코트가 반응해요.",
   },
 ];
 
@@ -276,7 +276,7 @@ export default function AboutPage() {
               기대하는 세상을 만들고 싶습니다.&rdquo;
             </blockquote>
             <p className="mt-6 text-muted-foreground">
-              아라하루 팀 일동
+              심선생
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5">
@@ -302,19 +302,11 @@ export default function AboutPage() {
               <span className="text-primary">시작해 보세요</span>
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              무료 플랜으로 아라하루의 학습 경험을 직접 체험해 보세요.
+              가입 없이 무료로, 학년만 고르면 바로 시작해요.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button size="lg" className="h-12 px-8 text-base" asChild>
-                <Link href="/">무료로 시작하기</Link>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="h-12 px-8 text-base"
-                asChild
-              >
-                <Link href="/pricing">요금제 보기</Link>
+                <Link href="/">바로 시작하기</Link>
               </Button>
             </div>
           </motion.div>

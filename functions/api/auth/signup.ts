@@ -19,6 +19,9 @@ interface SignupBody {
 }
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
+  // 2026-10-26 사용자 «아라하루 개인정보 이제 안 받기로» — 새 계정(이름·이메일)은 받지 않는다. 화면은 10-13 에 이미 없앴는데 API 가 살아 있었다.
+  // 🔒 tests/policy-pages.test.mjs «계정 만들기 API 닫힘»
+  if (context) return jsonResponse({ message: "아라하루는 이제 가입 없이 씁니다. 회원가입는 닫혔어요." }, 410);
   try {
     const body = (await context.request.json()) as SignupBody;
     const { email, password, name, role, grade, semester, school_name } = body;

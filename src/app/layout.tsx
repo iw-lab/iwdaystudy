@@ -21,7 +21,7 @@ const nanumPen = Nanum_Pen_Script({
 export const metadata: Metadata = {
   title: "아라하루 - 매일 아침, 알아가는 즐거움",
   description:
-    "초등 1~6학년 맞춤 일일학습 프로그램. 2022 개정 교육과정 기반 매일 30분 아침학습으로 학습 습관을 키워요.",
+    "초등 1~6학년이 학년·학기를 골라 하루 한 세트(15~21문제)씩 푸는 아침학습. 가입 없이 무료, 기록은 기기에만 저장.",
   keywords: [
     "초등학습",
     "일일학습",
