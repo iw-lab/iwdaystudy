@@ -64,3 +64,7 @@ gen_reading_data.js
 
 # 학교 허브 비밀(키트)
 .secrets/
+
+# 전수검수 덤프(다시 뽑을 수 있고 50MB 넘는다)·파이썬 캐시
+scripts/audit/review/entries-g*.jsonl
+scripts/audit/review/__pycache__/

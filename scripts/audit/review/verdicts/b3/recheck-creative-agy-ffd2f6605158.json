@@ -1,0 +1,1 @@
+{"band": 3, "keymap": {"ffd2f6605158": [[5, "403a9d96e56ab678"], [6, "d503af274ce1f577"]]}, "pool": "creative", "idx": 5, "model": "codex", "lane": "codex", "keys": ["ffd2f6605158"], "verdicts": [{"k": "ffd2f6605158", "v": "keep", "why": [], "x": ["바다", "강물", "들판"], "fit": {"5": "ok", "6": "ok"}}], "missing": []}

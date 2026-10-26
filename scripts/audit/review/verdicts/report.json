@@ -1,0 +1,861 @@
+{
+ "stats": {
+  "keep": 36644,
+  "fix": 13353,
+  "fixed_or_kept": 13498,
+  "too_hard": 5573,
+  "x": 35088,
+  "drop": 931,
+  "fix_invalid_ignored": 145,
+  "fix_invalid_drop": 42,
+  "v_missing": 74,
+  "manual": 1,
+  "lint_R52_drop": 48,
+  "lint_R52_patch_dropped": 10,
+  "lint_R82_patch_dropped": 9,
+  "too_easy_dropped": 2826,
+  "too_easy_kept": 84
+ },
+ "why": {
+  "safety/ambiguous": 2676,
+  "english/grammar": 1914,
+  "safety/grammar": 1807,
+  "knowledge/ambiguous": 1136,
+  "knowledge/grammar": 834,
+  "english/too_hard": 787,
+  "knowledge/too_hard": 698,
+  "safety/too_hard": 685,
+  "writing/grammar": 627,
+  "vocab/ambiguous": 621,
+  "hanja/other": 606,
+  "safety/leak": 506,
+  "hanja/too_hard": 448,
+  "spelling/ambiguous": 415,
+  "hanja/wrong": 390,
+  "safety/wrong": 383,
+  "safety/too_easy": 373,
+  "creative/ambiguous": 371,
+  "writing/unsolvable": 366,
+  "vocab/too_hard": 354,
+  "hanja/leak": 306,
+  "safety/other": 305,
+  "knowledge/leak": 274,
+  "knowledge/wrong": 272,
+  "creative/grammar": 270,
+  "vocab/leak": 252,
+  "hanja/grammar": 252,
+  "science/ambiguous": 249,
+  "koreanReading/grammar": 230,
+  "knowledge/other": 229,
+  "writing/too_hard": 225,
+  "english/other": 224,
+  "spelling/other": 223,
+  "science/grammar": 223,
+  "knowledge/too_easy": 219,
+  "writing/other": 215,
+  "vocab/wrong": 214,
+  "creative/leak": 207,
+  "creative/too_hard": 189,
+  "vocab/grammar": 189,
+  "english/wrong": 181,
+  "science/too_hard": 140,
+  "social/ambiguous": 132,
+  "creative/wrong": 130,
+  "creative/other": 118,
+  "social/leak": 118,
+  "social/grammar": 113,
+  "koreanReading/ambiguous": 112,
+  "hanja/ambiguous": 104,
+  "spelling/too_easy": 101,
+  "spelling/wrong": 100,
+  "science/too_easy": 92,
+  "vocab/too_easy": 89,
+  "vocab/other": 82,
+  "english/ambiguous": 78,
+  "creative/too_easy": 77,
+  "social/wrong": 75,
+  "social/too_easy": 71,
+  "safety/unsolvable": 67,
+  "science/leak": 67,
+  "spelling/too_hard": 62,
+  "science/wrong": 53,
+  "koreanReading/too_hard": 51,
+  "science/other": 49,
+  "english/leak": 47,
+  "spelling/grammar": 44,
+  "english/unsolvable": 44,
+  "koreanReading/wrong": 40,
+  "english/too_easy": 38,
+  "idioms/leak": 36,
+  "safety/inappropriate": 35,
+  "synonymPairs/wrong": 34,
+  "antonymPairs/leak": 30,
+  "korean/ambiguous": 30,
+  "writing/ambiguous": 28,
+  "social/too_hard": 28,
+  "writing/too_easy": 27,
+  "social/other": 26,
+  "math/grammar": 25,
+  "english/inappropriate": 25,
+  "idioms/too_hard": 24,
+  "korean/too_hard": 24,
+  "hanja/inappropriate": 24,
+  "koreanReading/leak": 23,
+  "koreanReading/other": 22,
+  "multiMeaningWords/too_hard": 22,
+  "hanja/too_easy": 22,
+  "korean/leak": 19,
+  "antonymPairs/too_hard": 18,
+  "knowledge/unsolvable": 18,
+  "spelling/unsolvable": 18,
+  "vocab/unsolvable": 18,
+  "wordPuzzles/other": 18,
+  "multiMeaningWords/grammar": 14,
+  "creative/unsolvable": 13,
+  "koreanReading/unsolvable": 13,
+  "korean/wrong": 12,
+  "wordPuzzles/grammar": 12,
+  "wordPuzzles/too_hard": 12,
+  "writing/inappropriate": 12,
+  "idioms/unsolvable": 12,
+  "math/unsolvable": 10,
+  "korean/grammar": 9,
+  "synonymPairs/ambiguous": 8,
+  "antonymPairs/other": 8,
+  "multiMeaningWords/unsolvable": 8,
+  "math/ambiguous": 7,
+  "synonymPairs/leak": 6,
+  "synonymPairs/too_hard": 6,
+  "wordPuzzles/leak": 6,
+  "wordPuzzles/wrong": 6,
+  "antonymPairs/ambiguous": 6,
+  "vocab/inappropriate": 5,
+  "koreanReading/too_easy": 5,
+  "idioms/other": 4,
+  "math/too_hard": 4,
+  "math/other": 4,
+  "multiMeaningWords/ambiguous": 4,
+  "antonymPairs/wrong": 4,
+  "multiMeaningWords/wrong": 4,
+  "synonymPairs/other": 4,
+  "idioms/grammar": 4,
+  "science/unsolvable": 4,
+  "korean/unsolvable": 2,
+  "koreanReading/inappropriate": 2,
+  "multiMeaningWords/other": 2,
+  "spelling/inappropriate": 2,
+  "writing/wrong": 2,
+  "antonymPairs/grammar": 2,
+  "creative/inappropriate": 2,
+  "synonymPairs/grammar": 2,
+  "antonymPairs/too_easy": 2,
+  "hanja/unsolvable": 2,
+  "knowledge/ leak": 2,
+  "multiMeaningWords/leak": 2,
+  "multiMeaningWords/inappropriate": 2,
+  "multiMeaningWords/too_easy": 2,
+  "wordPuzzles/ambiguous": 2,
+  "idioms/wrong": 2,
+  "social/unsolvable": 1
+ },
+ "too_easy": {
+  "g2/creative": {
+   "too_easy": 5,
+   "dropped": true,
+   "left": 326
+  },
+  "g2/knowledge": {
+   "too_easy": 8,
+   "dropped": true,
+   "left": 701
+  },
+  "g2/vocab": {
+   "too_easy": 1,
+   "dropped": true,
+   "left": 759
+  },
+  "g3/antonymPairs": {
+   "too_easy": 11,
+   "dropped": false,
+   "left": 28
+  },
+  "g4/antonymPairs": {
+   "too_easy": 11,
+   "dropped": false,
+   "left": 33
+  },
+  "g3/creative": {
+   "too_easy": 29,
+   "dropped": true,
+   "left": 365
+  },
+  "g4/creative": {
+   "too_easy": 55,
+   "dropped": true,
+   "left": 403
+  },
+  "g4/english": {
+   "too_easy": 1,
+   "dropped": true,
+   "left": 1971
+  },
+  "g3/hanja": {
+   "too_easy": 4,
+   "dropped": true,
+   "left": 363
+  },
+  "g4/hanja": {
+   "too_easy": 5,
+   "dropped": true,
+   "left": 398
+  },
+  "g3/knowledge": {
+   "too_easy": 94,
+   "dropped": true,
+   "left": 677
+  },
+  "g4/knowledge": {
+   "too_easy": 99,
+   "dropped": true,
+   "left": 632
+  },
+  "g4/koreanReading": {
+   "too_easy": 1,
+   "dropped": true,
+   "left": 129
+  },
+  "g3/koreanReading": {
+   "too_easy": 17,
+   "dropped": true,
+   "left": 318
+  },
+  "g4/safety": {
+   "too_easy": 28,
+   "dropped": true,
+   "left": 1534
+  },
+  "g3/safety": {
+   "too_easy": 17,
+   "dropped": true,
+   "left": 1627
+  },
+  "g3/spelling": {
+   "too_easy": 50,
+   "dropped": true,
+   "left": 556
+  },
+  "g4/spelling": {
+   "too_easy": 82,
+   "dropped": true,
+   "left": 614
+  },
+  "g3/synonymPairs": {
+   "too_easy": 2,
+   "dropped": false,
+   "left": 36
+  },
+  "g4/synonymPairs": {
+   "too_easy": 2,
+   "dropped": false,
+   "left": 39
+  },
+  "g3/vocab": {
+   "too_easy": 219,
+   "dropped": true,
+   "left": 601
+  },
+  "g4/vocab": {
+   "too_easy": 229,
+   "dropped": true,
+   "left": 625
+  },
+  "g3/wordPuzzles": {
+   "too_easy": 24,
+   "dropped": false,
+   "left": 30
+  },
+  "g4/wordPuzzles": {
+   "too_easy": 26,
+   "dropped": false,
+   "left": 30
+  },
+  "g5/creative": {
+   "too_easy": 44,
+   "dropped": true,
+   "left": 450
+  },
+  "g6/creative": {
+   "too_easy": 58,
+   "dropped": true,
+   "left": 451
+  },
+  "g6/english": {
+   "too_easy": 47,
+   "dropped": true,
+   "left": 535
+  },
+  "g5/english": {
+   "too_easy": 19,
+   "dropped": true,
+   "left": 649
+  },
+  "g5/hanja": {
+   "too_easy": 31,
+   "dropped": true,
+   "left": 794
+  },
+  "g6/hanja": {
+   "too_easy": 36,
+   "dropped": true,
+   "left": 823
+  },
+  "g5/knowledge": {
+   "too_easy": 69,
+   "dropped": true,
+   "left": 634
+  },
+  "g6/knowledge": {
+   "too_easy": 62,
+   "dropped": true,
+   "left": 723
+  },
+  "g6/koreanReading": {
+   "too_easy": 1,
+   "dropped": false,
+   "left": 73
+  },
+  "g5/safety": {
+   "too_easy": 287,
+   "dropped": true,
+   "left": 1930
+  },
+  "g6/safety": {
+   "too_easy": 287,
+   "dropped": true,
+   "left": 1933
+  },
+  "g5/science": {
+   "too_easy": 103,
+   "dropped": true,
+   "left": 416
+  },
+  "g6/science": {
+   "too_easy": 104,
+   "dropped": true,
+   "left": 311
+  },
+  "g5/social": {
+   "too_easy": 78,
+   "dropped": true,
+   "left": 480
+  },
+  "g6/social": {
+   "too_easy": 142,
+   "dropped": true,
+   "left": 528
+  },
+  "g5/spelling": {
+   "too_easy": 195,
+   "dropped": true,
+   "left": 726
+  },
+  "g6/spelling": {
+   "too_easy": 208,
+   "dropped": true,
+   "left": 726
+  },
+  "g5/vocab": {
+   "too_easy": 45,
+   "dropped": true,
+   "left": 741
+  },
+  "g6/vocab": {
+   "too_easy": 61,
+   "dropped": true,
+   "left": 752
+  },
+  "g5/wordPuzzles": {
+   "too_easy": 3,
+   "dropped": false,
+   "left": 29
+  },
+  "g6/wordPuzzles": {
+   "too_easy": 4,
+   "dropped": false,
+   "left": 29
+  },
+  "g5/writing": {
+   "too_easy": 3,
+   "dropped": true,
+   "left": 725
+  },
+  "g6/writing": {
+   "too_easy": 3,
+   "dropped": true,
+   "left": 738
+  }
+ },
+ "pools": {
+  "g1/antonymPairs": {
+   "total": 20,
+   "left": 20,
+   "reviewed": 20
+  },
+  "g1/creative": {
+   "total": 396,
+   "left": 312,
+   "reviewed": 396
+  },
+  "g1/idioms": {
+   "total": 15,
+   "left": 8,
+   "reviewed": 15
+  },
+  "g1/knowledge": {
+   "total": 964,
+   "left": 801,
+   "reviewed": 964
+  },
+  "g1/korean": {
+   "total": 139,
+   "left": 118,
+   "reviewed": 139
+  },
+  "g1/koreanReading": {
+   "total": 368,
+   "left": 361,
+   "reviewed": 368
+  },
+  "g1/math": {
+   "total": 105,
+   "left": 104,
+   "reviewed": 105
+  },
+  "g1/multiMeaningWords": {
+   "total": 8,
+   "left": 0,
+   "reviewed": 8
+  },
+  "g1/safety": {
+   "total": 1027,
+   "left": 958,
+   "reviewed": 1027
+  },
+  "g1/spelling": {
+   "total": 322,
+   "left": 292,
+   "reviewed": 322
+  },
+  "g1/synonymPairs": {
+   "total": 20,
+   "left": 9,
+   "reviewed": 20
+  },
+  "g1/vocab": {
+   "total": 941,
+   "left": 886,
+   "reviewed": 941
+  },
+  "g1/wordPuzzles": {
+   "total": 20,
+   "left": 20,
+   "reviewed": 20
+  },
+  "g1/writing": {
+   "total": 597,
+   "left": 571,
+   "reviewed": 597
+  },
+  "g2/antonymPairs": {
+   "total": 20,
+   "left": 20,
+   "reviewed": 20
+  },
+  "g2/creative": {
+   "total": 401,
+   "left": 326,
+   "reviewed": 401
+  },
+  "g2/idioms": {
+   "total": 15,
+   "left": 15,
+   "reviewed": 15
+  },
+  "g2/knowledge": {
+   "total": 872,
+   "left": 701,
+   "reviewed": 872
+  },
+  "g2/korean": {
+   "total": 132,
+   "left": 96,
+   "reviewed": 132
+  },
+  "g2/koreanReading": {
+   "total": 368,
+   "left": 356,
+   "reviewed": 368
+  },
+  "g2/math": {
+   "total": 65,
+   "left": 65,
+   "reviewed": 65
+  },
+  "g2/multiMeaningWords": {
+   "total": 8,
+   "left": 0,
+   "reviewed": 8
+  },
+  "g2/safety": {
+   "total": 967,
+   "left": 945,
+   "reviewed": 967
+  },
+  "g2/spelling": {
+   "total": 451,
+   "left": 392,
+   "reviewed": 451
+  },
+  "g2/synonymPairs": {
+   "total": 20,
+   "left": 11,
+   "reviewed": 20
+  },
+  "g2/vocab": {
+   "total": 811,
+   "left": 759,
+   "reviewed": 811
+  },
+  "g2/wordPuzzles": {
+   "total": 20,
+   "left": 20,
+   "reviewed": 20
+  },
+  "g2/writing": {
+   "total": 594,
+   "left": 586,
+   "reviewed": 594
+  },
+  "g3/antonymPairs": {
+   "total": 35,
+   "left": 28,
+   "reviewed": 35
+  },
+  "g3/creative": {
+   "total": 520,
+   "left": 366,
+   "reviewed": 520
+  },
+  "g3/english": {
+   "total": 3114,
+   "left": 2505,
+   "reviewed": 3114
+  },
+  "g3/hanja": {
+   "total": 524,
+   "left": 363,
+   "reviewed": 524
+  },
+  "g3/idioms": {
+   "total": 30,
+   "left": 30,
+   "reviewed": 30
+  },
+  "g3/knowledge": {
+   "total": 1122,
+   "left": 677,
+   "reviewed": 1122
+  },
+  "g3/koreanReading": {
+   "total": 368,
+   "left": 318,
+   "reviewed": 368
+  },
+  "g3/math": {
+   "total": 56,
+   "left": 54,
+   "reviewed": 56
+  },
+  "g3/multiMeaningWords": {
+   "total": 16,
+   "left": 0,
+   "reviewed": 16
+  },
+  "g3/safety": {
+   "total": 1704,
+   "left": 1627,
+   "reviewed": 1704
+  },
+  "g3/spelling": {
+   "total": 660,
+   "left": 556,
+   "reviewed": 660
+  },
+  "g3/synonymPairs": {
+   "total": 40,
+   "left": 36,
+   "reviewed": 40
+  },
+  "g3/vocab": {
+   "total": 925,
+   "left": 601,
+   "reviewed": 925
+  },
+  "g3/wordPuzzles": {
+   "total": 35,
+   "left": 30,
+   "reviewed": 35
+  },
+  "g3/writing": {
+   "total": 831,
+   "left": 824,
+   "reviewed": 831
+  },
+  "g4/antonymPairs": {
+   "total": 35,
+   "left": 33,
+   "reviewed": 35
+  },
+  "g4/creative": {
+   "total": 520,
+   "left": 403,
+   "reviewed": 520
+  },
+  "g4/english": {
+   "total": 2224,
+   "left": 1971,
+   "reviewed": 2224
+  },
+  "g4/hanja": {
+   "total": 524,
+   "left": 398,
+   "reviewed": 524
+  },
+  "g4/idioms": {
+   "total": 30,
+   "left": 30,
+   "reviewed": 30
+  },
+  "g4/knowledge": {
+   "total": 967,
+   "left": 632,
+   "reviewed": 967
+  },
+  "g4/koreanReading": {
+   "total": 152,
+   "left": 129,
+   "reviewed": 152
+  },
+  "g4/math": {
+   "total": 28,
+   "left": 28,
+   "reviewed": 28
+  },
+  "g4/multiMeaningWords": {
+   "total": 16,
+   "left": 0,
+   "reviewed": 16
+  },
+  "g4/safety": {
+   "total": 1607,
+   "left": 1534,
+   "reviewed": 1607
+  },
+  "g4/spelling": {
+   "total": 777,
+   "left": 614,
+   "reviewed": 777
+  },
+  "g4/synonymPairs": {
+   "total": 40,
+   "left": 39,
+   "reviewed": 40
+  },
+  "g4/vocab": {
+   "total": 911,
+   "left": 625,
+   "reviewed": 911
+  },
+  "g4/wordPuzzles": {
+   "total": 35,
+   "left": 30,
+   "reviewed": 35
+  },
+  "g4/writing": {
+   "total": 829,
+   "left": 824,
+   "reviewed": 829
+  },
+  "g5/antonymPairs": {
+   "total": 30,
+   "left": 23,
+   "reviewed": 30
+  },
+  "g5/creative": {
+   "total": 580,
+   "left": 450,
+   "reviewed": 580
+  },
+  "g5/english": {
+   "total": 855,
+   "left": 649,
+   "reviewed": 855
+  },
+  "g5/hanja": {
+   "total": 1012,
+   "left": 794,
+   "reviewed": 1012
+  },
+  "g5/idioms": {
+   "total": 30,
+   "left": 23,
+   "reviewed": 30
+  },
+  "g5/knowledge": {
+   "total": 904,
+   "left": 634,
+   "reviewed": 904
+  },
+  "g5/koreanReading": {
+   "total": 127,
+   "left": 103,
+   "reviewed": 127
+  },
+  "g5/math": {
+   "total": 75,
+   "left": 74,
+   "reviewed": 75
+  },
+  "g5/multiMeaningWords": {
+   "total": 16,
+   "left": 0,
+   "reviewed": 16
+  },
+  "g5/safety": {
+   "total": 2322,
+   "left": 1930,
+   "reviewed": 2322
+  },
+  "g5/science": {
+   "total": 699,
+   "left": 416,
+   "reviewed": 699
+  },
+  "g5/social": {
+   "total": 583,
+   "left": 480,
+   "reviewed": 583
+  },
+  "g5/spelling": {
+   "total": 975,
+   "left": 726,
+   "reviewed": 975
+  },
+  "g5/synonymPairs": {
+   "total": 40,
+   "left": 31,
+   "reviewed": 40
+  },
+  "g5/vocab": {
+   "total": 870,
+   "left": 741,
+   "reviewed": 870
+  },
+  "g5/wordPuzzles": {
+   "total": 30,
+   "left": 29,
+   "reviewed": 30
+  },
+  "g5/writing": {
+   "total": 750,
+   "left": 725,
+   "reviewed": 750
+  },
+  "g6/antonymPairs": {
+   "total": 30,
+   "left": 23,
+   "reviewed": 30
+  },
+  "g6/creative": {
+   "total": 580,
+   "left": 451,
+   "reviewed": 580
+  },
+  "g6/english": {
+   "total": 934,
+   "left": 535,
+   "reviewed": 934
+  },
+  "g6/hanja": {
+   "total": 1012,
+   "left": 823,
+   "reviewed": 1012
+  },
+  "g6/idioms": {
+   "total": 30,
+   "left": 23,
+   "reviewed": 30
+  },
+  "g6/knowledge": {
+   "total": 910,
+   "left": 723,
+   "reviewed": 910
+  },
+  "g6/koreanReading": {
+   "total": 106,
+   "left": 73,
+   "reviewed": 106
+  },
+  "g6/math": {
+   "total": 48,
+   "left": 48,
+   "reviewed": 48
+  },
+  "g6/multiMeaningWords": {
+   "total": 16,
+   "left": 1,
+   "reviewed": 16
+  },
+  "g6/safety": {
+   "total": 2321,
+   "left": 1933,
+   "reviewed": 2321
+  },
+  "g6/science": {
+   "total": 518,
+   "left": 311,
+   "reviewed": 518
+  },
+  "g6/social": {
+   "total": 712,
+   "left": 528,
+   "reviewed": 712
+  },
+  "g6/spelling": {
+   "total": 989,
+   "left": 726,
+   "reviewed": 989
+  },
+  "g6/synonymPairs": {
+   "total": 40,
+   "left": 32,
+   "reviewed": 40
+  },
+  "g6/vocab": {
+   "total": 871,
+   "left": 752,
+   "reviewed": 871
+  },
+  "g6/wordPuzzles": {
+   "total": 30,
+   "left": 29,
+   "reviewed": 30
+  },
+  "g6/writing": {
+   "total": 751,
+   "left": 738,
+   "reviewed": 751
+  }
+ },
+ "size_kb": 3148
+}

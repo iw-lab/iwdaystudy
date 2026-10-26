@@ -13,6 +13,7 @@
  * (환경변수 VERIFY_SETS_PER_COMBO로 세트 수 조절 가능, 기본 100)
  */
 import { generateDailySet } from "../src/lib/daily-set-generator";
+import "./audit/review/load-review-sync";
 import { numberHasBatchim, hasBatchim, isRieul } from "../src/lib/korean-josa";
 
 const SETS_PER_COMBO = Number(process.env.VERIFY_SETS_PER_COMBO || 100);

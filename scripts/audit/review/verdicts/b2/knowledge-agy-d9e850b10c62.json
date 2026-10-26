@@ -1,0 +1,1 @@
+{"band": 2, "keymap": {"d9e850b10c62": [[3, "41aed86365592349"], [4, "8d089468c4283a74"]]}, "pool": "knowledge", "idx": 1, "model": "meta", "lane": "meta", "keys": ["d9e850b10c62"], "verdicts": [{"k": "d9e850b10c62", "v": "keep", "why": [], "p": {}, "x": ["지구", "화성", "금성"], "fit": {"3": "ok", "4": "ok"}}], "missing": []}

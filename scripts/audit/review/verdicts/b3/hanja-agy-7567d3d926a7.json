@@ -1,0 +1,1 @@
+{"band": 3, "keymap": {"7567d3d926a7": [[5, "2577a21e91d56845"], [6, "97a43a991f024868"]]}, "pool": "hanja", "idx": 0, "model": "gptweb", "lane": "gptweb", "keys": ["7567d3d926a7"], "verdicts": [{"k": "7567d3d926a7", "v": "keep", "why": [], "fit": {"5": "ok", "6": "ok"}}], "missing": []}

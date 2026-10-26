@@ -1,4 +1,5 @@
 import { generateDailySetWithoutRepeats } from "../src/lib/daily-set-generator";
+import "./audit/review/load-review-sync";
 
 for (const grade of [1, 2, 3, 4, 5, 6]) {
   for (const semester of [1, 2]) {

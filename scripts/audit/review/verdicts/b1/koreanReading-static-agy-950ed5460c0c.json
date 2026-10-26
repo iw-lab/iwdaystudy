@@ -1,0 +1,1 @@
+{"band": 1, "keymap": {"950ed5460c0c": [[2, "64a22c8a3b37f764"]]}, "pool": "koreanReading", "idx": 0, "model": "gptweb", "lane": "gptweb", "keys": ["950ed5460c0c"], "verdicts": [{"k": "950ed5460c0c", "v": "keep", "why": [], "x": ["흙을 덮었어요", "싹이 올라왔어요", "물을 주었어요"], "fit": {"2": "ok"}}], "missing": []}

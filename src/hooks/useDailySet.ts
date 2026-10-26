@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useAuthStore } from "@/stores/authStore";
 import type { DailySetWithQuestions } from "@/types/learning";
 import { generateDailySetWithoutRepeats } from "@/lib/daily-set-generator";
+import { loadContentReview } from "@/lib/content-review";
 import { MAX_DAILY_SETS } from "@/lib/constants";
 import {
   getLearningRecords,
@@ -26,7 +27,7 @@ import {
 // v12: 세트 구조 개편 — 세트당 문항 42→원래(15/20/21) 복귀 + 하루 최대 3세트 순차 제공.
 //      수학 전수검수 반영(약분 기약분수 오답, 분수 답형식 모호, 분수→소수 반올림 오답,
 //      백분율/할인가 비정수, 음수 결과, 단위혼합 답 모호 등) + 힌트 전면 교체(답노출 제거).
-const SET_VERSION = 14;
+const SET_VERSION = 15; // 15: 문항 전수검수 반영(2026-10-26) — 오늘 이미 만든 옛 세트를 새로 만든다
 const TODAY_SET_PREFIX = "araharu_today_set_";
 
 function getTodayKey(userId: string, slot: number): string {
@@ -100,7 +101,8 @@ export function useDailySet() {
           localStorage.removeItem(todayKey);
         }
 
-        // 이 슬롯의 새 세트 생성
+        // 이 슬롯의 새 세트 생성 — 학년 검수 데이터(뺄 문항·고친 문항·오답 보기)를 먼저 불러온다
+        await loadContentReview(Number(user.grade));
         const usedQuestionSignatures = getSeenQuestionSignatures(user.id);
         const subjectAccuracy = getSubjectStats(user.id);
         const setData = generateDailySetWithoutRepeats(

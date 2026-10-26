@@ -10,6 +10,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { generateDailySet } from "../../src/lib/daily-set-generator";
+import "./review/load-review-sync"; // 학생이 실제로 받는(검수 반영된) 문항을 뽑는다
 
 const N = Number(process.env.AUDIT_SETS || 80);
 const ONLY = process.env.AUDIT_GRADE ? Number(process.env.AUDIT_GRADE) : 0;

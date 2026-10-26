@@ -9,6 +9,17 @@
  *  - 5~6학년: 설명문·논설문 주제 × 구조 템플릿 + 추론/의미 문항. 500+/학년.
  */
 import type { ReadingEntry } from "@/types/curriculum";
+// 주제 표 검수 결과(scripts/audit/review/build-reading-review.py 가 만든다 — 손으로 고치지 않는다)
+import READING_REVIEW from "./reading-review.json";
+
+type QA = { q: string; a: string; pool: string[] };
+type T34Review = { drop?: boolean; fit?: Record<string, string>; p?: Record<string, unknown>; keyFact?: "keep" | null | QA; falses?: string[] };
+type T56Review = { drop?: boolean; fit?: Record<string, string>; p?: Record<string, unknown> };
+type G12Review = { fix?: { sound?: string; food?: string }; places?: string[]; activities?: string[]; noSound?: boolean };
+const RR = READING_REVIEW as unknown as { t34: Record<string, T34Review>; t56: Record<string, T56Review>; g12: Record<string, G12Review> };
+// 학년에 쓸 수 있는 주제인가(검수에서 빠졌거나 그 학년엔 너무 어려우면 뺀다)
+const usableFor = (r: { drop?: boolean; fit?: Record<string, string> } | undefined, grade: number) =>
+  !r || (!r.drop && r.fit?.[String(grade)] !== "too_hard");
 
 // ────────────────────────────────────────────────
 // 공통 유틸
@@ -62,7 +73,7 @@ function uniqueChoices(correct: string, pool: string[], random: () => number): s
 // ────────────────────────────────────────────────
 // 1~2학년: 서사문 템플릿 기반 지문
 // ────────────────────────────────────────────────
-const G12_SUBJECTS = [
+export const G12_SUBJECTS = [
   { name: "강아지", sound: "멍멍", food: "사료" },
   { name: "고양이", sound: "야옹", food: "생선" },
   { name: "토끼", sound: "깡충깡충", food: "당근" },
@@ -95,14 +106,14 @@ const G12_SUBJECTS = [
   { name: "물고기", sound: "뻐끔뻐끔", food: "물고기 밥" },
 ];
 
-const G12_PLACES = [
+export const G12_PLACES = [
   "공원", "놀이터", "운동장", "마당", "거실", "부엌", "방", "화장실",
   "학교", "교실", "도서관", "강당", "운동장", "꽃밭", "정원", "숲",
   "산", "들판", "풀밭", "나무 위", "연못", "강가", "바닷가", "호수",
   "동물원", "수족관", "시장", "가게", "놀이공원", "병원",
 ];
 
-const G12_ACTIVITIES = [
+export const G12_ACTIVITIES = [
   "놀았어요", "뛰었어요", "걸었어요", "쉬었어요", "잠을 잤어요",
   "뛰어놀았어요", "공놀이를 했어요", "달리기를 했어요", "웃었어요",
   "노래를 불렀어요", "춤을 추었어요", "숨바꼭질을 했어요",
@@ -115,17 +126,28 @@ function genGrade12Reading(seed: number): ReadingEntry[] {
   const random = seededRandom(seed);
   const out: ReadingEntry[] = [];
 
-  const subjects = shuffle(G12_SUBJECTS, random);
+  // 검수 반영: 울음소리·먹이 고침, 그 동물에게 어울리는 장소·행동만(«얼룩말이 시장에서 기지개» 같은 조합을 막는다)
+  const fixed = G12_SUBJECTS.map((x) => ({ ...x, ...(RR.g12[x.name]?.fix || {}) }));
+  const subjects = shuffle(fixed, random);
   const places = shuffle(G12_PLACES, random);
   const activities = shuffle(G12_ACTIVITIES, random);
   const placeNames = G12_PLACES;
-  const subjectNames = G12_SUBJECTS.map((s) => s.name);
+  const okPlaces = (name: string) => {
+    const r = RR.g12[name]?.places?.filter((x) => G12_PLACES.includes(x));
+    return r && r.length ? shuffle(r, random) : places;
+  };
+  const okActs = (name: string) => {
+    const r = RR.g12[name]?.activities?.filter((x) => G12_ACTIVITIES.includes(x));
+    return r && r.length ? shuffle(r, random) : activities;
+  };
+  const voiced = subjects.filter((x) => !RR.g12[x.name]?.noSound);
 
   // 템플릿 A: "X가 Y에서 Z했어요" 구조 — 장소 묻기
   for (let i = 0; i < 250; i++) {
     const s = subjects[i % subjects.length];
-    const p = places[(i * 3) % places.length];
-    const a = activities[(i * 7) % activities.length];
+    const sp = okPlaces(s.name), sa = okActs(s.name);
+    const p = sp[(i * 3) % sp.length];
+    const a = sa[(i * 7) % sa.length];
     const f = pickOne(G12_FEELINGS, random);
     const passage = `${s.name}${이가(s.name)} ${p}에서 ${a}. ${s.name}${은는(s.name)} 정말 ${f}. 친구들도 옆에서 함께 ${a}.`;
     out.push({
@@ -139,10 +161,11 @@ function genGrade12Reading(seed: number): ReadingEntry[] {
 
   // 템플릿 B: "X가 Y소리를 내며 Z를 먹고 싶어해요" — 먹이 묻기
   for (let i = 0; i < 200; i++) {
-    const s = subjects[(i * 5) % subjects.length];
-    const place = places[(i * 11) % places.length];
+    const s = voiced[(i * 5) % voiced.length];
+    const sp = okPlaces(s.name);
+    const place = sp[(i * 11) % sp.length];
     const passage = `${s.name}${이가(s.name)} "${s.sound}" 하고 울었어요. ${s.name}${은는(s.name)} ${s.food}${이가(s.food)} 먹고 싶었나 봐요. ${place}에서 ${s.food}${을를(s.food)} 발견하고 기뻐했어요.`;
-    const pool = G12_SUBJECTS.map((x) => x.food);
+    const pool = fixed.map((x) => x.food);
     out.push({
       passage,
       question: `${s.name}${은는(s.name)} 무엇이 먹고 싶었나요?`,
@@ -154,14 +177,16 @@ function genGrade12Reading(seed: number): ReadingEntry[] {
 
   // 템플릿 C: 여러 인물의 하루 — 주인공 묻기
   for (let i = 0; i < 180; i++) {
-    const s = subjects[(i * 13) % subjects.length];
-    const p = places[(i * 17) % places.length];
-    const a = activities[(i * 19) % activities.length];
+    const s = voiced[(i * 13) % voiced.length];
+    const sp = okPlaces(s.name), sa = okActs(s.name);
+    const p = sp[(i * 17) % sp.length];
+    const a = sa[(i * 19) % sa.length];
     const passage = `${p}에서 "${s.sound}" 하는 소리가 들렸어요. ${s.name}${이가(s.name)} ${a}. ${s.name}의 모습이 정말 귀여웠어요.`;
     out.push({
       passage,
       question: `"${s.sound}" 하고 소리를 낸 것은 누구인가요?`,
-      choices: uniqueChoices(s.name, subjectNames, random),
+      // 같은 소리를 내는 다른 동물(호랑이·곰 «어흥», 참새·앵무새 «짹짹»)이 보기에 있으면 답이 둘이 된다
+      choices: uniqueChoices(s.name, voiced.filter((x) => x.sound !== s.sound).map((x) => x.name), random),
       correct: s.name,
       category: "독해",
     });
@@ -181,7 +206,7 @@ type Topic34 = {
   category: string;
 };
 
-const TOPICS_34: Topic34[] = [
+export const TOPICS_34: Topic34[] = [
   {
     subject: "태권도",
     definition: "한국의 전통 무술이에요",
@@ -815,10 +840,17 @@ const TOPICS_34: Topic34[] = [
   },
 ];
 
-function genGrade34Reading(seed: number): ReadingEntry[] {
+function genGrade34Reading(seed: number, grade = 3): ReadingEntry[] {
   const random = seededRandom(seed);
   const out: ReadingEntry[] = [];
-  const topics = shuffle(TOPICS_34, random);
+  // 검수 반영: 학년에 안 맞는 주제는 빼고, 고친 정의·특징·핵심 물음을 덮는다
+  const reviewed: (Topic34 & { falses?: string[]; noKeyFact?: boolean })[] = TOPICS_34.filter((t) => usableFor(RR.t34[t.subject], grade)).map((t) => {
+    const r = RR.t34[t.subject];
+    if (!r) return t;
+    const kf = r.keyFact && r.keyFact !== "keep" ? r.keyFact : t.keyFact;
+    return { ...t, ...(r.p as Partial<Topic34>), keyFact: kf, falses: r.falses, noKeyFact: r.keyFact === null };
+  });
+  const topics = shuffle(reviewed, random);
 
   // 3-4학년 수준: 도입·연결·정리 문장을 더해 지문을 약 2배로 확장
   const INTRO_34 = [
@@ -840,14 +872,18 @@ function genGrade34Reading(seed: number): ReadingEntry[] {
     return `${intro} ${t.definition}. ${body} ${close}`;
   };
 
+  // 오답 = 검수가 쓴 «이 주제에 대한 틀린 문장» 3개(지문을 읽어야 가려진다).
+  // 검수가 없는 주제만 옛 방식(다른 주제 문장)으로 — 다른 주제 문장은 지문을 안 읽어도 티가 나서 쉬웠다(2026-10-26 전수검수).
+  const wrongs = (t: (typeof topics)[number], pool: string[], correct: string) =>
+    t.falses && t.falses.length >= 3 ? shuffle([correct, ...t.falses.slice(0, 3)], random) : uniqueChoices(correct, pool, random);
+
   // 유형 A: 주제·정의 묻기 (정의 문장이 정답)
   for (let i = 0; i < topics.length * 4; i++) {
     const t = topics[i % topics.length];
-    const defPool = TOPICS_34.map((x) => x.definition);
     out.push({
       passage: build34(t, i),
       question: `${t.subject}에 대한 설명으로 알맞은 것은?`,
-      choices: uniqueChoices(t.definition, defPool, random),
+      choices: wrongs(t, TOPICS_34.map((x) => x.definition), t.definition),
       correct: t.definition,
       category: t.category,
     });
@@ -857,19 +893,19 @@ function genGrade34Reading(seed: number): ReadingEntry[] {
   for (let i = 0; i < topics.length * 3; i++) {
     const t = topics[(i * 3) % topics.length];
     const fIndex = i % 3;
-    const allFeatures = TOPICS_34.flatMap((x) => x.features);
     out.push({
       passage: build34(t, i + 1),
       question: `${t.subject}의 특징으로 알맞은 것은?`,
-      choices: uniqueChoices(t.features[fIndex], allFeatures, random),
+      choices: wrongs(t, TOPICS_34.flatMap((x) => x.features), t.features[fIndex]),
       correct: t.features[fIndex],
       category: t.category,
     });
   }
 
-  // 유형 C: 핵심 사실(keyFact) 묻기
-  for (let i = 0; i < topics.length * 3; i++) {
-    const t = topics[(i * 5) % topics.length];
+  // 유형 C: 핵심 사실(keyFact) 묻기 — 지문으로 안 풀리는 물음은 검수가 다시 썼거나 뺐다(noKeyFact)
+  const withKey = topics.filter((t) => !t.noKeyFact);
+  for (let i = 0; i < withKey.length * 3; i++) {
+    const t = withKey[(i * 5) % withKey.length];
     out.push({
       passage: build34(t, i + 2),
       question: t.keyFact.q,
@@ -879,17 +915,20 @@ function genGrade34Reading(seed: number): ReadingEntry[] {
     });
   }
 
-  // 유형 D: "~에 해당하지 않는 것" (반대 선택)
+  // 유형 D: "~의 특징이 아닌 것" — 정답 = 이 주제에 대한 틀린 문장(다른 주제 문장이면 그 주제에도 맞는 말일 수 있어 답이 둘이 됐다)
   for (let i = 0; i < topics.length * 2; i++) {
     const t = topics[(i * 7) % topics.length];
-    const otherTopic = topics[(i * 11 + 1) % topics.length];
-    const wrongFeature = otherTopic !== t ? otherTopic.features[0] : TOPICS_34[0].features[0];
-    const choices = shuffle([wrongFeature, ...t.features], random);
+    let wrong: string;
+    if (t.falses && t.falses.length) wrong = t.falses[i % t.falses.length];
+    else {
+      const otherTopic = topics[(i * 11 + 1) % topics.length];
+      wrong = otherTopic !== t ? otherTopic.features[0] : TOPICS_34[0].features[0];
+    }
     out.push({
       passage: build34(t, i),
       question: `${t.subject}의 특징이 아닌 것은?`,
-      choices,
-      correct: wrongFeature,
+      choices: shuffle([wrong, ...t.features], random),
+      correct: wrong,
       category: t.category,
     });
   }
@@ -911,7 +950,7 @@ type Topic56 = {
   meaning?: { q: string; a: string; pool: string[] };
 };
 
-const TOPICS_56: Topic56[] = [
+export const TOPICS_56: Topic56[] = [
   {
     subject: "민주주의",
     lead: "민주주의란 국민이 나라의 주인인 정치 체제예요",
@@ -1917,15 +1956,21 @@ const TOPICS_56: Topic56[] = [
   },
 ];
 
-function genGrade56Reading(seed: number): ReadingEntry[] {
+function genGrade56Reading(seed: number, grade = 5): ReadingEntry[] {
   const random = seededRandom(seed);
   const out: ReadingEntry[] = [];
-  const topics = shuffle(TOPICS_56, random);
+  // 검수 반영: 학년에 안 맞는 주제는 빼고, 고친 지문 문장·물음을 덮는다(물음을 null 로 받으면 그 물음은 뺀다)
+  const reviewed56 = TOPICS_56.filter((t) => usableFor(RR.t56[t.subject], grade)).map((t) => {
+    const r = RR.t56[t.subject];
+    return r?.p ? ({ ...t, ...(r.p as Partial<Topic56>) } as Topic56) : t;
+  });
+  const topics = shuffle(reviewed56, random);
 
   // 5-6학년 수준: 도입·연결·정리 문장을 더해 지문을 약 2배로 확장
   const INTRO_56 = [
     (s: string) => `오늘은 '${s}'에 대해 자세히 알아볼까요?`,
-    (s: string) => `'${s}'은(는) 우리 생활과 깊이 관련되어 있어요.`,
+    // 조사는 괄호 앞 낱말로 고른다(«국제 연합(UN)» → 합 → «은»)
+    (s: string) => `'${s}'${은는(s.replace(/\s*\([^)]*\)$/, ""))} 우리 생활과 깊이 관련되어 있어요.`,
     (s: string) => `'${s}'에 대해 함께 차근차근 생각해 봐요.`,
   ];
   const BRIDGE_56 = [
@@ -1947,8 +1992,9 @@ function genGrade56Reading(seed: number): ReadingEntry[] {
   };
 
   // 유형 A: 중심 생각 / 주제
-  for (let i = 0; i < topics.length * 3; i++) {
-    const t = topics[i % topics.length];
+  const withMain = topics.filter((t) => t.main);
+  for (let i = 0; i < withMain.length * 3; i++) {
+    const t = withMain[i % withMain.length];
     out.push({
       passage: buildPassage(t, i),
       question: t.main.q,
@@ -1959,8 +2005,9 @@ function genGrade56Reading(seed: number): ReadingEntry[] {
   }
 
   // 유형 B: 세부 정보
-  for (let i = 0; i < topics.length * 3; i++) {
-    const t = topics[(i * 3) % topics.length];
+  const withDetail = topics.filter((t) => t.detail);
+  for (let i = 0; i < withDetail.length * 3; i++) {
+    const t = withDetail[(i * 3) % withDetail.length];
     out.push({
       passage: buildPassage(t, i + 1),
       question: t.detail.q,
@@ -1984,27 +2031,8 @@ function genGrade56Reading(seed: number): ReadingEntry[] {
     });
   }
 
-  // 유형 D: "글의 구조/전개 방식" 메타 질문
-  for (let i = 0; i < topics.length * 2; i++) {
-    const t = topics[(i * 5) % topics.length];
-    const structureAnswer =
-      t.category === "논설문"
-        ? "주장과 근거를 제시하고 결론을 내린다"
-        : "대상을 정의하고 특징을 설명한다";
-    const pool = [
-      "주장과 근거를 제시하고 결론을 내린다",
-      "대상을 정의하고 특징을 설명한다",
-      "시간 순서대로 사건을 나열한다",
-      "두 대상을 비교해 차이를 보여 준다",
-    ];
-    out.push({
-      passage: buildPassage(t, i),
-      question: "이 글의 전개 방식으로 알맞은 것은?",
-      choices: uniqueChoices(structureAnswer, pool, random),
-      correct: structureAnswer,
-      category: t.category,
-    });
-  }
+  // (유형 D «이 글의 전개 방식»은 뺐다 — 설명문·논설문 지문이 같은 틀(정의·근거 셋·결론)로 만들어져 «정의하고 특징 설명»과
+  //  «주장·근거·결론»이 둘 다 맞았다. 2026-10-26 전수검수)
 
   return out;
 }
@@ -2014,6 +2042,6 @@ function genGrade56Reading(seed: number): ReadingEntry[] {
 // ────────────────────────────────────────────────
 export function generateReadingPool(grade: number, seed: number): ReadingEntry[] {
   if (grade <= 2) return genGrade12Reading(seed);
-  if (grade <= 4) return genGrade34Reading(seed);
-  return genGrade56Reading(seed);
+  if (grade <= 4) return genGrade34Reading(seed, grade);
+  return genGrade56Reading(seed, grade);
 }
